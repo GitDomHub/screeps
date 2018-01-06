@@ -14,14 +14,14 @@ var roleRepairer = {
             // 2Do: go for structure that has lowest hits
             var repairneeded = creep.room.find(FIND_STRUCTURES,
                 {filter: (s) => s.hits < s.hitsMax * 0.5 && 
-                                        s.hits < 300000});
+                                        s.hits < 350000});
             if (repairneeded.length > 0) {
                 // find structure with lowest hitpoints
                 // 2Do: right now if there is a rampart with 270k hitpoints, then the repairer will move there. 
                 //      once it hits the same amount of hits as other ramparts, the creep will leave.
                 //      If the creep is right now already a structure that has lower than threshold hitpoints, MAYBE: first repair that one
                 //      only if there is a hostile in room, go for lowest structure, because that one might be under attack
-                
+
                 var lowestHitsStructure = _.min(repairneeded, "hits");
                 if(creep.repair(lowestHitsStructure) == ERR_NOT_IN_RANGE){
                     creep.moveTo(lowestHitsStructure, {visualizePathStyle: {stroke: '#00ff00'}});
