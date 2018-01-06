@@ -2,7 +2,6 @@
 Notes on this script
 - make creeps drop of energy when not busy and dying soon
 - first test save of this file
-
 */
 
 // creep roles
