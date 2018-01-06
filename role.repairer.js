@@ -31,7 +31,7 @@ var roleRepairer = {
                     creep.moveTo(structuresNeedingRepair[0], {visualizePathStyle: {stroke: '#00ff00'}});
                 }
                 else {
-                    creep.repair(lowestHitsStructure);
+                    creep.repair(structuresNeedingRepair[0]);
                 }
             }
             
