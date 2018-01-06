@@ -16,7 +16,7 @@ var roleDefender                        = require('role.defender');
 // 2DO: need healers
 
 // structure roles
-var roleTower                           = require('role.tower2');
+var roleTower                           = require('role.tower');
 
 // modules
 var moduleSelectSource                  = require('module.selectSource');
@@ -50,6 +50,7 @@ module.exports.loop = function () {
     var builders                        = _.filter(Game.creeps, (creep) => creep.memory.role == 'builder');
     var defenders                       = _.filter(Game.creeps, (creep) => creep.memory.role == 'defender');
     
+    console.log('##################################');
     console.log('BackupHarvesters: '    + backupHarvesters.length);
     console.log('Harvesters: '          + harvesters.length);
     console.log('Couriers: '            + couriers.length);
@@ -59,6 +60,7 @@ module.exports.loop = function () {
     console.log('Upgraders: '           + upgraders.length);
     console.log('Builders: '            + builders.length);
     console.log('Defenders: '           + defenders.length);
+    console.log('##################################');
     
     //2DO define mininum of creeps in vars
     var minBackupHarvesters             = 2;
@@ -68,8 +70,8 @@ module.exports.loop = function () {
     var minMiners                       = 2;    // 2Do: make enough miners as containers we have
     var minRepairers                    = 1;    // cheaper than tower repairing things
     var minUpgraders                    = 3;    // 2Do: only spawn more/bigger Upgraders than harvesters enough; only spawn new ones if overall energy amount is over certain number
-    var minBuilders                     = 2;    //2Do only make builders when construction sites in room. 
-    var minDefenders                    = 0;    //2Do: 1 always on hand. Only spawn rest if hostile in room.
+    var minBuilders                     = 2;    // 2Do only make builders when construction sites in room. 
+    var minDefenders                    = 0;    // 2Do: 1 always on hand. Only spawn rest if hostile in room.
                                                 // Just produce a new one to be ready when old one dies
     
     //react to when there is an attack
@@ -94,7 +96,7 @@ module.exports.loop = function () {
         if(backupHarvesters.length < minBackupHarvesters) {
             var newName = '⛏ BackupHarvester' + Game.time;
             console.log('Spawning new BackupHarvester: ' + newName);
-            Game.spawns['Spawn1'].spawnCreep([MOVE,WORK,CARRY], newName,  
+            Game.spawns['Spawn1'].spawnCreep([MOVE,MOVE,WORK,CARRY,CARRY], newName,  // cost 300E; MOVE*2,WORK*1,CARRY*2; 
                 {memory: {role: 'backupHarvester'}});
         }
     }
