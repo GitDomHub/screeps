@@ -2,6 +2,7 @@
 Notes on this script
 - make creeps drop of energy when not busy and dying soon
 - test to write to main file
+- test 2 to write to main file
 */
 
 // creep roles
