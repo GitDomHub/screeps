@@ -1,12 +1,7 @@
 /*
 Notes on this script
-- make creeps drop of energy when not busy and dying soon
-<<<<<<< HEAD
-- test to write to main file
-- test 2 to write to main file
-=======
-- first test save of this file
->>>>>>> 967521412b47392051527962ee0c85ba041709bb
+- make creeps drop of energy when not busy and dying soon 
+
 */
 
 // creep roles
@@ -28,14 +23,7 @@ var moduleSelectSource                  = require('module.selectSource');
 
 
 module.exports.loop = function () {
-  /*try {
-    main();
-  } catch (e) {
-    console.log('<span color:"#00ffff">' + e + '</span>');
-  }
-}
 
-function main(){*/
     for(var name in Memory.creeps) {
         if(!Game.creeps[name]) {
             delete Memory.creeps[name];
@@ -321,10 +309,4 @@ function main(){*/
         }
     }
 };
-
-/*// each tick do this
-module.exports.loop = function () {
-
-    
-}*/
 
