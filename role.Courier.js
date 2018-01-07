@@ -1,6 +1,7 @@
 /*Delivers from containers to other places*/
 
 /*2DO: make courier also deliver to towers when enemy is in room!*/
+
 var roleCourier = {
 
     /** @param {Creep} creep **/

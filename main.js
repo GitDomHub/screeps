@@ -66,9 +66,9 @@ module.exports.loop = function () {
     
     //2DO define mininum of creeps in vars
     var minBackupHarvesters             = 2;
-    var minHarvesters                   = 2;    // 2Do: do i still need harvesters, when i got miners and couriers?!?!
+    var minHarvesters                   = 1;    // 2Do: do i still need harvesters, when i got miners and couriers?!?!
     var minCouriers                     = 2;    // 2Do: only make couriers, when miners are there or containers are half full
-    var minTowerCouriers                = 1;    // 2Do: only make tower courier if enough other creeps???
+    var minTowerCouriers                = 0;    // 2Do: replace maybe with normal couriers. just tell couriers to prioritize towers under certain circs
     var minMiners                       = 2;    // 2Do: make enough miners as containers we have
     var minRepairers                    = 0;    // cheaper than tower repairing things
     var minUpgraders                    = 1;    // 2Do: only spawn more/bigger Upgraders than harvesters enough; only spawn new ones if overall energy amount is over certain number
@@ -82,7 +82,7 @@ module.exports.loop = function () {
         var minBackupHarvesters         = 2;    
         var minHarvesters               = 1;    // -1
         var minCouriers                 = 4;    // +1
-        var minTowerCouriers            = 2;    // +1 
+        var minTowerCouriers            = 0;    // +1 
         var minMiners                   = 1;    // -1
         var minRepairers                = 0;    
         var minUpgraders                = 1;    // -2
