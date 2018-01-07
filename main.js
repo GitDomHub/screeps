@@ -281,6 +281,7 @@ module.exports.loop = function () {
                 filter: (structure) => {
                     return (  (structure.structureType == STRUCTURE_EXTENSION   && structure.energy < structure.energyCapacity ||
                                structure.structureType == STRUCTURE_SPAWN       && structure.energy < structure.energyCapacity ||
+                               structure.structureType == STRUCTURE_CONTAINER   && structure.store[RESOURCE_ENERGY] <= structure.storeCapacity ||
                                structure.structureType == STRUCTURE_STORAGE     && structure.store[RESOURCE_ENERGY] < structure.storeCapacity)
                             );
                 }
