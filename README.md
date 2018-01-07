@@ -8,13 +8,17 @@ Changelog:
 
 
 2Do things:
+
+
 Globals
 - make a STATE where I can choose if its BUILDING time or ATTACK time or UPGRADE time
-
 
 Courier
 - 2DO: make courier also deliver to towers when enemy is in room!
 
 Builder
 - when nothing to build, assign upgrader role
+
+Miner
+- When there is link in the room, then make the miner also have carry body part to be able to drop energy into the link that is not directly under him
 
