@@ -66,7 +66,7 @@ var roleTower = {
                         var closestDamagedStructure = singleTower.pos.findClosestByRange(FIND_STRUCTURES, {
                             //filter: (structure) => structure.hits < structure.hitsMax
                             /*structure.hits < structure.hitsMax * 0.5 &&*/
-                            filter: (structure) => structure.hits < 450000 &&
+                            filter: (structure) => structure.hits < 350000 &&
                                     structure.hits < structure.hitsMax * 0.5
                         });
                         // 2Do: var lowestHitsStructure = _.min(allDamagedStructures, "hits");
