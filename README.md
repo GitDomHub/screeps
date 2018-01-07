@@ -22,3 +22,8 @@ Builder
 Miner
 - When there is link in the room, then make the miner also have carry body part to be able to drop energy into the link that is not directly under him
 
+Tower
+- need a code to handle healer attacks. When confronted with more than 3 healers, towers can't handle them
+https://www.reddit.com/r/screeps/comments/4z8bz3/how_do_you_deal_with_healer_attacks/
+https://www.reddit.com/r/screeps/comments/7d6w2t/offensive_strategy/
+
