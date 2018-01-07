@@ -212,8 +212,8 @@ module.exports.loop = function () {
     
     
     // manuelle überschreibung von creeps
-    Game.creeps['🔨 Builder23382990'].memory.role = 'courier';
-    console.log('🔨 Builder23382990 hat die Rolle: ' + Game.creeps['🔨 Builder23382990'].memory.role);
+    Game.creeps['🔨 Builder23383062'].memory.role = 'courier';
+    console.log('🔨 Builder23383062 hat die Rolle: ' + Game.creeps['🔨 Builder23383062'].memory.role);
     
     //console.log(Game.creeps['Repairer23189902'].owner.username);
     //Game.creeps['💎 Miner23242361'].memory.servingContainer = '5a437304ea2d2626ee07360f';
