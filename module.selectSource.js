@@ -8,7 +8,7 @@ var moduleSelectSource = {
             filter: (structure) => {
                 return ( structure.structureType == STRUCTURE_STORAGE) &&
                             (structure.store[RESOURCE_ENERGY] >= creep.carryCapacity) && 
-                            (structure.store[RESOURCE_ENERGY] > 250) ;
+                            (structure.store[RESOURCE_ENERGY] > 0) ;
             }
         });
         
