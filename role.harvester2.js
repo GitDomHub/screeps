@@ -94,6 +94,7 @@ var roleHarvester = {
             if(targets.length > 0) {
                 // move and transfer to closest target
                 var closestTarget = creep.pos.findClosestByPath(targets);
+                // 2Do: make them move to target before it gets empty
                 if(creep.transfer(closestTarget, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                     creep.moveTo(closestTarget, {visualizePathStyle: {stroke: '#ffffff'}});
                 }
