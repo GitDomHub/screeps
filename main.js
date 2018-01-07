@@ -71,7 +71,7 @@ module.exports.loop = function () {
     var minTowerCouriers                = 2;    // 2Do: only make tower courier if enough other creeps???
     var minMiners                       = 2;    // 2Do: make enough miners as containers we have
     var minRepairers                    = 0;    // cheaper than tower repairing things
-    var minUpgraders                    = 3;    // 2Do: only spawn more/bigger Upgraders than harvesters enough; only spawn new ones if overall energy amount is over certain number
+    var minUpgraders                    = 1;    // 2Do: only spawn more/bigger Upgraders than harvesters enough; only spawn new ones if overall energy amount is over certain number
     var minBuilders                     = 2;    // 2Do only make builders when construction sites in room. 
     var minDefenders                    = 0;    // 2Do: 1 always on hand. Only spawn rest if hostile in room.
                                                 // Just produce a new one to be ready when old one dies
@@ -90,7 +90,11 @@ module.exports.loop = function () {
         var minDefenders                = 10;   // +8  // 2DO: always spawn defenders first before anything else
     }
     
-    // 2DO: healers? rathers aggressive
+    // 2DO: healers?
+
+    // define all wanted and needed emojis:
+
+
     
     // spawn backup BACKUPHARVESTER 
     // spawn only if no harvesters are there any more
