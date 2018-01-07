@@ -56,7 +56,7 @@ var roleTower = {
                     // STEP 3: REPAIR
                     // - only repair if tower has enough energy left
                     console.log(singleTower.energy);
-                    if (singleTower.energy > singleTower.energyCapacity * 0.75) {
+                    if (singleTower.energy > singleTower.energyCapacity * 0.25) {
                         // 2DO: differenciate between structures
                         // - ramparts 300.000 begin from lowest hitpoints
                         // - roads ? until 2.500
@@ -66,7 +66,7 @@ var roleTower = {
                         var closestDamagedStructure = singleTower.pos.findClosestByRange(FIND_STRUCTURES, {
                             //filter: (structure) => structure.hits < structure.hitsMax
                             /*structure.hits < structure.hitsMax * 0.5 &&*/
-                            filter: (structure) => structure.hits < 450000 &&
+                            filter: (structure) => structure.hits < 650000 &&
                                     structure.hits < structure.hitsMax * 0.5
                         });
                         // 2Do: var lowestHitsStructure = _.min(allDamagedStructures, "hits");

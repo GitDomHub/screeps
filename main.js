@@ -1,6 +1,8 @@
 /*
-Notes on this script
-- make creeps drop of energy when not busy and dying soon 
+This file is being edited by a local IDE, sublime.
+DONT EDIT IN SCREEPS INGAME EDITOR
+or changes will be lost
+
 
 */
 
