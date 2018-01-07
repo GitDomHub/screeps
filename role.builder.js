@@ -36,15 +36,11 @@ var roleBuilder = {
                         return ( 
                             structure.structureType == STRUCTURE_TOWER  && structure.energy < structure.energyCapacity ||
                             structure.structureType == STRUCTURE_EXTENSION && structure.energy < structure.energyCapacity ||
-                            structure.structureType == STRUCTURE_SPAWN && structure.energy < structure.energyCapacity ||
-                            structure.structureType == STRUCTURE_STORAGE && structure.store[RESOURCE_ENERGY] < structure.storeCapacity);
+                            structure.structureType == STRUCTURE_SPAWN && structure.energy < structure.energyCapacity /*||
+                            structure.structureType == STRUCTURE_STORAGE && structure.store[RESOURCE_ENERGY] < structure.storeCapacity*/);
                     }
-                });
-                
-                
+                });                
                 console.log('builder targets: ' + targets);
-            
-                
                 // if there is structures which need energy, move!
                 if(targets.length > 0) {
                     // move and transfer to closest target
