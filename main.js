@@ -72,7 +72,7 @@ module.exports.loop = function () {
     var minMiners                       = 2;    // 2Do: make enough miners as containers we have
     var minRepairers                    = 0;    // cheaper than tower repairing things
     var minUpgraders                    = 1;    // 2Do: only spawn more/bigger Upgraders than harvesters enough; only spawn new ones if overall energy amount is over certain number
-    var minBuilders                     = 4;    // 2Do only make builders when construction sites in room. 
+    var minBuilders                     = 2;    // 2Do only make builders when construction sites in room. Make more builders when there are more than  
     var minDefenders                    = 0;    // 2Do: 1 always on hand. Only spawn rest if hostile in room.
                                                 // Just produce a new one to be ready when old one dies
     
@@ -82,7 +82,7 @@ module.exports.loop = function () {
         var minBackupHarvesters         = 2;    
         var minHarvesters               = 1;    // -1
         var minCouriers                 = 4;    // +1
-        var minTowerCouriers            = 0;    // +1 
+        var minTowerCouriers            = 0;    // Tower couriers will block the way. Just need to prioritize towers
         var minMiners                   = 1;    // -1
         var minRepairers                = 0;    
         var minUpgraders                = 1;    // -2
