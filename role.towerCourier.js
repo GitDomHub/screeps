@@ -40,7 +40,7 @@ var roleTowerCourier = {
             var targets = creep.room.find(FIND_STRUCTURES, {
                 filter: (structure) => {
                     // why use 0.8? ddoesnt make sense?!
-                    return (structure.structureType == STRUCTURE_TOWER) && structure.energy < structure.energyCapacity;
+                    return (structure.structureType == STRUCTURE_TOWER  && structure.energy < structure.energyCapacity);
                         
                 }
             });

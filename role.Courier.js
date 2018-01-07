@@ -100,9 +100,10 @@ var roleCourier = {
             var targets = creep.room.find(FIND_STRUCTURES, {
                 filter: (structure) => {
                     // 2Do: because storage has huge storage, maybe make own creep for it?
-                    return (  (structure.structureType == STRUCTURE_EXTENSION   && structure.energy < structure.energyCapacity ||
-                               structure.structureType == STRUCTURE_SPAWN      && structure.energy < structure.energyCapacity ||
-                               structure.structureType == STRUCTURE_STORAGE     && structure.store[RESOURCE_ENERGY] < structure.storeCapacity)
+                    return (    structure.structureType == STRUCTURE_TOWER  && structure.energy < structure.energyCapacity ||
+                                structure.structureType == STRUCTURE_EXTENSION   && structure.energy < structure.energyCapacity ||
+                                structure.structureType == STRUCTURE_SPAWN      && structure.energy < structure.energyCapacity ||
+                                structure.structureType == STRUCTURE_STORAGE     && structure.store[RESOURCE_ENERGY] < structure.storeCapacity)
                             );
                 }
             });
