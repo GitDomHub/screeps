@@ -20,39 +20,7 @@ var roleHarvester = {
         // When creep is set to harvesting but maybe not close to the energy source
         // make it move there
         if(creep.memory.harvesting) {
-            
-            // 2Do: move this SOURCE SELECTION SCRIPT INTO MODULE CALLED module.selectsource
-            /*// MOVE BEGIN          
-            // first see if there are CONTAINERS that are not empty
-            // alternative: get energy from container instead from source
-            var containers = creep.room.find(FIND_STRUCTURES, {
-                filter: (structure) => {
-                    return (structure.structureType == STRUCTURE_CONTAINER) && (structure.store[RESOURCE_ENERGY] > 250);
-                }
-            });
-            // if there are containers found that are not empty
-            if(containers.length > 0) {
-                var container = creep.pos.findClosestByPath(containers);
-                if(creep.withdraw(container, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                    // move there and get energy from there 
-                    creep.moveTo(container, {visualizePathStyle: {stroke: '#ffaa00'}});
-                    // get creep name
-                    // get container ID
-                    
-                }
-            } else {
-                // NO CONTAINERS HAVE ENERGY
-                // find closest SOURCE to the creeps current position
-                var source = creep.pos.findClosestByPath(FIND_SOURCES);
-                if(creep.harvest(source) == ERR_NOT_IN_RANGE) {
-                    // make creep move and show its path
-                    creep.moveTo(source, {visualizePathStyle: {stroke: '#ffaa00'}});
-                }
-            }
-            // MOVE END
-            */
-
-            
+                
              //new alternative: use module.selectSource routine to see if there are containers first
             if(moduleSelectSource) {
                 moduleSelectSource.run(creep);
@@ -80,14 +48,7 @@ var roleHarvester = {
                         structure.structureType == STRUCTURE_STORAGE && structure.store[RESOURCE_ENERGY] < structure.storeCapacity */);
                 }
             });
-            /*
-            var storages = creep.room.find(FIND_MY_STRUCTURES, {
-                filter: (structure) => {
-                    return (structure.structureType == STRUCTURE_STORAGE && 
-                            structure.store[RESOURCE_ENERGY] < structure.storeCapacity);
-                }
-            });
-            */
+            
             
             console.log('harvester targets: ' + targets);
         
