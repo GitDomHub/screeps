@@ -43,7 +43,7 @@ var roleDefender = {
                 if (!isFriend) {
                     if(creep.attack(hostile)== ERR_NOT_IN_RANGE) {
                         creep.moveTo(hostile, {visualizePathStyle: {stroke: '#ff0000'}});
-                        creep.say("😍 Love");
+                        creep.say("Kill!");
                     } else {
                         creep.attack(hostile);
                     }    

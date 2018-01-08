@@ -8,13 +8,13 @@ var roleHarvester = {
         // it means that the harvester is depleted and just finished his journey of delivering energy
         if(!creep.memory.harvesting && creep.carry.energy == 0) {
             creep.memory.harvesting = true;
-            creep.say('🔄 harvest');
+            creep.say('harvest');
         }
         // When harvester is currently harvesting (TRUE) and energy is FULL
         // then stop harvesting and start delivering energy
         if(creep.memory.harvesting && creep.carry.energy == creep.carryCapacity) {
             creep.memory.harvesting = false;
-            creep.say('⚡ deliver');
+            creep.say('deliver');
         }
         
         // When creep is set to harvesting but maybe not close to the energy source

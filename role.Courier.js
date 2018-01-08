@@ -12,13 +12,13 @@ var roleCourier = {
         // go and harvest/get energy
         if(!creep.memory.harvesting && creep.carry.energy == 0) {
             creep.memory.harvesting = true;
-            creep.say('🔄 harvest');
+            creep.say('harvest');
         }
         // When creep is currently harvesting (TRUE) and energy is FULL
         // then stop harvesting and start delivering energy
         if(creep.memory.harvesting && creep.carry.energy == creep.carryCapacity) {
             creep.memory.harvesting = false;
-            creep.say('⚡ deliver');
+            creep.say('deliver');
         }
         
         

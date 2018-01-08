@@ -100,7 +100,7 @@ module.exports.loop = function () {
     // spawn only if no harvesters are there any more
     if(harvesters.length == 0) {
         if(backupHarvesters.length < minBackupHarvesters) {
-            var newName = '⛏ BackupHarvester' + Game.time;
+            var newName = 'BackupHarvester' + Game.time;
             console.log('Spawning new BackupHarvester: ' + newName);
             Game.spawns['Spawn1'].spawnCreep([MOVE,MOVE,WORK,CARRY,CARRY], newName,  // cost 300E; MOVE*2,WORK*1,CARRY*2; 
                 {memory: {role: 'backupHarvester'}});
@@ -108,21 +108,21 @@ module.exports.loop = function () {
     }
     
     // spawn normal HARVESTERS 
-    if(harvesters.length < minHarvesters) {
-        var newName = '⛏ Harvester' + Game.time;
-        Game.spawns['Spawn1'].spawnCreep([MOVE,MOVE,MOVE,WORK,WORK,CARRY,CARRY,CARRY,CARRY], newName, // cost 550E; MOVE*3,WORK*2,CARRY*4; 900K health; carry 200(4 extensions)
-            {memory: {role: 'harvester'}});
-    }
+    // if(harvesters.length < minHarvesters) {
+    //     var newName = 'Harvester' + Game.time;
+    //     Game.spawns['Spawn1'].spawnCreep([MOVE,MOVE,MOVE,WORK,WORK,CARRY,CARRY,CARRY,CARRY], newName, // cost 550E; MOVE*3,WORK*2,CARRY*4; 900K health; carry 200(4 extensions)
+    //         {memory: {role: 'harvester'}});
+    // }
     // spawn normal HARVESTERS 
     if(harvesters.length < minHarvesters) {
-        var newName = '⛏ Harvester' + Game.time;
+        var newName = 'Harvester' + Game.time;
         Game.spawns['Spawn1'].spawnCreep([MOVE,MOVE,MOVE,WORK,WORK,CARRY,CARRY,CARRY,CARRY], newName, // cost 550E; MOVE*3,WORK*2,CARRY*4; 900K health; carry 200(4 extensions)
             {memory: {role: 'harvester'}});
     }
     
     // spawn COURIERS 
     if(couriers.length < minCouriers  && (miners.length >= minMiners)) {
-        var newName = '⛏ Courier' + Game.time;
+        var newName = 'Courier' + Game.time;
         Game.spawns['Spawn1'].spawnCreep([MOVE,MOVE,MOVE,MOVE,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY], newName, // cost 600E;carry400
             {memory: {role: 'courier'}});
     }
@@ -132,14 +132,14 @@ module.exports.loop = function () {
     // 2Do, create mini and MAX miner
     // 2DO: only create as many miners as containers are near to source
     if(miners.length < minMiners && (harvesters.length >= minHarvesters)) {
-        var newName = '💎 Miner' + Game.time;
+        var newName = 'Miner' + Game.time;
         Game.spawns['Spawn1'].spawnCreep([MOVE,MOVE,WORK,WORK,WORK,WORK,WORK,WORK], newName, //MOVE*3,WORK*6 
             {memory: {role: 'miner'}});
     }
     
    // spawn TOWERCOURIER 
     if(towerCourier.length < minTowerCouriers  && (harvesters.length >= minHarvesters) ) {
-        var newName = '⛏ TowerCourier' + Game.time;
+        var newName = 'TowerCourier' + Game.time;
         Game.spawns['Spawn1'].spawnCreep([MOVE,MOVE,MOVE,WORK,WORK,CARRY,CARRY,CARRY,CARRY], newName, // cost 550E; MOVE*3,WORK*2,CARRY*4; 900K health; carry 200
             {memory: {role: 'towerCourier'}});
     }
@@ -147,7 +147,7 @@ module.exports.loop = function () {
     //spawn REPAIRERS 
     
     if(repairers.length < minRepairers) {
-        var newName = '🔧 Repairer' + Game.time;
+        var newName = 'Repairer' + Game.time;
         /*Game.spawns['Spawn1'].spawnCreep([MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,WORK,WORK,WORK,WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY], newName, //9
             {memory: {role: 'repairer'}});*/
             
@@ -162,7 +162,7 @@ module.exports.loop = function () {
     // spawn UPGRADERS 
     // bu spawn only when enough harvesters are there. Keeps the colony from dying
     if(upgraders.length < minUpgraders && harvesters.length >= minHarvesters && miners.length >= minMiners ) {
-        var newName = '⏫ Upgrader' + Game.time;
+        var newName = 'Upgrader' + Game.time;
         /*Game.spawns['Spawn1'].spawnCreep([MOVE,MOVE,MOVE,MOVE,WORK,WORK,WORK,CARRY,CARRY,CARRY], newName, // cost 1100E; MOVE*6,WORK*5,CARRY*6; 1.700K health; carry 300
             {memory: {role: 'upgrader'}});*/
         Game.spawns['Spawn1'].spawnCreep([MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,WORK,WORK,WORK,WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY], newName, // cost 1100E; MOVE*6,WORK*5,CARRY*6; 1.700K health; carry 300
@@ -175,14 +175,14 @@ module.exports.loop = function () {
     // 2Do! build another mini builder for when there is low energy
     var baustellen = Game.spawns['Spawn1'].pos.findClosestByPath(FIND_CONSTRUCTION_SITES); // only works for this spawn!!! 
     if(builders.length < minBuilders && (baustellen) && harvesters.length >= minHarvesters && miners.length >= minMiners ) {
-        var newName = '🔨 Builder' + Game.time;
+        var newName = 'Builder' + Game.time;
         Game.spawns['Spawn1'].spawnCreep([MOVE,MOVE,MOVE,MOVE,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY], newName, // cost 1050E; MOVE*6,WORK*3,CARRY*9 ; 1800 health carry 450
             {memory: {role: 'builder'}});
     }
     
     // spawn DEFENDERS 
     if(defenders.length < minDefenders) {
-        var newName = '🤺 Defender' + Game.time;
+        var newName = 'Defender' + Game.time;
         Game.spawns['Spawn1'].spawnCreep([MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK], newName, // cost 910E; MOVE*7,ATTACK*7; 2.100K health; attack	210.000/T	315.000K/1500T	756.000K/H	18.144M/D
             {memory: {role: 'defender'}});
     }
@@ -194,7 +194,7 @@ module.exports.loop = function () {
     if(Game.spawns['Spawn1'].spawning) {
         var spawningCreep = Game.creeps[Game.spawns['Spawn1'].spawning.name];
         Game.spawns['Spawn1'].room.visual.text(
-            '🛠️' + spawningCreep.memory.role,
+            '' + spawningCreep.memory.role,
             Game.spawns['Spawn1'].pos.x + 1,
             Game.spawns['Spawn1'].pos.y,
             {align: 'left', opacity: 0.9});
@@ -212,9 +212,9 @@ module.exports.loop = function () {
     
     
     // manuelle überschreibung von creeps
-    if (Game.creeps['🔨 Builder23382954'] != undefined) {
-        Game.creeps['🔨 Builder23382954'].memory.role = 'courier';
-        console.log('🔨 Builder23382954 hat die Rolle: ' + Game.creeps['🔨 Builder23382954'].memory.role);    
+    if (Game.creeps['Builder23382954'] != undefined) {
+        Game.creeps['Builder23382954'].memory.role = 'courier';
+        console.log('Builder23382954 hat die Rolle: ' + Game.creeps['🔨 Builder23382954'].memory.role);    
     } 
     
     
@@ -277,7 +277,7 @@ module.exports.loop = function () {
         
         // if creeps ticks to live under 50 (guess thats the longest route they'd take) and he has enough energy
         if (creep.ticksToLive < 40 && _.sum(creep.carry) > 50 && carryBodyparts > 1) {
-            if(creep.ticksToLive < 40 ) creep.say('💀 in ' + creep.ticksToLive);
+            if(creep.ticksToLive < 40 ) creep.say('死 in ' + creep.ticksToLive);
             
             // then get best structure to drop off energy
             var targets = creep.room.find(FIND_STRUCTURES, {
@@ -309,7 +309,7 @@ module.exports.loop = function () {
         // if not carrying much energy, just die now so we can get a new creep faster
         // checking for bodyparts is important, otherwise we kill wrong creeps
         } else if (creep.ticksToLive < 40 && _.sum(creep.carry) < 10 && carryBodyparts > 1) { 
-            creep.say('💀 in ' + creep.ticksToLive);
+            creep.say('死 in ' + creep.ticksToLive);
             creep.cancelOrder('harvest');
             creep.cancelOrder('move');
             creep.cancelOrder('repair');
