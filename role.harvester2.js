@@ -1,4 +1,4 @@
-var moduleSelectSource = require('module.selectSource');
+var actionSelectSource = require('actions.selectSource');
 var roleHarvester = {
 
     /** @param {Creep} creep **/
@@ -21,9 +21,9 @@ var roleHarvester = {
         // make it move there
         if(creep.memory.harvesting) {
                 
-             //new alternative: use module.selectSource routine to see if there are containers first
-            if(moduleSelectSource) {
-                moduleSelectSource.run(creep);
+             //new alternative: use actions.selectSource routine to see if there are containers first
+            if(actionSelectSource) {
+                actionSelectSource.run(creep);
             } else {
                 console.log('Harvester cannot find suitable source!');
             }

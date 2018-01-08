@@ -1,5 +1,6 @@
-var moduleSelectSource = {
+var actionChooseSource = {
     // @param {Creep} creep /
+    // 2Do: take parameters for which source to prioritize
     run: function(creep) {
         //2Do: decide between storage and container, maybe decide on distance  travelled
         // MOVE BEGIN          
@@ -64,4 +65,4 @@ var moduleSelectSource = {
         
     }   
 };
-module.exports = moduleSelectSource;
+module.exports = actionChooseSource;

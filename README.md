@@ -11,6 +11,7 @@ Changelog:
 
 
 Globals
+- store sources in a room into some memory 
 - store minimum creeps into spawn memory
 - make a STATE for screeps where I can choose if its BUILDING time or ATTACK time or UPGRADE time
 	- https://screepsworld.com/2017/09/screeps-tutorial-handling-creep-roles-with-a-state-machine/

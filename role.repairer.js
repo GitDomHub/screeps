@@ -1,4 +1,4 @@
-var moduleSelectSource = require('module.selectSource');
+var actionSelectSource = require('actions.selectSource');
 var roleRepairer = {
     run: function(creep) {
         if(creep.memory.repairing && creep.carry.energy == 0) {
@@ -43,9 +43,9 @@ var roleRepairer = {
                 creep.moveTo(source, {visualizePathStyle: {stroke: '#ffaa00'}});
             }*/
             
-            //new alternative: use module.selectSource routine to see if there are containers first
-            if(moduleSelectSource) {
-                moduleSelectSource.run(creep);
+            //new alternative: use actions.selectSource routine to see if there are containers first
+            if(actionSelectSource) {
+                actionSelectSource.run(creep);
             } else {
                 console.log('Harvester cannot find suitable source!');
             }

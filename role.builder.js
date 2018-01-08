@@ -1,6 +1,6 @@
 /*2Do: when nothing to build, assign upgrader role*/
 
-var moduleSelectSource = require('module.selectSource');
+var actionSelectSource = require('actions.selectSource');
 var roleBuilder = {
 
     /** @param {Creep} creep **/
@@ -59,9 +59,9 @@ var roleBuilder = {
             
         }
         else {
-            //new alternative: use module.selectSource routine to see if there are containers first
-            if(moduleSelectSource) {
-                moduleSelectSource.run(creep);
+            //new alternative: use actions.selectSource routine to see if there are containers first
+            if(actionSelectSource) {
+                actionSelectSource.run(creep);
             } else {
                 console.log('Builder cannot find suitable source!');
             }

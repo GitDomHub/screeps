@@ -20,18 +20,16 @@ var roleDefender                        = require('role.defender');
 // structure roles
 var roleTower                           = require('role.tower');
 
-// modules
-var moduleSelectSource                  = require('module.selectSource');
+// actions
+var actionsGlobal                       = require('actions.global');
+var actionsSelectSource                 = require('actions.selectSource');
+
 
 
 module.exports.loop = function () {
 
-    for(var name in Memory.creeps) {
-        if(!Game.creeps[name]) {
-            delete Memory.creeps[name];
-            console.log('Clearing non-existing creep memory:', name);
-        }
-    }
+    // run memory 
+    
     
     // define vars for this room
     var room1                           = 'E83S21';
