@@ -9,12 +9,12 @@ var roleBuilder = {
         // when building right now but no more energy, go harvest
         if(creep.memory.building && creep.carry.energy == 0) {
             creep.memory.building = false;
-            creep.say('🔄 harvest');
+            creep.say('harvest');
         }
         // when not building but have full energy, start building
         if(!creep.memory.building && creep.carry.energy == creep.carryCapacity) {
             creep.memory.building = true;
-            creep.say('🚧 build');
+            creep.say('build');
         }
         
         // when set to build stuff
