@@ -1,4 +1,4 @@
-var moduleSelectSource = require('module.selectSource');
+var actionSelectSource = require('actions.selectSource');
 var roleUpgrader = {
 
     /** @param {Creep} creep **/
@@ -20,9 +20,9 @@ var roleUpgrader = {
         }
         else {
             
-             //new alternative: use module.selectSource routine to see if there are containers first
-            if(moduleSelectSource) {
-                moduleSelectSource.run(creep);
+             //new alternative: use actions.selectSource routine to see if there are containers first
+            if(actionSelectSource) {
+                actionSelectSource.run(creep);
             } else {
                 creep.say('error');
             }           
