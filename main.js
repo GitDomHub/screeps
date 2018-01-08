@@ -29,6 +29,7 @@ var actionsSelectSource                 = require('actions.selectSource');
 module.exports.loop = function () {
 
     // run memory 
+    actionsGlobal.ClearMemory();
     
     
     // define vars for this room
