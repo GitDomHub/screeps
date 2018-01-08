@@ -25,7 +25,7 @@ var roleTowerCourier = {
             if(actionSelectSource) {
                 actionSelectSource.run(creep);
             } else {
-                console.log('TowerCourier cannot find suitable source!');
+                creep.say('error!');
             }
             
             return; // test

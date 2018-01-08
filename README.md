@@ -33,6 +33,9 @@ Tower
 https://www.reddit.com/r/screeps/comments/4z8bz3/how_do_you_deal_with_healer_attacks/
 https://www.reddit.com/r/screeps/comments/7d6w2t/offensive_strategy/
 
+Harvesting 
+- actions.SelectSource : When closest source doesnt have energy then creeps just sit there and wait. need to implement some routine to check if closest resource has energy. if not look for another source.
+
 
 
 

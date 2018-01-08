@@ -36,7 +36,7 @@ module.exports.loop = function () {
     var room1                           = 'E83S21';
     var roomHasHostiles                 = Game.rooms[room1].find(FIND_HOSTILE_CREEPS);
     
-    console.log('any hostiles? -> ' + roomHasHostiles);
+    //console.log('any hostiles? -> ' + roomHasHostiles);
     
     
     // have always 1 or two backup harvesters so the colony doesnt die
@@ -100,7 +100,7 @@ module.exports.loop = function () {
     if(harvesters.length == 0) {
         if(backupHarvesters.length < minBackupHarvesters) {
             var newName = 'BackupHarvester' + Game.time;
-            console.log('Spawning new BackupHarvester: ' + newName);
+            // console.log('Spawning new BackupHarvester: ' + newName);
             Game.spawns['Spawn1'].spawnCreep([MOVE,MOVE,WORK,CARRY,CARRY], newName,  // cost 300E; MOVE*2,WORK*1,CARRY*2; 
                 {memory: {role: 'backupHarvester'}});
         }
@@ -266,7 +266,7 @@ module.exports.loop = function () {
         
         // check time to live
         var carryBodyparts = creep.getActiveBodyparts('carry');
-        console.log(creep + ' lives another ticks: ' + creep.ticksToLive + ' and has this carry load: ' + _.sum(creep.carry) + ' and so many carry bodyparts:' + carryBodyparts );
+        //console.log(creep + ' lives another ticks: ' + creep.ticksToLive + ' and has this carry load: ' + _.sum(creep.carry) + ' and so many carry bodyparts:' + carryBodyparts );
         
         
         // if creeps ticks to live under 50 (guess thats the longest route they'd take) and he has enough energy
@@ -283,12 +283,10 @@ module.exports.loop = function () {
                             );
                 }
             });
-            console.log('all structures that have enough energy for this creep to drop it off:' + targets);
             // if there is structures which need energy, move!
             if(targets.length > 0) {
                 // find closest target
                 closestTarget = creep.pos.findClosestByPath(targets);
-                console.log('dying creeps closest target: ' + closestTarget);
                 // first cancel whatever the creep was doing before
                 creep.cancelOrder('harvest');
                 creep.cancelOrder('move');

@@ -9,7 +9,6 @@ module.exports = {
 	        if(!Game.creeps[name]) {
 	        	// delete this entry
 	            delete Memory.creeps[name];
-	            console.log('Clearing non-existing creep memory:', name);
 	        }
 	    }
 	}

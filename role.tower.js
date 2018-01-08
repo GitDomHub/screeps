@@ -12,15 +12,10 @@ var roleTower = {
     run: function(myRoomName) {
 
         // make tower do stuff
-        console.log('in func');
-        //var tower = Game.getObjectById('5a43240fd4598606955daf61');
-        
         var allTowers = Game.rooms[myRoomName].find(FIND_MY_STRUCTURES, { filter: { structureType: STRUCTURE_TOWER } });
-        console.log('All towers in room' + allTowers);
         
         if(allTowers.length > 0) {
             for (var singleTower of allTowers) {
-                console.log('in func for this tower: ' + singleTower);
                 // STEP 1: ATTACK
                 var hostileHealer = singleTower.pos.findClosestByRange(FIND_HOSTILE_CREEPS, { filter: (s) => (s.getActiveBodyparts(HEAL) > 0) });
                 var hostileAttacker = singleTower.pos.findClosestByRange(FIND_HOSTILE_CREEPS, { filter: (s) => ( s.getActiveBodyparts(ATTACK) > 0  || s.getActiveBodyparts(RANGED_ATTACK) > 0) });
@@ -28,7 +23,6 @@ var roleTower = {
                 
                 if(hostileHealer) {
                     singleTower.attack(hostileHealer);
-                    console.log('Tower is attacking healers.');
                 }
                 else if (closestHostile) {
                     // dont attack friends
@@ -36,7 +30,6 @@ var roleTower = {
                         //console.log('hostile is a friend, I am not attacking.');
                         // 2Do: loop through ALL hostiles and then see if any of hostiles in room is an enemy. then attack that one
                         singleTower.attack(closestHostile);
-                        console.log('Tower is attacking hostiles.');
                     //};
                 // STEP 2: HEAL CREEPS
                 } else { 
@@ -49,7 +42,6 @@ var roleTower = {
                         for (let singleWeakCreep of weakCreeps) {
                             //console.log(singleWeakCreep);
                             singleTower.heal(singleWeakCreep);
-                            console.log("Tower is healing Creeps.");
                         }    
                     }
                     
@@ -70,12 +62,9 @@ var roleTower = {
                                     structure.hits < structure.hitsMax * 0.5
                         });
                         // 2Do: var lowestHitsStructure = _.min(allDamagedStructures, "hits");
-                        console.log('closestDamagedStructure: ' + closestDamagedStructure);
                         // repair 
                         if(closestDamagedStructure) {
-                            console.log('Tower is reparing...');
                             let result = singleTower.repair(closestDamagedStructure);
-                            console.log (result);
                         }
                     }
                     
