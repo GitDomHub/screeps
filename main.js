@@ -200,17 +200,12 @@ module.exports.loop = function () {
     }
     
     
-    //roleTower.towerDefendRepairHealMyRoom(room1);
-    //roleTower.towerDefendRepairHealMyRoom();
-    console.log('before tower call');
+    
     roleTower.run(room1);
-    console.log('after tower call');
-    
-    // start defend room routine
-    //towerDefendRepairHealMyRoom();
     
     
-    // manuelle überschreibung von creeps
+    
+    // manually overwrite creeps
     if (Game.creeps['Builder23382954'] != undefined) {
         Game.creeps['Builder23382954'].memory.role = 'courier';
         console.log('Builder23382954 hat die Rolle: ' + Game.creeps['🔨 Builder23382954'].memory.role);    
@@ -234,7 +229,7 @@ module.exports.loop = function () {
     //console.log('room.energyAvailable: ' + Game.creeps[1].Room.energyAvailable + ' | room.energyCapacityAvailable: ' + Game.creeps[1].Room.energyCapacityAvailable );
     
 
-
+    // 2DO: auslagern!
     
     // loop through all creeps
     for(var name in Game.creeps) {
