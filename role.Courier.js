@@ -25,7 +25,7 @@ var roleCourier = {
         
         // If set to get energy, make creep move there
         if (creep.memory.harvesting) {
-            
+            // when not already close to a container if(!creep.pos.isNearTo(target)) {
             // find CONTAINERS in the room that:
             // - have at least 30% as much energy as creep can carry (makes it go early enough)
             // - have at least 250 energy 
@@ -104,7 +104,7 @@ var roleCourier = {
                     return ( (  structure.structureType == STRUCTURE_EXTENSION   && structure.energy < structure.energyCapacity ||
                                 structure.structureType == STRUCTURE_SPAWN       && structure.energy < structure.energyCapacity ||
                                 structure.structureType == STRUCTURE_STORAGE     && structure.store[RESOURCE_ENERGY] < structure.storeCapacity) || 
-                                structure.structureType == STRUCTURE_TOWER       && structure.energy < (structure.energyCapacity * 0.8)
+                                structure.structureType == STRUCTURE_TOWER       && structure.energy <= (structure.energyCapacity * 0.8)
                             );
                 }
             });
