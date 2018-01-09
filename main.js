@@ -45,11 +45,9 @@ module.exports.loop = function () {
     //struc status
     var damagedStrucInRoom1             = Game.rooms['E83S21'].find(FIND_STRUCTURES,
                                             {filter: (s) => s.hits < s.hitsMax * 0.5 && 
-                                                s.hits < repairUntilHitsEqual});
+                                                s.hits < repairUntilHitsEqual}); // 2Do: calculate the whole amount of missing hits until we reach our goal.
     
-    console.log(damagedStrucInRoom1.length);
-    //console.log('any hostiles? -> ' + roomHasHostiles);
-    
+
     
     // have always 1 or two backup harvesters so the colony doesnt die
     // load all creeps in to vars so we can work with them
@@ -81,7 +79,7 @@ module.exports.loop = function () {
     var minBackupHarvesters             = 2;
     var minHarvesters                   = 0;    // 2Do: do i still need harvesters, when i got miners and couriers?!?!
     var minCouriers                     = 2;    // 2Do: only make couriers, when miners are there or containers are half full
-    var minTowerCouriers                = 0;    // 2Do: replace maybe with normal couriers. just tell couriers to prioritize towers under certain circs
+    var minTowerCouriers                = 1;    // 2Do: replace maybe with normal couriers. just tell couriers to prioritize towers under certain circs
     var minMiners                       = 2;    // 2Do: make enough miners as containers we have
     var minRepairers                    = 0;    // cheaper than tower repairing things
     var minUpgraders                    = 2;    // 2Do: only spawn more/bigger Upgraders than harvesters enough; only spawn new ones if overall energy amount is over certain number
@@ -154,7 +152,7 @@ module.exports.loop = function () {
     }
     
    // spawn TOWERCOURIER 
-    if(towerCourier.length < minTowerCouriers  && (harvesters.length >= minHarvesters) ) {
+    if(towerCourier.length < minTowerCouriers  && (harvesters.length >= minHarvesters) && damagedStrucInRoom1.length > 15) {
         var newName = 'TowerCourier' + Game.time;
         Game.spawns['Spawn1'].spawnCreep([MOVE,MOVE,MOVE,WORK,WORK,CARRY,CARRY,CARRY,CARRY], newName, // cost 550E; MOVE*3,WORK*2,CARRY*4; 900K health; carry 200
             {memory: {role: 'towerCourier'}});
