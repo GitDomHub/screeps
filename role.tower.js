@@ -75,7 +75,7 @@ var roleTower = {
                         // if(closestDamagedStructure) {
                         //     let result = singleTower.repair(closestDamagedStructure);
                         // }
-                        roleTower.repairStuff(singleTower);
+                        roleTower.repairStuff(myRoomName, singleTower);
                     }
                     
                 }    
@@ -93,11 +93,11 @@ var roleTower = {
         }
     },
 
-    repairStuff : function (tower) {
+    repairStuff : function (room, tower) {
         // 2Do: tower only repair close structures, let a repairer handle the rest
         // 2Do: First repair ramparts, then roads.
         // find damaged structures with certain metrics
-        var allDamagedStructures = tower.pos.find(FIND_STRUCTURES, {
+        var allDamagedStructures = room.pos.find(FIND_STRUCTURES, {
             //filter: (structure) => structure.hits < structure.hitsMax
             /*structure.hits < structure.hitsMax * 0.5 &&*/
             filter: (structure) => structure.hits < 350000 &&
