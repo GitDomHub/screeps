@@ -22,7 +22,7 @@ var roleTower = {
                 var hostileAttacker = singleTower.pos.findClosestByRange(FIND_HOSTILE_CREEPS, { filter: (s) => ( s.getActiveBodyparts(ATTACK) > 0  || s.getActiveBodyparts(RANGED_ATTACK) > 0) });
                 var closestHostile = singleTower.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
                 
-                console.log('tower range to big healer: ' + singleTower.pos.getRangeTo(hostileHealerBig));
+                // console.log('tower range to big healer: ' + singleTower.pos.getRangeTo(hostileHealerBig));
 
                 if(hostileHealerBig){
                     if(singleTower.pos.inRangeTo(hostileHealerBig, 15) ) {
@@ -63,18 +63,19 @@ var roleTower = {
                         // - roads ? until 2.500
                         // ...
                         
-                        // find damaged structures with certain metrics
-                        var closestDamagedStructure = singleTower.pos.findClosestByRange(FIND_STRUCTURES, {
-                            //filter: (structure) => structure.hits < structure.hitsMax
-                            /*structure.hits < structure.hitsMax * 0.5 &&*/
-                            filter: (structure) => structure.hits < 350000 &&
-                                    structure.hits < structure.hitsMax * 0.5
-                        });
-                        // 2Do: var lowestHitsStructure = _.min(allDamagedStructures, "hits");
-                        // repair 
-                        if(closestDamagedStructure) {
-                            let result = singleTower.repair(closestDamagedStructure);
-                        }
+                        // // find damaged structures with certain metrics
+                        // var closestDamagedStructure = singleTower.pos.findClosestByRange(FIND_STRUCTURES, {
+                        //     //filter: (structure) => structure.hits < structure.hitsMax
+                        //     /*structure.hits < structure.hitsMax * 0.5 &&*/
+                        //     filter: (structure) => structure.hits < 350000 &&
+                        //             structure.hits < structure.hitsMax * 0.5
+                        // });
+                        // // 2Do: var lowestHitsStructure = _.min(allDamagedStructures, "hits");
+                        // // repair 
+                        // if(closestDamagedStructure) {
+                        //     let result = singleTower.repair(closestDamagedStructure);
+                        // }
+                        roleTower.repairStuff(singleTower);
                     }
                     
                 }    
@@ -94,7 +95,7 @@ var roleTower = {
 
     repairStuff : function (tower) {
         // 2Do: tower only repair close structures, let a repairer handle the rest
-
+        // 2Do: First repair ramparts, then roads.
         // find damaged structures with certain metrics
         var allDamagedStructures = tower.pos.find(FIND_STRUCTURES, {
             //filter: (structure) => structure.hits < structure.hitsMax
@@ -107,7 +108,7 @@ var roleTower = {
         var lowestHitsStructure = _.min(allDamagedStructures, "hits");
         // repair 
         if(lowestHitsStructure) {
-            let result = tower.repair(closestDamagedStructure);
+            let result = tower.repair(lowestHitsStructure);
         }else{
             tower.say('err88');
         }

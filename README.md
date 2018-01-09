@@ -38,6 +38,7 @@ https://www.reddit.com/r/screeps/comments/4z8bz3/how_do_you_deal_with_healer_att
 https://www.reddit.com/r/screeps/comments/7d6w2t/offensive_strategy/
 - Tower only repair close structures, let a repairer handle the rest
 - Tower only attack healers when less than 20 heal body parts or closer than 15 range
+- Tower first repair ramparts then containers, roads etc.
 
 Harvesting 
 - actions.SelectSource : When closest source doesnt have energy then creeps just sit there and wait. need to implement some routine to check if closest resource has energy. if not look for another source.
