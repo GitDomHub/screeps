@@ -95,7 +95,7 @@ var roleTower = {
         // 2Do: tower only repair close structures, let a repairer handle the rest
 
         // find damaged structures with certain metrics
-        var closestDamagedStructure = singleTower.pos.findClosestByRange(FIND_STRUCTURES, {
+        var allDamagedStructures = singleTower.pos.find(FIND_STRUCTURES, {
             //filter: (structure) => structure.hits < structure.hitsMax
             /*structure.hits < structure.hitsMax * 0.5 &&*/
             filter: (structure) => structure.hits < 350000 &&
@@ -103,9 +103,12 @@ var roleTower = {
         });
         // 2Do: var lowestHitsStructure = _.min(allDamagedStructures, "hits");
         // 2Do: only repair structures that are further away when enemy creep is in proximity of 5-7
+        var lowestHitsStructure = _.min(allDamagedStructures, "hits");
         // repair 
-        if(closestDamagedStructure) {
+        if(lowestHitsStructure) {
             let result = singleTower.repair(closestDamagedStructure);
+        }else{
+            tower.say('err88');
         }
     }
         
