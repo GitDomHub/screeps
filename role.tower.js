@@ -96,7 +96,7 @@ var roleTower = {
         // 2Do: tower only repair close structures, let a repairer handle the rest
 
         // find damaged structures with certain metrics
-        var allDamagedStructures = singleTower.pos.find(FIND_STRUCTURES, {
+        var allDamagedStructures = tower.pos.find(FIND_STRUCTURES, {
             //filter: (structure) => structure.hits < structure.hitsMax
             /*structure.hits < structure.hitsMax * 0.5 &&*/
             filter: (structure) => structure.hits < 350000 &&
@@ -107,7 +107,7 @@ var roleTower = {
         var lowestHitsStructure = _.min(allDamagedStructures, "hits");
         // repair 
         if(lowestHitsStructure) {
-            let result = singleTower.repair(closestDamagedStructure);
+            let result = tower.repair(closestDamagedStructure);
         }else{
             tower.say('err88');
         }
