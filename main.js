@@ -7,7 +7,8 @@ or changes will be lost
 */
 
 //Global vars (maybe put into separate file?)
-const repairUntilHitsEqual              = 450000; // maybe put this into memory?
+require('vars.global');
+
 
 // creep roles
 var roleHarvester                       = require('role.harvester');

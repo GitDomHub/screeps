@@ -17,17 +17,18 @@ var roleTower = {
             for (var singleTower of allTowers) {
                 // STEP 1: ATTACK
                 // 2Do: maybe change to not only get closest hostile, but rather get all and then sort them out one by one
-                var hostileHealer = singleTower.pos.findClosestByRange(FIND_HOSTILE_CREEPS, { filter: (s) => (s.getActiveBodyparts(HEAL) > 0) });
+                var hostileHealer = singleTower.pos.findClosestByRange(FIND_HOSTILE_CREEPS, { filter: (s) => (s.getActiveBodyparts(HEAL) > 0 && s.getActiveBodyparts(HEAL) < 15) });
                 var hostileHealerBig = singleTower.pos.findClosestByRange(FIND_HOSTILE_CREEPS, { filter: (s) => (s.getActiveBodyparts(HEAL) > 15) });
                 var hostileAttacker = singleTower.pos.findClosestByRange(FIND_HOSTILE_CREEPS, { filter: (s) => ( s.getActiveBodyparts(ATTACK) > 0  || s.getActiveBodyparts(RANGED_ATTACK) > 0) });
                 var closestHostile = singleTower.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
                 
+                // 
                 // console.log('tower range to big healer: ' + singleTower.pos.getRangeTo(hostileHealerBig));
 
                 if(hostileHealerBig){
                     if(singleTower.pos.inRangeTo(hostileHealerBig, 15) ) {
                         // only attack big healers when close enough
-                        // otherwise make enough 
+                        singleTower.attack(hostileHealerBig);
                     }                    
                 }else if(hostileHealer) {
                     singleTower.attack(hostileHealer);
@@ -79,6 +80,7 @@ var roleTower = {
     },
 
     repairStuff : function (room, tower) {
+
         // maybe repair only on every 2nd tick?
         // 2DO: differenciate between structures
         // - ramparts 300.000 begin from lowest hitpoints
@@ -86,21 +88,25 @@ var roleTower = {
         // ...        
         // 2Do: tower only repair close structures, let a repairer handle the rest
         // 2Do: First repair ramparts, then roads.
-        // find damaged structures with certain metrics
-        var allDamagedStructures = Game.rooms[room].find(FIND_STRUCTURES, {
-            //filter: (structure) => structure.hits < structure.hitsMax
-            /*structure.hits < structure.hitsMax * 0.5 &&*/
-            filter: (structure) => structure.hits < 350000 &&
-                    structure.hits < (structure.hitsMax * 0.5)
-        });
-        // 2Do: var lowestHitsStructure = _.min(allDamagedStructures, "hits");
-        // 2Do: only repair structures that are further away when enemy creep is in proximity of 5-7
-        var lowestHitsStructure = _.min(allDamagedStructures, "hits");
-        // repair 
-        if(lowestHitsStructure) {
-            let result = tower.repair(lowestHitsStructure);
-        }else{
-            tower.say('err88');
+
+        // only repair if room has more energy than we need
+        // 2Do: set this into memory
+        if (Game.rooms[room].energyAvailable > 50000) {
+            // find damaged structures with certain metrics
+            var allDamagedStructures = Game.rooms[room].find(FIND_STRUCTURES, {
+                //filter: (structure) => structure.hits < structure.hitsMax
+                /*structure.hits < structure.hitsMax * 0.5 &&*/
+                filter: (structure) => structure.hits < 350000 &&
+                        structure.hits < (structure.hitsMax * 0.5)
+            });
+            // 2Do: only repair structures that are further away when enemy creep is in proximity of 5-7
+            var lowestHitsStructure = _.min(allDamagedStructures, "hits");
+            // repair 
+            if(lowestHitsStructure) {
+                let result = tower.repair(lowestHitsStructure);
+            }else{
+                tower.say('err88');
+            }
         }
     }
         
