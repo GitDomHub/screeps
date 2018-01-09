@@ -58,7 +58,7 @@ var roleTower = {
                     // STEP 3: REPAIR
                     // - only repair if tower has enough energy left
                     // console.log(singleTower.energy);
-                    if (singleTower.energy > singleTower.energyCapacity * 0.80 && Game.spawns.Spawn1.room.energyAvailable > 1000) {
+                    if (singleTower.energy > singleTower.energyCapacity * 0.75 && Game.spawns.Spawn1.room.energyAvailable > 1000) {
                         
 
                         roleTower.repairStuff(myRoomName, singleTower);
@@ -89,26 +89,22 @@ var roleTower = {
         // 2Do: tower only repair close structures, let a repairer handle the rest
         // 2Do: First repair ramparts, then roads.
 
-        // only repair if room has more energy than we need
-        // 2Do: set this into memory
-        
-        if (Game.rooms[room].energyAvailable > (Game.rooms[room].energyCapacityAvailable * 0.7)) {
-            // find damaged structures with certain metrics
-            var allDamagedStructures = Game.rooms[room].find(FIND_STRUCTURES, {
-                //filter: (structure) => structure.hits < structure.hitsMax
-                /*structure.hits < structure.hitsMax * 0.5 &&*/
-                filter: (structure) => structure.hits < 450000 &&
-                        structure.hits < (structure.hitsMax * 0.5)
-            });
-            // 2Do: only repair structures that are further away when enemy creep is in proximity of 5-7
-            var lowestHitsStructure = _.min(allDamagedStructures, "hits");
-            // repair 
-            if(lowestHitsStructure) {
-                let result = tower.repair(lowestHitsStructure);
-            }else{
-                tower.say('err88');
-            }
+        // find damaged structures with certain metrics
+        var allDamagedStructures = Game.rooms[room].find(FIND_STRUCTURES, {
+            //filter: (structure) => structure.hits < structure.hitsMax
+            /*structure.hits < structure.hitsMax * 0.5 &&*/
+            filter: (structure) => structure.hits < 450000 &&
+                    structure.hits < (structure.hitsMax * 0.5)
+        });
+        // 2Do: only repair structures that are further away when enemy creep is in proximity of 5-7
+        var lowestHitsStructure = _.min(allDamagedStructures, "hits");
+        // repair 
+        if(lowestHitsStructure) {
+            let result = tower.repair(lowestHitsStructure);
+        }else{
+            tower.say('err88');
         }
+
     }
         
 };

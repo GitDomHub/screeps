@@ -4,7 +4,7 @@ var actionChooseSource = {
     run: function(creep) {
 
         //2Do: decide between storage and container, maybe decide on distance  traveled
-        const droppedEnergyRes = creep.pos.findClosestByRange(FIND_DROPPED_ENERGY);
+        const droppedEnergyRes = creep.pos.findClosestByRange(FIND_DROPPED_ENERGY); // replace with DROPPED_RESOURCE??
         // FIRST see if storage has enough energy
         var storages = creep.room.find(FIND_STRUCTURES, {
             filter: (structure) => {
