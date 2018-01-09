@@ -71,11 +71,11 @@ var roleTower = {
                 }    
             }
         }
-    }
+    },
 
     healCreeps : function () {
 
-    }
+    },
 
     repairStuff : function () {
         
