@@ -22,7 +22,7 @@ var roleTower = {
                 var hostileAttacker = singleTower.pos.findClosestByRange(FIND_HOSTILE_CREEPS, { filter: (s) => ( s.getActiveBodyparts(ATTACK) > 0  || s.getActiveBodyparts(RANGED_ATTACK) > 0) });
                 var closestHostile = singleTower.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
                 
-                console.log('tower range to big healer: ' + singleTower.pos.getRangeTo(hostilehealerBig));
+                console.log('tower range to big healer: ' + singleTower.pos.getRangeTo(hostileHealerBig));
 
                 if(sinlgeTower.pos.inRangeTo(hostileHealerBig, 15) ) {
                     // only attack big healers when close enough
