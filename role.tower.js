@@ -91,12 +91,13 @@ var roleTower = {
 
         // only repair if room has more energy than we need
         // 2Do: set this into memory
+        console.log(Game.rooms[room].energyAvailable);
         if (Game.rooms[room].energyAvailable > 50000) {
             // find damaged structures with certain metrics
             var allDamagedStructures = Game.rooms[room].find(FIND_STRUCTURES, {
                 //filter: (structure) => structure.hits < structure.hitsMax
                 /*structure.hits < structure.hitsMax * 0.5 &&*/
-                filter: (structure) => structure.hits < 350000 &&
+                filter: (structure) => structure.hits < repairUntilHitsEqual &&
                         structure.hits < (structure.hitsMax * 0.5)
             });
             // 2Do: only repair structures that are further away when enemy creep is in proximity of 5-7
