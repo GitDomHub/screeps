@@ -55,7 +55,7 @@ var actionChooseSource = {
         
         }
         // MOVE END
-    }   
+    }
 
 
 

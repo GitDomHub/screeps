@@ -16,6 +16,7 @@ Globals
 - make a STATE for screeps where I can choose if its BUILDING time or ATTACK time or UPGRADE time
 	- https://screepsworld.com/2017/09/screeps-tutorial-handling-creep-roles-with-a-state-machine/
 - Creep levels https://github.com/Garethp/Screeps (see levels down below in the link)
+- Put a emergency refill variable into Memory. When set true, all creep that got carry body part go to closest storage or container and refill spawn as well extensions
 
 Modules
 - Create new module: findNotFullStructures(structures[spawn,extension,tower,storage],prio[which structure do I like to get first?])

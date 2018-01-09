@@ -52,6 +52,9 @@ module.exports.loop = function () {
     var upgraders                       = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader');
     var builders                        = _.filter(Game.creeps, (creep) => creep.memory.role == 'builder');
     var defenders                       = _.filter(Game.creeps, (creep) => creep.memory.role == 'defender');
+    var allCreepsInRoom1                = Game.rooms[room1].find(FIND_CREEPS);
+
+    console.log(allCreepsInRoom1);
     
     console.log('##################################');
     console.log('BackupHarvesters: '    + backupHarvesters.length);
@@ -98,8 +101,8 @@ module.exports.loop = function () {
 
     
     // spawn backup BACKUPHARVESTER 
-    // spawn only if no harvesters are there any more
-    if(harvesters.length == 0 && miners.length == 0) {
+    // spawn only if nothing goes
+    if(harvesters.length == 0 && miners.length == 0 || harvesters.length == 0 && couriers.length == 0) {
         if(backupHarvesters.length < minBackupHarvesters) {
             var newName = 'BackupHarvester' + Game.time;
             // console.log('Spawning new BackupHarvester: ' + newName);
