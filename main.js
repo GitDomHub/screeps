@@ -98,7 +98,7 @@ module.exports.loop = function () {
     
     // spawn backup BACKUPHARVESTER 
     // spawn only if no harvesters are there any more
-    if(harvesters.length == 0) {
+    if(harvesters.length == 0 && miners.length == 0) {
         if(backupHarvesters.length < minBackupHarvesters) {
             var newName = 'BackupHarvester' + Game.time;
             // console.log('Spawning new BackupHarvester: ' + newName);
