@@ -37,6 +37,7 @@ Miner
 
 Spawning
 - before spawning new defenders, calculate amount of attack, heal parts in all enemy creeps. If higher than what my current defenders got, then only create a new defender
+- only spawn a repairer if there is high number of damaged structures
 
 Tower
 - need a code to handle healer attacks. When confronted with more than 3 healers, towers can't handle them
@@ -46,6 +47,7 @@ https://www.reddit.com/r/screeps/comments/7d6w2t/offensive_strategy/
 - Tower only attack healers when less than 20 heal body parts or closer than 15 range
 - Tower first repair ramparts then containers, roads etc.
 - Save maximum hits for structures to be repaired in memory
+
 
 Repairer
 - Save maximum hits for structures to be repaired in memory
