@@ -29,7 +29,7 @@ var roleMiner = {
                 creep.moveTo(container[0], {visualizePathStyle: {stroke: '#ffffff'}});
             }
         }    
-    }
+    },
 
 
 
