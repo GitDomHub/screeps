@@ -1,6 +1,10 @@
 var actionSelectSource = require('actions.selectSource');
 var roleRepairer = {
     run: function(creep) {
+        // Repair structures until a certain value
+        // 2Do: make this dependend on how much energy we have?
+        var repairUntilHitsEqual = 450000;
+
         if(creep.memory.repairing && creep.carry.energy == 0) {
             creep.memory.repairing = false;
             creep.say('harvest');
@@ -11,16 +15,22 @@ var roleRepairer = {
         }
 
         if(creep.memory.repairing) {
-            // 2Do: go for structure that has lowest hits
             var structuresNeedingRepair = creep.room.find(FIND_STRUCTURES,
                 {filter: (s) => s.hits < s.hitsMax * 0.5 && 
-                                        s.hits < 450000});
+                                        s.hits < repairUntilHitsEqual});
             if (structuresNeedingRepair.length > 0) {
                 // find structure with lowest hitpoints
                 // 2Do: right now if there is a rampart with 270k hitpoints, then the repairer will move there. 
                 //      once it hits the same amount of hits as other ramparts, the creep will leave.
                 //      If the creep is right now already a structure that has lower than threshold hitpoints, MAYBE: first repair that one
                 //      only if there is a hostile in room, go for lowest structure, because that one might be under attack
+                //
+                // Solution: store current target in memory.
+                // if already a target in memory...
+                // check if hits are already as high as I want -> repairUntilHitsEqual
+                // if not, keep repairing
+                // if already as high, delete target from memory
+                // write new target
 
                 /*var lowestHitsStructure = _.min(structuresNeedingRepair, "hits");
                 if(creep.repair(lowestHitsStructure) == ERR_NOT_IN_RANGE){
@@ -36,18 +46,11 @@ var roleRepairer = {
             }
             
         }
-        else {
-            //var sources = creep.room.find(FIND_SOURCES);
-            /*var source = creep.pos.findClosestByPath(FIND_SOURCES);
-            if(creep.harvest(source) == ERR_NOT_IN_RANGE) {
-                creep.moveTo(source, {visualizePathStyle: {stroke: '#ffaa00'}});
-            }*/
-            
-            //new alternative: use actions.selectSource routine to see if there are containers first
+        else {            
             if(actionSelectSource) {
                 actionSelectSource.run(creep);
             } else {
-                console.log('Harvester cannot find suitable source!');
+                console.log('Repairer cannot find suitable source!');
             }
         }
     }

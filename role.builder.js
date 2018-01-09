@@ -28,6 +28,7 @@ var roleBuilder = {
                 }
             } else {
                 // when full energy and building true and no construction sites in this room
+                // deposit of energy and do sth else
                 // move to waiting spot to not hinder other creeps
                 // ############# BEGIN
                 // ############# make a module or action out of this 
@@ -40,7 +41,7 @@ var roleBuilder = {
                             structure.structureType == STRUCTURE_STORAGE && structure.store[RESOURCE_ENERGY] < structure.storeCapacity*/);
                     }
                 });                
-                console.log('builder targets: ' + targets);
+                // console.log('builder targets: ' + targets);
                 // if there is structures which need energy, move!
                 if(targets.length > 0) {
                     // move and transfer to closest target

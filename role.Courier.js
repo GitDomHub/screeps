@@ -39,6 +39,7 @@ var roleCourier = {
             
             //console.log('starting courier routine');
                         
+                        // 2Do: do this at spawn only once
                         // for each container...
                         for (var container of allContainers ) {
                             // get container ID

@@ -23,6 +23,7 @@ var roleTower                           = require('role.tower');
 // actions
 var actionsGlobal                       = require('actions.global');
 var actionsSelectSource                 = require('actions.selectSource');
+var actionsSpawn                        = require('actions.Spawn');
 
 
 
@@ -65,7 +66,7 @@ module.exports.loop = function () {
     
     //2DO define mininum of creeps in vars
     var minBackupHarvesters             = 2;
-    var minHarvesters                   = 1;    // 2Do: do i still need harvesters, when i got miners and couriers?!?!
+    var minHarvesters                   = 0;    // 2Do: do i still need harvesters, when i got miners and couriers?!?!
     var minCouriers                     = 2;    // 2Do: only make couriers, when miners are there or containers are half full
     var minTowerCouriers                = 0;    // 2Do: replace maybe with normal couriers. just tell couriers to prioritize towers under certain circs
     var minMiners                       = 2;    // 2Do: make enough miners as containers we have
@@ -79,7 +80,7 @@ module.exports.loop = function () {
     if (roomHasHostiles.length > 0) {
         console.log('ATTACK MODE LIVE');
         var minBackupHarvesters         = 2;    
-        var minHarvesters               = 1;    // -1
+        var minHarvesters               = 1;    // +1 for urgent delivery of energy to towers, spawn, extensions 
         var minCouriers                 = 4;    // +1
         var minTowerCouriers            = 0;    // Tower couriers will block the way. Just need to prioritize towers
         var minMiners                   = 1;    // -1
@@ -144,7 +145,6 @@ module.exports.loop = function () {
     }
     
     //spawn REPAIRERS 
-    
     if(repairers.length < minRepairers) {
         var newName = 'Repairer' + Game.time;
         /*Game.spawns['Spawn1'].spawnCreep([MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,WORK,WORK,WORK,WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY], newName, //9

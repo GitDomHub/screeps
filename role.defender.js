@@ -35,9 +35,9 @@ var roleDefender = {
             
             // if there are any hostile creeps or structures
             if (hostile) {
-                
+                var isFriend = false;
                 // check if belongs to friend
-                if(hostile.owner.username == "Odd") {var isFriend = true};
+                if(hostile.owner.username == "Odd") {isFriend = true};
                 
                 // only move and attack if not a friend
                 if (!isFriend) {

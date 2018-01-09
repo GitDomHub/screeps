@@ -17,8 +17,12 @@ Globals
 	- https://screepsworld.com/2017/09/screeps-tutorial-handling-creep-roles-with-a-state-machine/
 - Creep levels https://github.com/Garethp/Screeps (see levels down below in the link)
 
+Modules
+- Create new module: findNotFullStructures(structures[spawn,extension,tower,storage],prio[which structure do I like to get first?])
+
 Courier
-- 2DO: make courier also deliver to towers when enemy is in room!
+- Make courier also deliver to towers when enemy is in room!
+- Assign container when spawning - only once. not every tick
 
 Builder
 - when nothing to build, assign upgrader role
@@ -50,4 +54,3 @@ Creep States (thanks to Kamots from slack)
 	- previousPosition {"x":11,"y":18,"roomName":"W54S19"}
 	- totalCarried
 	- nextDest
-	- "_move":{"dest":{"x":40,"y":8,"room":"W54S19"}"time":5159995,"path":"1418322232222222233344324323333","room":"W54S19"}}

@@ -47,7 +47,7 @@ var roleTower = {
                     
                     // STEP 3: REPAIR
                     // - only repair if tower has enough energy left
-                    console.log(singleTower.energy);
+                    // console.log(singleTower.energy);
                     if (singleTower.energy > singleTower.energyCapacity * 0.25) {
                         // 2DO: differenciate between structures
                         // - ramparts 300.000 begin from lowest hitpoints
@@ -72,5 +72,12 @@ var roleTower = {
             }
         }
     }
+
+    healCreeps : function () {
+
+    }
+
+    repairStuff : function () {
+        
 };
 module.exports = roleTower;
