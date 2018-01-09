@@ -135,7 +135,7 @@ module.exports.loop = function () {
     // 2DO: only create as many miners as containers are near to source
     if(miners.length < minMiners && (harvesters.length >= minHarvesters)) {
         var newName = 'Miner' + Game.time;
-        Game.spawns['Spawn1'].spawnCreep([MOVE,MOVE,WORK,WORK,WORK,WORK,WORK,WORK], newName, //MOVE*3,WORK*6 
+        Game.spawns['Spawn1'].spawnCreep([MOVE,MOVE,MOVE,WORK,WORK,WORK,WORK,WORK,WORK,WORK], newName, //MOVE*3,WORK*6 
             {memory: {role: 'miner'}});
     }
     
