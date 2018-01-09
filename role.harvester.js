@@ -50,7 +50,7 @@ var roleHarvester = {
             });
             
             
-            console.log('harvester targets: ' + targets);
+            // console.log('harvester targets: ' + targets);
         
             
             // if there is structures which need energy, move!

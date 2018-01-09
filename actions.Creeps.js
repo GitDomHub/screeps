@@ -1,5 +1,5 @@
 // creep roles
-var roleHarvester                       = require('role.harvester2');
+var roleHarvester                       = require('role.harvester');
 var roleTowerCourier                    = require('role.towerCourier');
 var roleCourier                         = require('role.Courier');
 var roleUpgrader                        = require('role.upgrader');
