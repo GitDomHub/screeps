@@ -104,7 +104,7 @@ var roleCourier = {
                     return ( (  structure.structureType == STRUCTURE_EXTENSION   && structure.energy < structure.energyCapacity ||
                                 structure.structureType == STRUCTURE_SPAWN       && structure.energy < structure.energyCapacity ||
                                 structure.structureType == STRUCTURE_STORAGE     && structure.store[RESOURCE_ENERGY] < structure.storeCapacity) || 
-                                structure.structureType == STRUCTURE_TOWER       && structure.energy < structure.energyCapacity * 0.75
+                                structure.structureType == STRUCTURE_TOWER       && structure.energy < (structure.energyCapacity * 0.8)
                             );
                 }
             });

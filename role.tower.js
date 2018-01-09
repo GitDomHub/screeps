@@ -91,7 +91,7 @@ var roleTower = {
             //filter: (structure) => structure.hits < structure.hitsMax
             /*structure.hits < structure.hitsMax * 0.5 &&*/
             filter: (structure) => structure.hits < 350000 &&
-                    structure.hits < structure.hitsMax * 0.5
+                    structure.hits < (structure.hitsMax * 0.5)
         });
         // 2Do: var lowestHitsStructure = _.min(allDamagedStructures, "hits");
         // 2Do: only repair structures that are further away when enemy creep is in proximity of 5-7
