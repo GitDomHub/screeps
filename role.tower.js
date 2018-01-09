@@ -57,7 +57,7 @@ var roleTower = {
                     // STEP 3: REPAIR
                     // - only repair if tower has enough energy left
                     // console.log(singleTower.energy);
-                    if (singleTower.energy > singleTower.energyCapacity * 0.25) {
+                    if (singleTower.energy > singleTower.energyCapacity * 0.80) {
                         // 2DO: differenciate between structures
                         // - ramparts 300.000 begin from lowest hitpoints
                         // - roads ? until 2.500
