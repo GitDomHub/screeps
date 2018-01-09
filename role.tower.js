@@ -97,7 +97,7 @@ var roleTower = {
             var allDamagedStructures = Game.rooms[room].find(FIND_STRUCTURES, {
                 //filter: (structure) => structure.hits < structure.hitsMax
                 /*structure.hits < structure.hitsMax * 0.5 &&*/
-                filter: (structure) => structure.hits < repairUntilHitsEqual &&
+                filter: (structure) => structure.hits < 450000 &&
                         structure.hits < (structure.hitsMax * 0.5)
             });
             // 2Do: only repair structures that are further away when enemy creep is in proximity of 5-7
