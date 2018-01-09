@@ -102,7 +102,9 @@ module.exports.loop = function () {
     
     // spawn backup BACKUPHARVESTER 
     // spawn only if nothing goes
-    if(harvesters.length == 0 && miners.length == 0 || harvesters.length == 0 && couriers.length == 0) {
+    if(harvesters.length == 0 && miners.length == 0 || 
+        harvesters.length == 0 && couriers.length == 0 || 
+        harvesters.length == 0 && allCreepsInRoom1.length <= 2 ) {
         if(backupHarvesters.length < minBackupHarvesters) {
             var newName = 'BackupHarvester' + Game.time;
             // console.log('Spawning new BackupHarvester: ' + newName);
