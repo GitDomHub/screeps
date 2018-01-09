@@ -54,7 +54,7 @@ module.exports.loop = function () {
     var defenders                       = _.filter(Game.creeps, (creep) => creep.memory.role == 'defender');
     var allCreepsInRoom1                = Game.rooms[room1].find(FIND_CREEPS);
 
-    console.log(allCreepsInRoom1);
+    console.log(allCreepsInRoom1.length);
     
     console.log('##################################');
     console.log('BackupHarvesters: '    + backupHarvesters.length);
