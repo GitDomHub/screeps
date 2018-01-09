@@ -47,6 +47,7 @@ module.exports.loop = function () {
                                             {filter: (s) => s.hits < s.hitsMax * 0.5 && 
                                                 s.hits < repairUntilHitsEqual});
     
+    console.log(damagedStrucInRoom1.length);
     //console.log('any hostiles? -> ' + roomHasHostiles);
     
     
