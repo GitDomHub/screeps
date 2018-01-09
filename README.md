@@ -35,6 +35,9 @@ Miner
 - When there is link in the room, then make the miner also have carry body part to be able to drop energy into the link that is not directly under him
 - Early Miner idea: drop energy to floor and make miner have 1 carry body part https://hastebin.com/rajihumoji.js
 
+Spawning
+- before spawning new defenders, calculate amount of attack, heal parts in all enemy creeps. If higher than what my current defenders got, then only create a new defender
+
 Tower
 - need a code to handle healer attacks. When confronted with more than 3 healers, towers can't handle them
 https://www.reddit.com/r/screeps/comments/4z8bz3/how_do_you_deal_with_healer_attacks/
@@ -42,6 +45,10 @@ https://www.reddit.com/r/screeps/comments/7d6w2t/offensive_strategy/
 - Tower only repair close structures, let a repairer handle the rest
 - Tower only attack healers when less than 20 heal body parts or closer than 15 range
 - Tower first repair ramparts then containers, roads etc.
+- Save maximum hits for structures to be repaired in memory
+
+Repairer
+- Save maximum hits for structures to be repaired in memory
 
 
 Harvesting 
