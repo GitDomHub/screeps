@@ -10,18 +10,25 @@
 //module.exports = {
 var roleTower = {
     run: function(myRoomName) {
-
         // make tower do stuff
         var allTowers = Game.rooms[myRoomName].find(FIND_MY_STRUCTURES, { filter: { structureType: STRUCTURE_TOWER } });
         
         if(allTowers.length > 0) {
             for (var singleTower of allTowers) {
                 // STEP 1: ATTACK
+                // 2Do: maybe change to not only get closest hostile, but rather get all and then sort them out one by one
                 var hostileHealer = singleTower.pos.findClosestByRange(FIND_HOSTILE_CREEPS, { filter: (s) => (s.getActiveBodyparts(HEAL) > 0) });
+                var hostileHealerBig = singleTower.pos.findClosestByRange(FIND_HOSTILE_CREEPS, { filter: (s) => (s.getActiveBodyparts(HEAL) > 15) });
                 var hostileAttacker = singleTower.pos.findClosestByRange(FIND_HOSTILE_CREEPS, { filter: (s) => ( s.getActiveBodyparts(ATTACK) > 0  || s.getActiveBodyparts(RANGED_ATTACK) > 0) });
                 var closestHostile = singleTower.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
                 
-                if(hostileHealer) {
+                console.log('tower range to big healer: ' + singleTower.pos.getRangeTo(hostilehealerBig));
+
+                if(sinlgeTower.pos.inRangeTo(hostileHealerBig, 15) ) {
+                    // only attack big healers when close enough
+                    // otherwise make enough 
+
+                }else if(hostileHealer) {
                     singleTower.attack(hostileHealer);
                 }
                 else if (closestHostile) {
@@ -34,16 +41,17 @@ var roleTower = {
                 // STEP 2: HEAL CREEPS
                 } else { 
                     
-                    //....first heal any damaged creeps
-                    var weakCreeps          = _.filter(Game.creeps, (creep) => (creep.hits < creep.hitsMax));
-                    //console.log('weak creeps:' + weakCreeps);
-                    // question : can tower actuall heal more than one creep???
-                    if (weakCreeps.length > 0) {
-                        for (let singleWeakCreep of weakCreeps) {
-                            //console.log(singleWeakCreep);
-                            singleTower.heal(singleWeakCreep);
-                        }    
-                    }
+                    // //....first heal any damaged creeps
+                    // var weakCreeps          = _.filter(Game.creeps, (creep) => (creep.hits < creep.hitsMax));
+                    // //console.log('weak creeps:' + weakCreeps);
+                    // // question : can tower actuall heal more than one creep???
+                    // if (weakCreeps.length > 0) {
+                    //     for (let singleWeakCreep of weakCreeps) {
+                    //         //console.log(singleWeakCreep);
+                    //         singleTower.heal(singleWeakCreep);
+                    //     }    
+                    // }
+                    roleTower.healCreeps(singelTower);
                     
                     // STEP 3: REPAIR
                     // - only repair if tower has enough energy left
@@ -73,12 +81,32 @@ var roleTower = {
         }
     },
 
-    healCreeps : function () {
-
+    healCreeps : function (tower) {
+        var weakCreeps          = _.filter(Game.creeps, (creep) => (creep.hits < creep.hitsMax));
+        // question : can tower actuall heal more than one creep???
+        if (weakCreeps.length > 0) {
+            for (let singleWeakCreep of weakCreeps) {
+                tower.heal(singleWeakCreep);
+            }    
+        }
     },
 
-    repairStuff : function () {
+    repairStuff : function (tower) {
+        // 2Do: tower only repair close structures, let a repairer handle the rest
 
+        // find damaged structures with certain metrics
+        var closestDamagedStructure = singleTower.pos.findClosestByRange(FIND_STRUCTURES, {
+            //filter: (structure) => structure.hits < structure.hitsMax
+            /*structure.hits < structure.hitsMax * 0.5 &&*/
+            filter: (structure) => structure.hits < 350000 &&
+                    structure.hits < structure.hitsMax * 0.5
+        });
+        // 2Do: var lowestHitsStructure = _.min(allDamagedStructures, "hits");
+        // 2Do: only repair structures that are further away when enemy creep is in proximity of 5-7
+        // repair 
+        if(closestDamagedStructure) {
+            let result = singleTower.repair(closestDamagedStructure);
+        }
     }
         
 };
