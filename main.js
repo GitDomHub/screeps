@@ -106,6 +106,7 @@ module.exports.loop = function () {
                 {memory: {role: 'backupHarvester'}});
         }
     }
+
     
     // spawn normal HARVESTERS 
     // if(harvesters.length < minHarvesters) {
@@ -201,7 +202,7 @@ module.exports.loop = function () {
     
     
     
-    roleTower.run(room1);
+    roleTower.runAllTowers(room1);
     
     
     

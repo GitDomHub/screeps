@@ -20,12 +20,15 @@ Globals
 Modules
 - Create new module: findNotFullStructures(structures[spawn,extension,tower,storage],prio[which structure do I like to get first?])
 
-Courier
-- Make courier also deliver to towers when enemy is in room!
-- Assign container when spawning - only once. not every tick
+Attacker / Defender
+- Implement ranged attack? archer?
 
 Builder
 - when nothing to build, assign upgrader role
+
+Courier
+- Make courier also deliver to towers when enemy is in room!
+- Assign container when spawning - only once. not every tick
 
 Miner
 - Make a state for miners
@@ -40,6 +43,7 @@ https://www.reddit.com/r/screeps/comments/7d6w2t/offensive_strategy/
 - Tower only attack healers when less than 20 heal body parts or closer than 15 range
 - Tower first repair ramparts then containers, roads etc.
 
+
 Harvesting 
 - actions.SelectSource : When closest source doesnt have energy then creeps just sit there and wait. need to implement some routine to check if closest resource has energy. if not look for another source.
 
@@ -48,12 +52,12 @@ Harvesting
 
 
 Creep States (thanks to Kamots from slack)
-	- role
-	- originSpawn
-	- destRoom
-	- state (harvesting, upgrading, )
-	- homeRoomName
-	- previousRoom
-	- previousPosition {"x":11,"y":18,"roomName":"W54S19"}
-	- totalCarried
-	- nextDest
+- role
+- originSpawn
+- destRoom
+- state (harvesting, upgrading, )
+- homeRoomName
+- previousRoom
+- previousPosition {"x":11,"y":18,"roomName":"W54S19"}
+- totalCarried
+- nextDest

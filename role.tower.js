@@ -9,7 +9,7 @@
 
 //module.exports = {
 var roleTower = {
-    run: function(myRoomName) {
+    runAllTowers: function(myRoomName) {
         // make tower do stuff
         var allTowers = Game.rooms[myRoomName].find(FIND_MY_STRUCTURES, { filter: { structureType: STRUCTURE_TOWER } });
         
