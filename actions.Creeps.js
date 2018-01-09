@@ -1,3 +1,13 @@
+// creep roles
+var roleHarvester                       = require('role.harvester2');
+var roleTowerCourier                    = require('role.towerCourier');
+var roleCourier                         = require('role.Courier');
+var roleUpgrader                        = require('role.upgrader');
+var roleBuilder                         = require('role.builder');
+var roleRepairer                        = require('role.repairer');
+var roleMiner                           = require('role.miner');
+var roleDefender                        = require('role.defender');
+
 var actForAllCreeps = {
 	DoWhatYouGottaDo : function() {
 		// loop through all creeps
