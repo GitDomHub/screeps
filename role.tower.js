@@ -52,7 +52,7 @@ var roleTower = {
                     //         singleTower.heal(singleWeakCreep);
                     //     }    
                     // }
-                    roleTower.healCreeps(singelTower);
+                    roleTower.healCreeps(singleTower);
                     
                     // STEP 3: REPAIR
                     // - only repair if tower has enough energy left
