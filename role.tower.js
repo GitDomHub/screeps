@@ -24,10 +24,11 @@ var roleTower = {
                 
                 console.log('tower range to big healer: ' + singleTower.pos.getRangeTo(hostileHealerBig));
 
-                if(singleTower.pos.inRangeTo(hostileHealerBig, 15) ) {
-                    // only attack big healers when close enough
-                    // otherwise make enough 
-
+                if(hostileHealerBig){
+                    if(singleTower.pos.inRangeTo(hostileHealerBig, 15) ) {
+                        // only attack big healers when close enough
+                        // otherwise make enough 
+                    }                    
                 }else if(hostileHealer) {
                     singleTower.attack(hostileHealer);
                 }
