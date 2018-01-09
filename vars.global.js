@@ -2,4 +2,4 @@
 
 
 
-var repairUntilHitsEqual  = 450000; // maybe put this into memory?	
+
