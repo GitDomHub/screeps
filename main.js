@@ -6,6 +6,9 @@ or changes will be lost
 
 */
 
+//Global vars (maybe put into separate file?)
+const repairUntilHitsEqual              = 450000; // maybe put this into memory?
+
 // creep roles
 var roleHarvester                       = require('role.harvester');
 var roleTowerCourier                    = require('role.towerCourier');
@@ -37,6 +40,12 @@ module.exports.loop = function () {
     // define vars for this room
     var room1                           = 'E83S21';
     var roomHasHostiles                 = Game.rooms[room1].find(FIND_HOSTILE_CREEPS);
+
+
+    //struc status
+    var damagedStrucInRoom1             = Game.rooms['E83S21'].find(FIND_STRUCTURES,
+                                            {filter: (s) => s.hits < s.hitsMax * 0.5 && 
+                                                s.hits < repairUntilHitsEqual});
     
     //console.log('any hostiles? -> ' + roomHasHostiles);
     

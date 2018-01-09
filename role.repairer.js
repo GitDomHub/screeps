@@ -3,7 +3,7 @@ var roleRepairer = {
     run: function(creep) {
         // Repair structures until a certain value
         // 2Do: make this dependend on how much energy we have?
-        var repairUntilHitsEqual = 450000;
+        //var repairUntilHitsEqual = 450000; put this into main file outside scope
 
         if(creep.memory.repairing && creep.carry.energy == 0) {
             creep.memory.repairing = false;
