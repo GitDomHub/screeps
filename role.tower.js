@@ -78,6 +78,8 @@ var roleTower = {
     },
 
     repairStuff : function () {
+
+    }
         
 };
 module.exports = roleTower;
