@@ -92,7 +92,7 @@ var roleTower = {
         // only repair if room has more energy than we need
         // 2Do: set this into memory
         
-        if (Game.rooms[room].energyAvailable > (Game.rooms[room].energyCapacity * 0.7)) {
+        if (Game.rooms[room].energyAvailable > (Game.rooms[room].energyCapacityAvailable * 0.7)) {
             // find damaged structures with certain metrics
             var allDamagedStructures = Game.rooms[room].find(FIND_STRUCTURES, {
                 //filter: (structure) => structure.hits < structure.hitsMax
