@@ -58,23 +58,8 @@ var roleTower = {
                     // - only repair if tower has enough energy left
                     // console.log(singleTower.energy);
                     if (singleTower.energy > singleTower.energyCapacity * 0.80 && Game.spawns.Spawn1.room.energyAvailable > 1000) {
-                        // 2DO: differenciate between structures
-                        // - ramparts 300.000 begin from lowest hitpoints
-                        // - roads ? until 2.500
-                        // ...
                         
-                        // // find damaged structures with certain metrics
-                        // var closestDamagedStructure = singleTower.pos.findClosestByRange(FIND_STRUCTURES, {
-                        //     //filter: (structure) => structure.hits < structure.hitsMax
-                        //     /*structure.hits < structure.hitsMax * 0.5 &&*/
-                        //     filter: (structure) => structure.hits < 350000 &&
-                        //             structure.hits < structure.hitsMax * 0.5
-                        // });
-                        // // 2Do: var lowestHitsStructure = _.min(allDamagedStructures, "hits");
-                        // // repair 
-                        // if(closestDamagedStructure) {
-                        //     let result = singleTower.repair(closestDamagedStructure);
-                        // }
+
                         roleTower.repairStuff(myRoomName, singleTower);
                     }
                     
@@ -94,6 +79,11 @@ var roleTower = {
     },
 
     repairStuff : function (room, tower) {
+        // maybe repair only on every 2nd tick?
+        // 2DO: differenciate between structures
+        // - ramparts 300.000 begin from lowest hitpoints
+        // - roads ? until 2.500
+        // ...        
         // 2Do: tower only repair close structures, let a repairer handle the rest
         // 2Do: First repair ramparts, then roads.
         // find damaged structures with certain metrics
