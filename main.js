@@ -10,7 +10,7 @@ or changes will be lost
 require('vars.global');
 var repairUntilHitsEqual  = 450000; // maybe put this into memory?  
 if (!Memory.repairUntilHitsEqual) {
-    Memory.repairUntilHitsEqual = repairUntilHitsEqual;
+    Memory.globals.repairUntilHitsEqual = repairUntilHitsEqual;
 }
 
 // creep roles
