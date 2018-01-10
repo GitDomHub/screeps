@@ -58,7 +58,7 @@ var roleTower = {
                     // STEP 3: REPAIR
                     // - only repair if tower has enough energy left
                     // console.log(singleTower.energy);
-                    if (singleTower.energy > singleTower.energyCapacity * 0.75 && Game.spawns.Spawn1.room.energyAvailable > 1000) {
+                    if (singleTower.energy >= (singleTower.energyCapacity * 0.75) && Game.spawns.Spawn1.room.energyAvailable > 1000) {
                         
 
                         roleTower.repairStuff(myRoomName, singleTower);
