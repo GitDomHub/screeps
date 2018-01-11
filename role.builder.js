@@ -31,7 +31,7 @@ var roleBuilder = {
                 // deposit of energy and do sth else
                 // move to waiting spot to not hinder other creeps
                 // ############# BEGIN
-                // ############# make a module or action out of this 
+                // ############# make a module or action out of this : deliver energy
                 var targets = creep.room.find(FIND_STRUCTURES, {
                     filter: (structure) => {
                         return ( 
