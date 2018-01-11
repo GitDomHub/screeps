@@ -15,7 +15,7 @@ module.exports = {
 		 var upgraders                       = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader');
 		 var builders                        = _.filter(Game.creeps, (creep) => creep.memory.role == 'builder');
 		 var defenders                       = _.filter(Game.creeps, (creep) => creep.memory.role == 'defender');
-		 var allCreepsInRoom1                = Game.rooms[globals.room1].find(FIND_CREEPS);
+		 var allCreepsInRoom1                = Game.rooms[global.room1].find(FIND_CREEPS);
 
 		 
 		 console.log('##################################');
