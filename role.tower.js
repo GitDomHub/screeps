@@ -43,9 +43,16 @@ var roleTower = {
                         //console.log('hostile is a friend, I am not attacking.');
                         // 2Do: loop through ALL hostiles and then see if any of hostiles in room is an enemy. then attack that one
                         singleTower.attack(hostileAttacker);
+                    //};                
+                }else if (closestHostile) {
+                    // dont attack friends
+                    //if(hostileAttacker.owner.username != "Odd") { 
+                        //console.log('hostile is a friend, I am not attacking.');
+                        // 2Do: loop through ALL hostiles and then see if any of hostiles in room is an enemy. then attack that one
+                        singleTower.attack(closestHostile);
                     //};
-                // STEP 2: HEAL CREEPS
-                } else { 
+                
+                } else { // STEP 2: HEAL CREEPS
                     
 
                     roleTower.healCreeps(singleTower);
