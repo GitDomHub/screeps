@@ -10,7 +10,7 @@ var roleDefender = {
             //then first move there
             creep.moveTo(flag, {visualizePathStyle: {stroke: '#ff9999'}});
             // exit and dont do anything else (like attack)
-            return;
+            // return;
         }
         
         // first move to a flag if there is one in the room, THEN attack
@@ -28,7 +28,8 @@ var roleDefender = {
                     filter: (structure) => {
                         return (structure.structureType == STRUCTURE_EXTENSION ||
                                 structure.structureType == STRUCTURE_SPAWN ||
-                                structure.structureType == STRUCTURE_TOWER);
+                                structure.structureType == STRUCTURE_TOWER ||
+                                structure.structureType == STRUCTURE_STORAGE);
                 }
                 });
             }
