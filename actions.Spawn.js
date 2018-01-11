@@ -156,8 +156,13 @@ module.exports = {
 		 }
 
 		 
+		 showWhatsSpawning();
 		 
-		 // 2Do: for each room, then for each spawn, show what ur spawning
+		 
+	},
+
+	showWhatsSpawning : function () {
+		// 2Do: for each room, then for each spawn, show what ur spawning
 		 // visuals for showing what is being spawned
 		 if(Game.spawns['Spawn1'].spawning) {
 		     var spawningCreep = Game.creeps[Game.spawns['Spawn1'].spawning.name];
@@ -169,4 +174,4 @@ module.exports = {
 		 }
 	}
 	
-}
+};
