@@ -18,6 +18,7 @@ Globals
 - Creep levels https://github.com/Garethp/Screeps (see levels down below in the link)
 - Put a emergency refill variable into Memory. When set true, all creep that got carry body part go to closest storage or container and refill spawn as well extensions
 
+
 Modules
 - Create new module: findNotFullStructures(structures[spawn,extension,tower,storage],prio[which structure do I like to get first?])
 
@@ -30,6 +31,7 @@ Builder
 Courier
 - Make courier also deliver to towers when enemy is in room!
 - Assign container when spawning - only once. not every tick
+- When available energy less than 500, then check for storages for energy and help distribute. dont go to containers. too slow!
 
 Miner
 - Make a state for miners
@@ -53,6 +55,8 @@ https://www.reddit.com/r/screeps/comments/7d6w2t/offensive_strategy/
 Repairer
 - Save maximum hits for structures to be repaired in memory
 
+Upgrader
+- When available energy less than 500, then check for storages for energy and help distribute. dont go to containers. too slow!
 
 Harvesting 
 - actions.SelectSource : When closest source doesnt have energy then creeps just sit there and wait. need to implement some routine to check if closest resource has energy. if not look for another source.

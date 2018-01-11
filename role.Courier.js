@@ -25,6 +25,11 @@ var roleCourier = {
         
         // If set to get energy, make creep move there
         if (creep.memory.harvesting) {
+
+            let currEnergyAvailable = Game.spawns.Spawn1.room.energyAvailable;
+            // When available energy less than 500, then check for storages for energy and help distribute. dont go to containers. too slow!
+
+
             // when not already close to a container if(!creep.pos.isNearTo(target)) {
             // find CONTAINERS in the room that:
             // - have at least 30% as much energy as creep can carry (makes it go early enough)
@@ -111,8 +116,9 @@ var roleCourier = {
             //console.log(targets);
             // if there is structures which need energy, move!
             if(targets.length > 0) {
-                if(creep.transfer(targets[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(targets[0], {visualizePathStyle: {stroke: '#ffffff'}});
+                let closestTarget = creep.pos.findClosestByPath(targets);
+                if(creep.transfer(closestTarget, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                    creep.moveTo(closestTarget, {visualizePathStyle: {stroke: '#ffffff'}});
                 }
             }
         }
