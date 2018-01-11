@@ -4,28 +4,29 @@ var actionChooseSource = {
     run: function(creep) {
 
         //2Do: decide between storage and container, maybe decide on distance  traveled
-        const droppedEnergyRes = creep.pos.findClosestByRange(FIND_DROPPED_ENERGY); // replace with DROPPED_RESOURCE??
+        //const droppedEnergyRes = creep.pos.findClosestByRange(FIND_DROPPED_RESOURCES); // replace with DROPPED_RESOURCES??
+        let droppedEnergyRes = creep.pos.findClosestByRange(FIND_DROPPED_RESOURCES, {filter: (s) => s.amount > 75 && s.resourceType === RESOURCE_ENERGY});
         // FIRST see if storage has enough energy
         var storages = creep.room.find(FIND_STRUCTURES, {
             filter: (structure) => {
                 return ( structure.structureType == STRUCTURE_STORAGE) &&
                             (structure.store[RESOURCE_ENERGY] >= creep.carryCapacity) && 
-                            (structure.store[RESOURCE_ENERGY] > 0) ;
+                            (structure.store[RESOURCE_ENERGY] > 250);
             }
         });
         
         if(droppedEnergyRes) {
             if(creep.pickup(droppedEnergyRes) == ERR_NOT_IN_RANGE) {
-                creep.moveTo(droppedEnergyRes);
+                creep.moveTo(droppedEnergyRes, {visualizePathStyle: {stroke: '#ffaa00'}});
+                // write target into memory (so that not all gathering creeps go there. especially if dropped energy is near room exit. will waste time.)
+                creep.memory.targetId = droppedEnergyRes.id;
+
             }
         }else if  (storages.length > 0) {
             var storageUnit = creep.pos.findClosestByPath(storages);
             if(creep.withdraw(storageUnit, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                 // move there and get energy from there 
-                creep.moveTo(storageUnit, {visualizePathStyle: {stroke: '#ffaa00'}});
-                // get creep name
-                // get container ID
-                
+                creep.moveTo(storageUnit, {visualizePathStyle: {stroke: '#ffaa00'}});                
             }
         } else {            
             // SECOND see if there are CONTAINERS that are not empty, PLUS have more enery than 250
