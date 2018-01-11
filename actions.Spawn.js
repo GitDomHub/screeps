@@ -160,11 +160,13 @@ var roleSpawn = {
 
 	showWhatsSpawning : function () {
 		// 2Do: for each room, then for each spawn, show what ur spawning
+		let spawn = Game.spawns['Spawn1'];
 		 // visuals for showing what is being spawned
-		 if(Game.spawns['Spawn1'].spawning) {
-		     var spawningCreep = Game.creeps[Game.spawns['Spawn1'].spawning.name];
-		     Game.spawns['Spawn1'].room.visual.text(
-		         '' + spawningCreep.memory.role,
+		 if(spawn.spawning) {		 	 
+		 	 let remainingTime = spawn.spawning.remainingTime;
+		     var spawningCreep = Game.creeps[spawn.spawning.name];
+		     spawn.room.visual.text(
+		         '' + spawningCreep.memory.role + ' (-' + remainingTime + ')',
 		         Game.spawns['Spawn1'].pos.x + 1,
 		         Game.spawns['Spawn1'].pos.y,
 		         {align: 'left', opacity: 0.9});
