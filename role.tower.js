@@ -9,7 +9,7 @@
 
 //module.exports = {
 var roleTower = {
-    
+
     runAllTowers: function(myRoomName) {
         // make tower do stuff
         var allTowers = Game.rooms[myRoomName].find(FIND_MY_STRUCTURES, { filter: { structureType: STRUCTURE_TOWER } });
@@ -26,11 +26,9 @@ var roleTower = {
                 // 
                 // console.log('tower range to big healer: ' + singleTower.pos.getRangeTo(hostileHealerBig));
 
-                if(hostileHealerBig){
-                    if(singleTower.pos.inRangeTo(hostileHealerBig, 15) ) {
+                if(singleTower.pos.inRangeTo(hostileHealerBig, 15) ) {
                         // only attack big healers when close enough
-                        singleTower.attack(hostileHealerBig);
-                    }                    
+                        singleTower.attack(hostileHealerBig);                   
                 }else if(hostileHealer) {
                     singleTower.attack(hostileHealer);
                 }
