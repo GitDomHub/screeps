@@ -43,14 +43,14 @@ var roleSpawn = {
 		 //react to when there is an attack
 		 if (global.roomHasHostiles.length > 1) {
 		     console.log('ATTACK MODE LIVE');
-		     var minBackupHarvesters         = 2;    
-		     var minHarvesters               = 1;    // +1 for urgent delivery of energy to towers, spawn, extensions 
-		     var minCouriers                 = 4;    // +1
-		     var minTowerCouriers            = 0;    // Tower couriers will block the way. Just need to prioritize towers
-		     var minMiners                   = 1;    // -1
-		     var minRepairers                = 0;    
-		     var minUpgraders                = 1;    // -2
-		     var minBuilders                 = 0;    
+		     // var minBackupHarvesters         = 2;    
+		     // var minHarvesters               = 1;    // +1 for urgent delivery of energy to towers, spawn, extensions 
+		     // var minCouriers                 = 4;    // +1
+		     // var minTowerCouriers            = 0;    // Tower couriers will block the way. Just need to prioritize towers
+		     // var minMiners                   = 1;    // -1
+		     // var minRepairers                = 0;    
+		     // var minUpgraders                = 1;    // -2
+		     // var minBuilders                 = 0;    
 		     var minDefenders                = 3;   // +8  // 2DO: always spawn defenders first before anything else
 		 }
 		 
