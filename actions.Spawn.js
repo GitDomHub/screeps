@@ -155,8 +155,8 @@ module.exports = {
 		         {memory: {role: 'defender'}});
 		 }
 
-		 
-		 showWhatsSpawning();
+
+		 this.showWhatsSpawning();
 		 
 		 
 	},
