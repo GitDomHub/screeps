@@ -8,7 +8,7 @@ or changes will be lost
 
 //Global vars (maybe put into separate file?)
 require('vars.global');
-var repairUntilHitsEqual  = 500000; // maybe put this into memory?  
+
 
 // creep roles
 var roleHarvester                       = require('role.harvester');
@@ -217,7 +217,7 @@ module.exports.loop = function () {
     
     
     
-    roleTower.runAllTowers(room1);
+    roleTower.runAllTowers(global.room1);
     
     
     

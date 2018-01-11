@@ -1,16 +1,6 @@
 module.exports = {
 
 	runSpawnFactory : function () {
-		 var repairUntilHitsEqual  = 500000; // maybe put this into memory?  
-		 // define vars for this room
-		 var room1                           = 'E83S21';
-		 var roomHasHostiles                 = Game.rooms[room1].find(FIND_HOSTILE_CREEPS);
-
-
-		 //struc status
-		 var damagedStrucInRoom1             = Game.rooms['E83S21'].find(FIND_STRUCTURES,
-		                                         {filter: (s) => s.hits < s.hitsMax * 0.5 && 
-		                                             s.hits < repairUntilHitsEqual}); // 2Do: calculate the whole amount of missing hits until we reach our goal.
 		 
 
 		 
@@ -25,7 +15,7 @@ module.exports = {
 		 var upgraders                       = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader');
 		 var builders                        = _.filter(Game.creeps, (creep) => creep.memory.role == 'builder');
 		 var defenders                       = _.filter(Game.creeps, (creep) => creep.memory.role == 'defender');
-		 var allCreepsInRoom1                = Game.rooms[room1].find(FIND_CREEPS);
+		 var allCreepsInRoom1                = Game.rooms[globals.room1].find(FIND_CREEPS);
 
 		 
 		 console.log('##################################');
@@ -53,7 +43,7 @@ module.exports = {
 		                                             // Just produce a new one to be ready when old one dies
 		 
 		 //react to when there is an attack
-		 if (roomHasHostiles.length > 0) {
+		 if (global.roomHasHostiles.length > 0) {
 		     console.log('ATTACK MODE LIVE');
 		     var minBackupHarvesters         = 2;    
 		     var minHarvesters               = 1;    // +1 for urgent delivery of energy to towers, spawn, extensions 
@@ -117,7 +107,7 @@ module.exports = {
 		 }
 		 
 		// spawn TOWERCOURIER 
-		 if(towerCourier.length < minTowerCouriers  && (harvesters.length >= minHarvesters) && damagedStrucInRoom1.length > 15) {
+		 if(towerCourier.length < minTowerCouriers  && (harvesters.length >= minHarvesters) && global.damagedStrucInRoom1.length > 15) {
 		     var newName = 'TowerCourier' + Game.time;
 		     Game.spawns['Spawn1'].spawnCreep([MOVE,MOVE,MOVE,WORK,WORK,CARRY,CARRY,CARRY,CARRY], newName, // cost 550E; MOVE*3,WORK*2,CARRY*4; 900K health; carry 200
 		         {memory: {role: 'towerCourier'}});
