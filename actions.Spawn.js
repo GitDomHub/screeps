@@ -51,7 +51,7 @@ var roleSpawn = {
 		     var minRepairers                = 0;    
 		     var minUpgraders                = 1;    // -2
 		     var minBuilders                 = 0;    
-		     var minDefenders                = 10;   // +8  // 2DO: always spawn defenders first before anything else
+		     var minDefenders                = 3;   // +8  // 2DO: always spawn defenders first before anything else
 		 }
 		 
 		 // 2DO: healers?
