@@ -15,7 +15,7 @@ var actionChooseSource = {
             }
         });
         
-        if(droppedEnergyRes) {
+        if(droppedEnergyRes) { // only go for that resource if no enemy creep is close by (otherwise I'll die u know)
             if(creep.pickup(droppedEnergyRes) == ERR_NOT_IN_RANGE) {
                 creep.moveTo(droppedEnergyRes, {visualizePathStyle: {stroke: '#ffaa00'}});
                 // write target into memory (so that not all gathering creeps go there. especially if dropped energy is near room exit. will waste time.)

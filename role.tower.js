@@ -26,40 +26,30 @@ var roleTower = {
                 // 
                 // console.log('tower range to big healer: ' + singleTower.pos.getRangeTo(hostileHealerBig));
 
-                if(singleTower.pos.inRangeTo(hostileHealerBig, 15) ) {
-                        // only attack big healers when close enough
-                        singleTower.attack(hostileHealerBig);                   
+                if(singleTower.pos.inRangeTo(hostileHealerBig, 15)) {
+                    // only attack big healers when close enough
+                    singleTower.attack(hostileHealerBig);                   
                 }else if(hostileHealer) {
                     singleTower.attack(hostileHealer);
                 }
-                else if (closestHostile) {
+                else if (hostileAttacker) {
                     // dont attack friends
-                    //if(closestHostile.owner.username != "Odd") { 
+                    //if(hostileAttacker.owner.username != "Odd") { 
                         //console.log('hostile is a friend, I am not attacking.');
                         // 2Do: loop through ALL hostiles and then see if any of hostiles in room is an enemy. then attack that one
-                        singleTower.attack(closestHostile);
+                        singleTower.attack(hostileAttacker);
                     //};
                 // STEP 2: HEAL CREEPS
                 } else { 
                     
-                    // //....first heal any damaged creeps
-                    // var weakCreeps          = _.filter(Game.creeps, (creep) => (creep.hits < creep.hitsMax));
-                    // //console.log('weak creeps:' + weakCreeps);
-                    // // question : can tower actuall heal more than one creep???
-                    // if (weakCreeps.length > 0) {
-                    //     for (let singleWeakCreep of weakCreeps) {
-                    //         //console.log(singleWeakCreep);
-                    //         singleTower.heal(singleWeakCreep);
-                    //     }    
-                    // }
+
                     roleTower.healCreeps(singleTower);
                     
                     // STEP 3: REPAIR
                     // - only repair if tower has enough energy left
                     // console.log(singleTower.energy);
                     if (singleTower.energy >= (singleTower.energyCapacity * 0.75) && Game.spawns.Spawn1.room.energyAvailable > 1000) {
-                        
-
+                    
                         roleTower.repairStuff(myRoomName, singleTower);
                     }
                     
