@@ -1,8 +1,6 @@
-module.exports = {
+var roleSpawn = {
 
 	runSpawnFactory : function () {
-		 
-
 		 
 		 // have always 1 or two backup harvesters so the colony doesnt die
 		 // load all creeps in to vars so we can work with them
@@ -155,8 +153,7 @@ module.exports = {
 		         {memory: {role: 'defender'}});
 		 }
 
-
-		 this.showWhatsSpawning();
+		 roleSpawn.showWhatsSpawning();
 		 
 		 
 	},
@@ -175,3 +172,5 @@ module.exports = {
 	}
 	
 };
+
+module.exports = roleSpawn;
