@@ -1,7 +1,7 @@
 module.exports = {
 
 	runSpawnFactory : function () {
-		
+		 var repairUntilHitsEqual  = 500000; // maybe put this into memory?  
 		 // define vars for this room
 		 var room1                           = 'E83S21';
 		 var roomHasHostiles                 = Game.rooms[room1].find(FIND_HOSTILE_CREEPS);
