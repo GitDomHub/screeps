@@ -63,7 +63,7 @@ var roleSpawn = {
 		 // spawn backup BACKUPHARVESTER 
 		 // spawn only if nothing goes
 		 if(harvesters.length == 0 && miners.length == 0 || 
-		     harvesters.length == 0 && couriers.length < 1 || 
+		     harvesters.length == 0 && couriers.length < 2 || 
 		     harvesters.length == 0 && allCreepsInRoom1.length <= 2 ) {
 		     if(backupHarvesters.length < minBackupHarvesters) {
 		         var newName = 'BackupHarvester' + Game.time;
