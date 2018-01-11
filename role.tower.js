@@ -6,7 +6,7 @@
  * var mod = require('role.tower');
  * mod.thing == 'a thing'; // true
  */
-
+require('vars.global');
 //module.exports = {
 var roleTower = {
 
@@ -87,7 +87,7 @@ var roleTower = {
         var allDamagedStructures = Game.rooms[room].find(FIND_STRUCTURES, {
             //filter: (structure) => structure.hits < structure.hitsMax
             /*structure.hits < structure.hitsMax * 0.5 &&*/
-            filter: (structure) => structure.hits < 550000 &&
+            filter: (structure) => structure.hits < global.repairUntilHitsEqual &&
                     structure.hits < (structure.hitsMax * 0.5)
         });
         // 2Do: only repair structures that are further away when enemy creep is in proximity of 5-7
