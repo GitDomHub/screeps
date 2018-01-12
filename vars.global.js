@@ -19,9 +19,11 @@ global.currEnergyCapAvailable 			= Game.rooms[room1].energyCapacityAvailable;
 
 
 
-// store vars in memory, so we can manuall over console change them
-
-Memory.room1.repairUntilHitsEqual 		= global.repairUntilHitsEqual;
+// store vars in memory, so we can change them manually over console 
+if (!Memory.room1.name) 
+	Memory.room1 						= {name : 'E83S21'};
+if (!Memory.room1.repairUntil) 
+	Memory.room1 						= {repairUntil : 750000};
 
 
 
