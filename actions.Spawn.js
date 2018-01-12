@@ -8,26 +8,14 @@ var roleSpawn = {
 		 var backupHarvesters                = _.filter(Game.creeps, (creep) => creep.memory.role == 'backupHarvester');
 		 var harvesters                      = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester');
 		 var couriers                        = _.filter(Game.creeps, (creep) => creep.memory.role == 'courier');
-		 var towerCourier                    = _.filter(Game.creeps, (creep) => creep.memory.role == 'towerCourier');
+		 var towerCouriers                   = _.filter(Game.creeps, (creep) => creep.memory.role == 'towerCourier');
 		 var miners                          = _.filter(Game.creeps, (creep) => creep.memory.role == 'miner');
 		 var repairers                       = _.filter(Game.creeps, (creep) => creep.memory.role == 'repairer');
 		 var upgraders                       = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader');
 		 var builders                        = _.filter(Game.creeps, (creep) => creep.memory.role == 'builder');
 		 var defenders                       = _.filter(Game.creeps, (creep) => creep.memory.role == 'defender');
 		 var allCreepsInRoom1                = Game.rooms[global.room1].find(FIND_CREEPS);
-
 		 
-		 console.log('##################################');
-		 console.log('BackupHarvesters: '    + backupHarvesters.length);
-		 console.log('Harvesters: '          + harvesters.length);
-		 console.log('Couriers: '            + couriers.length);
-		 console.log('TowerCouriers: '       + towerCourier.length);
-		 console.log('Miners: '              + miners.length);
-		 console.log('Repairers: '           + repairers.length);
-		 console.log('Upgraders: '           + upgraders.length);
-		 console.log('Builders: '            + builders.length);
-		 console.log('Defenders: '           + defenders.length);
-		 console.log('##################################');
 		 
 		 //2DO define mininum of creeps in vars
 		 var minBackupHarvesters             = 2;
@@ -54,6 +42,20 @@ var roleSpawn = {
 		     // var minBuilders                 = 0;    
 		     var minDefenders                = 3;   // +8  // 2DO: always spawn defenders first before anything else
 		 }
+
+
+		 console.log('##################################');
+		 console.log('BackupHarvesters: '    + backupHarvesters.length + '/' + minBackupHarvesters);
+		 console.log('Harvesters: '          + harvesters.length + '/' + minHarvesters);
+		 console.log('Couriers: '            + couriers.length + '/' + minCouriers);
+		 console.log('TowerCouriers: '       + towerCouriers.length + '/' + minTowerCouriers);
+		 console.log('Miners: '              + miners.length + '/' + minMiners);
+		 console.log('Repairers: '           + repairers.length + '/' + minRepairers);
+		 console.log('Upgraders: '           + upgraders.length + '/' + minUpgraders);
+		 console.log('Builders: '            + builders.length + '/' + minBuilders);
+		 console.log('Defenders: '           + defenders.length + '/' + minDefenders);
+		 console.log('##################################');
+
 		 
 		 // 2DO: healers?
 
@@ -106,7 +108,7 @@ var roleSpawn = {
 		 }
 		 
 		// spawn TOWERCOURIER 
-		 if(towerCourier.length < minTowerCouriers  && (harvesters.length >= minHarvesters) && global.damagedStrucInRoom1.length > 15) {
+		 if(towerCouriers.length < minTowerCouriers  && (harvesters.length >= minHarvesters) && global.damagedStrucInRoom1.length > 15) {
 		     var newName = 'TowerCourier' + Game.time;
 		     Game.spawns['Spawn1'].spawnCreep([MOVE,MOVE,MOVE,WORK,WORK,CARRY,CARRY,CARRY,CARRY], newName, // cost 550E; MOVE*3,WORK*2,CARRY*4; 900K health; carry 200
 		         {memory: {role: 'towerCourier'}});
