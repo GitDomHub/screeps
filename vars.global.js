@@ -2,7 +2,7 @@
 
 
 
-global.repairUntilHitsEqual  			= 650000; // maybe put this into memory?  
+global.repairUntilHitsEqual  			= 750000; // maybe put this into memory?  
 
 
 // define vars for this room
