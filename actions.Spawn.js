@@ -1,3 +1,4 @@
+require('vars.global');
 var roleSpawn = {
 
 	runSpawnFactory : function () {
