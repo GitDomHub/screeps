@@ -19,6 +19,16 @@ global.currEnergyCapAvailable 			= Game.rooms[room1].energyCapacityAvailable;
 
 
 
+// store vars in memory, so we can manuall over console change them
+
+Memory.room1.repairUntilHitsEqual 		= global.repairUntilHitsEqual;
+
+
+
+
+
+
+
 
 
 // test to make sub-vars
