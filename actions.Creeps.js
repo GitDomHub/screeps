@@ -77,8 +77,8 @@ var actForAllCreeps = {
                 creep.cancelOrder('withdraw');
                 creep.cancelOrder('build');
                 
-                if(creep.transfer(targets[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(targets[0], {visualizePathStyle: {stroke: '#ffffff'}});
+                if(creep.transfer(closestTarget, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                    creep.moveTo(closestTarget, {visualizePathStyle: {stroke: '#ffffff'}});
                 }
             }
         // if not carrying much energy, just die now so we can get a new creep faster
