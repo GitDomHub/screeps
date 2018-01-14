@@ -50,6 +50,7 @@ https://www.reddit.com/r/screeps/comments/7d6w2t/offensive_strategy/
 - Tower only attack healers when less than 20 heal body parts or closer than 15 range
 - Tower first repair ramparts then containers, roads etc.
 - Save maximum hits for structures to be repaired in memory
+- Focus healing on creep with lowest hit points
 
 
 Repairer
@@ -57,6 +58,7 @@ Repairer
 
 Upgrader
 - When available energy less than 500, then check for storages for energy and help distribute. dont go to containers. too slow!
+- Check if controller is already set in memory!
 
 Harvesting 
 - actions.SelectSource : When closest source doesnt have energy then creeps just sit there and wait. need to implement some routine to check if closest resource has energy. if not look for another source.

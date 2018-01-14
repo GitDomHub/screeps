@@ -47,22 +47,13 @@ var roleCourier = {
                         // 2Do: do this at spawn only once
                         // for each container...
                         for (var container of allContainers ) {
-                            // get container ID
                             var containerId = container.id;
                             var allCouriers = _.filter(Game.creeps, (creep) => creep.memory.role == 'courier');
-                                //console.log(allCouriers);
                             var couriersHavingContainerAssigned = _.filter(Game.creeps, (creep) =>
                                         creep.memory.servingContainer == containerId &&
                                         creep.memory.role == 'courier');
-                                //console.log('container assigned to: ' + couriersHavingContainerAssigned);
-                            
-                            // if this container isnt assigned to any creep yet
                             if (couriersHavingContainerAssigned.length == 0) {
-                                //console.log('found unassigned container');
-                                //first check if creep already serving a container
-                                if (creep.memory.servingContainer == null) {
-                                    //console.log('assigning container to courier creep');
-                                    // assign it to this current creep if he isnt serving a container yet
+                                if (creep.memory.servingContainer == null || creep.memory.servingContainer == '') {
                                     creep.memory.servingContainer = containerId;    
                                 }
                             } 
@@ -108,15 +99,15 @@ var roleCourier = {
                     // 2Do: because storage has huge storage, maybe make own creep for it?
                     return ( (  structure.structureType == STRUCTURE_EXTENSION   && structure.energy < structure.energyCapacity ||
                                 structure.structureType == STRUCTURE_SPAWN       && structure.energy < structure.energyCapacity ||
-                                structure.structureType == STRUCTURE_STORAGE     && structure.store[RESOURCE_ENERGY] < structure.storeCapacity) || 
-                                structure.structureType == STRUCTURE_TOWER       && structure.energy <= (structure.energyCapacity * 0.9)
+                                structure.structureType == STRUCTURE_TOWER       && structure.energy <= (structure.energyCapacity * 0.9) || 
+                                structure.structureType == STRUCTURE_STORAGE     && structure.store[RESOURCE_ENERGY] < structure.storeCapacity)                                 
                             );
                 }
             });
             //console.log(targets);
             // if there is structures which need energy, move!
             if(targets.length > 0) {
-                let closestTarget = creep.pos.findClosestByPath(targets);
+                let closestTarget = creep.pos.findClosestByPath(targets); // somehow one tower is not being served. maybe list by 
                 if(creep.transfer(closestTarget, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                     creep.moveTo(closestTarget, {visualizePathStyle: {stroke: '#ffffff'}});
                 }
