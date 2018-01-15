@@ -23,7 +23,7 @@ var roleMiner = {
             // when sitting on/near container
             if(creep.pos.getRangeTo(container[0]) == 0) {
                 // now find closest ENERGY SOURCE
-                var source = creep.pos.findClosestByPath(FIND_SOURCES);
+                var source = creep.pos.findClosestByRange(FIND_SOURCES);
                 creep.harvest(source);
             } else { // when not sitting on/near container, then move there                
                 creep.moveTo(container[0], {visualizePathStyle: {stroke: '#ffffff'}});
@@ -38,7 +38,7 @@ var roleMiner = {
             filter: (structure) => {
                 return (structure.structureType == STRUCTURE_CONTAINER);
             }
-        });
+        }); // 2Do: only look for containers, that have a source in range 1 to it
 
         for (var container of containers ) {            
             //var allMiners = _.filter(Game.creeps, (creep) => creep.memory.role == 'miner');

@@ -34,6 +34,11 @@ module.exports.loop = function () {
 
     // run memory 
     actionsGlobal.ClearMemory();
+
+    for (singleRoom of Game.Rooms) {
+        actionsGlobal.writeSourcesIntoMem(singleRoom);    
+    }
+    
     
     actionsSpawn.runSpawnFactory();
         
