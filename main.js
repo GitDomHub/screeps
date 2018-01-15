@@ -37,11 +37,12 @@ module.exports.loop = function () {
     actionsGlobal.ClearMemory(); // clears dead creep memory
     
     actionsGlobal.initRoomMemory(); // creates a new empty array for all rooms in memory if non existent
-    
+
 
     
     // looooop through all rooms that I have creeps in
     for (singleRoom in Game.rooms) {
+
         console.log('In loop for room: ' + singleRoom);
         actionsGlobal.writeSourcesIntoMem(singleRoom); // put all energy sources into memory
         // write path from SPAWN to SOURCES into mem

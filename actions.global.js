@@ -16,8 +16,18 @@ module.exports = {
 	},
 
 	initRoomMemory : function () {
-		if (!Memory.rooms)
-			Memory.rooms = {};
+		if (!Memory.rooms) {
+			Memory.rooms = {};			
+		}
+
+		for (singleRoom in Game.rooms) {
+			if (!Memory.rooms[singleRoom.name])
+				Memory.rooms[singleRoom.name];
+		}
+			
+
+			
+
 	},
 
 	writeSourcesIntoMem : function (room) {
