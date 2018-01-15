@@ -99,8 +99,8 @@ var roleCourier = {
                     // 2Do: because storage has huge storage, maybe make own creep for it?
                     return ( (  structure.structureType == STRUCTURE_EXTENSION   && structure.energy < structure.energyCapacity ||
                                 structure.structureType == STRUCTURE_SPAWN       && structure.energy < structure.energyCapacity ||
-                                structure.structureType == STRUCTURE_TOWER       && structure.energy <= (structure.energyCapacity * 0.9) || 
-                               /* structure.structureType == STRUCTURE_STORAGE     && structure.store[RESOURCE_ENERGY] < structure.storeCapacity*/)                                 
+                                structure.structureType == STRUCTURE_TOWER       && structure.energy <= (structure.energyCapacity * 0.9) /*|| 
+                                structure.structureType == STRUCTURE_STORAGE     && structure.store[RESOURCE_ENERGY] < structure.storeCapacity*/)                                 
                             );
                 }
             });
