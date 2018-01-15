@@ -18,7 +18,7 @@ module.exports = {
 	initRoomMemory : function () {
 		if (!Memory.rooms)
 			Memory.rooms = {};
-	}
+	},
 
 	writeSourcesIntoMem : function (room) {
 
