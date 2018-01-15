@@ -46,11 +46,11 @@ var actionChooseSource = {
             //                     (structure.store[RESOURCE_ENERGY] > 250) ;
             //     }
             // });
-            var containers = returnContainers(creep);
+            var containers = actionChooseSource.returnContainers(creep);
             
             // if there are containers found that are not empty (and no storages)
             if(containers.length > 0 && storages.length == 0) {
-                var container = creep.pos.findClosestByPath(containers);
+                var container = creep.pos.findClosestByRange(containers);
                 if(creep.withdraw(container, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                     // move there and get energy from there 
                     creep.moveTo(container, {visualizePathStyle: {stroke: '#ffaa00'}});                    
@@ -58,7 +58,7 @@ var actionChooseSource = {
             } else {
                 // THIRD: go to SOURCES
                 // 2Do: when closest source doesnt have energy then creeps just sit there and wait. need to implement some routine to check if closest resource has energy. if not look for another
-                var source = creep.pos.findClosestByPath(FIND_SOURCES);
+                var source = creep.pos.findClosestByRange(FIND_SOURCES);
                 if(creep.harvest(source) == ERR_NOT_IN_RANGE) {
                     // make creep move and show its path
                     creep.moveTo(source, {visualizePathStyle: {stroke: '#ffaa00'}});
