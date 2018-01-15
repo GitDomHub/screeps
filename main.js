@@ -38,9 +38,9 @@ module.exports.loop = function () {
 
     
 
-    // for (singleRoom of Game.rooms) {
-        // actionsGlobal.writeSourcesIntoMem(singleRoom);    
-    // }
+    for (singleRoom in Game.rooms) {
+        console.log(singelRoom);
+    }
     
     
     actionsSpawn.runSpawnFactory();
