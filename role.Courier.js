@@ -28,7 +28,7 @@ var roleCourier = {
 
             let currEnergyAvailable = Game.spawns.Spawn1.room.energyAvailable;
             // When available energy less than 500, then check for storages for energy and help distribute. dont go to containers. too slow!
-
+            
 
             // when not already close to a container if(!creep.pos.isNearTo(target)) {
             // find CONTAINERS in the room that:
@@ -111,6 +111,7 @@ var roleCourier = {
                 // or maybe check if target is storage, then check if towers are full first.
                 if(creep.transfer(closestTarget, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                     creep.moveTo(closestTarget, {visualizePathStyle: {stroke: '#ffffff'}});
+                    console.log(closestTarget);
                 }
             }
         }
