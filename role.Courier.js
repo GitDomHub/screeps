@@ -27,7 +27,8 @@ var roleCourier = {
         if (creep.memory.harvesting) {
 
             let currEnergyAvailable = Game.spawns.Spawn1.room.energyAvailable;
-            // When available energy less than 500, then check for storages for energy and help distribute. dont go to containers. too slow!
+            console.log(currEnergyAvailable);
+            // When available energy less than 1000, then check for storages for energy and help distribute. dont go to containers. too slow!
             
 
             // when not already close to a container if(!creep.pos.isNearTo(target)) {
