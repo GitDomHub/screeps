@@ -73,6 +73,7 @@ var roleTower = {
     healCreeps : function (tower) {
         var weakCreeps          = _.filter(Game.creeps, (creep) => (creep.hits < creep.hitsMax));
         // question : can tower actuall heal more than one creep???
+        // 2Do: focus on creep with lowest hit points?
         if (weakCreeps.length > 0) {
             for (let singleWeakCreep of weakCreeps) {
                 tower.heal(singleWeakCreep);

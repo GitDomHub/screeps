@@ -1,13 +1,7 @@
 # screeps
 Screeps 
 
-Changelog:
-180107 
-	- Emojis seem to be broken after being pulled synced from github into screeps. Some guy on Slack suggested to use String.fromCodePoint(). Is it worth to get all the codes for just the looks? Idk...
-
-
-
-2Do things:
+# 2Do things # 
 
 
 Globals
@@ -67,7 +61,7 @@ Harvesting
 
 
 
-Creep States (thanks to Kamots from slack)
+# Creep States (thanks to Kamots from slack) #
 - role
 - originSpawn
 - destRoom
@@ -77,3 +71,12 @@ Creep States (thanks to Kamots from slack)
 - previousPosition {"x":11,"y":18,"roomName":"W54S19"}
 - totalCarried
 - nextDest
+
+
+# Things to save into memory to save CPU #
+1. Energy Sources (Sources, Drops, Containers, Storages)
+2. Facilities that need energy (Spawn, Extensions, Towers, Labs)
+3. Construction Sites
+4. Repair Sites 
+5. Upgrade-Sites (Controller)
+
