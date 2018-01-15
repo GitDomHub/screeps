@@ -21,10 +21,8 @@ module.exports = {
 		}
 
 		for (singleRoom in Game.rooms) {
-			console.log('in loop');
 			if (!Memory.rooms[singleRoom.name]){
-				Memory.rooms.push(singleRoom.name);
-				console.log('setting new room name');
+				console.log('cant find room');
 			}
 		}
 			
