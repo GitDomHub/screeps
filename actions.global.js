@@ -27,12 +27,12 @@ module.exports = {
 
 	writePathSpawnToSources : function (room) {
 		//find all sources 
-		let allSources = room.find(FIND_SOURCES);
+		// let allSources = room.find(FIND_SOURCES);
 
-		// for each source get path there
-		let path = spawn.room.findPath(spawn, source);
-		let path = room.findPathTo(x, y, opts)
-		creep.moveByPath(path);
+		// // for each source get path there
+		// let path = spawn.room.findPath(spawn, source);
+		// let path = room.findPathTo(x, y, opts)
+		// creep.moveByPath(path);
 	},
 
 	writePathSourcesToSpawn : function () {
