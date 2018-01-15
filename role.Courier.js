@@ -115,16 +115,16 @@ var roleCourier = {
                 }
             } else { // put energy into storage only if everything else has power
                 console.log('no strucs that need energy');
-                var storage = creep.room.find(FIND_STRUCTURES, {
+                var storages = creep.room.find(FIND_STRUCTURES, {
                 filter: (s) => {
                     return ( (s.structureType == STRUCTURE_STORAGE && s.store[RESOURCE_ENERGY] < s.storeCapacity)                                 
                             );}
 
                 });
 
-                if (storage.length > 0) {
-                    if(creep.transfer(storage, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                        creep.moveTo(storage, {visualizePathStyle: {stroke: '#ffffff'}});
+                if (storages.length > 0) {
+                    if(creep.transfer(storages[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                        creep.moveTo(storages[0], {visualizePathStyle: {stroke: '#ffffff'}});
                     }
                 }
 
