@@ -32,11 +32,14 @@ var actionCreeps                        = require('actions.Creeps');
 
 module.exports.loop = function () {
 
+
     // run memory 
     actionsGlobal.ClearMemory();
 
+    
+
     // for (singleRoom of Game.rooms) {
-    //     actionsGlobal.writeSourcesIntoMem(singleRoom);    
+        // actionsGlobal.writeSourcesIntoMem(singleRoom);    
     // }
     
     

@@ -1,3 +1,5 @@
+require('vars.global');
+
 module.exports = {
 
 	// Clear memory function
@@ -14,14 +16,19 @@ module.exports = {
 	},
 
 	writeSourcesIntoMem : function (room) {
-		if(!Memory.EnergySources || Memory.EnergySources.length == 0) {
-			Memory.EnergySources = {};
-			let allSources = room.find(FIND_SOURCES);
-			for (singleSource of allSources) {
-				Memory.EnergySources.push(singleSource.id); 
+
+		let allSources = Game.rooms[room].find(FIND_SOURCES);
+		console.log(allSources);
+
+		// if(!Memory.EnergySources || Memory.EnergySources.length == 0) {
+		// 	Memory.EnergySources = {};
+
+			
+		// 	for (singleSource of allSources) {
+		// 		Memory.EnergySources.push(singleSource.id); 
 				
-			}
-		}
+		// 	}
+		// }
 
 	},
 
