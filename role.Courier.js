@@ -1,6 +1,7 @@
 /*Delivers from containers to other places*/
 
 /*2DO: make courier also deliver to towers when enemy is in room!*/
+var actionsSelectSource                 = require('actions.selectSource');
 
 var roleCourier = {
 
@@ -28,6 +29,17 @@ var roleCourier = {
 
             let currEnergyAvailable = Game.spawns.Spawn1.room.energyAvailable;
             console.log(currEnergyAvailable);
+            if(currEnergyAvailable <= 1000) {
+               // go take energy from storage if energy in extensions and spawns is critical
+               var storages = actionsSelectSource.returnStorages(creep);
+               if (storages.length > 0){
+                    if(creep.withdraw(storages[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                        creep.moveTo(storages[0], {visualizePathStyle: {stroke: '#ffffff'}});
+                    }
+                    return; // just go to source, nowhere else
+               }
+
+            }
             // When available energy less than 1000, then check for storages for energy and help distribute. dont go to containers. too slow!
             
 
