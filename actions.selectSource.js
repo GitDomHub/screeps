@@ -16,7 +16,7 @@ var actionChooseSource = {
         //                     (structure.store[RESOURCE_ENERGY] > 250);
         //     }
         // });
-        var storages = returnStorages(creep);
+        var storages = actionChooseSource.returnStorages(creep);
 
         
         if(droppedEnergyRes) { // only go for that resource if no enemy creep is close by (otherwise I'll die u know)
