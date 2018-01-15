@@ -28,8 +28,9 @@ var roleCourier = {
         if (creep.memory.harvesting) {
 
             let currEnergyAvailable = Game.spawns.Spawn1.room.energyAvailable;
-            console.log(currEnergyAvailable);
-            if(currEnergyAvailable <= 1000) {
+            let currEnergyCapAvailable = Game.spawns.Spawn1.room.energyCapacityAvailable;
+
+            if(currEnergyAvailable <= (currEnergyCapAvailable * 0.8) ) {
                // go take energy from storage if energy in extensions and spawns is critical
                var storages = actionsSelectSource.returnStorages(creep);
                if (storages.length > 0){
