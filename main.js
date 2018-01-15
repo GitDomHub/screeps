@@ -34,7 +34,10 @@ module.exports.loop = function () {
 
 
     // run memory 
-    actionsGlobal.ClearMemory();
+    actionsGlobal.ClearMemory(); // clears dead creep memory
+    
+    actionsGlobal.initRoomMemory(); // creates a new empty array for all rooms in memory if non existent
+    
 
     
     // looooop through all rooms that I have creeps in
