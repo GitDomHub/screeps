@@ -39,7 +39,7 @@ module.exports.loop = function () {
     
 
     for (singleRoom in Game.rooms) {
-        console.log(singelRoom);
+        console.log(singleRoom);
     }
     
     
