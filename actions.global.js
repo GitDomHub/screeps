@@ -21,6 +21,7 @@ module.exports = {
 		}
 
 		for (singleRoom in Game.rooms) {
+			console.log('in loop');
 			if (!Memory.rooms[singleRoom.name])
 				Memory.rooms[singleRoom.name];
 		}
