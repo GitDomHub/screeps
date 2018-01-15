@@ -25,10 +25,9 @@ module.exports = {
 		let allSources = Game.rooms[room].find(FIND_SOURCES);
 		console.log(allSources);
 
-		if(!Memory.rooms[room] || Memory.rooms[room] == 0) {
+		if(!Memory.rooms[room].EnergySources || Memory.rooms[room].EnergySources == 0) {
 			for (singleSource of allSources) {
-				Memory.rooms[room].EnergySources.push(singleSource.id); 
-				
+				Memory.rooms[room].EnergySources.push(singleSource.id); 				
 			}
 		}
 
