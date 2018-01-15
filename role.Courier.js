@@ -28,13 +28,15 @@ var roleCourier = {
         if (creep.memory.harvesting) {
 
             // backup for when there is no energy available. then let couriers do the job quicker
+            // future: if storage has no energy, then just go back to containers
             let currEnergyAvailable = Game.spawns.Spawn1.room.energyAvailable;
             let currEnergyCapAvailable = Game.spawns.Spawn1.room.energyCapacityAvailable;
 
             if(currEnergyAvailable <= (currEnergyCapAvailable * 0.75) ) {
                // go take energy from storage if energy in extensions and spawns is critical
                var storages = actionsSelectSource.returnStorages(creep);
-               if (storages.length > 0){
+               // only go to storage, if there is enough energy
+               if (storages.length > 0 && storage[0].store[RESOURCE_ENERGY] > creep.carryCapacity){
                     if(creep.withdraw(storages[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                         creep.moveTo(storages[0], {visualizePathStyle: {stroke: '#ffffff'}});
                     }
