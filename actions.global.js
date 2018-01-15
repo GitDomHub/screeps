@@ -25,15 +25,12 @@ module.exports = {
 		let allSources = Game.rooms[room].find(FIND_SOURCES);
 		console.log(allSources);
 
-		// if(!Memory.EnergySources || Memory.EnergySources.length == 0) {
-		// 	Memory.EnergySources = {};
-
-			
-		// 	for (singleSource of allSources) {
-		// 		Memory.EnergySources.push(singleSource.id); 
+		if(!Memory.rooms[room] || Memory.rooms[room] == 0) {
+			for (singleSource of allSources) {
+				Memory.rooms[room].EnergySources.push(singleSource.id); 
 				
-		// 	}
-		// }
+			}
+		}
 
 	},
 
