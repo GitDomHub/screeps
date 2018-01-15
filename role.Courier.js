@@ -107,7 +107,8 @@ var roleCourier = {
             //console.log(targets);
             // if there is structures which need energy, move!
             if(targets.length > 0) {
-                let closestTarget = creep.pos.findClosestByPath(targets); // somehow one tower is not being served. maybe list by 
+                let closestTarget = creep.pos.findClosestByRange(targets); // somehow one tower is not being served. maybe list by energy amount?
+                // or maybe check if target is storage, then check if towers are full first.
                 if(creep.transfer(closestTarget, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                     creep.moveTo(closestTarget, {visualizePathStyle: {stroke: '#ffffff'}});
                 }
