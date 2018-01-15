@@ -100,7 +100,7 @@ var roleCourier = {
                     return ( (  structure.structureType == STRUCTURE_EXTENSION   && structure.energy < structure.energyCapacity ||
                                 structure.structureType == STRUCTURE_SPAWN       && structure.energy < structure.energyCapacity ||
                                 structure.structureType == STRUCTURE_TOWER       && structure.energy <= (structure.energyCapacity * 0.9) || 
-                                structure.structureType == STRUCTURE_STORAGE     && structure.store[RESOURCE_ENERGY] < structure.storeCapacity)                                 
+                               /* structure.structureType == STRUCTURE_STORAGE     && structure.store[RESOURCE_ENERGY] < structure.storeCapacity*/)                                 
                             );
                 }
             });
@@ -113,7 +113,23 @@ var roleCourier = {
                     creep.moveTo(closestTarget, {visualizePathStyle: {stroke: '#ffffff'}});
                     console.log(closestTarget);
                 }
+            } else { // put energy into storage only if everything else has power
+                var storage = creep.room.find(FIND_STRUCTURES, {
+                filter: (s) => {
+                    return ( (s.structureType == STRUCTURE_STORAGE && s.store[RESOURCE_ENERGY] < s.storeCapacity)                                 
+                            );}
+
+                });
+
+                if (storage.length > 0) {
+                    if(creep.transfer(storage, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                        creep.moveTo(storage, {visualizePathStyle: {stroke: '#ffffff'}});
+                        console.log(storage);
+                    }
+                }
+
             }
+
         }
 
           
