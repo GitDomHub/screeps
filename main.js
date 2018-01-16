@@ -44,6 +44,8 @@ module.exports.loop = function () {
     for (singleRoom in Game.rooms) {
 
         console.log('In loop for room: ' + singleRoom);
+        var roomArray = [];
+        roomArray.push(singleRoom.name);
         actionsGlobal.writeSourcesIntoMem(singleRoom); // put all energy sources into memory
         // write path from SPAWN to SOURCES into mem
         // write path from SOURCES to SPAWN into mem
