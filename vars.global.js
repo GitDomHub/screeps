@@ -64,7 +64,7 @@ for (let struc of damagedStruc) {
 	emptyArray[struc.id] = struc.hits;	
 }
 
-console.log(emptyArray);
+Memory.test = emptyArray;
 
 // _.sortBy(test, function(s) {return s.hits});
 
