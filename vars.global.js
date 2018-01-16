@@ -33,22 +33,19 @@ if (!Memory.room1.repairUntil)
 //     roomArray.push(singleRoom);
 // }
 
-Memory.rooms = Game.rooms;
+Memory.rooms = Object.keys(Game.rooms);
 
 // put all construction sites that need repair into Memory
-for (let room in Memory.rooms) {
-	console.log('room: ' + Memory.rooms[room]);
-
-	// Memory.rooms[room].damagedStructures= []; // init this new variable
-
+for (let room of Memory.rooms) {
 	let damaged 						= Game.rooms[room].find(FIND_STRUCTURES,
 	                                         {filter: (s) => s.hits < s.hitsMax * 0.5 && 
 	                                             s.hits < Memory.room1.repairUntil});
 	console.log(damaged);
-	// damaged 							= JSON.stringify(damaged);
-	console.log(damaged);
 	Memory.rooms[room].damagedStructures= damaged;
 } 
+
+
+
 
 //Memory.damagedStructuresR1 = [];
  Memory.damagedStructuresR1 				= Game.rooms[global.room1].find(FIND_STRUCTURES,
