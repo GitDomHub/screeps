@@ -41,18 +41,17 @@ for (let room in Game.rooms) {
 	roomObject[room] = {};
 };
 Memory.rooms = roomObject;
+
 // find all strcutures that need construction and put them into the rooms memory
 for (let room in Memory.rooms) {
-	console.log(room);
 	let damagedStruc 				= Game.rooms[room].find(FIND_STRUCTURES,
  		                                         {filter: (s) => s.hits < (s.hitsMax * 0.5) && 
  		                                             s.hits < Memory.room1.repairUntil});
-
 	let strucs = {};
 	for (let struc of damagedStruc) {
 		strucs[struc.id] = struc.hits;	
 	}
-	Memory.rooms.room = strucs;
+	Memory.rooms[room] = strucs;
 	// Memory.test = strucs;
 }
 
