@@ -48,9 +48,23 @@ Memory.rooms = Object.keys(Game.rooms);
 
 
 //Memory.damagedStructuresR1 = [];
- Memory.damagedStructuresR1 				= Game.rooms[global.room1].find(FIND_STRUCTURES,
+Memory.damagedStructuresR1 				= Game.rooms[global.room1].find(FIND_STRUCTURES,
  		                                         {filter: (s) => s.hits < (s.hitsMax * 0.5) && 
  		                                             s.hits < Memory.room1.repairUntil});
+
+damagedStruc 				= Game.rooms[global.room1].find(FIND_STRUCTURES,
+ 		                                         {filter: (s) => s.hits < (s.hitsMax * 0.5) && 
+ 		                                             s.hits < Memory.room1.repairUntil});
+
+var emptyArray = [];
+for (struc of damagedStruc) {
+	let id = struc.id;
+	let hits = struc.hits;
+
+	console.log('test:     id:' + id + '; hits:' + hits);
+}
+
+// _.sortBy(test, function(s) {return s.hits});
 
 //  var damage 				= Game.rooms[global.room1].find(FIND_STRUCTURES,
 //  		                                         {filter: (s) => s.hits < s.hitsMax * 0.5 && 
