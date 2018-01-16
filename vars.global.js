@@ -37,7 +37,12 @@ Memory.rooms = roomArray;
 // put all construction sites that need repair into Memory
 for (let room in roomArray) {
 	console.log('room: ' + Memory.rooms[room]);
+
 } 
+
+Memory.damagedStructuresR1 = Game.rooms[global.room1].find(FIND_STRUCTURES,
+		                                         {filter: (s) => s.hits < s.hitsMax * 0.5 && 
+		                                             s.hits < global.repairUntilHitsEqual});
 
 
 
