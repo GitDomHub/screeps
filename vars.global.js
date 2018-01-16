@@ -45,7 +45,7 @@ for (let room in Memory.rooms) {
 	                                         {filter: (s) => s.hits < s.hitsMax * 0.5 && 
 	                                             s.hits < Memory.room1.repairUntil});
 	console.log(damaged);
-	damaged 							= JSON.stringify(damaged);
+	// damaged 							= JSON.stringify(damaged);
 	console.log(damaged);
 	Memory.rooms[room].damagedStructures= damaged;
 } 
