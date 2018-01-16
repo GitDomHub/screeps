@@ -16,10 +16,18 @@ var roleDefender = {
         // first move to a flag if there is one in the room, THEN attack
         
         // check if creeps or structures exist that are not mine
-        // 2Do, check if creeps or structures belong to a friend
+        // 2Do, check if creeps or structures belong to a friend        
+
+
         if(creep.pos.findClosestByRange(FIND_HOSTILE_CREEPS) != null || creep.pos.findClosestByRange(FIND_HOSTILE_STRUCTURES) != null) {
             // find closest hostile creep
             var hostile = creep.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
+
+            // 2Do: attack 
+            var hostileHealer = singleTower.pos.findClosestByRange(FIND_HOSTILE_CREEPS, { filter: (s) => (s.getActiveBodyparts(HEAL) > 0) });
+            var hostileAttacker = singleTower.pos.findClosestByRange(FIND_HOSTILE_CREEPS, { filter: (s) => ( s.getActiveBodyparts(ATTACK) > 0  || s.getActiveBodyparts(RANGED_ATTACK) > 0) });
+            var closestHostile = singleTower.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
+
             //console.log('Hostiles: ' + hostile.length);
             // if no hostile creep found
             if(hostile==null) {

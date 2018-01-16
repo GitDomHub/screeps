@@ -28,16 +28,15 @@ var roleTower = {
 
                 if(hostileHealerBig) {
                     // only attack big healers when close enough
-                    // if(singleTower.pos.inRangeTo(hostileHealerBig, 15)) {                        
+                    if(singleTower.pos.inRangeTo(hostileHealerBig, 15)) {                        
                         singleTower.attack(hostileHealerBig);                   
-                    // }    
+                    }    
                 }
-                
 
                 if(hostileHealer) {
                     singleTower.attack(hostileHealer);
                 }
-                else if (hostileAttacker) {
+                else if (hostileAttacker && !hostileHealerBig) {
                     // dont attack friends
                     //if(hostileAttacker.owner.username != "Odd") { 
                         //console.log('hostile is a friend, I am not attacking.');
