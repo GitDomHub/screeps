@@ -52,13 +52,13 @@ Memory.rooms = Object.keys(Game.rooms);
  		                                         {filter: (s) => s.hits < s.hitsMax * 0.5 && 
  		                                             s.hits < Memory.room1.repairUntil});
 
- var damage 				= Game.rooms[global.room1].find(FIND_STRUCTURES,
- 		                                         {filter: (s) => s.hits < s.hitsMax * 0.5 && 
- 		                                             s.hits < Memory.room1.repairUntil}); 
-console.log(damage);
- // var testvar = _.map(damage, 'id');
- var testvar = _(damage).map(s => {id:s.id,hits:s.hits});
-console.log(testvar);
+//  var damage 				= Game.rooms[global.room1].find(FIND_STRUCTURES,
+//  		                                         {filter: (s) => s.hits < s.hitsMax * 0.5 && 
+//  		                                             s.hits < Memory.room1.repairUntil}); 
+// console.log(damage);
+//  // var testvar = _.map(damage, 'id');
+//  var testvar = _(damage).map(s => {id:s.id,hits:s.hits});
+// console.log(testvar);
 
 // for (s of Memory.damagedStructuresR1) {
 // 	console.log(s.id);
