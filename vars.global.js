@@ -44,7 +44,7 @@ Memory.rooms = roomObject;
 // find all strcutures that need construction and put them into the rooms memory
 for (let room in Memory.rooms) {
 
-	console.log(room[name]);
+	console.log(room['name']);
 
 	// let damagedStruc 				= Game.rooms[global.room1].find(FIND_STRUCTURES,
  // 		                                         {filter: (s) => s.hits < (s.hitsMax * 0.5) && 
