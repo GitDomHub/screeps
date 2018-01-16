@@ -106,7 +106,7 @@ var roleTower = {
         if(lowestHitsStructure) {
             let result = tower.repair(lowestHitsStructure);
         }else{
-            tower.say('err88');
+            console.log('nothing to repair for tower');
         }
 
     }
