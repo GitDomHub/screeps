@@ -30,5 +30,15 @@ if (!Memory.room1.repairUntil)
 
 
 
+var roomArray = [];
+// looooop through all rooms that I have creeps in
+for (singleRoom in Game.rooms) {
+    
+    roomArray.push(singleRoom);        
+}
+console.log('Room Array: ' + roomArray);
+
+Memory.rooms = roomArray;
+
 
 

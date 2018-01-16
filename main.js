@@ -43,7 +43,7 @@ module.exports.loop = function () {
     // looooop through all rooms that I have creeps in
     for (singleRoom in Game.rooms) {
 
-        console.log('In loop for room: ' + singleRoom);
+        // console.log('In loop for room: ' + singleRoom);
         
         roomArray.push(singleRoom);        
 
@@ -51,7 +51,8 @@ module.exports.loop = function () {
         // write path from SPAWN to SOURCES into mem
         // write path from SOURCES to SPAWN into mem
     }
-    console.log('Room Array: ' + roomArray)
+
+    console.log('Room Array: ' + roomArray);
     
     
     actionsSpawn.runSpawnFactory();
