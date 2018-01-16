@@ -40,7 +40,7 @@ var roomObject = {};
 for (let room in Game.rooms) {
 	// write all room names into an array
 	console.log(room);
-	roomObject[] = room;
+	roomObject['name'] = room;
 };
 console.log(roomObject);
 
