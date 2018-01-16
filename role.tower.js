@@ -91,12 +91,10 @@ var roleTower = {
         // 2Do: First repair ramparts, then roads.
 
         // find damaged structures with certain metrics
-        var allDamagedStructures = Game.rooms[room].find(FIND_STRUCTURES, {
-            //filter: (structure) => structure.hits < structure.hitsMax
-            /*structure.hits < structure.hitsMax * 0.5 &&*/
-            filter: (structure) => structure.hits < Memory.room1.repairUntil &&
-                    structure.hits < (structure.hitsMax * 0.5)
-        });
+        // var allDamagedStructures = Game.rooms[room].find(FIND_STRUCTURES, {
+        //     filter: (structure) => structure.hits < Memory.room1.repairUntil &&
+        //             structure.hits < (structure.hitsMax * 0.5)
+        // });
 
         allDamagedStructures = Memory.damagedStructuresR1; // use stuff from memory!
 
