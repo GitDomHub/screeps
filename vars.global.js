@@ -40,13 +40,11 @@ for (let room in roomArray) {
 
 } 
 
-Memory.damagedStructuresR1 = [];
-
-var alldamaged = Game.rooms[global.room1].find(FIND_STRUCTURES,
+//Memory.damagedStructuresR1 = [];
+Memory.damagedStructuresR1 				= Game.rooms[global.room1].find(FIND_STRUCTURES,
 		                                         {filter: (s) => s.hits < s.hitsMax * 0.5 && 
 		                                             s.hits < Memory.room1.repairUntil});
 
-Memory.damagedStructuresR1 = alldamaged;
 for (s of Memory.damagedStructuresR1) {
 	console.log(s.id);
 }
