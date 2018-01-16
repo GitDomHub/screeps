@@ -36,7 +36,7 @@ var roleCourier = {
                // go take energy from storage if energy in extensions and spawns is critical
                var storages = actionsSelectSource.returnStorages(creep);
                // only go to storage, if there is enough energy
-               if (storages.length > 0 && storage[0].store[RESOURCE_ENERGY] > creep.carryCapacity){
+               if (storages.length > 0 && storages[0].store[RESOURCE_ENERGY] > creep.carryCapacity){
                     if(creep.withdraw(storages[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                         creep.moveTo(storages[0], {visualizePathStyle: {stroke: '#ffffff'}});
                     }
