@@ -33,7 +33,7 @@ if (!Memory.room1.repairUntil)
 //     roomArray.push(singleRoom);
 // }
 
-Memory.rooms = Object.keys(Game.rooms);
+// Memory.rooms = Object.keys(Game.rooms);
 
 
 var roomObject = {};
