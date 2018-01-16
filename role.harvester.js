@@ -42,7 +42,7 @@ var roleHarvester = {
             var targets = creep.room.find(FIND_STRUCTURES, {
                 filter: (structure) => {
                     return ( 
-                        structure.structureType == STRUCTURE_TOWER  && structure.energy < structure.energyCapacity ||
+                        /*structure.structureType == STRUCTURE_TOWER  && structure.energy < structure.energyCapacity ||*/
                         structure.structureType == STRUCTURE_EXTENSION && structure.energy < structure.energyCapacity ||
                         structure.structureType == STRUCTURE_SPAWN && structure.energy < structure.energyCapacity /*||
                         structure.structureType == STRUCTURE_STORAGE && structure.store[RESOURCE_ENERGY] < structure.storeCapacity */);
@@ -56,10 +56,27 @@ var roleHarvester = {
             // if there is structures which need energy, move!
             if(targets.length > 0) {
                 // move and transfer to closest target
-                var closestTarget = creep.pos.findClosestByPath(targets);
+                var closestTarget = creep.pos.findClosestByRange(targets);
                 // 2Do: make them move to target before it gets empty
                 if(creep.transfer(closestTarget, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                     creep.moveTo(closestTarget, {visualizePathStyle: {stroke: '#ffffff'}});
+                }
+            }else {
+                // deliver to tower only if everything else has energy
+                var towers = creep.room.find(FIND_STRUCTURES, {
+                filter: (structure) => {
+                        return ( 
+                            structure.structureType == STRUCTURE_TOWER  && structure.energy < structure.energyCapacity                            
+                            );
+                    }
+                });
+                if (towers.length > 0) {
+                    // move and transfer to closest target
+                    var closestTower = creep.pos.findClosestByRange(towers);
+                    // 2Do: make them move to target before it gets empty
+                    if(creep.transfer(closestTower, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                        creep.moveTo(closestTower, {visualizePathStyle: {stroke: '#ffffff'}});
+                    }
                 }
             }
         }
