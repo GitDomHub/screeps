@@ -36,7 +36,7 @@ Memory.rooms = roomArray;
 
 // put all construction sites that need repair into Memory
 for (let room in roomArray) {
-	console.log(Memory.rooms[room]);
+	console.log('room: ' + Memory.rooms[room]);
 } 
 
 

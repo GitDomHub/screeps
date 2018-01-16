@@ -52,7 +52,7 @@ module.exports.loop = function () {
         // write path from SOURCES to SPAWN into mem
     }
 
-    console.log('Room Array: ' + roomArray);
+    // console.log('Room Array: ' + roomArray);
     
     
     actionsSpawn.runSpawnFactory();
