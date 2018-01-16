@@ -35,16 +35,27 @@ if (!Memory.room1.repairUntil)
 
 // Memory.rooms = Object.keys(Game.rooms);
 
-
+// write all rooms into memory
 var roomObject = {};
 for (let room in Game.rooms) {
-	// write all room names into an array
-	console.log(room);
 	roomObject['name'] = room;
 };
-console.log(roomObject);
-
 Memory.rooms = roomObject;
+// find all strcutures that need construction and put them into the rooms memory
+for (let room in Memory.rooms) {
+
+	console.log(room);
+
+	// let damagedStruc 				= Game.rooms[global.room1].find(FIND_STRUCTURES,
+ // 		                                         {filter: (s) => s.hits < (s.hitsMax * 0.5) && 
+ // 		                                             s.hits < Memory.room1.repairUntil});
+
+	// let damagedStructures = {};
+	// for (let struc of damagedStruc) {
+	// 	damagedStructures[struc.id] = struc.hits;	
+	// }
+	// Memory.test = damagedStructures;
+}
 
 
 
