@@ -28,15 +28,16 @@ if (!Memory.room1.repairUntil)
 
 
 
-var roomArray = [];
-for (singleRoom in Game.rooms) {
-    roomArray.push(singleRoom);
-}
-Memory.rooms = roomArray;
+// var roomArray = [];
+// for (singleRoom in Game.rooms) {
+//     roomArray.push(singleRoom);
+// }
+
+Memory.rooms = Game.rooms;
 
 // put all construction sites that need repair into Memory
-for (let room in roomArray) {
-	console.log('room: ' + Memory.rooms[room]);
+for (let room in Memory.rooms) {
+	console.log('room: ' + room);
 
 } 
 
@@ -48,6 +49,7 @@ Memory.damagedStructuresR1 				= Game.rooms[global.room1].find(FIND_STRUCTURES,
 for (s of Memory.damagedStructuresR1) {
 	console.log(s.id);
 }
+
 
 
 
