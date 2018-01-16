@@ -35,14 +35,14 @@ if (!Memory.room1.repairUntil)
 
 Memory.rooms = Object.keys(Game.rooms);
 
-// put all construction sites that need repair into Memory
-for (let room of Memory.rooms) {
-	let damaged 						= Game.rooms[room].find(FIND_STRUCTURES,
-	                                         {filter: (s) => s.hits < s.hitsMax * 0.5 && 
-	                                             s.hits < Memory.room1.repairUntil});
-	console.log(damaged);
-	Memory.rooms[room].damagedStructures= damaged;
-} 
+// // put all construction sites that need repair into Memory
+// for (let room of Memory.rooms) {
+// 	let damaged 						= Game.rooms[room].find(FIND_STRUCTURES,
+// 	                                         {filter: (s) => s.hits < s.hitsMax * 0.5 && 
+// 	                                             s.hits < Memory.room1.repairUntil});
+// 	console.log(damaged);
+// 	Memory.rooms[room].damagedStructures= damaged;
+// } 
 
 
 
@@ -51,6 +51,13 @@ for (let room of Memory.rooms) {
  Memory.damagedStructuresR1 				= Game.rooms[global.room1].find(FIND_STRUCTURES,
  		                                         {filter: (s) => s.hits < s.hitsMax * 0.5 && 
  		                                             s.hits < Memory.room1.repairUntil});
+
+ let damage 				= Game.rooms[global.room1].find(FIND_STRUCTURES,
+ 		                                         {filter: (s) => s.hits < s.hitsMax * 0.5 && 
+ 		                                             s.hits < Memory.room1.repairUntil}); 
+
+ var testvar = _.map(damage, 'hits', _.matchesProperty('id', 'hits'))
+console.log(testvar);
 
 // for (s of Memory.damagedStructuresR1) {
 // 	console.log(s.id);
