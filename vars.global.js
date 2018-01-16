@@ -39,6 +39,7 @@ if (!Memory.room1.repairUntil)
 var roomObject = {};
 for (let room in Game.rooms) {
 	// write all room names into an array
+	console.log(room.name);
 	roomObject[room.name] = room.name;
 };
 console.log(roomObject);
