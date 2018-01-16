@@ -19,27 +19,27 @@ var roleSpawn = {
 		 
 		 //2DO define mininum of creeps in vars
 		 var minBackupHarvesters             = 2;
-		 var minHarvesters                   = 0;    // 2Do: do i still need harvesters, when i got miners and couriers?!?!
+		 var minHarvesters                   = 1;    // delivering energy
 		 var minCouriers                     = 2;    // 2Do: only make couriers, when miners are there or containers are half full
 		 var minTowerCouriers                = 1;    // 2Do: replace maybe with normal couriers. just tell couriers to prioritize towers under certain circs
 		 var minMiners                       = 2;    // 2Do: make enough miners as containers we have
 		 var minRepairers                    = 0;    // cheaper than tower repairing things
-		 var minUpgraders                    = 3;    // 2Do: only spawn more/bigger Upgraders than harvesters enough; only spawn new ones if overall energy amount is over certain number
-		 var minBuilders                     = 2;    // 2Do only make builders when construction sites in room. Make more builders when there are more than  
-		 var minDefenders                    = 0;    // 2Do: 1 always on hand. Only spawn rest if hostile in room.
+		 var minUpgraders                    = 3;    // only spawn more/bigger Upgraders than harvesters enough; only spawn new ones if overall energy amount is over certain number
+		 var minBuilders                     = 2;    // only make builders when construction sites in room. Make more builders when there are more than  
+		 var minDefenders                    = 0;    // Only spawn rest if hostile in room.
 		                                             // Just produce a new one to be ready when old one dies
 		 
 		 //react to when there is an attack
 		 if (global.roomHasHostiles.length > 1) {
 		     console.log('ATTACK MODE LIVE');
-		     // var minBackupHarvesters         = 2;    
-		     // var minHarvesters               = 1;    // +1 for urgent delivery of energy to towers, spawn, extensions 
-		     // var minCouriers                 = 4;    // +1
-		     // var minTowerCouriers            = 0;    // Tower couriers will block the way. Just need to prioritize towers
-		     // var minMiners                   = 1;    // -1
-		     // var minRepairers                = 0;    
-		     // var minUpgraders                = 1;    // -2
-		     // var minBuilders                 = 0;    
+		     var minBackupHarvesters         = 2;    
+		     var minHarvesters               = 1;    // +1 for urgent delivery of energy to towers, spawn, extensions 
+		     var minCouriers                 = 3;    // +1
+		     var minTowerCouriers            = 0;    // Tower couriers will block the way. Just need to prioritize towers
+		     var minMiners                   = 2;    // -1
+		     var minRepairers                = 0;    
+		     var minUpgraders                = 1;    // -2
+		     var minBuilders                 = 0;    
 		     var minDefenders                = 3;   // +8  // 2DO: always spawn defenders first before anything else
 		 }
 
@@ -86,7 +86,7 @@ var roleSpawn = {
 		 // spawn normal HARVESTERS 
 		 if(harvesters.length < minHarvesters) {
 		     var newName = 'Harvester' + Game.time;
-		     Game.spawns['Spawn1'].spawnCreep([MOVE,MOVE,MOVE,WORK,WORK,CARRY,CARRY,CARRY,CARRY], newName, // cost 550E; MOVE*3,WORK*2,CARRY*4; 900K health; carry 200(4 extensions)
+		     Game.spawns['Spawn1'].spawnCreep([MOVE,MOVE,MOVE,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY], newName, // cost 450E; MOVE*3,CARRY*6; 900K health; carry 300(6 extensions)
 		         {memory: {role: 'harvester'}});
 		 }
 		 
