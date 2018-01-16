@@ -51,7 +51,7 @@ for (let room in Memory.rooms) {
 	for (let struc of damagedStruc) {
 		strucs[struc.id] = struc.hits;	
 	}
-	Memory.rooms[room].damagesStructures = strucs;
+	Memory.rooms[room].damagedStructures = strucs;
 	// Memory.test = strucs;
 }
 
