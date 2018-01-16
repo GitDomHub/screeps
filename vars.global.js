@@ -52,11 +52,11 @@ Memory.rooms = Object.keys(Game.rooms);
  		                                         {filter: (s) => s.hits < s.hitsMax * 0.5 && 
  		                                             s.hits < Memory.room1.repairUntil});
 
- let damage 				= Game.rooms[global.room1].find(FIND_STRUCTURES,
+ var damage 				= Game.rooms[global.room1].find(FIND_STRUCTURES,
  		                                         {filter: (s) => s.hits < s.hitsMax * 0.5 && 
  		                                             s.hits < Memory.room1.repairUntil}); 
-
- var testvar = _.map(damage, 'hits', _.matchesProperty('id', 'hits'))
+console.log(damage);
+ var testvar = _.map(damage, 'hits');
 console.log(testvar);
 
 // for (s of Memory.damagedStructuresR1) {
