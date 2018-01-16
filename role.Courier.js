@@ -29,21 +29,22 @@ var roleCourier = {
 
             // backup for when there is no energy available. then let couriers do the job quicker
             // future: if storage has no energy, then just go back to containers
-            let currEnergyAvailable = Game.spawns.Spawn1.room.energyAvailable;
-            let currEnergyCapAvailable = Game.spawns.Spawn1.room.energyCapacityAvailable;
+                    // let currEnergyAvailable = Game.spawns.Spawn1.room.energyAvailable;
+                    // let currEnergyCapAvailable = Game.spawns.Spawn1.room.energyCapacityAvailable;
 
-            if(currEnergyAvailable <= (currEnergyCapAvailable * 0.75) ) {
-               // go take energy from storage if energy in extensions and spawns is critical
-               var storages = actionsSelectSource.returnStorages(creep);
-               // only go to storage, if there is enough energy
-               if (storages.length > 0 && storages[0].store[RESOURCE_ENERGY] > creep.carryCapacity){
-                    if(creep.withdraw(storages[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                        creep.moveTo(storages[0], {visualizePathStyle: {stroke: '#ffffff'}});
-                    }
-                    return; // just go to source, nowhere else
-               }
+                    // if(currEnergyAvailable <= (currEnergyCapAvailable * 0.75) ) {
+                    //    // go take energy from storage if energy in extensions and spawns is critical
+                    //    var storages = actionsSelectSource.returnStorages(creep);
+                    //    // only go to storage, if there is enough energy
+                    //    if (storages.length > 0 && storages[0].store[RESOURCE_ENERGY] > creep.carryCapacity){
+                    //         if(creep.withdraw(storages[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                    //             creep.moveTo(storages[0], {visualizePathStyle: {stroke: '#ffffff'}});
+                    //         }
+                    //         return; // just go to source, nowhere else
+                    //    }
+                    // }
 
-            }
+            
             // When available energy less than 1000, then check for storages for energy and help distribute. dont go to containers. too slow!
             
 
