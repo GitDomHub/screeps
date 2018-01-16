@@ -47,7 +47,7 @@ var alldamaged = Game.rooms[global.room1].find(FIND_STRUCTURES,
 		                                             s.hits < Memory.room1.repairUntil});
 
 for (s in alldamaged) {
-	Memory.damagedStructuresR1.push(s.id);
+	Memory.damagedStructuresR1.push(s);
 }
 
 
