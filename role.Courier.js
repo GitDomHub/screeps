@@ -153,7 +153,7 @@ var roleCourier = {
                                     );
                         }
                     });
-                    //console.log(targets);
+                    // console.log(targets);
                     // if there is structures which need energy, move!
                     if(targets.length > 0) {
                         let closestTarget = creep.pos.findClosestByRange(targets); // somehow one tower is not being served. maybe list by energy amount?
