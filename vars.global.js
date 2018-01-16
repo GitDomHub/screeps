@@ -47,7 +47,7 @@ for (let room in Memory.rooms) {
 	console.log(damaged);
 	damaged 							= JSON.stringify(damaged);
 	console.log(damaged);
-	 // Memory.rooms[room].damagedStructures
+	Memory.rooms[room].damagedStructures= damaged;
 } 
 
 //Memory.damagedStructuresR1 = [];
