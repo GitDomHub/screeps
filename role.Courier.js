@@ -110,28 +110,28 @@ var roleCourier = {
         } else { // if creep has energy and should deliver...
             // find all structures that need energy, list only those structures 
             // of which energy is less than max
-            // 2Do: 
-            var targets = creep.room.find(FIND_STRUCTURES, {
-                filter: (structure) => {
-                    // 2Do: because storage has huge storage, maybe make own creep for it?
-                    return ( (  structure.structureType == STRUCTURE_EXTENSION   && structure.energy < structure.energyCapacity ||
-                                structure.structureType == STRUCTURE_SPAWN       && structure.energy < structure.energyCapacity ||
-                                structure.structureType == STRUCTURE_TOWER       && structure.energy <= (structure.energyCapacity * 0.9) /*|| 
-                                structure.structureType == STRUCTURE_STORAGE     && structure.store[RESOURCE_ENERGY] < structure.storeCapacity*/)                                 
-                            );
-                }
-            });
-            //console.log(targets);
-            // if there is structures which need energy, move!
-            if(targets.length > 0) {
-                let closestTarget = creep.pos.findClosestByRange(targets); // somehow one tower is not being served. maybe list by energy amount?
-                // or maybe check if target is storage, then check if towers are full first.
-                if(creep.transfer(closestTarget, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(closestTarget, {visualizePathStyle: {stroke: '#ffffff'}});
-                    console.log(closestTarget);
-                }
-            } else { // put energy into storage only if everything else has power
-                console.log('no strucs that need energy');
+            
+            // var targets = creep.room.find(FIND_STRUCTURES, {
+            //     filter: (structure) => {
+            //         // 2Do: because storage has huge storage, maybe make own creep for it?
+            //         return ( (  structure.structureType == STRUCTURE_EXTENSION   && structure.energy < structure.energyCapacity ||
+            //                     structure.structureType == STRUCTURE_SPAWN       && structure.energy < structure.energyCapacity ||
+            //                     structure.structureType == STRUCTURE_TOWER       && structure.energy <= (structure.energyCapacity * 0.9) /*|| 
+            //                     structure.structureType == STRUCTURE_STORAGE     && structure.store[RESOURCE_ENERGY] < structure.storeCapacity*/)                                 
+            //                 );
+            //     }
+            // });
+            // //console.log(targets);
+            // // if there is structures which need energy, move!
+            // if(targets.length > 0) {
+            //     let closestTarget = creep.pos.findClosestByRange(targets); // somehow one tower is not being served. maybe list by energy amount?
+            //     // or maybe check if target is storage, then check if towers are full first.
+            //     if(creep.transfer(closestTarget, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+            //         creep.moveTo(closestTarget, {visualizePathStyle: {stroke: '#ffffff'}});
+            //         console.log(closestTarget);
+            //     }
+            // } else { 
+                
                 var storages = creep.room.find(FIND_STRUCTURES, {
                 filter: (s) => {
                     return ( (s.structureType == STRUCTURE_STORAGE && s.store[RESOURCE_ENERGY] < s.storeCapacity)                                 
@@ -143,9 +143,29 @@ var roleCourier = {
                     if(creep.transfer(storages[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                         creep.moveTo(storages[0], {visualizePathStyle: {stroke: '#ffffff'}});
                     }
+                } else {
+                    // if no storage there or maybe storage is full, then deliver to other facilities
+                    var targets = creep.room.find(FIND_STRUCTURES, {
+                        filter: (structure) => {
+                            return ( (  structure.structureType == STRUCTURE_EXTENSION   && structure.energy < structure.energyCapacity ||
+                                        structure.structureType == STRUCTURE_SPAWN       && structure.energy < structure.energyCapacity ||
+                                        structure.structureType == STRUCTURE_TOWER       && structure.energy <= (structure.energyCapacity * 0.9))                                 
+                                    );
+                        }
+                    });
+                    //console.log(targets);
+                    // if there is structures which need energy, move!
+                    if(targets.length > 0) {
+                        let closestTarget = creep.pos.findClosestByRange(targets); // somehow one tower is not being served. maybe list by energy amount?
+                        // or maybe check if target is storage, then check if towers are full first.
+                        if(creep.transfer(closestTarget, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                            creep.moveTo(closestTarget, {visualizePathStyle: {stroke: '#ffffff'}});
+                            console.log(closestTarget);
+                        }
+                    }
                 }
 
-            }
+            // }
 
         }
 
