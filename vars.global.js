@@ -39,7 +39,7 @@ Memory.rooms = Game.rooms;
 for (let room in Memory.rooms) {
 	console.log('room: ' + Memory.rooms[room]);
 
-	Memory.rooms[room].damagedStructures= []; // init this new variable
+	// Memory.rooms[room].damagedStructures= []; // init this new variable
 
 	let damaged 						= Game.rooms[room].find(FIND_STRUCTURES,
 	                                         {filter: (s) => s.hits < s.hitsMax * 0.5 && 
@@ -47,7 +47,7 @@ for (let room in Memory.rooms) {
 	console.log(damaged);
 	// damaged 							= JSON.stringify(damaged);
 	console.log(damaged);
-	// Memory.rooms[room].damagedStructures= damaged;
+	Memory.rooms[room].damagedStructures= damaged;
 } 
 
 //Memory.damagedStructuresR1 = [];
