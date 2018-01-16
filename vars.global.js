@@ -57,7 +57,7 @@ Memory.rooms = Object.keys(Game.rooms);
  		                                             s.hits < Memory.room1.repairUntil}); 
 console.log(damage);
  // var testvar = _.map(damage, 'id');
- var testvar = _(damage).map(s => {id:s.id,hits:s.hits};
+ var testvar = _(damage).map(s => {id:s.id,hits:s.hits});
 console.log(testvar);
 
 // for (s of Memory.damagedStructuresR1) {
