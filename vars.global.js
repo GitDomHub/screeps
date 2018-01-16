@@ -42,7 +42,7 @@ for (let room in roomArray) {
 
 Memory.damagedStructuresR1 = Game.rooms[global.room1].find(FIND_STRUCTURES,
 		                                         {filter: (s) => s.hits < s.hitsMax * 0.5 && 
-		                                             s.hits < global.repairUntilHitsEqual});
+		                                             s.hits < Memory.room1.repairUntil});
 
 
 
