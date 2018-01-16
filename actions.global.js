@@ -21,7 +21,7 @@ module.exports = {
 		}
 
 		for (singleRoom in Game.rooms) {
-			if (!Memory.rooms[singleRoom.name]){
+			if (!Memory.rooms[singleRoom]){
 				console.log('cant find room');
 			}
 		}
