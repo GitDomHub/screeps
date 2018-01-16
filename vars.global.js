@@ -56,13 +56,15 @@ damagedStruc 				= Game.rooms[global.room1].find(FIND_STRUCTURES,
  		                                         {filter: (s) => s.hits < (s.hitsMax * 0.5) && 
  		                                             s.hits < Memory.room1.repairUntil});
 
-var emptyArray = [];
-for (struc of damagedStruc) {
+var emptyArray = {};
+for (let struc of damagedStruc) {
 	let id = struc.id;
 	let hits = struc.hits;
-
-	console.log('test:     id:' + id + '; hits:' + hits);
+		console.log('test:     id:' + id + '; hits:' + hits);	
+	emptyArray[struc.id] = struc.hits;	
 }
+
+console.log(emptyArray);
 
 // _.sortBy(test, function(s) {return s.hits});
 
