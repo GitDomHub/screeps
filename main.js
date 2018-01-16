@@ -39,12 +39,12 @@ module.exports.loop = function () {
     actionsGlobal.initRoomMemory(); // creates a new empty array for all rooms in memory if non existent
 
 
-    
+    var roomArray = [];
     // looooop through all rooms that I have creeps in
     for (singleRoom in Game.rooms) {
 
         console.log('In loop for room: ' + singleRoom);
-        var roomArray = [];
+        
         roomArray.push(singleRoom);        
 
         actionsGlobal.writeSourcesIntoMem(singleRoom); // put all energy sources into memory
