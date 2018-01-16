@@ -15,9 +15,7 @@ global.damagedStrucInRoom1             	= Game.rooms[global.room1].find(FIND_STR
 		                                             s.hits < global.repairUntilHitsEqual}); // 2Do: calculate the whole amount of missing hits until we reach our goal.
 
 
-// Memory.rooms = {
 
-// };
 // store vars in memory, so we can change them manually over console 
 if (!Memory.room1) 
 	Memory.room1 						= {};
@@ -31,14 +29,15 @@ if (!Memory.room1.repairUntil)
 
 
 var roomArray = [];
-// looooop through all rooms that I have creeps in
 for (singleRoom in Game.rooms) {
-    
-    roomArray.push(singleRoom);        
+    roomArray.push(singleRoom);
 }
-console.log('Room Array: ' + roomArray);
-
 Memory.rooms = roomArray;
+
+// put all construction sites that need repair into Memory
+for (let room in roomArray) {
+	console.log(Memory.rooms[room]);
+} 
 
 
 
