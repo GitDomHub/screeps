@@ -41,8 +41,10 @@ for (let room in Game.rooms) {
 	// write all room names into an array
 	roomObject[room.name] = room.name;
 };
-console.log('asjdhgjahsgdjghasjdghjashgdj');
 console.log(roomObject);
+
+Memory.rooms = roomObject;
+
 
 
 // // put all construction sites that need repair into Memory
