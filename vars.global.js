@@ -72,7 +72,7 @@ for (let room in Memory.rooms) {
 	}
 
 	var sources 					= Game.rooms[room].find(FIND_SOURCES);
-	for (let source of droppedEnergyRes) {		
+	for (let source of sources) {		
 		energySources[source.id] = 'source';
 	}
 
