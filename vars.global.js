@@ -53,17 +53,23 @@ for (let room in Memory.rooms) {
 	}
 	Memory.rooms[room].damagedStructures = strucs;
 
-	let containers 					= Game.rooms[room].find(FIND_STRUCTURES, 
-										{filter: (s) => s.structureType == STRUCTURE_CONTAINER});
-	console.log('containers: ' + containers);
+
+	// CONTAINERS & STORAGES
+	let cont_stor 					= Game.rooms[room].find(FIND_STRUCTURES, 
+										{filter: (s) => s.structureType == STRUCTURE_CONTAINER ||
+														s.structureType == STRUCTURE_STORAGE
+										});
+	console.log('containers& storages: ' + cont_stor);
 
 	let containersObj = {};
 	let i = 0;
-	for (let struc of containers) {		
-		containersObj[i] = struc.id;	
+	for (let struc of cont_stor) {		
+		containersObj[struc.id] = struc.structureType;	
 		i++;
 	}
-	Memory.rooms[room].containers = containersObj;
+	Memory.rooms[room].energySources = containersObj;
+
+
 
 }
 
