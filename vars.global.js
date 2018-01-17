@@ -57,13 +57,13 @@ for (let room in Memory.rooms) {
 										{filter: (s) => s.structureType == STRUCTURE_CONTAINER});
 	console.log('containers: ' + containers);
 
-	let strucs = {};
+	let containersObj = {};
 	let i = 0;
 	for (let struc of containers) {		
-		strucs[i] = struc.id;	
+		containersObj[i] = struc.id;	
 		i++;
 	}
-	Memory.rooms[room].containers = strucs;
+	Memory.rooms[room].containers = containersObj;
 
 }
 
