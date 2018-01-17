@@ -55,8 +55,7 @@ for (let room in Memory.rooms) {
 	// Memory.test = strucs;
 
 	let containers 					= Game.rooms[room].find(FIND_STRUCTURES, 
-										{filter: (s) => 
-						                    s.structureType == STRUCTURE_CONTAINER;});
+										{filter: (s) => s.structureType == STRUCTURE_CONTAINER});
 	console.log('containers: ' + containers);
 }
 
