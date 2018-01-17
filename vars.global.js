@@ -53,6 +53,13 @@ for (let room in Memory.rooms) {
 	}
 	Memory.rooms[room].damagedStructures = strucs;
 	// Memory.test = strucs;
+
+	let containers 					= Game.rooms[room].find(FIND_STRUCTURES, {
+						                filter: (s) => {
+						                    s.structureType == STRUCTURE_CONTAINER;
+						                }
+						        	});
+	console.log(containers);
 }
 
 
