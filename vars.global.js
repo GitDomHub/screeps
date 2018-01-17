@@ -42,8 +42,9 @@ for (let room in Game.rooms) {
 };
 Memory.rooms = roomObject;
 
-// find all strcutures that need construction and put them into the rooms memory
+
 for (let room in Memory.rooms) {
+	// find all STRUCTURES that need REPAIR and put them into the rooms memory
 	let damagedStruc 				= Game.rooms[room].find(FIND_STRUCTURES,
  		                                         {filter: (s) => s.hits < (s.hitsMax * 0.5) && 
  		                                             s.hits < Memory.room1.repairUntil});
@@ -54,30 +55,28 @@ for (let room in Memory.rooms) {
 	Memory.rooms[room].damagedStructures = strucs;
 
 
-	// CONTAINERS & STORAGES
-	let cont_stor 					= Game.rooms[room].find(FIND_STRUCTURES, 
+	// CONTAINERS & STORAGES & links
+	let cont_stor_link 					= Game.rooms[room].find(FIND_STRUCTURES, 
 										{filter: (s) => s.structureType == STRUCTURE_CONTAINER ||
-														s.structureType == STRUCTURE_STORAGE });
+														s.structureType == STRUCTURE_STORAGE ||
+														s.structureType == STRUCTURE_LINK });
 	let energySources = {};
 	let i = 0;
-	for (let struc of cont_stor) {		
+	for (let struc of cont_stor_link) {		
 		energySources[struc.id] = struc.structureType;	
 		i++;
 	}
-
+	// DROPPED ENERGY
 	let droppedEnergyRes 			= Game.rooms[room].find(FIND_DROPPED_RESOURCES, 
 										{filter: (s) => s.amount > 100 && s.resourceType === RESOURCE_ENERGY });
-	console.log('energy sources: ' + droppedEnergyRes);
 	for (let drop of droppedEnergyRes) {		
-		console.log('drop.id: ' + drop.id);
 		energySources[drop.id] = 'dropped_energy';
 	}
-
+	// ENERGY SOURCES
 	var sources 					= Game.rooms[room].find(FIND_SOURCES);
 	for (let source of sources) {		
 		energySources[source.id] = 'source';
 	}
-
 
 
 	Memory.rooms[room].energySources = energySources;
