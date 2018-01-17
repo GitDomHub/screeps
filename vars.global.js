@@ -46,14 +46,13 @@ Memory.rooms = roomObject;
 for (let room in Memory.rooms) {
 	// find all STRUCTURES that need REPAIR and put them into the rooms memory
 	let damagedStruc 				= Game.rooms[room].find(FIND_STRUCTURES,
- 		                                         {filter: (s) => s.hits < (s.hitsMax * 0.5) && 
- 		                                             s.hits < Memory.room1.repairUntil});
+ 		                            {filter: (s) => s.hits < (s.hitsMax * 0.5) && 
+ 		                                            s.hits < Memory.room1.repairUntil});
 	let strucs = {};
 	for (let struc of damagedStruc) {
 		strucs[struc.id] = struc.hits;	
 	}
 	Memory.rooms[room].damagedStructures = strucs;
-
 
 	// CONTAINERS & STORAGES & links
 	let cont_stor_link 					= Game.rooms[room].find(FIND_STRUCTURES, 
@@ -68,7 +67,8 @@ for (let room in Memory.rooms) {
 	}
 	// DROPPED ENERGY
 	let droppedEnergyRes 			= Game.rooms[room].find(FIND_DROPPED_RESOURCES, 
-										{filter: (s) => s.amount > 100 && s.resourceType === RESOURCE_ENERGY });
+									{filter: (s) => s.amount > 100 && 
+													s.resourceType === RESOURCE_ENERGY });
 	for (let drop of droppedEnergyRes) {		
 		energySources[drop.id] = 'dropped_energy';
 	}
@@ -77,25 +77,24 @@ for (let room in Memory.rooms) {
 	for (let source of sources) {		
 		energySources[source.id] = 'source';
 	}
-
-
 	Memory.rooms[room].energySources = energySources;
-
-
-
 }
 
 
 
-// // put all construction sites that need repair into Memory
-// for (let room of Memory.rooms) {
-// 	let damaged 						= Game.rooms[room].find(FIND_STRUCTURES,
-// 	                                         {filter: (s) => s.hits < s.hitsMax * 0.5 && 
-// 	                                             s.hits < Memory.room1.repairUntil});
-// 	console.log(damaged);
-// 	Memory.rooms[room].damagedStructures= damaged;
-// } 
 
+// testing storing paths
+let sto 							= Game.getObjectById('5a51fe37060f9f3135cb7bab');
+let source1 						= Game.getObjectById('5873be2911e3e4361b4da571'); 
+let source2 						= Game.getObjectById('5873be2911e3e4361b4da572'); 
+
+let testpath 						= PathFinder.search(source1, sto);
+
+Memory.testpath 					= testpath;
+
+
+
+//
 
 
 
@@ -112,7 +111,7 @@ var damagedStructures = {};
 for (let struc of damagedStruc) {
 	damagedStructures[struc.id] = struc.hits;	
 }
-Memory.test = damagedStructures;
+// Memory.test = damagedStructures;
 
 // _.sortBy(test, function(s) {return s.hits});
 
