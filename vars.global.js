@@ -52,11 +52,19 @@ for (let room in Memory.rooms) {
 		strucs[struc.id] = struc.hits;	
 	}
 	Memory.rooms[room].damagedStructures = strucs;
-	// Memory.test = strucs;
 
 	let containers 					= Game.rooms[room].find(FIND_STRUCTURES, 
 										{filter: (s) => s.structureType == STRUCTURE_CONTAINER});
 	console.log('containers: ' + containers);
+
+	let strucs = {};
+	let i = 0;
+	for (let struc of containers) {		
+		strucs[i] = struc.id;	
+		i++;
+	}
+	Memory.rooms[room].containers = strucs;
+
 }
 
 
