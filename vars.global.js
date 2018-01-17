@@ -83,10 +83,10 @@ for (let room in Memory.rooms) {
 	//
 	//
 	let sto 							= Game.getObjectById('5a51fe37060f9f3135cb7bab');
-	let source1 						= Game.getObjectById('5873be2911e3e4361b4da571'); 
-	let source2 						= Game.getObjectById('5873be2911e3e4361b4da572'); 
+	let cont1 							= Game.getObjectById('5a47348a8f3dc80a6d80c71a'); 
+	let cont2 							= Game.getObjectById('5a4992387cefde22d046c0a3'); 
 
-	let testpath 						= Game.rooms[room].findPath(source1.pos, sto.pos);
+	let testpath 						= Game.rooms[room].findPath(cont1.pos, sto.pos);
 	console.log(testpath);
 	Memory.testpath 					= testpath;
 
