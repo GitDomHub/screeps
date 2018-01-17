@@ -57,17 +57,28 @@ for (let room in Memory.rooms) {
 	// CONTAINERS & STORAGES
 	let cont_stor 					= Game.rooms[room].find(FIND_STRUCTURES, 
 										{filter: (s) => s.structureType == STRUCTURE_CONTAINER ||
-														s.structureType == STRUCTURE_STORAGE
-										});
-	console.log('containers& storages: ' + cont_stor);
-
-	let containersObj = {};
+														s.structureType == STRUCTURE_STORAGE });
+	let energySources = {};
 	let i = 0;
 	for (let struc of cont_stor) {		
-		containersObj[struc.id] = struc.structureType;	
+		energySources[struc.id] = struc.structureType;	
 		i++;
 	}
-	Memory.rooms[room].energySources = containersObj;
+
+	let droppedEnergyRes 			= Game.rooms[room].find(FIND_DROPPED_RESOURCES, 
+										{filter: (s) => s.amount > 100 && s.resourceType === RESOURCE_ENERGY });
+	for (let drop of droppedEnergyRes) {		
+		energySources[drop.id] = 'dropped_energy';
+	}
+
+	var sources 					= Game.rooms[room].find(FIND_SOURCES);
+	for (let source of droppedEnergyRes) {		
+		energySources[source.id] = 'source';
+	}
+
+
+
+	Memory.rooms[room].energySources = energySources;
 
 
 
