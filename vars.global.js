@@ -88,9 +88,9 @@ let sto 							= Game.getObjectById('5a51fe37060f9f3135cb7bab');
 let source1 						= Game.getObjectById('5873be2911e3e4361b4da571'); 
 let source2 						= Game.getObjectById('5873be2911e3e4361b4da572'); 
 
-let testpath 						= PathFinder.search(source1, sto);
+// let testpath 						= PathFinder.search(source1, sto);
 
-Memory.testpath 					= testpath;
+// Memory.testpath 					= testpath;
 
 
 
