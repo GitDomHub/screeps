@@ -67,7 +67,7 @@ for (let room in Memory.rooms) {
 
 	let droppedEnergyRes 			= Game.rooms[room].find(FIND_DROPPED_RESOURCES, 
 										{filter: (s) => s.amount > 100 && s.resourceType === RESOURCE_ENERGY });
-	console.log('energy sources: ' droppedEnergyRes);
+	console.log('energy sources: ' + droppedEnergyRes);
 	for (let drop of droppedEnergyRes) {		
 		console.log('drop.id: ' + drop.id);
 		energySources[drop.id] = 'dropped_energy';
