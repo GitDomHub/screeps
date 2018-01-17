@@ -78,19 +78,28 @@ for (let room in Memory.rooms) {
 		energySources[source.id] = 'source';
 	}
 	Memory.rooms[room].energySources = energySources;
+
+	// testing storing paths
+	//
+	//
+	let sto 							= Game.getObjectById('5a51fe37060f9f3135cb7bab');
+	let source1 						= Game.getObjectById('5873be2911e3e4361b4da571'); 
+	let source2 						= Game.getObjectById('5873be2911e3e4361b4da572'); 
+
+	let testpath 						= Game.rooms[room].findPath(source1.pos, sto.pos);
+	console.log(testpath);
+	Memory.testpath 					= testpath;
+
+
+	//
+	//
+	//
 }
 
 
 
 
-// testing storing paths
-let sto 							= Game.getObjectById('5a51fe37060f9f3135cb7bab');
-let source1 						= Game.getObjectById('5873be2911e3e4361b4da571'); 
-let source2 						= Game.getObjectById('5873be2911e3e4361b4da572'); 
 
-// let testpath 						= PathFinder.search(source1, sto);
-
-// Memory.testpath 					= testpath;
 
 
 
