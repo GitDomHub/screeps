@@ -15,36 +15,26 @@ module.exports = {
 	    }
 	},
 
-	initRoomMemory : function () {
+	InitRoomMemory : function () {
 		if (!Memory.rooms) {
 			Memory.rooms = {};			
 		}
+	},
 
-		for (singleRoom in Game.rooms) {
-			if (!Memory.rooms[singleRoom]){
-				console.log('cant find room');
-			}
-		}
-			
+	WriteSourcesIntoMem : function (room) {
 
-			
+
 
 	},
 
-	writeSourcesIntoMem : function (room) {
 
-		let allSources = Game.rooms[room].find(FIND_SOURCES);
-		console.log(allSources);
+	WriteDamagedStrucsIntoMem : function (room) {
 
-		// if(!Memory.rooms[room].EnergySources || Memory.rooms[room].EnergySources == 0) {
-		// 	for (singleSource of allSources) {
-		// 		Memory.rooms[room].EnergySources.push(singleSource.id); 				
-		// 	}
-		// }
+
 
 	},
 
-	writePathSpawnToSources : function (room) {
+	WritePathSpawnToSources : function (room) {
 		//find all sources 
 		// let allSources = room.find(FIND_SOURCES);
 
@@ -54,7 +44,7 @@ module.exports = {
 		// creep.moveByPath(path);
 	},
 
-	writePathSourcesToSpawn : function () {
+	WritePathSourcesToSpawn : function () {
 
 	}
 

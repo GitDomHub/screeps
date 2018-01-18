@@ -36,7 +36,7 @@ module.exports.loop = function () {
     // run memory 
     actionsGlobal.ClearMemory(); // clears dead creep memory
     
-    actionsGlobal.initRoomMemory(); // creates a new empty array for all rooms in memory if non existent
+    actionsGlobal.InitRoomMemory(); // creates a new empty array for all rooms in memory if non existent
 
 
     var roomArray = [];
@@ -48,8 +48,8 @@ module.exports.loop = function () {
         roomArray.push(singleRoom);        
 
         actionsGlobal.writeSourcesIntoMem(singleRoom); // put all energy sources into memory
-        // write path from SPAWN to SOURCES into mem
-        // write path from SOURCES to SPAWN into mem
+        
+
     }
 
     // console.log('Room Array: ' + roomArray);
@@ -64,14 +64,10 @@ module.exports.loop = function () {
     // manually overwrite creeps
     if (Game.creeps['Builder23382954'] != undefined) {
         Game.creeps['Builder23382954'].memory.role = 'courier';
-        console.log('Builder23382954 hat die Rolle: ' + Game.creeps['🔨 Builder23382954'].memory.role);    
+        console.log('Builder23382954 hat die Rolle: ' + Game.creeps['Builder23382954'].memory.role);    
     } 
     
-    
-    //console.log(Game.creeps['Repairer23189902'].owner.username);
-    //Game.creeps['💎 Miner23242361'].memory.servingContainer = '5a437304ea2d2626ee07360f';
-    //Game.creeps['💎 Miner23242361'].memory.servingContainer = '';
-    //console.log('miner with name <💎 Miner23242361> is serving this continer:' + Game.creeps['💎 Miner23242361'].memory.servingContainer );
+
     
     
     //Console 

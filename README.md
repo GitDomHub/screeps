@@ -76,7 +76,7 @@ Harvesting
 # Things to save into memory to save CPU #
 1. Energy Sources (Sources, Drops, Containers, Storages)
 2. Facilities that need energy (Spawn, Extensions, Towers, Labs)
-3. Construction Sites
-4. Repair Sites 
+3. Construction Sites (not needed!)
+4. Repair Sites (maybe only get those every 10 ticks?)
 5. Upgrade-Sites (Controller)
 
