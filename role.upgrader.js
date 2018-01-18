@@ -19,6 +19,7 @@ var roleUpgrader = {
                 // try: move by path that is set in memory: 
                 if (creep.memory.pathToController) {
                     let deser = Room.deserializePath(creep.memory.pathToController)
+                    console.log(deser);
                     creep.moveByPath(deser);
                     creep.say('path ok');
                 }else {
