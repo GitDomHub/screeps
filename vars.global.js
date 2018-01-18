@@ -85,10 +85,10 @@ for (let room in Memory.rooms) {
 	let sto 							= Game.getObjectById('5a51fe37060f9f3135cb7bab');
 	// let cont1 							= Game.getObjectById('5a47348a8f3dc80a6d80c71a'); 
 	// let cont2 							= Game.getObjectById('5a4992387cefde22d046c0a3'); 
-	let controller 						= Game.rooms[room].controller.pos;
+	let controller 						= Game.rooms[room].controller;
 	console.log(controller);
-	// let testpath 						= Game.rooms[room].findPath(sto.pos, controller.pos);
-	// Memory.tespathserialized 			= Room.serializePath(testpath);
+	let testpath 						= Game.rooms[room].findPath(sto.pos, controller.pos);
+	Memory.tespathserialized 			= Room.serializePath(testpath);
 
 
 
