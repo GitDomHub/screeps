@@ -26,7 +26,7 @@ var roleUpgrader = {
                 }                
                 // creep.moveByPath(pathToController);
                 // creep.memory.pathToStorage = pathControllerToStorage;
-                creep.moveTo(creep.room.controller, {visualizePathStyle: {stroke: '#ffffff'}});
+                console.log(creep.moveTo(creep.room.controller, {visualizePathStyle: {stroke: '#ffffff'}}));
             }
         }
         else {
