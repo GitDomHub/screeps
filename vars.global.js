@@ -84,17 +84,25 @@ for (let room in Memory.rooms) {
 	// To do list for storing path for upgraders:
 	// (later: if no storage, then use container. if not container, then use closest source.)
 	// If storage exists in room: 
-	// - get path STORAGE to CONTROLLER
-	// - get path CONTROLLER to STORAGE
-	// 
 	let storage 						= Game.rooms[room].storage;
 	let controller 						= Game.rooms[room].controller;
+	// - get path STORAGE to CONTROLLER
 	let pathStorageToController 		= Game.rooms[room].findPath(storage.pos, controller.pos);
+	// - get path CONTROLLER to STORAGE
 	let pathControllerToStorage 		= Game.rooms[room].findPath(controller.pos, storage.pos);
 
-	Memory.path1 			 			= Room.serializePath(pathStorageToController);
-	Memory.path2 			 			= Room.serializePath(pathControllerToStorage);
+	Memory.pathToController 			= Room.serializePath(pathStorageToController);
+	Memory.pathToStorage 			 	= Room.serializePath(pathControllerToStorage);
 
+
+	// get all creeps that are upgraders, and set these paths into memory
+	// later, we do this only once when creeps are spawned, not every tick
+	// creep.memory.pathToController = pathStorageToController;
+	// creep.memory.pathToStorage = pathControllerToStorage;
+
+	if (Game.creeps['Upgrader23566801'] != undefined) {
+        Game.creeps['Upgrader23566801'].memory.pathToController = Room.serializePath(pathStorageToController);
+    } 
 
 
 	//

@@ -14,13 +14,23 @@ var roleUpgrader = {
         }
 
         if(creep.memory.upgrading) {
-            //Upgrader 2Do: check if controller is already set in memory!
+            //Upgrader 2Do: check if controller is already set in memory!            
             if(creep.upgradeController(creep.room.controller) == ERR_NOT_IN_RANGE) {
-                creep.moveTo(creep.room.controller, {visualizePathStyle: {stroke: '#ffffff'}});
+                // try: move by path that is set in memory: 
+                if (creep.memory.pathToController) {
+                    creep.moveByPath(pathToController);
+                    creep.say('path ok');
+                }else {
+                    creep.moveTo(creep.room.controller, {visualizePathStyle: {stroke: '#ffffff'}});    
+                }                
+                // creep.moveByPath(pathToController);
+                // creep.memory.pathToStorage = pathControllerToStorage;
+                // creep.moveTo(creep.room.controller, {visualizePathStyle: {stroke: '#ffffff'}});
             }
         }
         else {
-            
+            // even newer method: 
+            // creep.moveByPath(pathToStorage);
              //new alternative: use actions.selectSource routine to see if there are containers first
             if(actionSelectSource) {
                 actionSelectSource.run(creep);
