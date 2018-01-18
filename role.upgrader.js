@@ -22,7 +22,6 @@ var roleUpgrader = {
                     if (!creep.moveByPath(deser) == OK) {
                         creep.moveTo(creep.room.controller, {visualizePathStyle: {stroke: '#ffffff'}});    allDamagedStructures    
                     }else{
-                        console.log(moved);
                         creep.say('path ok');
                     }
                     
