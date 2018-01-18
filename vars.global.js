@@ -89,7 +89,7 @@ for (let room in Memory.rooms) {
 	let testpath 						= Game.rooms[room].findPath(cont1.pos, sto.pos);
 	// console.log(testpath);
 	Memory.testpath 					= testpath;
-	// Memory.tespathserialized 			= Game.rooms[room].serializePath(testpath);
+	Memory.tespathserialized 			= Room.serializePath(testpath);
 
 
 	//
