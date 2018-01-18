@@ -47,7 +47,7 @@ module.exports.loop = function () {
         
         roomArray.push(singleRoom);        
 
-        actionsGlobal.writeSourcesIntoMem(singleRoom); // put all energy sources into memory
+        actionsGlobal.WriteSourcesIntoMem(singleRoom); // put all energy sources into memory
         
 
     }
