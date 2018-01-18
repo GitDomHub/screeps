@@ -18,7 +18,8 @@ var roleUpgrader = {
             if(creep.upgradeController(creep.room.controller) == ERR_NOT_IN_RANGE) {
                 // try: move by path that is set in memory: 
                 if (creep.memory.pathToController) {
-                    creep.moveByPath(creep.memory.pathToController);
+                    let deser = Room.deserializePath(creep.memory.pathToController)
+                    creep.moveByPath(deser);
                     creep.say('path ok');
                 }else {
                     creep.moveTo(creep.room.controller, {visualizePathStyle: {stroke: '#ffffff'}});    
