@@ -66,9 +66,9 @@ for (let room in Memory.rooms) {
 		i++;
 	}
 	// DROPPED ENERGY
-	let droppedEnergyRes 			= Game.rooms[room].find(FIND_DROPPED_RESOURCES, 
-									{filter: (s) => s.amount > 100 && 
-													s.resourceType === RESOURCE_ENERGY });
+	let droppedEnergyRes 				= Game.rooms[room].find(FIND_DROPPED_RESOURCES, 
+										{filter: (s) => s.amount > 100 && 
+														s.resourceType === RESOURCE_ENERGY });
 	for (let drop of droppedEnergyRes) {		
 		energySources[drop.id] = 'dropped_energy';
 	}
@@ -87,8 +87,9 @@ for (let room in Memory.rooms) {
 	let cont2 							= Game.getObjectById('5a4992387cefde22d046c0a3'); 
 
 	let testpath 						= Game.rooms[room].findPath(cont1.pos, sto.pos);
-	console.log(testpath);
+	// console.log(testpath);
 	Memory.testpath 					= testpath;
+	Memory.tespathserialized 			= Game.rooms[room].serializePath(testpath);
 
 
 	//
