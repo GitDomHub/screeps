@@ -27,14 +27,6 @@ if (!Memory.room1.repairUntil)
 	Memory.room1.repairUntil 			= 750000;
 
 
-
-// var roomArray = [];
-// for (singleRoom in Game.rooms) {
-//     roomArray.push(singleRoom);
-// }
-
-// Memory.rooms = Object.keys(Game.rooms);
-
 // write all rooms into memory
 var roomObject = {};
 for (let room in Game.rooms) {
@@ -79,16 +71,29 @@ for (let room in Memory.rooms) {
 	}
 	Memory.rooms[room].energySources = energySources;
 
+
+
 	// testing storing paths
 	//
 	//
-	let sto 							= Game.getObjectById('5a51fe37060f9f3135cb7bab');
+	
 	// let cont1 							= Game.getObjectById('5a47348a8f3dc80a6d80c71a'); 
 	// let cont2 							= Game.getObjectById('5a4992387cefde22d046c0a3'); 
+	
+
+	// To do list for storing path for upgraders:
+	// (later: if no storage, then use container. if not container, then use closest source.)
+	// If storage exists in room: 
+	// - get path STORAGE to CONTROLLER
+	// - get path CONTROLLER to STORAGE
+	// 
+	let storage 						= Game.rooms[room].storage;
 	let controller 						= Game.rooms[room].controller;
-	console.log(controller);
-	let testpath 						= Game.rooms[room].findPath(sto.pos, controller.pos);
-	Memory.tespathserialized 			= Room.serializePath(testpath);
+	let pathStorageToController 		= Game.rooms[room].findPath(storage.pos, controller.pos);
+	let pathControllerToStorage 		= Game.rooms[room].findPath(controller.pos, storage.pos);
+
+	Memory.path1 			 			= Room.serializePath(pathStorageToController);
+	Memory.path2 			 			= Room.serializePath(pathControllerToStorage);
 
 
 
