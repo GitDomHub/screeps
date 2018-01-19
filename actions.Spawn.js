@@ -7,15 +7,15 @@ var roleSpawn = {
 		 
 		 // have always 1 or two backup harvesters so the colony doesnt die
 		 // load all creeps in to vars so we can work with them
-		 var backupHarvesters                = _.filter(Game.creeps, (creep) => creep.memory.role == 'backupHarvester' && creep.ticksToLive > 50);
-		 var harvesters                      = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester' && creep.ticksToLive > 50);
-		 var couriers                        = _.filter(Game.creeps, (creep) => creep.memory.role == 'courier' && creep.ticksToLive > 50);
-		 var towerCouriers                   = _.filter(Game.creeps, (creep) => creep.memory.role == 'towerCourier' && creep.ticksToLive > 50);
-		 var miners                          = _.filter(Game.creeps, (creep) => creep.memory.role == 'miner' && creep.ticksToLive > 50);
-		 var repairers                       = _.filter(Game.creeps, (creep) => creep.memory.role == 'repairer' && creep.ticksToLive > 50);
-		 var upgraders                       = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader' && creep.ticksToLive > 50);
-		 var builders                        = _.filter(Game.creeps, (creep) => creep.memory.role == 'builder' && creep.ticksToLive > 50);
-		 var defenders                       = _.filter(Game.creeps, (creep) => creep.memory.role == 'defender' && creep.ticksToLive > 50);
+		 var backupHarvesters                = _.filter(Game.creeps, (creep) => creep.memory.role == 'backupHarvester' && creep.ticksToLive > 60);
+		 var harvesters                      = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester' && creep.ticksToLive > 60);
+		 var couriers                        = _.filter(Game.creeps, (creep) => creep.memory.role == 'courier' && creep.ticksToLive > 60);
+		 var towerCouriers                   = _.filter(Game.creeps, (creep) => creep.memory.role == 'towerCourier' && creep.ticksToLive > 60);
+		 var miners                          = _.filter(Game.creeps, (creep) => creep.memory.role == 'miner' && creep.ticksToLive > 60);
+		 var repairers                       = _.filter(Game.creeps, (creep) => creep.memory.role == 'repairer' && creep.ticksToLive > 60);
+		 var upgraders                       = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader' && creep.ticksToLive > 60);
+		 var builders                        = _.filter(Game.creeps, (creep) => creep.memory.role == 'builder' && creep.ticksToLive > 60);
+		 var defenders                       = _.filter(Game.creeps, (creep) => creep.memory.role == 'defender' && creep.ticksToLive > 60);
 		 var allCreepsInRoom                 = Game.rooms[myRoom].find(FIND_CREEPS);
 		 // console.log('allcreepsinroom: ' + allCreepsInRoom);
 		 
