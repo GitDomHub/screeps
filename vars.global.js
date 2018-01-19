@@ -15,7 +15,6 @@ global.damagedStrucInRoom1             	= Game.rooms[global.room1].find(FIND_STR
 		                                             s.hits < global.repairUntilHitsEqual}); // 2Do: calculate the whole amount of missing hits until we reach our goal.
 
 
-
 // store vars in memory, so we can change them manually over console 
 if (!Memory.room1) 
 	Memory.room1 						= {};

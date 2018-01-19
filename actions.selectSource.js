@@ -29,7 +29,8 @@ var actionChooseSource = {
 
             }
         }else if  (storages.length > 0) {
-            var storageUnit = creep.pos.findClosestByPath(storages);
+            // var storageUnit = creep.pos.findClosestByRange(storages); // can omit the search for closest, because in one room we only got 1 storage
+            var storageUnit = storages[0];
             if(creep.withdraw(storageUnit, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                 // move there and get energy from there 
                 creep.moveTo(storageUnit, {visualizePathStyle: {stroke: '#ffaa00'}});                

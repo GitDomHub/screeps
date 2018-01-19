@@ -21,7 +21,7 @@ var roleBuilder = {
         if(creep.memory.building) {
             // get all construction sites
             //var targets = creep.room.find(FIND_CONSTRUCTION_SITES);
-            var target = creep.pos.findClosestByPath(FIND_CONSTRUCTION_SITES);
+            var target = creep.pos.findClosestByRange(FIND_CONSTRUCTION_SITES);
             if(target) {
                 if(creep.build(target) == ERR_NOT_IN_RANGE) {
                     creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
@@ -45,7 +45,7 @@ var roleBuilder = {
                 // if there is structures which need energy, move!
                 if(targets.length > 0) {
                     // move and transfer to closest target
-                    var closestTarget = creep.pos.findClosestByPath(targets);
+                    var closestTarget = creep.pos.findClosestByRange(targets);
                     // 2Do: make them move to target before it gets empty
                     if(creep.transfer(closestTarget, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                         creep.moveTo(closestTarget, {visualizePathStyle: {stroke: '#ffffff'}});
@@ -70,7 +70,7 @@ var roleBuilder = {
             return; // test
             
             //var sources = creep.room.find(FIND_SOURCES);
-            var source = creep.pos.findClosestByPath(FIND_SOURCES);
+            var source = creep.pos.findClosestByRange(FIND_SOURCES);
             if(creep.harvest(source) == ERR_NOT_IN_RANGE) {
                 creep.moveTo(source, {visualizePathStyle: {stroke: '#ffaa00'}});
             }

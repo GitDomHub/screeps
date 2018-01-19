@@ -35,7 +35,7 @@ var roleUpgrader = {
         }
         else {
             // even newer method: 
-            // creep.moveByPath(pathToStorage);
+            // jsut get the source that applies from memory
              //new alternative: use actions.selectSource routine to see if there are containers first
             if(actionSelectSource) {
                 actionSelectSource.run(creep);
