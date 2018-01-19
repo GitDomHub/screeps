@@ -102,7 +102,7 @@ var roleTower = {
 
         // turn all damaged structures into an array so we can easily find the one with lowest hits
         let damagedArr = Object.keys(allDamagedStructures).map(function(key, value) {
-          return [allDamagedStructures(key), allDamagedStructures[value]];
+          // return [allDamagedStructures(key), allDamagedStructures[value]];
         });
 
         console.log('damagedArr:' + damagedArr);
