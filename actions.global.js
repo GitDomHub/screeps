@@ -23,14 +23,14 @@ module.exports = {
 
 	WriteSourcesIntoMem : function (room) {
 
-
+		//see vars.global.js
 
 	},
 
 
 	WriteDamagedStrucsIntoMem : function (room) {
 
-
+		// see vars.global.js
 
 	},
 

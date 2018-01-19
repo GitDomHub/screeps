@@ -3,7 +3,7 @@ var roleSpawn = {
 
 	runSpawnFactory : function (room) {
 
-		console.log('room name in spawn factory:' + room.name);
+		console.log('room name in spawn factory:' + room);
 		 
 		 // have always 1 or two backup harvesters so the colony doesnt die
 		 // load all creeps in to vars so we can work with them
