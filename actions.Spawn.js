@@ -14,7 +14,7 @@ var roleSpawn = {
 		 var upgraders                       = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader' && creep.ticksToLive > 50);
 		 var builders                        = _.filter(Game.creeps, (creep) => creep.memory.role == 'builder');
 		 var defenders                       = _.filter(Game.creeps, (creep) => creep.memory.role == 'defender');
-		 var allCreepsInRoom1                = Game.rooms[global.room1].find(FIND_CREEPS);
+		 var allCreepsInRoom                 = Game.rooms[room].find(FIND_CREEPS);
 		 
 		 
 		 //2DO define mininum of creeps in vars
@@ -67,7 +67,7 @@ var roleSpawn = {
 		 // spawn only if nothing goes
 		 if(harvesters.length == 0 && miners.length == 0 || 
 		     harvesters.length == 0 && couriers.length == 0 || 
-		     harvesters.length == 0 && allCreepsInRoom1.length <= 2 ) {
+		     harvesters.length == 0 && allCreepsInRoom.length <= 2 ) {
 		     if(backupHarvesters.length < minBackupHarvesters) {
 		         var newName = 'BackupHarvester' + Game.time;
 		         // console.log('Spawning new BackupHarvester: ' + newName);
