@@ -108,7 +108,7 @@ var roleTower = {
         console.log('damagedArr:' + damagedArr);
 
         // 2Do: only repair structures that are further away when enemy creep is in proximity of 5-7
-        var lowestHitsStructure = _.min(allDamagedStructures, "hits");
+        var lowestHitsStructure = _.min(damagedArr);
         console.log(lowestHitsStructure);
         // repair 
         var lowestHitsStructure = Game.getObjectById(lowestHitsStructure.id);
