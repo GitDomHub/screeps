@@ -7,15 +7,15 @@ var roleSpawn = {
 		 
 		 // have always 1 or two backup harvesters so the colony doesnt die
 		 // load all creeps in to vars so we can work with them
-		 var backupHarvesters                = _.filter(Game.creeps, (creep) => creep.memory.role == 'backupHarvester');
+		 var backupHarvesters                = _.filter(Game.creeps, (creep) => creep.memory.role == 'backupHarvester' && creep.ticksToLive > 50);
 		 var harvesters                      = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester' && creep.ticksToLive > 50);
 		 var couriers                        = _.filter(Game.creeps, (creep) => creep.memory.role == 'courier' && creep.ticksToLive > 50);
 		 var towerCouriers                   = _.filter(Game.creeps, (creep) => creep.memory.role == 'towerCourier' && creep.ticksToLive > 50);
 		 var miners                          = _.filter(Game.creeps, (creep) => creep.memory.role == 'miner' && creep.ticksToLive > 50);
-		 var repairers                       = _.filter(Game.creeps, (creep) => creep.memory.role == 'repairer');
+		 var repairers                       = _.filter(Game.creeps, (creep) => creep.memory.role == 'repairer' && creep.ticksToLive > 50);
 		 var upgraders                       = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader' && creep.ticksToLive > 50);
-		 var builders                        = _.filter(Game.creeps, (creep) => creep.memory.role == 'builder');
-		 var defenders                       = _.filter(Game.creeps, (creep) => creep.memory.role == 'defender');
+		 var builders                        = _.filter(Game.creeps, (creep) => creep.memory.role == 'builder' && creep.ticksToLive > 50);
+		 var defenders                       = _.filter(Game.creeps, (creep) => creep.memory.role == 'defender' && creep.ticksToLive > 50);
 		 var allCreepsInRoom                 = Game.rooms[myRoom].find(FIND_CREEPS);
 		 console.log('allcreepsinroom: ' + allCreepsInRoom);
 		 
@@ -31,7 +31,12 @@ var roleSpawn = {
 		 var minBuilders                     = 2;    // only make builders when construction sites in room. Make more builders when there are more than  
 		 var minDefenders                    = 0;    // Only spawn rest if hostile in room.
 		                                             // Just produce a new one to be ready when old one dies
-		 
+		let storageInRoom					 = Game.rooms[myRoom].storage;
+		if (storageInRoom && storageInRoom.store[RESOURCE_ENERGY] < 75000) {
+			minUpgraders 					 -= 1;
+		}                                            
+
+
 		 //react to when there is an attack
 		 if (global.roomHasHostiles.length > 1) {
 		     console.log('ATTACK MODE LIVE');
@@ -158,6 +163,8 @@ var roleSpawn = {
 		     Game.spawns['Spawn1'].spawnCreep([MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK], newName, // cost 910E; MOVE*7,ATTACK*7; 2.100K health; attack	210.000/T	315.000K/1500T	756.000K/H	18.144M/D
 		         {memory: {role: 'defender', homeRoom: myRoom}});
 		 }
+
+		 
 
 		 roleSpawn.showWhatsSpawning();
 		 

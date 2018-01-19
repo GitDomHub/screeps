@@ -11,7 +11,7 @@ global.roomHasHostiles                  = Game.rooms[global.room1].find(FIND_HOS
 
 //struc status
 global.damagedStrucInRoom1             	= Game.rooms[global.room1].find(FIND_STRUCTURES,
-		                                         {filter: (s) => s.hits < s.hitsMax * 0.5 && 
+		                                         {filter: (s) => s.hits < (s.hitsMax * 0.5) && 
 		                                             s.hits < global.repairUntilHitsEqual}); // 2Do: calculate the whole amount of missing hits until we reach our goal.
 
 

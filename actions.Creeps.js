@@ -53,7 +53,7 @@ var actForAllCreeps = {
         
         
         // if creeps ticks to live under 50 (guess thats the longest route they'd take) and he has enough energy
-        if (creep.ticksToLive < 40 && _.sum(creep.carry) > 50 && carryBodyparts > 1) {
+        if (creep.ticksToLive < 40 && _.sum(creep.carry) >= 50 && carryBodyparts > 1) { 
             if(creep.ticksToLive < 40 ) creep.say('-.- in ' + creep.ticksToLive);
             
             // then get best structure to drop off energy
