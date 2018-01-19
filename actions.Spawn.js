@@ -13,7 +13,7 @@ var roleSpawn = {
 		 var towerCouriers                   = _.filter(Game.creeps, (creep) => creep.memory.role == 'towerCourier' && creep.ticksToLive > 60);
 		 var miners                          = _.filter(Game.creeps, (creep) => creep.memory.role == 'miner' && creep.ticksToLive > 60);
 		 var repairers                       = _.filter(Game.creeps, (creep) => creep.memory.role == 'repairer' && creep.ticksToLive > 60);
-		 var upgraders                       = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader' && creep.ticksToLive > 60);
+		 var upgraders                       = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader' && creep.ticksToLive > 80);
 		 var builders                        = _.filter(Game.creeps, (creep) => creep.memory.role == 'builder' && creep.ticksToLive > 60);
 		 var defenders                       = _.filter(Game.creeps, (creep) => creep.memory.role == 'defender' && creep.ticksToLive > 60);
 		 var allCreepsInRoom                 = Game.rooms[myRoom].find(FIND_CREEPS);
