@@ -27,6 +27,9 @@ if (!Memory.room1.repairUntil)
 	Memory.room1.repairUntil 			= 750000;
 
 
+// 2Do: increase current repairUntil amount by 10.000 if: 1. no structures to repair 2. energy in storage is higher than a certain amount
+
+
 // write all rooms into memory
 var roomObject = {};
 for (let room in Game.rooms) {
@@ -100,8 +103,9 @@ for (let room in Memory.rooms) {
 	// creep.memory.pathToController = pathStorageToController;
 	// creep.memory.pathToStorage = pathControllerToStorage;
 
-	if (Game.creeps['Upgrader23568215'] != undefined) {
-        Game.creeps['Upgrader23568215'].memory.pathToController = Room.serializePath(pathStorageToController);
+	if (Game.creeps['Upgrader23577459'] != undefined) {
+        Game.creeps['Upgrader23577459'].memory.pathToController = Room.serializePath(pathStorageToController);
+        Game.creeps['Upgrader23577459'].memory.pathToStorage = Room.serializePath(pathControllerToStorage);
     } 
 
 

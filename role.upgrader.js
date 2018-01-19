@@ -20,7 +20,7 @@ var roleUpgrader = {
                 if (creep.memory.pathToController) {
                     let deser = Room.deserializePath(creep.memory.pathToController)
                     if (!creep.moveByPath(deser) == OK) {
-                        creep.moveTo(creep.room.controller, {visualizePathStyle: {stroke: '#ffffff'}});    allDamagedStructures    
+                        creep.moveTo(creep.room.controller, {visualizePathStyle: {stroke: '#ffffff'}});     
                     }else{
                         creep.say('path ok');
                     }
@@ -34,14 +34,28 @@ var roleUpgrader = {
             }
         }
         else {
-            // even newer method: 
-            // creep.moveByPath(pathToStorage);
-             //new alternative: use actions.selectSource routine to see if there are containers first
-            if(actionSelectSource) {
-                actionSelectSource.run(creep);
-            } else {
-                creep.say('error');
-            }           
+            if (creep.memory.pathToStorage) {
+                let deser = Room.deserializePath(creep.memory.pathToStorage)
+                if (!creep.moveByPath(deser) == OK) {
+                    if(actionSelectSource) {
+                        actionSelectSource.run(creep);
+                    } else {
+                        creep.say('error');
+                    }    
+                }else{
+                    creep.say('path ok');
+                }
+            }else {
+                // even newer method: 
+                // creep.moveByPath(pathToStorage);
+                 //new alternative: use actions.selectSource routine to see if there are containers first
+                if(actionSelectSource) {
+                    actionSelectSource.run(creep);
+                } else {
+                    creep.say('error');
+                }    
+            }
+                   
         }
     }
 };
