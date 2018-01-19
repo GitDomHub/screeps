@@ -6,12 +6,12 @@ var roleSpawn = {
 		 // have always 1 or two backup harvesters so the colony doesnt die
 		 // load all creeps in to vars so we can work with them
 		 var backupHarvesters                = _.filter(Game.creeps, (creep) => creep.memory.role == 'backupHarvester');
-		 var harvesters                      = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester');
-		 var couriers                        = _.filter(Game.creeps, (creep) => creep.memory.role == 'courier');
-		 var towerCouriers                   = _.filter(Game.creeps, (creep) => creep.memory.role == 'towerCourier');
-		 var miners                          = _.filter(Game.creeps, (creep) => creep.memory.role == 'miner');
+		 var harvesters                      = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester' && creep.ticksToLive > 50);
+		 var couriers                        = _.filter(Game.creeps, (creep) => creep.memory.role == 'courier' && creep.ticksToLive > 50);
+		 var towerCouriers                   = _.filter(Game.creeps, (creep) => creep.memory.role == 'towerCourier' && creep.ticksToLive > 50);
+		 var miners                          = _.filter(Game.creeps, (creep) => creep.memory.role == 'miner' && creep.ticksToLive > 50);
 		 var repairers                       = _.filter(Game.creeps, (creep) => creep.memory.role == 'repairer');
-		 var upgraders                       = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader');
+		 var upgraders                       = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader' && creep.ticksToLive > 50);
 		 var builders                        = _.filter(Game.creeps, (creep) => creep.memory.role == 'builder');
 		 var defenders                       = _.filter(Game.creeps, (creep) => creep.memory.role == 'defender');
 		 var allCreepsInRoom1                = Game.rooms[global.room1].find(FIND_CREEPS);
@@ -174,6 +174,11 @@ var roleSpawn = {
 		         Game.spawns['Spawn1'].pos.y,
 		         {align: 'left', opacity: 0.9});
 		 }
+	},
+
+	CreateDynamicCreep : function(role) {
+		
+
 	}
 	
 };

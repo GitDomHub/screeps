@@ -75,6 +75,7 @@ var actionChooseSource = {
             filter: (s) =>  s.amount > 100 &&
                             s.resourceType === RESOURCE_ENERGY
         });
+        // next only look in memory of there is dropped energy
     },
 
 
@@ -86,6 +87,7 @@ var actionChooseSource = {
                             (s.store[RESOURCE_ENERGY] > 250);
             }
         });
+        // just look at Room.storage
     },
 
     returnContainers: function(creep) {
@@ -96,6 +98,7 @@ var actionChooseSource = {
                                 (s.store[RESOURCE_ENERGY] > 250) ;
                 }
         }); 
+        // get container ids from memory and then look for the amount of energy thats in there
     },
 
     goToSource: function (destination) {
