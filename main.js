@@ -48,8 +48,8 @@ module.exports.loop = function () {
         roomArray.push(singleRoom);        
 
         actionsGlobal.WriteSourcesIntoMem(singleRoom); // put all energy sources into memory
-        actionsSpawn.runSpawnFactory(singleRoom);
-        roleTower.runAllTowers(singleRoom);
+        actionsSpawn.RunSpawnFactory(singleRoom);
+        roleTower.RunAllTowers(singleRoom);
         
         // run all creeps
         actionCreeps.DoWhatYouGottaDo(singleRoom);

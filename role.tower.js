@@ -10,7 +10,7 @@ require('vars.global');
 //module.exports = {
 var roleTower = {
 
-    runAllTowers: function(myRoomName) {
+    RunAllTowers: function(myRoomName) {
         // make tower do stuff
         var allTowers = Game.rooms[myRoomName].find(FIND_MY_STRUCTURES, { filter: { structureType: STRUCTURE_TOWER } });
         

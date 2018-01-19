@@ -1,7 +1,7 @@
 require('vars.global');
 var roleSpawn = {
 
-	runSpawnFactory : function (room) {
+	RunSpawnFactory : function (room) {
 
 		console.log('room name in spawn factory:' + room);
 		 
