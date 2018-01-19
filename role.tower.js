@@ -98,7 +98,14 @@ var roleTower = {
 
         // allDamagedStructures = Memory.damagedStructuresR1; // use stuff from memory!
         allDamagedStructures = Memory.rooms[room].damagedStructures; // use stuff from memory!
-        console.log(allDamagedStructures.length);
+        console.log(allDamagedStructures);
+
+        // turn all damaged structures into an array so we can easily find the one with lowest hits
+        let damagedArr = Object.keys(allDamagedStructures).map(function(key) {
+          return [Number(key), allDamagedStructures[key]];
+        });
+
+        console.log('damagedArr:' + damagedArr);
 
         // 2Do: only repair structures that are further away when enemy creep is in proximity of 5-7
         var lowestHitsStructure = _.min(allDamagedStructures, "hits");
@@ -106,8 +113,10 @@ var roleTower = {
         // repair 
         var lowestHitsStructure = Game.getObjectById(lowestHitsStructure.id);
         console.log(lowestHitsStructure);
+
         if(lowestHitsStructure) {
             let result = tower.repair(lowestHitsStructure);
+            console.log(result);
         }else{
             console.log('nothing to repair for tower');
         }
