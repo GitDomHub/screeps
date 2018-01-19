@@ -3,7 +3,7 @@ var roleSpawn = {
 
 	RunSpawnFactory : function (myRoom) {
 
-		console.log('room name in spawn factory:' + myRoom);
+		// console.log('room name in spawn factory:' + myRoom);
 		 
 		 // have always 1 or two backup harvesters so the colony doesnt die
 		 // load all creeps in to vars so we can work with them
@@ -17,7 +17,7 @@ var roleSpawn = {
 		 var builders                        = _.filter(Game.creeps, (creep) => creep.memory.role == 'builder' && creep.ticksToLive > 50);
 		 var defenders                       = _.filter(Game.creeps, (creep) => creep.memory.role == 'defender' && creep.ticksToLive > 50);
 		 var allCreepsInRoom                 = Game.rooms[myRoom].find(FIND_CREEPS);
-		 console.log('allcreepsinroom: ' + allCreepsInRoom);
+		 // console.log('allcreepsinroom: ' + allCreepsInRoom);
 		 
 		 
 		 //2DO define mininum of creeps in vars
@@ -38,7 +38,7 @@ var roleSpawn = {
 
 
 		 //react to when there is an attack
-		 if (global.roomHasHostiles.length > 1) {
+		 if (global.roomHasHostiles.length > 1) { // 2Do: make this only for this current room!
 		     console.log('ATTACK MODE LIVE');
 		     var minBackupHarvesters         = 2;    
 		     var minHarvesters               = 1;    // +1 for urgent delivery of energy to towers, spawn, extensions 
@@ -164,7 +164,7 @@ var roleSpawn = {
 		         {memory: {role: 'defender', homeRoom: myRoom}});
 		 }
 
-		 
+
 
 		 roleSpawn.showWhatsSpawning();
 		 
