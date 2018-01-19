@@ -103,7 +103,7 @@ for (let room in Memory.rooms) {
 	// creep.memory.pathToController = pathStorageToController;
 	// creep.memory.pathToStorage = pathControllerToStorage;
 
-	if (Game.creeps['Upgrader23577459'] != undefined) {
+	if (Game.creeps['Upgrad23577459'] != undefined) {
         Game.creeps['Upgrader23577459'].memory.pathToController = Room.serializePath(pathStorageToController);
         Game.creeps['Upgrader23577459'].memory.pathToStorage = Room.serializePath(pathControllerToStorage);
     } 
