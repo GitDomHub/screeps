@@ -9,7 +9,7 @@ var roleMiner                           = require('role.miner');
 var roleDefender                        = require('role.defender');
 
 var actForAllCreeps = {
-	DoWhatYouGottaDo : function() {
+	DoWhatYouGottaDo : function(room) {
 		// loop through all creeps
 	    for(var name in Game.creeps) {
 	        var creep = Game.creeps[name];
@@ -69,7 +69,7 @@ var actForAllCreeps = {
             // if there is structures which need energy, move!
             if(targets.length > 0) {
                 // find closest target
-                closestTarget = creep.pos.findClosestByPath(targets);
+                closestTarget = creep.pos.findClosestByRange(targets);
                 // first cancel whatever the creep was doing before
                 creep.cancelOrder('harvest');
                 creep.cancelOrder('move');

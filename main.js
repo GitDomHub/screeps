@@ -48,16 +48,20 @@ module.exports.loop = function () {
         roomArray.push(singleRoom);        
 
         actionsGlobal.WriteSourcesIntoMem(singleRoom); // put all energy sources into memory
+        actionsSpawn.runSpawnFactory(singleRoom);
+        roleTower.runAllTowers(singleRoom);
         
+        // run all creeps
+        actionCreeps.DoWhatYouGottaDo(singleRoom);
 
     }
 
     // console.log('Room Array: ' + roomArray);
     
     
-    actionsSpawn.runSpawnFactory();
+    
         
-    roleTower.runAllTowers(global.room1);
+    
     
     
     
@@ -80,7 +84,6 @@ module.exports.loop = function () {
     //console.log('room.energyAvailable: ' + Game.creeps[1].Room.energyAvailable + ' | room.energyCapacityAvailable: ' + Game.creeps[1].Room.energyCapacityAvailable );
     
 
-    // run all creeps
-    actionCreeps.DoWhatYouGottaDo();
+    
 };
 
