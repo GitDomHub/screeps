@@ -43,7 +43,7 @@ module.exports.loop = function () {
     // looooop through all rooms that I have creeps in
     for (singleRoom in Game.rooms) {
 
-        // console.log('In loop for room: ' + singleRoom);
+        console.log('In loop for room: ' + singleRoom);
         
         roomArray.push(singleRoom);        
 
