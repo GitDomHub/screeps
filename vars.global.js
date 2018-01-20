@@ -24,7 +24,7 @@ var InitMemRoomOpts = function () {
 		for (let room in Game.rooms) {
 			roomNames[room] = {};
 		};
-		Memory.room=pts = roomNames;
+		Memory.roomOpts = roomNames;
 	}
 
 	// check if standard values for each room exist
