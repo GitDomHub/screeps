@@ -70,7 +70,7 @@ for (let room in Memory.rooms) {
  		                                            s.hits < Memory.roomOpts[room].repairUntil});
 	// sort all structures from lowest to highest hits (that way ramparts that just have been built will not die immediately)
 	damagedStruc.sort(function(a,b){return a.hits - b.hits});
-	console.log(damagedStruc);
+	console.log(Object.values(damagedStruc));
 
 	let strucs = {};
 	for (let struc of damagedStruc) {
