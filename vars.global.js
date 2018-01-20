@@ -7,16 +7,16 @@ global.repairUntilHitsEqual  			= 750000; // maybe put this into memory?
 
 // define vars for this room
 global.room1                            = 'E83S21';
-global.roomHasHostiles                  = Game.rooms[global.room1].find(FIND_HOSTILE_CREEPS).length;
+// global.roomHasHostiles                  = Game.rooms[global.room1].find(FIND_HOSTILE_CREEPS).length;
 
 //struc status
-global.damagedStrucInRoom1             	= Game.rooms[global.room1].find(FIND_STRUCTURES,
-		                                         {filter: (s) => s.hits < (s.hitsMax * 0.5) && 
-		                                             s.hits < global.repairUntilHitsEqual}); // 2Do: calculate the whole amount of missing hits until we reach our goal.
+// global.damagedStrucInRoom1             	= Game.rooms[global.room1].find(FIND_STRUCTURES,
+// 		                                         {filter: (s) => s.hits < (s.hitsMax * 0.5) && 
+// 		                                             s.hits < global.repairUntilHitsEqual}); // 2Do: calculate the whole amount of missing hits until we reach our goal.
 
 
 // Initiating room options
-var InitMemRoomOpts = function () {
+var InitMemRoomOpts = (function () {
 	// only do this if object doesnt exists already
 	if (!Memory.roomOpts) {
 		// write all rooms into that part of  memory
@@ -35,9 +35,10 @@ var InitMemRoomOpts = function () {
 			Memory.roomOpts[room].repairUntilPercentage = 0.5;
 		// 2Do: maybe put minimum of creeps in here too?
 	}	
-};
+}());
 
-InitMemRoomOpts();
+
+//InitMemRoomOpts();
 
 
 // store vars in memory, so we can change them manually over console 
@@ -150,18 +151,18 @@ for (let room in Memory.rooms) {
 
 
 //Memory.damagedStructuresR1 = [];
-Memory.damagedStructuresR1 				= Game.rooms[global.room1].find(FIND_STRUCTURES,
- 		                                         {filter: (s) => s.hits < (s.hitsMax * 0.5) && 
- 		                                             s.hits < Memory.room1.repairUntil});
+// Memory.damagedStructuresR1 				= Game.rooms[global.room1].find(FIND_STRUCTURES,
+//  		                                         {filter: (s) => s.hits < (s.hitsMax * 0.5) && 
+//  		                                             s.hits < Memory.room1.repairUntil});
 
-var damagedStruc 				= Game.rooms[global.room1].find(FIND_STRUCTURES,
- 		                                         {filter: (s) => s.hits < (s.hitsMax * 0.5) && 
- 		                                             s.hits < Memory.room1.repairUntil});
+// var damagedStruc 				= Game.rooms[global.room1].find(FIND_STRUCTURES,
+//  		                                         {filter: (s) => s.hits < (s.hitsMax * 0.5) && 
+//  		                                             s.hits < Memory.room1.repairUntil});
 
-var damagedStructures = {};
-for (let struc of damagedStruc) {
-	damagedStructures[struc.id] = struc.hits;	
-}
+// var damagedStructures = {};
+// for (let struc of damagedStruc) {
+// 	damagedStructures[struc.id] = struc.hits;	
+// }
 // Memory.test = damagedStructures;
 
 // _.sortBy(test, function(s) {return s.hits});
