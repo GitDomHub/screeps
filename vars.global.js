@@ -24,11 +24,11 @@ var InitMemRoomOpts = function () {
 		for (let room in Game.rooms) {
 			roomNames[room] = {};
 		};
-		Memory.roomopts = roomNames;
+		Memory.room=pts = roomNames;
 	}
 
 	// check if standard values for each room exist
-	for (let room in Memory.roomopts) {
+	for (let room in Memory.roomOpts) {
 		if(!Memory.roomOpts[room].repairUntil)
 			Memory.roomOpts[room].repairUntil = 10000;
 		// 2Do: maybe put minimum of creeps in here too?
