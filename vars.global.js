@@ -29,8 +29,8 @@ var InitMemRoomOpts = function () {
 
 	// check if standard values for each room exist
 	for (let room in Memory.roomopts) {
-		if(!Memory.roomopts[room].repairUntil)
-			Memory.roomopts[room].repairUntil = 10000;
+		if(!Memory.roomOpts[room].repairUntil)
+			Memory.roomOpts[room].repairUntil = 10000;
 		// 2Do: maybe put minimum of creeps in here too?
 	}	
 };
