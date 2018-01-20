@@ -113,8 +113,8 @@ var roleTower = {
             let strucObj = Game.getObjectById(s[0]) ;
             console.log(strucObj.hits);
 
-            if (strucObj.hits < Memory.roomOpts[myRoomName].repairUntil) {
-                
+            if (strucObj.hits < Memory.roomOpts[room].repairUntil) {
+
             }
 
             // var lowestHitsStructure = damagedArr[0];
