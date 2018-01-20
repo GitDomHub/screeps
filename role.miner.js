@@ -44,7 +44,8 @@ var roleMiner = {
             //var allMiners = _.filter(Game.creeps, (creep) => creep.memory.role == 'miner');
             var minerHasContainerAssigned = _.filter(Game.creeps, (creep) => 
                     creep.memory.servingContainer == container.id && 
-                    creep.memory.role == 'miner');            
+                    creep.memory.role == 'miner' &&
+                    creep.ticksToLive > 40);            
            
             if (minerHasContainerAssigned.length == 0) {
                 if (creep.memory.servingContainer == null) {
