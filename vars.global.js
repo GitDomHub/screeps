@@ -42,14 +42,14 @@ var InitMemRoomOpts = (function () {
 
 
 // store vars in memory, so we can change them manually over console 
-if (!Memory.room1) 
-	Memory.room1 						= {};
+// if (!Memory.room1) 
+// 	Memory.room1 						= {};
 
-if (!Memory.room1.name) 	
-    Memory.room1.name 					= 'E83S21';
+// if (!Memory.room1.name) 	
+//     Memory.room1.name 					= 'E83S21';
 
-if (!Memory.room1.repairUntil) 
-	Memory.room1.repairUntil 			= 750000;
+// if (!Memory.room1.repairUntil) 
+// 	Memory.room1.repairUntil 			= 750000;
 
 
 // 2Do: increase current repairUntil amount by 10.000 if: 1. no structures to repair 2. energy in storage is higher than a certain amount
@@ -119,8 +119,8 @@ for (let room in Memory.rooms) {
 	// - get path CONTROLLER to STORAGE
 	let pathControllerToStorage 		= Game.rooms[room].findPath(controller.pos, storage.pos);
 
-	Memory.pathToController 			= Room.serializePath(pathStorageToController);
-	Memory.pathToStorage 			 	= Room.serializePath(pathControllerToStorage);
+	// Memory.pathToController 			= Room.serializePath(pathStorageToController);
+	// Memory.pathToStorage 			 	= Room.serializePath(pathControllerToStorage);
 
 
 	// get all creeps that are upgraders, and set these paths into memory
