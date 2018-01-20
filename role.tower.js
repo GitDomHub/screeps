@@ -113,7 +113,8 @@ var roleTower = {
             let strucObj = Game.getObjectById(s[0]) ;
             console.log(strucObj.hits);
 
-            if (strucObj.hits < Memory.roomOpts[room].repairUntil && strucObj.hits < (strucObj.hitsMax * Memory.roomOpts[room].repairUntilPercentage)) {
+            if (strucObj.hits < Memory.roomOpts[room].repairUntil &&
+                strucObj.hits < (strucObj.hitsMax * Memory.roomOpts[room].repairUntilPercentage)) {
                 let result = tower.repair(strucObj);
                 console.log('tower repair result: ' + result);
                 break; // finish for loop
