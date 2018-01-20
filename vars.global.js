@@ -15,6 +15,26 @@ global.damagedStrucInRoom1             	= Game.rooms[global.room1].find(FIND_STR
 		                                             s.hits < global.repairUntilHitsEqual}); // 2Do: calculate the whole amount of missing hits until we reach our goal.
 
 
+// Initiating room options
+function () {
+	// only do this if object doesnt exists already
+	if (!Memory.roomopts) {
+		// write all rooms into that part of  memory
+		let roomNames = {};
+		for (let room in Game.rooms) {
+			roomNames[room] = {};
+		};
+		Memory.roomopts = roomNames;
+	}
+
+	// check if standard values for each room exist
+	for (let room in Memory.roomopts) {
+		if(!Memory.roomopts[room].repairUntil)
+			Memory.roomopts[room].repairUntil = 10000;
+	}	
+}();
+
+
 // store vars in memory, so we can change them manually over console 
 if (!Memory.room1) 
 	Memory.room1 						= {};
@@ -30,11 +50,11 @@ if (!Memory.room1.repairUntil)
 
 
 // write all rooms into memory
-var roomObject = {};
+var roomNames = {};
 for (let room in Game.rooms) {
-	roomObject[room] = {};
+	roomNames[room] = {};
 };
-Memory.rooms = roomObject;
+Memory.rooms = roomNames;
 
 
 for (let room in Memory.rooms) {
