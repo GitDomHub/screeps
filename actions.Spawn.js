@@ -24,6 +24,8 @@ var roleSpawn = {
 		// console.log('all damaged struc in room[' + myRoom + '] : ' + amountDamgedStruc);
 		var baustellen 						= Game.rooms[myRoom].find(FIND_CONSTRUCTION_SITES); // only works for this spawn!!! 
 		console.log('baustellen in room: [' + myRoom + '] : ' +  baustellen.length);
+
+		var amountHostiles                 	= Game.rooms[myRoom].find(FIND_HOSTILE_CREEPS).length;
 		 
 		//2DO define mininum of creeps in vars
 		var minBackupHarvesters             = 2;
@@ -43,7 +45,7 @@ var roleSpawn = {
 
 
 		//react to when there is an attack
-		if (global.roomHasHostiles.length > 1) { // 2Do: make this only for this current room!
+		if (amountHostiles > 1) { // 2Do: make this only for this current room!
 		 console.log('ATTACK MODE LIVE');
 		 var minBackupHarvesters         = 2;    
 		 var minHarvesters               = 1;    // +1 for urgent delivery of energy to towers, spawn, extensions 

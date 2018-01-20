@@ -107,22 +107,45 @@ var roleTower = {
 
         console.log('damagedArr:' + damagedArr[0]);
 
-        // 2Do: only repair structures that are further away when enemy creep is in proximity of 5-7
-// var lowestHitsStructure = _.min(damagedArr);
-        var lowestHitsStructure = damagedArr[0];
-        console.log('lowest hits:' + lowestHitsStructure);
-        // repair 
-        var lowestHitsStructure = Game.getObjectById(Object.keys(allDamagedStructures)[0]);
-        console.log('found this by structure id: ' + lowestHitsStructure);
+        for (s in damagedArr) {
+            
+    // var lowestHitsStructure = _.min(damagedArr);
+            let strucObj = Game.getObjectById(Object.keys(s)[0]) ;
+            console.log(strucObj);
+
+
+            // var lowestHitsStructure = damagedArr[0];
+            // console.log('lowest hits:' + lowestHitsStructure);
+            // // repair 
+            // var lowestHitsStructure = Game.getObjectById(Object.keys(allDamagedStructures)[0]);
+            // console.log('found this by structure id: ' + lowestHitsStructure);
 
 
 
-        if(lowestHitsStructure) {
-            let result = tower.repair(lowestHitsStructure);
-            console.log(result);
-        }else{
-            console.log('nothing to repair for tower');
+            // if(lowestHitsStructure) {
+            //     let result = tower.repair(lowestHitsStructure);
+            //     console.log(result);
+            // }else{
+            //     console.log('nothing to repair for tower');
+            // }
         }
+
+
+        // var lowestHitsStructure = damagedArr[0];
+        //     console.log('lowest hits:' + lowestHitsStructure);
+        //     // repair 
+        //     var lowestHitsStructure = Game.getObjectById(Object.keys(allDamagedStructures)[0]);
+        //     console.log('found this by structure id: ' + lowestHitsStructure);
+
+
+
+        //     if(lowestHitsStructure) {
+        //         let result = tower.repair(lowestHitsStructure);
+        //         console.log(result);
+        //     }else{
+        //         console.log('nothing to repair for tower');
+        //     }
+        
 
     }
         

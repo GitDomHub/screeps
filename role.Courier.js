@@ -91,7 +91,7 @@ var roleCourier = {
             // if no containers assigned to me, then move to closest container 
             if (assignedContainer.length == 0) {
                 // find closest container
-                var closestContainer = creep.pos.findClosestByPath(allContainers);
+                var closestContainer = creep.pos.findClosestByRange(allContainers);
                 if(creep.withdraw(closestContainer, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                     creep.moveTo(closestContainer, {visualizePathStyle: {stroke: '#ffffff'}});
                 }
