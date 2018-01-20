@@ -68,6 +68,10 @@ for (let room in Memory.rooms) {
 	let damagedStruc 				= Game.rooms[room].find(FIND_STRUCTURES,
  		                            {filter: (s) => s.hits < (s.hitsMax * Memory.roomOpts[room].repairUntilPercentage) && 
  		                                            s.hits < Memory.roomOpts[room].repairUntil});
+	// sort all structures from lowest to highest hits (that way ramparts that just have been built will not die immediately)
+	damagedStruc.sort(function(a,b){return a.hits - b.hits});
+	console.log(damagedStruc);
+
 	let strucs = {};
 	for (let struc of damagedStruc) {
 		strucs[struc.id] = struc.hits;	
