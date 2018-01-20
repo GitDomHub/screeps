@@ -7,23 +7,23 @@ var roleSpawn = {
 		 
 		// have always 1 or two backup harvesters so the colony doesnt die
 		// load all creeps in to vars so we can work with them
-		var backupHarvesters                = _.filter(Game.creeps, (creep) => creep.memory.role == 'backupHarvester' && creep.ticksToLive > 60);
-		var harvesters                      = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester' && creep.ticksToLive > 60);
-		var couriers                        = _.filter(Game.creeps, (creep) => creep.memory.role == 'courier' && creep.ticksToLive > 60);
-		var towerCouriers                   = _.filter(Game.creeps, (creep) => creep.memory.role == 'towerCourier' && creep.ticksToLive > 60);
-		var miners                          = _.filter(Game.creeps, (creep) => creep.memory.role == 'miner' && creep.ticksToLive > 60);
-		var repairers                       = _.filter(Game.creeps, (creep) => creep.memory.role == 'repairer' && creep.ticksToLive > 60);
-		var upgraders                       = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader' && creep.ticksToLive > 80);
-		var builders                        = _.filter(Game.creeps, (creep) => creep.memory.role == 'builder' && creep.ticksToLive > 60);
-		var defenders                       = _.filter(Game.creeps, (creep) => creep.memory.role == 'defender' && creep.ticksToLive > 60);
+		var backupHarvesters                = _.filter(Game.creeps, (creep) => creep.memory.homeRoom == myRoom && creep.ticksToLive > 60 && creep.memory.role == 'backupHarvester' );
+		var harvesters                      = _.filter(Game.creeps, (creep) => creep.memory.homeRoom == myRoom && creep.ticksToLive > 60 && creep.memory.role == 'harvester' );
+		var couriers                        = _.filter(Game.creeps, (creep) => creep.memory.homeRoom == myRoom && creep.ticksToLive > 60 && creep.memory.role == 'courier' );
+		var towerCouriers                   = _.filter(Game.creeps, (creep) => creep.memory.homeRoom == myRoom && creep.ticksToLive > 60 && creep.memory.role == 'towerCourier' );
+		var miners                          = _.filter(Game.creeps, (creep) => creep.memory.homeRoom == myRoom && creep.ticksToLive > 60 && creep.memory.role == 'miner' );
+		var repairers                       = _.filter(Game.creeps, (creep) => creep.memory.homeRoom == myRoom && creep.ticksToLive > 60 && creep.memory.role == 'repairer' );
+		var upgraders                       = _.filter(Game.creeps, (creep) => creep.memory.homeRoom == myRoom && creep.ticksToLive > 80 && creep.memory.role == 'upgrader' );
+		var builders                        = _.filter(Game.creeps, (creep) => creep.memory.homeRoom == myRoom && creep.ticksToLive > 60 && creep.memory.role == 'builder' );
+		var defenders                       = _.filter(Game.creeps, (creep) => creep.memory.homeRoom == myRoom && creep.ticksToLive > 60 && creep.memory.role == 'defender' );
 		var allCreepsInRoom                 = Game.rooms[myRoom].find(FIND_CREEPS);
 		// console.log('allcreepsinroom: ' + allCreepsInRoom);
 
 		// check for things in room
 		var amountDamgedStruc 				= Object.keys(Memory.rooms[myRoom].damagedStructures).length;
-		console.log('all damaged struc in room[' + myRoom + '] : ' + amountDamgedStruc);
+		// console.log('all damaged struc in room[' + myRoom + '] : ' + amountDamgedStruc);
 		var baustellen 						= Game.rooms[myRoom].find(FIND_CONSTRUCTION_SITES); // only works for this spawn!!! 
-		console.log('baustellen in room: [' + myRoom + '] : ' +  baustellen);
+		// console.log('baustellen in room: [' + myRoom + '] : ' +  baustellen);
 		 
 		//2DO define mininum of creeps in vars
 		var minBackupHarvesters             = 2;
