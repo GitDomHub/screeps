@@ -108,7 +108,7 @@ var roleTower = {
         console.log('damagedArr:' + damagedArr[0]);
 
         for (s in damagedArr) {
-            console.log(s);
+            console.log(s[0]);
     // var lowestHitsStructure = _.min(damagedArr);
             let strucObj = Game.getObjectById(s) ;
             console.log(strucObj);
