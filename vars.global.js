@@ -31,6 +31,8 @@ var InitMemRoomOpts = function () {
 	for (let room in Memory.roomOpts) {
 		if(!Memory.roomOpts[room].repairUntil)
 			Memory.roomOpts[room].repairUntil = 10000;
+		if(!Memory.roomOpts[room].repairUntilPercentage)
+			Memory.roomOpts[room].repairUntilPercentage = 0.5;
 		// 2Do: maybe put minimum of creeps in here too?
 	}	
 };
