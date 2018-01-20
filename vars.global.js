@@ -65,8 +65,8 @@ Memory.rooms = roomNames;
 for (let room in Memory.rooms) {
 	// find all STRUCTURES that need REPAIR and put them into the rooms memory
 	let damagedStruc 				= Game.rooms[room].find(FIND_STRUCTURES,
- 		                            {filter: (s) => s.hits < (s.hitsMax * 0.5) && 
- 		                                            s.hits < Memory.room1.repairUntil});
+ 		                            {filter: (s) => s.hits < (s.hitsMax * Memory.roomOpts[room].repairUntilPercentage) && 
+ 		                                            s.hits < Memory.roomOpts[room].repairUntil});
 	let strucs = {};
 	for (let struc of damagedStruc) {
 		strucs[struc.id] = struc.hits;	

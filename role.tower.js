@@ -108,13 +108,16 @@ var roleTower = {
         console.log('damagedArr:' + damagedArr[0]);
 
         for (s of damagedArr) {
-            console.log(s[0]);
+            // console.log(s[0]);
     // var lowestHitsStructure = _.min(damagedArr);
             let strucObj = Game.getObjectById(s[0]) ;
             console.log(strucObj.hits);
 
-            if (strucObj.hits < Memory.roomOpts[room].repairUntil || strucObj.hits < (strucObj.hitsMax * Memory.roomOpts[room].repairUntilPercentage)) {
-
+            if (strucObj.hits < Memory.roomOpts[room].repairUntil && strucObj.hits < (strucObj.hitsMax * Memory.roomOpts[room].repairUntilPercentage)) {
+                let result = tower.repair(strucObj);
+                console.log('tower repair result: ' + result);
+            } else {
+                continue; // go to next repair site if this one has enough hits already (memory is too slow)
             }
 
             // var lowestHitsStructure = damagedArr[0];
