@@ -39,11 +39,11 @@ var roleTowerCourier = {
             // of which energy is less than max
             var targets = creep.room.find(FIND_STRUCTURES, {
                 filter: (structure) => {
-                    // why use 0.8? ddoesnt make sense?!
-                    return (structure.structureType == STRUCTURE_TOWER  && structure.energy < structure.energyCapacity);
-                        
+                    return (structure.structureType == STRUCTURE_TOWER  && structure.energy < structure.energyCapacity);                        
                 }
             });
+            // get the tower with lowest energy
+            targets = _.min(targets, "energy");
             // if there is structures which need energy, move!
             if(targets.length > 0) {
                 if(creep.transfer(targets[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
