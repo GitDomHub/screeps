@@ -16,7 +16,7 @@ global.damagedStrucInRoom1             	= Game.rooms[global.room1].find(FIND_STR
 
 
 // Initiating room options
-function () {
+function {
 	// only do this if object doesnt exists already
 	if (!Memory.roomopts) {
 		// write all rooms into that part of  memory
