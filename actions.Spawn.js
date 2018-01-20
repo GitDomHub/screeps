@@ -115,6 +115,8 @@ var roleSpawn = {
 		         {memory: {role: 'miner', homeRoom: myRoom}});
 		 }
 		 
+		 console.log('Memory.rooms-damaged:' + Memory.rooms[myRoom].damagedStructures.length );
+
 		// spawn TOWERCOURIER 
 		 if(towerCouriers.length < minTowerCouriers  && (harvesters.length >= minHarvesters) && global.damagedStrucInRoom1.length > 15) {
 		     var newName = 'TowerCourier' + Game.time + myRoom;
