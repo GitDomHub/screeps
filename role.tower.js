@@ -13,15 +13,16 @@ var roleTower = {
     RunAllTowers: function(myRoomName) {
         // make tower do stuff
         var allTowers = Game.rooms[myRoomName].find(FIND_MY_STRUCTURES, { filter: { structureType: STRUCTURE_TOWER } });
+        var hostileHealer = singleTower.pos.findClosestByRange(FIND_HOSTILE_CREEPS, { filter: (s) => (s.getActiveBodyparts(HEAL) > 0 && s.getActiveBodyparts(HEAL) < 15) });
+        var hostileHealerBig = singleTower.pos.findClosestByRange(FIND_HOSTILE_CREEPS, { filter: (s) => (s.getActiveBodyparts(HEAL) > 15) });
+        var hostileAttacker = singleTower.pos.findClosestByRange(FIND_HOSTILE_CREEPS, { filter: (s) => ( s.getActiveBodyparts(ATTACK) > 0  || s.getActiveBodyparts(RANGED_ATTACK) > 0) });
+        var closestHostile = singleTower.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
         
         if(allTowers.length > 0) {
             for (var singleTower of allTowers) {
                 // STEP 1: ATTACK
                 // 2Do: maybe change to not only get closest hostile, but rather get all and then sort them out one by one
-                var hostileHealer = singleTower.pos.findClosestByRange(FIND_HOSTILE_CREEPS, { filter: (s) => (s.getActiveBodyparts(HEAL) > 0 && s.getActiveBodyparts(HEAL) < 15) });
-                var hostileHealerBig = singleTower.pos.findClosestByRange(FIND_HOSTILE_CREEPS, { filter: (s) => (s.getActiveBodyparts(HEAL) > 15) });
-                var hostileAttacker = singleTower.pos.findClosestByRange(FIND_HOSTILE_CREEPS, { filter: (s) => ( s.getActiveBodyparts(ATTACK) > 0  || s.getActiveBodyparts(RANGED_ATTACK) > 0) });
-                var closestHostile = singleTower.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
+                
                 
                 // 
                 // console.log('tower range to big healer: ' + singleTower.pos.getRangeTo(hostileHealerBig));
