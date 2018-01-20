@@ -156,7 +156,7 @@ var roleSpawn = {
 		// spawn BUILDERS 
 		// 2Do! only build new builders when currently construction sites unfinished!
 		// 2Do! build another mini builder for when there is low energy		
-		if(builders.length < minBuilders && (baustellen.length > 0) && harvesters.length >= minHarvesters && miners.length >= minMiners) {
+		if(builders.length < minBuilders && (baustellen.length > 0) && harvesters.length >= minHarvesters && miners.length >= minMiners && couriers.length >= minCouriers) {
 		    var newName = 'Builder' + Game.time + myRoom;
 		    Game.spawns['Spawn1'].spawnCreep([MOVE,MOVE,MOVE,MOVE,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY], newName, // cost 1050E; MOVE*6,WORK*3,CARRY*9 ; 1800 health carry 450
 		        {memory: {role: 'builder', homeRoom: myRoom}});

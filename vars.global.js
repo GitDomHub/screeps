@@ -2,11 +2,11 @@
 
 
 
-global.repairUntilHitsEqual  			= 750000; // maybe put this into memory?  
+// global.repairUntilHitsEqual  			= 750000; // maybe put this into memory?  
 
 
 // define vars for this room
-global.room1                            = 'E83S21';
+// global.room1                            = 'E83S21';
 // global.roomHasHostiles                  = Game.rooms[global.room1].find(FIND_HOSTILE_CREEPS).length;
 
 //struc status

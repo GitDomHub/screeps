@@ -1,3 +1,4 @@
+require('vars.global');
 var actionSelectSource = require('actions.selectSource');
 var roleRepairer = {
     run: function(creep) {
@@ -16,8 +17,8 @@ var roleRepairer = {
 
         if(creep.memory.repairing) {
             var structuresNeedingRepair = creep.room.find(FIND_STRUCTURES,
-                {filter: (s) => s.hits < s.hitsMax * 0.5 && 
-                                        s.hits < global.repairUntilHitsEqual});
+                {filter: (s) => s.hits < (s.hitsMax * Memory.room[creep.room].repairUntilPercentage) && 
+                                        s.hits < Memory.room[creep.room].repairUntil});
             if (structuresNeedingRepair.length > 0) {
                 // find structure with lowest hitpoints
                 // 2Do: right now if there is a rampart with 270k hitpoints, then the repairer will move there. 
