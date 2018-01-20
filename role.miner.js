@@ -25,7 +25,8 @@ var roleMiner = {
                 // now find closest ENERGY SOURCE
                 var source = creep.pos.findClosestByRange(FIND_SOURCES); // 2Do: write source into miners memory to save cpu
                 creep.harvest(source);
-                creep.drop(RESOURCE_ENERGY);                
+                if (creep.energy == 50) 
+                    creep.drop(RESOURCE_ENERGY);                
             } else { // when not sitting on/near container, then move there                
                 creep.moveTo(container[0], {visualizePathStyle: {stroke: '#ffffff'}});
             }
