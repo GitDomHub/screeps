@@ -116,6 +116,7 @@ var roleTower = {
             if (strucObj.hits < Memory.roomOpts[room].repairUntil && strucObj.hits < (strucObj.hitsMax * Memory.roomOpts[room].repairUntilPercentage)) {
                 let result = tower.repair(strucObj);
                 console.log('tower repair result: ' + result);
+                break; // finish for loop
             } else {
                 continue; // go to next repair site if this one has enough hits already (memory is too slow)
             }
