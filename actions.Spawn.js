@@ -23,7 +23,7 @@ var roleSpawn = {
 		var amountDamgedStruc 				= Object.keys(Memory.rooms[myRoom].damagedStructures).length;
 		// console.log('all damaged struc in room[' + myRoom + '] : ' + amountDamgedStruc);
 		var baustellen 						= Game.rooms[myRoom].find(FIND_CONSTRUCTION_SITES); // only works for this spawn!!! 
-		// console.log('baustellen in room: [' + myRoom + '] : ' +  baustellen);
+		console.log('baustellen in room: [' + myRoom + '] : ' +  baustellen.length);
 		 
 		//2DO define mininum of creeps in vars
 		var minBackupHarvesters             = 2;
@@ -154,7 +154,7 @@ var roleSpawn = {
 		// spawn BUILDERS 
 		// 2Do! only build new builders when currently construction sites unfinished!
 		// 2Do! build another mini builder for when there is low energy		
-		if(builders.length < minBuilders && (baustellen) && harvesters.length >= minHarvesters && miners.length >= minMiners) {
+		if(builders.length < minBuilders && (baustellen.length > 0) && harvesters.length >= minHarvesters && miners.length >= minMiners) {
 		    var newName = 'Builder' + Game.time + myRoom;
 		    Game.spawns['Spawn1'].spawnCreep([MOVE,MOVE,MOVE,MOVE,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY], newName, // cost 1050E; MOVE*6,WORK*3,CARRY*9 ; 1800 health carry 450
 		        {memory: {role: 'builder', homeRoom: myRoom}});
