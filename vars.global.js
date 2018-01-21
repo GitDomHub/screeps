@@ -146,7 +146,7 @@ for (let room in Memory.rooms) {
 	//
 	//
 	//
-
+	console.log('anzahl an dingsbums: ' + Object.keys(Memory.rooms[room].damagedStructures).length);
 
 	// increase max hits for everything when we have enough energy
 	if(storage && Object.keys(Memory.rooms[room].damagedStructures).length == 0) {
