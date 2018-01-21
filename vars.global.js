@@ -150,8 +150,8 @@ for (let room in Memory.rooms) {
 
 	// increase max hits for everything when we have enough energy
 	if(storage && Object.keys(Memory.rooms[room].damagedStructures).length == 0) {
-		console.log('store energy is: ' + storage.store[RESOURCE_ENERGY] + ' and min energy is: ' + Memory.rooms[room].minEnergyInStorage);
-		if (storage.store[RESOURCE_ENERGY] > Memory.rooms[room].minEnergyInStorage) {
+		console.log('store energy is: ' + storage.store[RESOURCE_ENERGY] + ' and min energy is: ' + Memory.roomOpts[room].minEnergyInStorage);
+		if (storage.store[RESOURCE_ENERGY] > Memory.roomOpts[room].minEnergyInStorage) {
 			console.log('should increase hits now!');
 			Memory.roomOpts[room].repairUntil += Memory.roomOpts[room].aboveMinEnergyIncreaseHitsBy;
 		}
