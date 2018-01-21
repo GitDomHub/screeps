@@ -80,6 +80,7 @@ for (let room in Memory.rooms) {
 	for (let struc of damagedStruc) {
 		strucs[struc.id] = struc.hits;	
 	}
+	Memory.rooms[room].damagedStructures = {}; // empty to see if memory gets renewed quicker
 	Memory.rooms[room].damagedStructures = strucs;
 
 	// CONTAINERS & STORAGES & links

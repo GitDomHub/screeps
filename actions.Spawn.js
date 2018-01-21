@@ -144,7 +144,7 @@ var roleSpawn = {
 		 
 		 
 		// spawn UPGRADERS 
-		// bu spawn only when enough harvesters are there. Keeps the colony from dying
+		// but spawn only when enough harvesters are there. Keeps the colony from dying
 		if(upgraders.length < minUpgraders && harvesters.length >= minHarvesters && miners.length >= minMiners ) {
 		    var newName = 'Upgrader' + Game.time + myRoom;
 		     /*Game.spawns['Spawn1'].spawnCreep([MOVE,MOVE,MOVE,MOVE,WORK,WORK,WORK,CARRY,CARRY,CARRY], newName, // cost 1100E; MOVE*6,WORK*5,CARRY*6; 1.700K health; carry 300
