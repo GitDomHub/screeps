@@ -33,6 +33,10 @@ var InitMemRoomOpts = (function () {
 			Memory.roomOpts[room].repairUntil = 10000;
 		if(!Memory.roomOpts[room].repairUntilPercentage)
 			Memory.roomOpts[room].repairUntilPercentage = 0.5;
+		if(!Memory.roomOpts[room].minEnergyInStorage)
+			Memory.roomOpts[room].minEnergyInStorage = 75000; // if more energy, then we will increase hits of structures
+		if(!Memory.roomOpts[room].aboveMinEnergyIncreaseHitsBy)
+			Memory.roomOpts[room].aboveMinEnergyIncreaseHitsBy = 1000;
 		// 2Do: maybe put minimum of creeps in here too?
 	}	
 }());
@@ -141,6 +145,14 @@ for (let room in Memory.rooms) {
 	//
 	//
 	//
+
+
+	// increase max hits for everything when we have enough energy
+	if(storage && Object.keys(Memory.rooms[room].damagedStructures).length == 0) {
+		if (storage.store[RESOURCE_ENERGY] > Memory.rooms[room].minEnergyInStorage) {
+			Memory.roomOpts[room].repairUntil += Memory.roomOpts[room].aboveMinEnergyIncreaseHitsBy;
+		}
+	}
 }
 
 
