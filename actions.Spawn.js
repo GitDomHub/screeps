@@ -126,7 +126,7 @@ var roleSpawn = {
 		// spawn TOWERCOURIER 
 		if(towerCouriers.length < minTowerCouriers  && miners.length >= minMiners && harvesters.length >= minHarvesters && Object.keys(Memory.rooms[myRoom].damagedStructures).length > 15) {
 		    var newName = 'TowerCourier' + Game.time + myRoom;
-		    Game.spawns['Spawn1'].spawnCreep([MOVE,MOVE,MOVE,WORK,WORK,CARRY,CARRY,CARRY,CARRY], newName, // cost 550E; MOVE*3,WORK*2,CARRY*4; 900K health; carry 200
+		    Game.spawns['Spawn1'].spawnCreep([MOVE,WORK,CARRY], newName, // cost 550E; MOVE*3,WORK*2,CARRY*4; 900K health; carry 200
 		        {memory: {role: 'towerCourier', homeRoom: myRoom}});
 		}
 		 
