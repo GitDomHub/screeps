@@ -118,7 +118,7 @@ var roleSpawn = {
 		// 2DO: only create as many miners as containers are near to source
 		if(miners.length < minMiners && (harvesters.length >= minHarvesters)) {
 			var newName = 'Miner' + Game.time + myRoom;
-			Game.spawns['Spawn1'].spawnCreep([MOVE,MOVE,MOVE,WORK,WORK,WORK,WORK,WORK,WORK,WORK,CARRY], newName, //MOVE*3,WORK*6 
+			Game.spawns['Spawn1'].spawnCreep([MOVE,MOVE,MOVE,WORK,WORK,WORK,WORK,WORK,WORK,CARRY], newName, //MOVE*3,WORK*6,Carry*1 
 			    {memory: {role: 'miner', homeRoom: myRoom}});
 		}
 		 
