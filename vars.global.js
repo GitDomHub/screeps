@@ -162,7 +162,10 @@ for (let room in Memory.rooms) {
 
 
 
-
+delete Memory.damagedStructuresR1;
+delete Memory.pathToStorage;
+delete Memory.pathToController;
+delete Memory.room1;
 
 
 //
