@@ -20,7 +20,10 @@ var roleSpawn = {
 		// console.log('allcreepsinroom: ' + allCreepsInRoom);
 
 		// check for things in room
-		var amountDamgedStruc 				= Object.keys(Memory.rooms[myRoom].damagedStructures).length;
+		var amountDamgedStruc 				= 0;
+		if (Memory.rooms[myRoom].damagedStructures){
+			amountDamgedStruc = Object.keys(Memory.rooms[myRoom].damagedStructures).length;
+		}
 		// console.log('all damaged struc in room[' + myRoom + '] : ' + amountDamgedStruc);
 		var baustellen 						= Game.rooms[myRoom].find(FIND_CONSTRUCTION_SITES); // only works for this spawn!!! 
 		console.log('baustellen in room: [' + myRoom + '] : ' +  baustellen.length);
@@ -41,7 +44,8 @@ var roleSpawn = {
 		let storageInRoom					= Game.rooms[myRoom].storage;
 		if (storageInRoom && storageInRoom.store[RESOURCE_ENERGY] < Memory.roomOpts[myRoom].minEnergyInStorage) {
 		minUpgraders 					 	-= 2; // reduce upgraders so we have enough energy to defend in case of emergency
-		}                                          
+		}     
+
 
 
 		//react to when there is an attack
@@ -94,7 +98,7 @@ var roleSpawn = {
 		// spawn DEFENDERS 
 		if(defenders.length < minDefenders ) {
 		    var newName = 'Defender' + Game.time + myRoom;
-		    Game.spawns['Spawn1'].spawnCreep([MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK], newName, // cost 910E; MOVE*7,ATTACK*7; 2.100K health; attack	210.000/T	315.000K/1500T	756.000K/H	18.144M/D
+		    Game.spawns['Spawn1'].spawnCreep([TOUGH,TOUGH,TOUGH,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK], newName, // cost 910E; TOUGH*3,MOVE*18,ATTACK*15; 2.100K health; attack	210.000/T	315.000K/1500T	756.000K/H	18.144M/D
 		        {memory: {role: 'defender', homeRoom: myRoom}});
 		}
 
@@ -128,7 +132,7 @@ var roleSpawn = {
 			Game.spawns['Spawn1'].spawnCreep([MOVE,MOVE,MOVE,WORK,WORK,WORK,WORK,WORK,WORK,CARRY], newName, //MOVE*3,WORK*6,Carry*1 
 			    {memory: {role: 'miner', homeRoom: myRoom}});
 		}
-		 
+		
 
 		// spawn TOWERCOURIER 
 		if(towerCouriers.length < minTowerCouriers  && miners.length >= minMiners && harvesters.length >= minHarvesters && Object.keys(Memory.rooms[myRoom].damagedStructures).length > 15) {
