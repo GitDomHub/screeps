@@ -49,10 +49,7 @@ var roleDefender = {
                     } else {
                         creep.attack(hostileHealer);
                     }  
-            }
-            
-            // if there are any hostile creeps or structures
-            if (hostile) {
+            }else if (hostile) {// if there are any hostile creeps or structures
                 var isFriend = false;
                 // check if belongs to friend
                 if(hostile.owner.username == "Odd") {isFriend = true};
