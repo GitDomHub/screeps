@@ -41,6 +41,15 @@ var roleDefender = {
                 }
                 });
             }
+
+            if(hostileHealer) {
+                if(creep.attack(hostileHealer)== ERR_NOT_IN_RANGE) {
+                        creep.moveTo(hostileHealer, {visualizePathStyle: {stroke: '#ff0000'}});
+                        creep.say("Healer!");
+                    } else {
+                        creep.attack(hostileHealer);
+                    }  
+            }
             
             // if there are any hostile creeps or structures
             if (hostile) {
