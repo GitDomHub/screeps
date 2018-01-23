@@ -121,8 +121,8 @@ for (let room in Memory.rooms) {
 	// To do list for storing path for upgraders:
 	// (later: if no storage, then use container. if not container, then use closest source.)
 	// If storage exists in room: 
-	// let storage 						= Game.rooms[room].storage;
-	// let controller 						= Game.rooms[room].controller;
+	let storage 						= Game.rooms[room].storage;
+	let controller 						= Game.rooms[room].controller;
 	// // - get path STORAGE to CONTROLLER
 	// let pathStorageToController 		= Game.rooms[room].findPath(storage.pos, controller.pos);
 	// // - get path CONTROLLER to STORAGE
