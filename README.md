@@ -18,6 +18,8 @@ Modules
 
 Attacker / Defender
 - Implement ranged attack? archer?
+- stay within ramparts if possible
+- make ranked attack body parts (use cluster grenade style to harm close by ones)
 
 Builder
 - when nothing to build, assign upgrader role
@@ -34,17 +36,17 @@ Miner
 
 Spawning
 - before spawning new defenders, calculate amount of attack, heal parts in all enemy creeps. If higher than what my current defenders got, then only create a new defender
-- only spawn a repairer if there is high number of damaged structures
 
 Tower
 - need a code to handle healer attacks. When confronted with more than 3 healers, towers can't handle them
 https://www.reddit.com/r/screeps/comments/4z8bz3/how_do_you_deal_with_healer_attacks/
 https://www.reddit.com/r/screeps/comments/7d6w2t/offensive_strategy/
-- Tower only repair close structures, let a repairer handle the rest
+- Tower only repair close structures, let a repairer handle the rest?
 - Tower only attack healers when less than 20 heal body parts or closer than 15 range
-- Tower first repair ramparts then containers, roads etc.
+- Tower first repair ramparts then containers, roads etc.?
 - Save maximum hits for structures to be repaired in memory
 - Focus healing on creep with lowest hit points
+- when attackers to big to kill, instead repair the structures that they attack. get structures that are within in range 5 of attackers and then repair those
 
 
 Repairer
