@@ -24,9 +24,9 @@ var roleDefender = {
             var hostile = creep.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
 
             // 2Do: attack 
-            var hostileHealer = singleTower.pos.findClosestByRange(FIND_HOSTILE_CREEPS, { filter: (s) => (s.getActiveBodyparts(HEAL) > 0) });
-            var hostileAttacker = singleTower.pos.findClosestByRange(FIND_HOSTILE_CREEPS, { filter: (s) => ( s.getActiveBodyparts(ATTACK) > 0  || s.getActiveBodyparts(RANGED_ATTACK) > 0) });
-            var closestHostile = singleTower.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
+            var hostileHealer = creep.pos.findClosestByRange(FIND_HOSTILE_CREEPS, { filter: (s) => (s.getActiveBodyparts(HEAL) > 0) });
+            var hostileAttacker = creep.pos.findClosestByRange(FIND_HOSTILE_CREEPS, { filter: (s) => ( s.getActiveBodyparts(ATTACK) > 0  || s.getActiveBodyparts(RANGED_ATTACK) > 0) });
+            var closestHostile = creep.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
 
             //console.log('Hostiles: ' + hostile.length);
             // if no hostile creep found
