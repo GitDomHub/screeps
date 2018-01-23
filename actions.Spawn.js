@@ -49,9 +49,9 @@ var roleSpawn = {
 		 console.log('ATTACK MODE LIVE');
 		 var minBackupHarvesters         = 2;    
 		 var minHarvesters               = 1;    // +1 for urgent delivery of energy to towers, spawn, extensions 
-		 var minCouriers                 = 3;    // +1
-		 var minTowerCouriers            = 0;    // Tower couriers will block the way. Just need to prioritize towers
-		 var minMiners                   = 2;    // -1
+		 var minCouriers                 = 2;    
+		 var minTowerCouriers            = 1;    // Tower couriers will block the way. Just need to prioritize towers
+		 var minMiners                   = 2;    
 		 var minRepairers                = 0;    
 		 var minUpgraders                = 1;    // -2
 		 var minBuilders                 = 0;    
