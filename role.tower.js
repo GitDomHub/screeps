@@ -45,7 +45,7 @@ var roleTower = {
                         // 2Do: loop through ALL hostiles and then see if any of hostiles in room is an enemy. then attack that one
                         singleTower.attack(hostileAttacker);
                     //};                
-                }else if (closestHostile) {
+                }else if (closestHostile && !hostileHealerBig) {
                     // dont attack friends
                     //if(hostileAttacker.owner.username != "Odd") { 
                         //console.log('hostile is a friend, I am not attacking.');
