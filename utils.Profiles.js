@@ -7,12 +7,12 @@
   *
   * Upgrader - handling the pickup of energy and getting it to storages
   * 
-  *	  	T1: MOVE*2,WORK*1,CARRY*2 ;  300E  ; plain=1,2   road=1,1   swamp=3,8  
-  *		T2: MOVE*3,WORK*3,CARRY*2 ;  550E  ; plain=1,2   road=1,1   swamp=5,10  
-  *		T3: MOVE*4,WORK*4,CARRY*4 ;  800E  ; plain=1,2   road=1,1   swamp=5,10  
-  *		T4: MOVE*7,WORK*6,CARRY*7 ; 1.300E ; plain=1,2   road=1,1   swamp=5,10 
-  *		T5: MOVE*9,WORK*8,CARRY*10 ; 1.750E ; plain=1,2   road=1,1   swamp=4,9 
-  *		T6: MOVE*6,WORK*6,CARRY*6 ; 1.200E ; plain=1,2   road=1,1   swamp=5,10 
+  *	  	T1: MOVE*2,WORK*1,CARRY*2 ;  300E  ; plain=1,2   road=1,1   swamp=3,8  ;  1.000/T
+  *		T2: MOVE*3,WORK*3,CARRY*2 ;  550E  ; plain=1,2   road=1,1   swamp=5,10 ;  3.000/T
+  *		T3: MOVE*4,WORK*4,CARRY*4 ;  800E  ; plain=1,2   road=1,1   swamp=5,10 ;  4.000/T
+  *		T4: MOVE*7,WORK*6,CARRY*7 ; 1.300E ; plain=1,2   road=1,1   swamp=5,10 ;  6.000/T
+  *		T5: MOVE*9,WORK*8,CARRY*10 ; 1.750E ; plain=1,2   road=1,1   swamp=4,9 ;  8.000/T
+  *		T6: MOVE*6,WORK*6,CARRY*6 ; 1.200E ; plain=1,2   road=1,1   swamp=5,10 ; 11.000/T
   *
   */
 exports.GetBody_Upgrader = GetBody_Upgrader;
