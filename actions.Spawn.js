@@ -54,7 +54,7 @@ var roleSpawn = {
 		                                         // Just produce a new one to be ready when old one dies
 		let storageInRoom					= Game.rooms[myRoom].storage;
 		if (storageInRoom && storageInRoom.store[RESOURCE_ENERGY] < Memory.roomOpts[myRoom].minEnergyInStorage) {
-			minUpgraders 					-= 2; // reduce upgraders so we have enough energy to defend in case of emergency
+			minUpgraders 					-= 1; // reduce upgraders so we have enough energy to defend in case of emergency
 		}     
 
 
