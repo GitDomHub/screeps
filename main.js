@@ -4,11 +4,18 @@ DONT EDIT IN SCREEPS INGAME EDITOR
 or changes will be lost
 */
 
-//Global vars - put at very beginning
+/*=============================================
+=                   Includes                    =
+=============================================*/
+/*----------  Globals  ----------*/
+
 require('vars.global');
 
+/*----------  Utils  ----------*/
+require('utils.Profiles');
 
-// creep roles
+
+/*----------  Creep Roles  ----------*/
 var roleHarvester                       = require('role.harvester');
 var roleTowerCourier                    = require('role.towerCourier');
 var roleCourier                         = require('role.Courier');
@@ -19,14 +26,19 @@ var roleMiner                           = require('role.miner');
 var roleDefender                        = require('role.defender');
 // 2DO: need healers
 
-// structure roles
+/*----------  Structure Roles  ----------*/
+
 var roleTower                           = require('role.tower');
 
-// actions
+
+/*----------  Actions  ----------*/
+
 var actionsGlobal                       = require('actions.global');
 var actionsSelectSource                 = require('actions.selectSource');
 var actionsSpawn                        = require('actions.Spawn');
 var actionCreeps                        = require('actions.Creeps');
+
+/*=====  End of Section Includes  ======*/
 
 
 
