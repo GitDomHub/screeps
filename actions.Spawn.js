@@ -1,3 +1,10 @@
+/**
+
+	TODO:
+	- Calcualte for each creep how much spawn time there is. then spawn a new creep accordingly
+
+ */
+
 /*----------  Globals  ----------*/
 require('vars.global');
 /*----------  Utils  ----------*/
@@ -64,7 +71,7 @@ var roleSpawn = {
 		 var minRepairers                = 0;    
 		 var minUpgraders                = 1;    // -2
 		 var minBuilders                 = 0;    
-		 var minDefenders                = 2;   // +8  // 2DO: always spawn defenders first before anything else
+		 var minDefenders                = 1;   // +8  // 2DO: always spawn defenders first before anything else
 		}
 
 		/*----------  Console logging  ----------*/
