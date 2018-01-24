@@ -2,6 +2,64 @@
 =            Creep Profiles            =
 ======================================*/
 
+
+/**
+  *
+  * Upgrader - handling the pickup of energy and getting it to storages
+  * 
+  *	  	T1: 
+  *		T2: 
+  *		T3: 
+  *
+  */
+exports.GetBody_Upgrader = GetBody_Upgrader;
+function GetBody_Upgrader(tier) {
+	if (tier > 3) tier = 3;
+	let body = [];
+	switch (tier) {
+		case 1: 
+			body = AddToBody(body,[MOVE], 1);
+			body = AddToBody(body,[WORK], 1);
+			body = AddToBody(body,[CARRY], 1);
+			break;
+		case 2: 
+			body = AddToBody(body, [MOVE], 2);  
+			body = AddToBody(body, [WORK], 2);			
+			body = AddToBody(body,[CARRY], 2);
+			break;
+		case 3: 
+			body = AddToBody(body, [MOVE], 3);  
+			body = AddToBody(body, [WORK], 3);
+			body = AddToBody(body,[CARRY], 3);	
+			break;
+		case 4: 
+			body = AddToBody(body, [MOVE], 4);  
+			body = AddToBody(body, [WORK], 4);
+			body = AddToBody(body,[CARRY], 4);	
+			break;	
+		case 5: 	
+			body = AddToBody(body, [MOVE], 5);  
+			body = AddToBody(body, [WORK], 5);
+			body = AddToBody(body,[CARRY], 5);	
+			break;
+		case 6: 	
+			body = AddToBody(body, [MOVE], 6);  
+			body = AddToBody(body, [WORK], 6);
+			body = AddToBody(body,[CARRY], 6);	
+			break;
+	}
+	// alway have 1 carry body part
+	
+	
+    return body;
+}
+exports.GetMaxTier_Upgrader = GetMaxTier_Upgrader;
+function GetMaxTier_Upgrader(energy){
+	return GetMaxTier(energy, GetBody_Miner, 3);
+}
+
+
+
 /**
   *
   * Miner - handling the pickup of energy and getting it to storages
