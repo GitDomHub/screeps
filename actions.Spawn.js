@@ -89,13 +89,13 @@ var roleSpawn = {
 
 		let maxTier 					= ProfileUtils.GetMaxTier_Miner(energy);
 		let minerBody					= ProfileUtils.GetBody_Miner(maxTier);
-		console.log('Maxtier for Miner' + maxTier);
-		console.log('MaxBody for Miner' + minerBody);
+		console.log('Maxtier for Miner ' + maxTier);
+		console.log('MaxBody for Miner ' + minerBody);
 
 		maxTier 						= ProfileUtils.GetMaxTier_BackupHarvester(energy);
 		let backupHarvesterBody			= ProfileUtils.GetBody_BackupHarvester(maxTier);
-		console.log('Maxtier for Miner' + maxTier);
-		console.log('MaxBody for Miner' + backupHarvesterBody);
+		console.log('Maxtier for BackupHarvester ' + maxTier);
+		console.log('MaxBody for BackupHarvester ' + backupHarvesterBody);
 
 		
 
