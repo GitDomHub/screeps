@@ -22,7 +22,7 @@ var roleSpawn = {
 		var defenders                       = _.filter(Game.creeps, (creep) => creep.memory.homeRoom == myRoom && creep.ticksToLive > 60 && creep.memory.role == 'defender' );
 		var allCreepsInRoom                 = Game.rooms[myRoom].find(FIND_CREEPS);
 		// console.log('allcreepsinroom: ' + allCreepsInRoom);
-		console.log('Maxtier for Miner' + ProfileUtils.GetMaxTier_Miner(Game.rooms[myRoom].energyAvailable));
+		
 		// check for things in room
 		var amountDamgedStruc 				= 0;
 		if (Memory.rooms[myRoom].damagedStructures){
@@ -83,6 +83,16 @@ var roleSpawn = {
 		// 2DO: healers?
 
 		// define all wanted and needed emojis:
+
+		/*----------  Defining max bodies for all creeps  ----------*/
+		let maxTier 					= ProfileUtils.GetMaxTier_Miner(Game.rooms[myRoom].energyAvailable);
+		let minerMaxBody				= ProfileUtils.GetBody_Miner(maxTier);
+	
+
+
+		console.log('Maxtier for Miner' + maxTier);
+		console.log('MaxBody for Miner' + minerMaxBody);
+		
 
 
 
