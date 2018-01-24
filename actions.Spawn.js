@@ -15,6 +15,34 @@ var roleSpawn = {
 	RunSpawnFactory : function (myRoom) {
 
 		// console.log('room name in spawn factory:' + myRoom);
+		/*----------  Defining max bodies for all creeps  ----------*/
+		let energy 						= Game.rooms[myRoom].energyAvailable
+
+		let maxTier 					= ProfileUtils.GetMaxTier_Miner(energy);
+		let minerBody					= ProfileUtils.GetBody_Miner(maxTier);
+		console.log('Maxtier for Miner ' + maxTier);
+		console.log('MaxBody for Miner ' + minerBody);
+
+		maxTier 						= ProfileUtils.GetMaxTier_BackupHarvester(energy);
+		let backupHarvesterBody			= ProfileUtils.GetBody_BackupHarvester(maxTier);
+		console.log('Maxtier for BackupHarvester ' + maxTier);
+		console.log('MaxBody for BackupHarvester ' + backupHarvesterBody);
+
+		maxTier 						= ProfileUtils.GetMaxTier_Upgrader(energy);
+		let upgraderBody 				= ProfileUtils.GetBody_Upgrader(maxTier);
+		let upgraderSpawnTime 			= (upgraderBody.length() *2);
+		console.log('Maxtier for Upgrader ' + maxTier);
+		console.log('MaxBody for Upgrader (Spawn t = ' + upgraderSpawnTime + ' ticks) ' + upgraderBody);
+
+		maxTier 						= ProfileUtils.GetMaxTier_Defender(energy);
+		let defenderBody 				= ProfileUtils.GetBody_Defender(maxTier);
+		console.log('Maxtier for Defender ' + maxTier);
+		console.log('MaxBody for Defender ' + defenderBody);
+
+		maxTier 						= ProfileUtils.GetMaxTier_Courier(energy);
+		let courierBody 				= ProfileUtils.GetBody_Courier(maxTier);
+		console.log('Maxtier for Courier ' + maxTier);
+		console.log('MaxBody for Courier' + courierBody);
 		 
 		// have always 1 or two backup harvesters so the colony doesnt die
 		// load all creeps in to vars so we can work with them
@@ -93,33 +121,7 @@ var roleSpawn = {
 
 		// define all wanted and needed emojis:
 
-		/*----------  Defining max bodies for all creeps  ----------*/
-		let energy 						= Game.rooms[myRoom].energyAvailable
-
-		let maxTier 					= ProfileUtils.GetMaxTier_Miner(energy);
-		let minerBody					= ProfileUtils.GetBody_Miner(maxTier);
-		console.log('Maxtier for Miner ' + maxTier);
-		console.log('MaxBody for Miner ' + minerBody);
-
-		maxTier 						= ProfileUtils.GetMaxTier_BackupHarvester(energy);
-		let backupHarvesterBody			= ProfileUtils.GetBody_BackupHarvester(maxTier);
-		console.log('Maxtier for BackupHarvester ' + maxTier);
-		console.log('MaxBody for BackupHarvester ' + backupHarvesterBody);
-
-		maxTier 						= ProfileUtils.GetMaxTier_Upgrader(energy);
-		let upgraderBody 				= ProfileUtils.GetBody_Upgrader(maxTier);
-		console.log('Maxtier for Upgrader ' + maxTier);
-		console.log('MaxBody for Upgrader ' + upgraderBody);
-
-		maxTier 						= ProfileUtils.GetMaxTier_Defender(energy);
-		let defenderBody 				= ProfileUtils.GetBody_Defender(maxTier);
-		console.log('Maxtier for Defender ' + maxTier);
-		console.log('MaxBody for Defender ' + defenderBody);
-
-		maxTier 						= ProfileUtils.GetMaxTier_Courier(energy);
-		let courierBody 				= ProfileUtils.GetBody_Courier(maxTier);
-		console.log('Maxtier for Courier ' + maxTier);
-		console.log('MaxBody for Courier' + courierBody);
+		
 
 
 		// spawn backup BACKUPHARVESTER 
