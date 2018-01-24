@@ -29,7 +29,7 @@ var roleSpawn = {
 			amountDamgedStruc = Object.keys(Memory.rooms[myRoom].damagedStructures).length;
 		}
 		// console.log('all damaged struc in room[' + myRoom + '] : ' + amountDamgedStruc);
-		var baustellen 						= Game.rooms[myRoom].find(FIND_CONSTRUCTION_SITES); // only works for this spawn!!! 
+		var baustellen 						= Game.rooms[myRoom].find(FIND_CONSTRUCTION_SITES); 
 		console.log('baustellen in room: [' + myRoom + '] : ' +  baustellen.length);
 
 		var amountHostiles                 	= Game.rooms[myRoom].find(FIND_HOSTILE_CREEPS).length;
@@ -181,7 +181,7 @@ var roleSpawn = {
 		    var newName = 'Upgrader' + Game.time + myRoom;
 		     /*Game.spawns['Spawn1'].spawnCreep([MOVE,MOVE,MOVE,MOVE,WORK,WORK,WORK,CARRY,CARRY,CARRY], newName, // cost 1100E; MOVE*6,WORK*5,CARRY*6; 1.700K health; carry 300
 		         {memory: {role: 'upgrader'}});*/
-		    Game.spawns['Spawn1'].spawnCreep([MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,WORK,WORK,WORK,WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY], newName, // cost 1100E; MOVE*6,WORK*5,CARRY*6; 1.700K health; carry 300
+		    Game.spawns['Spawn1'].spawnCreep(upgraderBody, newName, // cost 1100E; MOVE*6,WORK*5,CARRY*6; 1.700K health; carry 300
 		        {memory: {role: 'upgrader', homeRoom: myRoom}})      
 		 }
 		 
