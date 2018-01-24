@@ -32,6 +32,7 @@ var roleSpawn = {
 		maxTier 						= ProfileUtils.GetMaxTier_Upgrader(energy);
 		let upgraderBody 				= ProfileUtils.GetBody_Upgrader(maxTier);
 		let upgraderSpawnTime 			= (upgraderBody.length *3);
+		upgraderSpawnTime 				+= 20;
 		console.log('Maxtier for Upgrader ' + maxTier);
 		console.log('MaxBody for Upgrader (Spawn t = ' + upgraderSpawnTime + ' ticks) ' + upgraderBody);
 
@@ -53,7 +54,7 @@ var roleSpawn = {
 		var towerCouriers                   = _.filter(Game.creeps, (creep) => creep.memory.homeRoom == myRoom && creep.ticksToLive > 60 && creep.memory.role == 'towerCourier' );
 		var miners                          = _.filter(Game.creeps, (creep) => creep.memory.homeRoom == myRoom && creep.ticksToLive > 60 && creep.memory.role == 'miner' );
 		var repairers                       = _.filter(Game.creeps, (creep) => creep.memory.homeRoom == myRoom && creep.ticksToLive > 60 && creep.memory.role == 'repairer' );
-		var upgraders                       = _.filter(Game.creeps, (creep) => creep.memory.homeRoom == myRoom && creep.ticksToLive > 80 && creep.memory.role == 'upgrader' );
+		var upgraders                       = _.filter(Game.creeps, (creep) => creep.memory.homeRoom == myRoom && creep.ticksToLive > upgraderSpawnTime && creep.memory.role == 'upgrader' );
 		var builders                        = _.filter(Game.creeps, (creep) => creep.memory.homeRoom == myRoom && creep.ticksToLive > 60 && creep.memory.role == 'builder' );
 		var defenders                       = _.filter(Game.creeps, (creep) => creep.memory.homeRoom == myRoom && creep.ticksToLive > 60 && creep.memory.role == 'defender' );
 		var allCreepsInRoom                 = Game.rooms[myRoom].find(FIND_CREEPS);
