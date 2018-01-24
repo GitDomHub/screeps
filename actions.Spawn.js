@@ -18,7 +18,7 @@ var roleSpawn = {
 		var defenders                       = _.filter(Game.creeps, (creep) => creep.memory.homeRoom == myRoom && creep.ticksToLive > 60 && creep.memory.role == 'defender' );
 		var allCreepsInRoom                 = Game.rooms[myRoom].find(FIND_CREEPS);
 		// console.log('allcreepsinroom: ' + allCreepsInRoom);
-		console.log('Maxtier for Miner' + ProfileUtils.GetMaxTier_Miner(Game.rooms[myRoom].energyAvailable));
+		// console.log('Maxtier for Miner' + ProfileUtils.GetMaxTier_Miner(Game.rooms[myRoom].energyAvailable));
 		// check for things in room
 		var amountDamgedStruc 				= 0;
 		if (Memory.rooms[myRoom].damagedStructures){
