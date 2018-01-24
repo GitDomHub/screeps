@@ -2,6 +2,7 @@
 
 	TODO:
 	- Calcualte for each creep how much spawn time there is. then spawn a new creep accordingly
+	- also calc way to target ticks
 
  */
 

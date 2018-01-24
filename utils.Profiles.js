@@ -25,14 +25,11 @@
 
 /**
   *
-  * Courier
+  * Courier - deliverung from drop or container to central storage/droppoffpoint
   * 						 
   *	  	T1: MOVE*3,CARRY*3 ; 300E ; 150carry ; plain=1,1   road=1,1   swamp=1,5 
   *		T2: MOVE*5,CARRY*5 ; 500E ; 250carry ; plain=1,1   road=1,1   swamp=1,5
-  *		T3: MOVE*8,CARRY*8 ; 800E ; 400carry ; plain=1,1   road=1,1   swamp=1,5 
-  *		T4:
-  *		T5:
-  *		T6:
+  *		T3: MOVE*3,CARRY*8 ; 600E ; 400carry ; plain=1,2   road=1,1   swamp=1,10
   *
   */
 exports.GetBody_Courier = GetBody_Courier;
@@ -49,7 +46,7 @@ function GetBody_Courier(tier) {
 			body = AddToBody(body,[CARRY], 5);
 			break;
 		case 3: 
-			body = AddToBody(body, [MOVE], 8);
+			body = AddToBody(body, [MOVE], 4);
 			body = AddToBody(body,[CARRY], 8);
 			break;
 	}
@@ -57,7 +54,7 @@ function GetBody_Courier(tier) {
 }
 exports.GetMaxTier_Courier = GetMaxTier_Courier;
 function GetMaxTier_Courier(energy){
-	return GetMaxTier(energy, GetBody_Courier,3);
+	return GetMaxTier(energy, GetBody_Courier,2);
 }
 
 
