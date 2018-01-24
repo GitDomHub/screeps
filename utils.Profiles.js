@@ -28,10 +28,6 @@ function GetBody_Miner(tier) {
 			body = AddToBody(body, [MOVE], 3);  
 			body = AddToBody(body, [WORK], 6);	
 			break;	
-		case 3: 
-			body = AddToBody(body, [MOVE], 3);  
-			body = AddToBody(body, [WORK], 6);	
-			break;	
 	}
 	// alway have 1 carry body part
 	body = AddToBody(body,[CARRY], 1);
@@ -40,7 +36,7 @@ function GetBody_Miner(tier) {
 }
 exports.GetMaxTier_Miner = GetMaxTier_Miner;
 function GetMaxTier_Miner(energy){
-	return GetMaxTier(energy, GetBody_Miner, 2);
+	return GetMaxTier(energy, GetBody_Miner, 3);
 }
 
 
