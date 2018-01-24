@@ -85,13 +85,18 @@ var roleSpawn = {
 		// define all wanted and needed emojis:
 
 		/*----------  Defining max bodies for all creeps  ----------*/
-		let maxTier 					= ProfileUtils.GetMaxTier_Miner(Game.rooms[myRoom].energyAvailable);
-		let minerMaxBody				= ProfileUtils.GetBody_Miner(maxTier);
-	
+		let energy 						= Game.rooms[myRoom].energyAvailable
 
-
+		let maxTier 					= ProfileUtils.GetMaxTier_Miner(energy);
+		let minerBody					= ProfileUtils.GetBody_Miner(maxTier);
 		console.log('Maxtier for Miner' + maxTier);
 		console.log('MaxBody for Miner' + minerMaxBody);
+
+		maxTier 						= ProfileUtils.GetMaxTier_BackupHarvester(energy);
+		let backupHarvesterBody			= ProfileUtils.GetBody_BackupHarvester(maxTier);
+		console.log('Maxtier for Miner' + maxTier);
+		console.log('MaxBody for Miner' + backupHarvesterBody);
+
 		
 
 
@@ -143,7 +148,7 @@ var roleSpawn = {
 		// 2DO: only create as many miners as containers are near to source
 		if(miners.length < minMiners && (harvesters.length >= minHarvesters)) {
 			var newName = 'Miner' + Game.time + myRoom;
-			Game.spawns['Spawn1'].spawnCreep([MOVE,MOVE,MOVE,WORK,WORK,WORK,WORK,WORK,WORK,CARRY], newName, //MOVE*3,WORK*6,Carry*1 
+			Game.spawns['Spawn1'].spawnCreep(minerBody, newName, //MOVE*3,WORK*6,Carry*1 
 			    {memory: {role: 'miner', homeRoom: myRoom}});
 		}
 		
@@ -209,10 +214,6 @@ var roleSpawn = {
 		        Game.spawns['Spawn1'].pos.y,
 		        {align: 'left', opacity: 0.9});
 		}
-	},
-
-	CreateDynamicCreep : function(role) {
-		
 	}
 	
 };
