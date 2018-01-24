@@ -11,7 +11,8 @@
   *		T3: MOVE*3,WORK*6,CARRY*1 ; 800E ; plain=2,3   road=1,2   swamp=10,12
   *
   */
-exports.GetBody_Miner(tier) {
+exports.GetBody_Miner = GetBody_Miner;
+function GetBody_Miner(tier) {
 	if (tier > 3) tier = 3;
 	let body = [];
 	switch (tier) {
@@ -37,7 +38,8 @@ exports.GetBody_Miner(tier) {
 	
     return body;
 }
-exports.GetMaxTier_Miner(energy){
+exports.GetMaxTier_Miner = GetMaxTier_Miner;
+function GetMaxTier_Miner(energy){
 	return GetMaxTier(energy, GetBody_Miner, 2);
 }
 
@@ -52,7 +54,8 @@ exports.GetMaxTier_Miner(energy){
   *		T2: MOVE*2,WORK*1,CARRY*2 ; 300E ; plain=1,2   road=1,1   swamp=3,8   
   *
   */
-exports.GetBody_BackupHarvester(tier) {
+exports.GetBody_BackupHarvester = GetBody_BackupHarvester;
+function GetBody_BackupHarvester(tier) {
 	if (tier > 2) tier = 2;
 	let body = [];
 	switch (tier) {
@@ -67,7 +70,8 @@ exports.GetBody_BackupHarvester(tier) {
 	
     return body;
 }
-exports.GetMaxTier_BackupHarvester(energy){
+exports.GetMaxTier_BackupHarvester = GetMaxTier_BackupHarvester;
+function GetMaxTier_BackupHarvester(energy){
 	return GetMaxTier(energy, GetBody_BackupHarvester, 2);
 }
 
