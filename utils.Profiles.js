@@ -55,7 +55,7 @@ function GetBody_Upgrader(tier) {
 }
 exports.GetMaxTier_Upgrader = GetMaxTier_Upgrader;
 function GetMaxTier_Upgrader(energy){
-	return GetMaxTier(energy, GetBody_Miner, 3);
+	return GetMaxTier(energy, GetBody_Upgrader, 6);
 }
 
 
