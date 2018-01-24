@@ -64,7 +64,7 @@ var roleSpawn = {
 		 var minRepairers                = 0;    
 		 var minUpgraders                = 1;    // -2
 		 var minBuilders                 = 0;    
-		 var minDefenders                = 3;   // +8  // 2DO: always spawn defenders first before anything else
+		 var minDefenders                = 2;   // +8  // 2DO: always spawn defenders first before anything else
 		}
 
 		/*----------  Console logging  ----------*/
@@ -103,6 +103,11 @@ var roleSpawn = {
 		let upgraderBody 				= ProfileUtils.GetBody_Upgrader(maxTier);
 		console.log('Maxtier for Upgrader ' + maxTier);
 		console.log('MaxBody for Upgrader ' + upgraderBody);
+
+		maxTier 						= ProfileUtils.GetMaxTier_Defender(energy);
+		let defenderBody 				= ProfileUtils.GetBody_Defender(maxTier);
+		console.log('Maxtier for Defender ' + maxTier);
+		console.log('MaxBody for Defender ' + defenderBody);
 
 
 		// spawn backup BACKUPHARVESTER 
