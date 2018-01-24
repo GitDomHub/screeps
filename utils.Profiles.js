@@ -25,6 +25,44 @@
 
 /**
   *
+  * Courier
+  * 						 
+  *	  	T1: MOVE*3,CARRY*3 ; 300E ; 150carry ; plain=1,1   road=1,1   swamp=1,5 
+  *		T2: MOVE*5,CARRY*5 ; 500E ; 250carry ; plain=1,1   road=1,1   swamp=1,5
+  *		T3: MOVE*8,CARRY*8 ; 800E ; 400carry ; plain=1,1   road=1,1   swamp=1,5 
+  *		T4:
+  *		T5:
+  *		T6:
+  *
+  */
+exports.GetBody_Courier = GetBody_Courier;
+function GetBody_Courier(tier) {
+	if (tier > 3) tier = 3;
+	let body = [];
+	switch (tier) {
+		case 1: 
+			body = AddToBody(body,[MOVE], 3);
+			body = AddToBody(body,[CARRY], 3);
+			break;
+		case 2: 
+			body = AddToBody(body, [MOVE], 5);  
+			body = AddToBody(body,[CARRY], 5);
+			break;
+		case 3: 
+			body = AddToBody(body, [MOVE], 8);
+			body = AddToBody(body,[CARRY], 8);
+			break;
+	}
+    return body;
+}
+exports.GetMaxTier_Courier = GetMaxTier_Courier;
+function GetMaxTier_Courier(energy){
+	return GetMaxTier(energy, GetBody_Courier,3);
+}
+
+
+/**
+  *
   * Defender
   * 						 Energy Health	Attack
   *	  	T1: MOVE*2,ATTACK*2 ; 260E ; 400H ; 60k/T

@@ -54,7 +54,7 @@ var roleSpawn = {
 		                                         // Just produce a new one to be ready when old one dies
 		let storageInRoom					= Game.rooms[myRoom].storage;
 		if (storageInRoom && storageInRoom.store[RESOURCE_ENERGY] < Memory.roomOpts[myRoom].minEnergyInStorage) {
-			minUpgraders 					-= 1; // reduce upgraders so we have enough energy to defend in case of emergency
+			minUpgraders 					= 1; // reduce upgraders so we have enough energy to defend in case of emergency
 		}     
 
 
@@ -115,6 +115,11 @@ var roleSpawn = {
 		let defenderBody 				= ProfileUtils.GetBody_Defender(maxTier);
 		console.log('Maxtier for Defender ' + maxTier);
 		console.log('MaxBody for Defender ' + defenderBody);
+
+		maxTier 						= ProfileUtils.GetMaxTier_Courier(energy);
+		let courierBody 				= ProfileUtils.GetBody_Courier(maxTier);
+		console.log('Maxtier for Courier ' + maxTier);
+		console.log('MaxBody for Courier' + courierBody);
 
 
 		// spawn backup BACKUPHARVESTER 
