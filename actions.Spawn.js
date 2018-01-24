@@ -30,7 +30,7 @@ var roleSpawn = {
 
 		maxTier 						= ProfileUtils.GetMaxTier_Upgrader(energy);
 		let upgraderBody 				= ProfileUtils.GetBody_Upgrader(maxTier);
-		let upgraderSpawnTime 			= (upgraderBody.length() *2);
+		let upgraderSpawnTime 			= (upgraderBody.length *2);
 		console.log('Maxtier for Upgrader ' + maxTier);
 		console.log('MaxBody for Upgrader (Spawn t = ' + upgraderSpawnTime + ' ticks) ' + upgraderBody);
 
