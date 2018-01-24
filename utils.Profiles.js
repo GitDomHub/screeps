@@ -54,7 +54,7 @@ function GetBody_Courier(tier) {
 }
 exports.GetMaxTier_Courier = GetMaxTier_Courier;
 function GetMaxTier_Courier(energy){
-	return GetMaxTier(energy, GetBody_Courier,2);
+	return GetMaxTier(energy, GetBody_Courier,3);
 }
 
 

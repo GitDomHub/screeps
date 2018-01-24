@@ -162,7 +162,7 @@ var roleSpawn = {
 		 // spawn COURIERS 
 		if(couriers.length < minCouriers  && (miners.length >= minMiners)) {
 		    var newName = 'Courier' + Game.time + myRoom;
-		    Game.spawns['Spawn1'].spawnCreep([MOVE,MOVE,MOVE,MOVE,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY], newName, // cost 600E;carry400
+		    Game.spawns['Spawn1'].spawnCreep(courierBody, newName, // cost 600E;carry400
 		        {memory: {role: 'courier', homeRoom: myRoom}});
 		}
 		 
