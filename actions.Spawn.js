@@ -97,7 +97,7 @@ var roleSpawn = {
 		console.log('Maxtier for BackupHarvester ' + maxTier);
 		console.log('MaxBody for BackupHarvester ' + backupHarvesterBody);
 
-		maxTier 						= ProfileUtils.GetmaxTier_Upgrader(energy);
+		maxTier 						= ProfileUtils.GetMaxTier_Upgrader(energy);
 		let upgraderBody 				= ProfileUtils.GetBody_Upgrader(maxTier);
 		console.log('Maxtier for Upgrader ' + maxTier);
 		console.log('MaxBody for Upgrader ' + upgraderBody);
