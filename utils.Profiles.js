@@ -17,7 +17,7 @@
   */
 exports.GetBody_Upgrader = GetBody_Upgrader;
 function GetBody_Upgrader(tier) {
-	if (tier > 3) tier = 3;
+	if (tier > 6) tier = 6;
 	let body = [];
 	switch (tier) {
 		case 1: 
@@ -51,9 +51,6 @@ function GetBody_Upgrader(tier) {
 			body = AddToBody(body,[CARRY], 12);	
 			break;
 	}
-	// alway have 1 carry body part
-	
-	
     return body;
 }
 exports.GetMaxTier_Upgrader = GetMaxTier_Upgrader;
@@ -124,7 +121,6 @@ function GetBody_BackupHarvester(tier) {
 			body = AddToBody(body, [CARRY, MOVE], 2);  
 			break;
 	}
-	
     return body;
 }
 exports.GetMaxTier_BackupHarvester = GetMaxTier_BackupHarvester;
