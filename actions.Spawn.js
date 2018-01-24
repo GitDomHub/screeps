@@ -52,7 +52,8 @@ var roleSpawn = {
 
 
 
-		//react to when there is an attack
+		/*----------  React to when there is an attack  ----------*/
+		
 		if (amountHostiles > 1) { // 2Do: make this only for this current room!
 		 console.log('ATTACK MODE LIVE');
 		 var minBackupHarvesters         = 2;    
@@ -66,7 +67,8 @@ var roleSpawn = {
 		 var minDefenders                = 3;   // +8  // 2DO: always spawn defenders first before anything else
 		}
 
-
+		/*----------  Console logging  ----------*/
+		
 		console.log('##################################');
 		console.log('BackupHarvesters: '    + backupHarvesters.length + '/' + minBackupHarvesters);
 		console.log('Harvesters: '          + harvesters.length + '/' + minHarvesters);
