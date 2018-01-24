@@ -12,7 +12,7 @@ or changes will be lost
 require('vars.global');
 
 /*----------  Utils  ----------*/
-require('utils.Profiles');
+const ProfileUtils = require('utils.Profiles');
 
 
 /*----------  Creep Roles  ----------*/
