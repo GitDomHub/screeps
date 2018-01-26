@@ -32,7 +32,7 @@ var roleMiner = {
             }
         }    
         let allLinks = _.values(Memory.rooms[creep.room.name].energySources).includes('link');
-        console.log(allLinks);
+        console.log('all links: ' + allLinks);
     },
 
 
