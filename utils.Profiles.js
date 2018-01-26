@@ -25,6 +25,32 @@
 
 /**
   *
+  * TowerCourier - deliverung to towers only
+  * 						 
+  *	  	T1: MOVE*1,CARRY*1 ; 100E ; 50carry ; plain=1,1   road=1,1   swamp=1,5 
+  *
+  */
+exports.GetBody_TowerCourier = GetBody_TowerCourier;
+function GetBody_TowerCourier(tier) {
+	if (tier > 1) tier = 1;
+	let body = [];
+	switch (tier) {
+		case 1: 
+			body = AddToBody(body,[MOVE], 1);
+			body = AddToBody(body,[CARRY], 1);
+			break;
+	}
+    return body;
+}
+exports.GetMaxTier_TowerCourier = GetMaxTier_TowerCourier;
+function GetMaxTier_TowerCourier(energy){
+	return GetMaxTier(energy, GetBody_TowerCourier,1);
+}
+
+
+
+/**
+  *
   * Courier - deliverung from drop or container to central storage/droppoffpoint
   * 						 
   *	  	T1: MOVE*3,CARRY*3 ; 300E ; 150carry ; plain=1,1   road=1,1   swamp=1,5 

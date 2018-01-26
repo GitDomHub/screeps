@@ -26,12 +26,7 @@ var roleTowerCourier = {
                 actionSelectSource.run(creep);
             } else {
                 creep.say('error!');
-            }
-            
-            return; // test
-            
-            
-            
+            }            
         }
         // not harvesting, delivering energy to structures
         else {
