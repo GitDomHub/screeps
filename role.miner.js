@@ -1,3 +1,4 @@
+var actionsGlobal = require('actions.global');
 var roleMiner = {
 
     /** @param {Creep} creep **/
@@ -37,10 +38,7 @@ var roleMiner = {
         // let allSources = Memory.rooms[creep.room.name].energySources;
         // let allLinks = _.filter(allSources, (s) => allSources[s] == 'link');
         // console.log('all links: ' + allLinks);
-
-        let allSources = Memory.rooms[creep.room.name].energySources;
-        let allLinks = _.filter(_.keys(Memory.rooms[creep.room.name].energySources), key => allSources[key] === 'link');
-        console.log('all links: ' + allLinks);
+        console.log(actionsGlobal.ReturnEnergySourceIDs(creep.room.name, 'link'));
     },
 
 

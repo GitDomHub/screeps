@@ -46,6 +46,21 @@ module.exports = {
 
 	WritePathSourcesToSpawn : function () {
 
+	},
+
+	/**
+	 *
+	 * Returning structure IDs of energy sources
+	 * (param) : roomName (e.g. E11S22)
+	 * (param) : structure_name (either: source/link/storage/container)
+	 *
+	 */
+	
+	ReturnEnergySourceIDs : function (roomName, structure_name) {
+		if(!structure_name) 
+			return;
+		let allSources = Memory.rooms[roomName].energySources;
+        return allLinks = _.filter(_.keys(allSources), key => allSources[key] === structure_name);        
 	}
 
 
