@@ -20,6 +20,7 @@ var roleMiner = {
         // if nothing to do...
         if (container.length == 0) {
             creep.say('idle');
+            roleMiner.transferEnergyToAdjacentLink(creep);
         }else {
             // when sitting on/near container
             if(creep.pos.getRangeTo(container[0]) == 0) {
@@ -27,18 +28,12 @@ var roleMiner = {
                 var source = creep.pos.findClosestByRange(FIND_SOURCES); // 2Do: write source into miners memory to save cpu
                 creep.harvest(source);
                 if (_.sum(creep.carry) == creep.carryCapacity || source.energy == 0) // also drop energy if source is empty (makes courier maybe go back earlier)
-                    creep.drop(RESOURCE_ENERGY);                
+                    roleMiner.transferEnergyToAdjacentLink(creep);
+                    //creep.drop(RESOURCE_ENERGY);                
             } else { // when not sitting on/near container, then move there                
                 creep.moveTo(container[0], {visualizePathStyle: {stroke: '#ffffff'}});
             }
         }    
-        // let allLinks = _.keys(Memory.rooms[creep.room.name].energySources).includes('link');
-        // console.log('all links: ' + allLinks);
-
-        // let allSources = Memory.rooms[creep.room.name].energySources;
-        // let allLinks = _.filter(allSources, (s) => allSources[s] == 'link');
-        // console.log('all links: ' + allLinks);
-        console.log(actionsGlobal.ReturnEnergySourceIDs(creep.room.name, 'link'));
     },
 
 
@@ -65,19 +60,27 @@ var roleMiner = {
         }   
     },
 
-    dropEnergyIntoLink : function (creep) {
-        // write all links from memory into array
-        
-        //Object.values(Memory.rooms[myRoom].energySources).indexOf('storage')
-
-        // first look for link within range next to me
-        if(creep.pos.isNearTo(target)) {
-            creep.transferEnergy(target);
+    transferEnergyToAdjacentLink : function (creep) {
+        //first look in memory
+        if(creep.memory.servingLink) {
+            let linkObj = Game.getObjectById(creep.memory.servingLink);
+            if(linkObj && creep.pos.isNearTo(linkObj)) {
+                creep.transfer(linkObj, RESOURCE_ENERGY);
+            }
+        }else {
+            // write all links from memory into array
+            let allLinks = actionsGlobal.ReturnEnergySourceIDs(creep.room.name, 'link');
+            for (linkID of allLinks){
+                let linkObj = Game.getObjectById(linkID);
+                // first look for link within range next to me
+                if(linkObj && creep.pos.isNearTo(linkObj)) {
+                    //write closest link in memory so we dont have to look for it next time
+                    creep.memory.servingLink = linkID;
+                    creep.transfer(linkObj, RESOURCE_ENERGY);
+                }
+            }
         }
-        // transfer
-        if(creep.transfer(linkStruc, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-            creep.moveTo(linkStruc);
-        }   
+        
     }
 
 
