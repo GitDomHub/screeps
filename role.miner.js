@@ -31,12 +31,14 @@ var roleMiner = {
                 creep.moveTo(container[0], {visualizePathStyle: {stroke: '#ffffff'}});
             }
         }    
-        let allLinks = _.keys(Memory.rooms[creep.room.name].energySources).includes('link');
+        // let allLinks = _.keys(Memory.rooms[creep.room.name].energySources).includes('link');
+        // console.log('all links: ' + allLinks);
+
+        let allSources = Memory.rooms[creep.room.name].energySources;
+        let alllinks = _.filter(allSources, (s) => s.value == 'link');
         console.log('all links: ' + allLinks);
 
-        allSources = Memory.rooms[creep.room.name].energySources;
-        alllinks = _.filter(allSources, (s) => s.value = 'link');
-        console.log('all links: ' + allLinks);
+        // let allLinks = _.filter(_.keys(Memory.rooms[creep.room.name].energySources), key => Memory.rooms[creep.room.name].energySources[key] === 'link');
     },
 
 
