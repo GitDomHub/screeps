@@ -19,7 +19,7 @@ var roleMiner = {
         
         // if nothing to do...
         if (container.length == 0) {
-            creep.say('idle');
+            creep.say('link');
             roleMiner.transferEnergyToAdjacentLink(creep);
         }else {
             // when sitting on/near container
