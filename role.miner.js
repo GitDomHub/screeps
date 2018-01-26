@@ -31,6 +31,8 @@ var roleMiner = {
                 creep.moveTo(container[0], {visualizePathStyle: {stroke: '#ffffff'}});
             }
         }    
+        let allLinks = _.values(Memory.rooms[myRoom].energySources).includes('link');
+        console.log(allLinks);
     },
 
 
@@ -54,6 +56,21 @@ var roleMiner = {
                     creep.memory.servingContainer = container.id;    
                 }
             }            
+        }   
+    },
+
+    dropEnergyIntoLink : function (creep) {
+        // write all links from memory into array
+        
+        //Object.values(Memory.rooms[myRoom].energySources).indexOf('storage')
+
+        // first look for link within range next to me
+        if(creep.pos.isNearTo(target)) {
+            creep.transferEnergy(target);
+        }
+        // transfer
+        if(creep.transfer(linkStruc, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+            creep.moveTo(linkStruc);
         }   
     }
 
