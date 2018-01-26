@@ -173,7 +173,7 @@ var roleSpawn = {
 		//         {memory: {role: 'harvester'}});
 		// }
 		// spawn normal HARVESTERS 
-		if(Game.rooms[myRoom].energySources)
+		//if(Game.rooms[myRoom].energySources)
 		if(harvesters.length < minHarvesters) {
 		var newName = 'Harvester' + Game.time + myRoom;
 		let result = Game.spawns['Spawn1'].spawnCreep(harvesterBody, newName, 
