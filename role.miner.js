@@ -36,7 +36,7 @@ var roleMiner = {
 
         let allSources = Memory.rooms[creep.room.name].energySources;
         let allLinks = _.filter(allSources, (s) => s == 'link');
-        console.log('all links: ' + allLinks);
+        console.log('all links: ' + Object.keys(allLinks));
 
         // let allLinks = _.filter(_.keys(Memory.rooms[creep.room.name].energySources), key => Memory.rooms[creep.room.name].energySources[key] === 'link');
     },
