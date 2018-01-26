@@ -178,7 +178,7 @@ var roleSpawn = {
 		var newName = 'Harvester' + Game.time + myRoom;
 		let result = Game.spawns['Spawn1'].spawnCreep(harvesterBody, newName, 
 	    	{memory: {role: 'harvester', homeRoom: myRoom}});
-		console.log(result);
+		console.log('spawn result: ' + result);
 		}
 		 
 		 // spawn COURIERS 
@@ -186,7 +186,7 @@ var roleSpawn = {
 		    var newName = 'Courier' + Game.time + myRoom;
 		    let result = Game.spawns['Spawn1'].spawnCreep(courierBody, newName, // cost 600E;carry400
 		        {memory: {role: 'courier', homeRoom: myRoom}});
-		    console.log(result);
+		    console.log('spawn result: ' + result);
 		}
 		 
 		// spawn MINERS 
