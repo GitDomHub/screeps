@@ -25,11 +25,11 @@ Builder
 Courier
 - Make courier also deliver to towers when enemy is in room!
 - Assign container when spawning - only once. not every tick
-- When available energy less than 500, then check for storages for energy and help distribute. dont go to containers. too slow!
+(- When available energy less than 500, then check for storages for energy and help distribute. dont go to containers. too slow!) This method is slowing down the energy harvesting. Need to find another method.
 
 Miner
 - Make a state for miners
-- When there is link in the room, then make the miner also have carry body part to be able to drop energy into the link that is not directly under him
+- When there is link in the room, then make the miner also have carry body part to be able to drop energy into the link that is not directly beside him
 - Early Miner idea: drop energy to floor and make miner have 1 carry body part https://hastebin.com/rajihumoji.js
 
 Spawning
@@ -42,8 +42,6 @@ https://www.reddit.com/r/screeps/comments/7d6w2t/offensive_strategy/
 - Tower only repair close structures, let a repairer handle the rest?
 - Tower only attack healers when less than 20 heal body parts or closer than 15 range
 - Tower first repair ramparts then containers, roads etc.?
-- Save maximum hits for structures to be repaired in memory
-- Focus healing on creep with lowest hit points
 - when attackers to big to kill, instead repair the structures that they attack. get structures that are within in range 5 of attackers and then repair those
 
 TowerCourier
@@ -59,6 +57,11 @@ Upgrader
 
 Harvesting 
 - actions.SelectSource : When closest source doesnt have energy then creeps just sit there and wait. need to implement some routine to check if closest resource has energy. if not look for another source.
+
+new: Refiller
+- Refilling Spawns and Extensions
+- beginning form RCL 4 we can have a storage. Use new type creep to refill then.
+- before that use dropped energy or containers???
 
 
 

@@ -48,8 +48,18 @@ var roleSpawn = {
 
 		maxTier 						= ProfileUtils.GetMaxTier_TowerCourier(energy);
 		let towerCourierBody 			= ProfileUtils.GetBody_TowerCourier(maxTier);
-		console.log('Maxtier for Courier ' + maxTier);
-		console.log('MaxBody for Courier' + towerCourierBody);
+		console.log('Maxtier for TowerCourier ' + maxTier);
+		console.log('MaxBody for TowerCourier' + towerCourierBody);
+
+		maxTier 						= ProfileUtils.GetMaxTier_Harvester(energy);
+		let harvesterBody 				= ProfileUtils.GetBody_Harvester(maxTier);
+		console.log('Maxtier for Harvester ' + maxTier);
+		console.log('MaxBody for Harvester' + harvesterBody);
+
+		maxTier 						= ProfileUtils.GetMaxTier_Refiller(energy);
+		let refillerBody 				= ProfileUtils.GetBody_Refiller(maxTier);
+		console.log('Maxtier for Refiller ' + maxTier);
+		console.log('MaxBody for Refiller' + refillerBody);
 		 
 		// have always 1 or two backup harvesters so the colony doesnt die
 		// load all creeps in to vars so we can work with them

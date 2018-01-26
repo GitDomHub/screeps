@@ -25,6 +25,88 @@
 
 /**
   *
+  * Refiller 
+  * 	- refills spawns and extensions from storage 
+  * 	- works after RCL 4 with storages
+  * 	- before : need to collect energy from different source.
+  * 						 
+  *	  	T1: MOVE*3,CARRY*6 ; plain=1,2   road=1,1   swamp=1,10 
+  *	  	
+  *	  	 
+  *
+  */
+exports.GetBody_Refiller = GetBody_Refiller;
+function GetBody_Refiller(tier) {
+	if (tier > 1) tier = 1;
+	let body = [];
+	switch (tier) {
+		case 1: 
+			body = AddToBody(body,[MOVE], 3);
+			body = AddToBody(body,[CARRY], 6);
+			break;
+	}
+    return body;
+}
+exports.GetMaxTier_Refiller = GetMaxTier_Refiller;
+function GetMaxTier_Refiller(energy){
+	return GetMaxTier(energy, GetBody_Refiller,1);
+}
+
+/**
+  *
+  * Harvester - can harvest source and deliver to everywhere
+  * 						 
+  *	  	T1: MOVE*2,WORK*1,CARRY*1 ; 250E ; 2/T
+  *	  	T2: MOVE*2,WORK*1,CARRY*2 ; 300E ; 2/T
+  *	  	T3: MOVE*3,WORK*2,CARRY*1 ; 400E ; 4/T
+  *	  	T4: MOVE*3,WORK*3,CARRY*2 ; 550E ; 6/T
+  *	  	T5: MOVE*4,WORK*4,CARRY*4 ; 800E ; 8/T
+  *	  	 
+  *
+  */
+exports.GetBody_Harvester = GetBody_Harvester;
+function GetBody_Harvester(tier) {
+	if (tier > 1) tier = 1;
+	let body = [];
+	switch (tier) {
+		case 1: 
+			body = AddToBody(body,[MOVE], 2);
+			body = AddToBody(body,[WORK], 1);
+			body = AddToBody(body,[CARRY], 1);
+			
+			break;
+		case 2: 
+			body = AddToBody(body,[MOVE], 2);
+			body = AddToBody(body,[WORK], 2);
+			body = AddToBody(body,[CARRY], 1);
+			break;
+		case 3: 
+			body = AddToBody(body,[MOVE], 3);
+			body = AddToBody(body,[WORK], 2);
+			body = AddToBody(body,[CARRY], 1);
+			break;
+		case 4: 
+			body = AddToBody(body,[MOVE], 4);
+			body = AddToBody(body,[WORK], 4);
+			body = AddToBody(body,[CARRY], 4);
+			break;
+		case 4: 
+			body = AddToBody(body,[MOVE], 4);
+			body = AddToBody(body,[WORK], 4);
+			body = AddToBody(body,[CARRY], 4);
+			break;
+	}
+    return body;
+}
+exports.GetMaxTier_Harvester = GetMaxTier_Harvester;
+function GetMaxTier_Harvester(energy){
+	return GetMaxTier(energy, GetBody_Harvester,4);
+}
+
+
+
+/**
+  *
   * TowerCourier - deliverung to towers only
   * 						 
   *	  	T1: MOVE*1,CARRY*1 ; 100E ; 50carry ; plain=1,1   road=1,1   swamp=1,5 
