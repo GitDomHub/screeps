@@ -31,7 +31,7 @@ var roleMiner = {
                 creep.moveTo(container[0], {visualizePathStyle: {stroke: '#ffffff'}});
             }
         }    
-        let allLinks = _.values(Memory.rooms[myRoom].energySources).includes('link');
+        let allLinks = _.values(Memory.rooms[creep.room].energySources).includes('link');
         console.log(allLinks);
     },
 
