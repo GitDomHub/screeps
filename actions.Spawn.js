@@ -176,15 +176,17 @@ var roleSpawn = {
 		if(Game.rooms[myRoom].energySources)
 		if(harvesters.length < minHarvesters) {
 		var newName = 'Harvester' + Game.time + myRoom;
-		Game.spawns['Spawn1'].spawnCreep(harvesterBody, newName, 
+		let result = Game.spawns['Spawn1'].spawnCreep(harvesterBody, newName, 
 	    	{memory: {role: 'harvester', homeRoom: myRoom}});
+		console.log(result);
 		}
 		 
 		 // spawn COURIERS 
 		if(couriers.length < minCouriers  && (miners.length >= minMiners)) {
 		    var newName = 'Courier' + Game.time + myRoom;
-		    Game.spawns['Spawn1'].spawnCreep(courierBody, newName, // cost 600E;carry400
+		    let result = Game.spawns['Spawn1'].spawnCreep(courierBody, newName, // cost 600E;carry400
 		        {memory: {role: 'courier', homeRoom: myRoom}});
+		    console.log(result);
 		}
 		 
 		// spawn MINERS 
