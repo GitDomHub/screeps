@@ -34,11 +34,12 @@ var roleMiner = {
         // let allLinks = _.keys(Memory.rooms[creep.room.name].energySources).includes('link');
         // console.log('all links: ' + allLinks);
 
-        let allSources = Memory.rooms[creep.room.name].energySources;
-        let allLinks = _.filter(allSources, (s) => allSources[s] == 'link');
+        // let allSources = Memory.rooms[creep.room.name].energySources;
+        // let allLinks = _.filter(allSources, (s) => allSources[s] == 'link');
         console.log('all links: ' + allLinks);
 
-        // let allLinks = _.filter(_.keys(Memory.rooms[creep.room.name].energySources), key => Memory.rooms[creep.room.name].energySources[key] === 'link');
+        let allLinks = _.filter(_.keys(Memory.rooms[creep.room.name].energySources), key => Memory.rooms[creep.room.name].energySources[key] === 'link');
+        console.log('all links: ' + allLinks);
     },
 
 
