@@ -60,6 +60,10 @@ var roleSpawn = {
 		let refillerBody 				= ProfileUtils.GetBody_Refiller(maxTier);
 		console.log('Maxtier for Refiller ' + maxTier);
 		console.log('MaxBody for Refiller' + refillerBody);
+
+		let hasStorage = Object.values(Memory.rooms[myRoom].energySources).indexOf('storage');
+        // if we have storage, make harvester into refiller
+		if(hasStorage) harvesterBody = refillerBody; 
 		 
 		// have always 1 or two backup harvesters so the colony doesnt die
 		// load all creeps in to vars so we can work with them
@@ -169,9 +173,10 @@ var roleSpawn = {
 		//         {memory: {role: 'harvester'}});
 		// }
 		// spawn normal HARVESTERS 
+		if(Game.rooms[myRoom].energySources)
 		if(harvesters.length < minHarvesters) {
 		var newName = 'Harvester' + Game.time + myRoom;
-		Game.spawns['Spawn1'].spawnCreep([MOVE,MOVE,MOVE,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY], newName, 
+		Game.spawns['Spawn1'].spawnCreep(harvesterBody, newName, 
 	    	{memory: {role: 'harvester', homeRoom: myRoom}});
 		}
 		 
