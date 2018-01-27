@@ -63,7 +63,7 @@ var roleSpawn = {
 		console.log('MaxBody for Refiller' + refillerBody);
 
 		let hasStorage = Object.values(Memory.rooms[myRoom].energySources).indexOf('storage');
-		console.log(hasStorage, '<------------ has storage')
+		console.log(hasStorage, '<------------ has storage ??')
         // if we have storage, make harvester into refiller
 		if(hasStorage) 
 			harvesterBody = refillerBody; 
