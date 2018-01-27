@@ -39,7 +39,7 @@ var roleMiner = {
         // if container assigned(and source of course), first move to container
         if (targetContainer && targetSource) {
             if(creep.pos.getRangeTo(targetContainer) == 0) {
-                creep.harvest(targetSource); 
+                console.log(creep.harvest(targetSource), '<-------------- harvest result'); 
                 // if container full, then drop energy to floor
                 // if (_.sum(creep.carry) == creep.carryCapacity || targetSource.energy == 0) // also drop energy if source is empty (makes courier maybe go back earlier)                    
                 //     creep.drop(RESOURCE_ENERGY);                               
