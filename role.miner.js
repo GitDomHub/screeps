@@ -12,10 +12,10 @@ var roleMiner = {
     /** @param {Creep} creep **/
     run: function(creep) {
 
-        if (creep.memory.assignedSource == null)        
+        if (creep.memory.assignedSource == null || creep.memory.assignedSource == '')        
             roleMiner.assignSourceToHarvest(creep);
 
-        if (creep.memory.servingContainer == null)
+        if (creep.memory.servingContainer == null || creep.memory.servingContainer == '' )
             //roleMiner.assignContainer(creep);
             roleMiner.assignContainerAdjacentToSource(creep);
         
