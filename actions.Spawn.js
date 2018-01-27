@@ -62,8 +62,22 @@ var roleSpawn = {
 		console.log('Maxtier for Refiller ' + maxTier);
 		console.log('MaxBody for Refiller' + refillerBody);
 
+		maxTier 						= ProfileUtils.GetMaxTier_Builder(energy);
+		let builderBody 				= ProfileUtils.GetBody_Builder(maxTier);
+		console.log('Maxtier for Builder ' + maxTier);
+		console.log('MaxBody for Builder' + builderBody);
+
+		maxTier 						= ProfileUtils.GetMaxTier_Repairer(energy);
+		let repairerBody 				= ProfileUtils.GetBody_Repairer(maxTier);
+		console.log('Maxtier for Repairer ' + maxTier);
+		console.log('MaxBody for Repairer' + repairerBody);
+
+
+
+
 		let hasStorage = Object.values(Memory.rooms[myRoom].energySources).indexOf('storage');
 		console.log(hasStorage, '<------------ has storage ??')
+        
         // if we have storage, make harvester into refiller
 		if(hasStorage > 0) 
 			harvesterBody = refillerBody; 
@@ -242,7 +256,7 @@ var roleSpawn = {
 		// 2Do! build another mini builder for when there is low energy		
 		if(builders.length < minBuilders && (baustellen.length > 0) && harvesters.length >= minHarvesters && miners.length >= minMiners && couriers.length >= minCouriers) {
 		    var newName = 'Builder' + Game.time + myRoom;
-		    let result = Game.spawns['Spawn1'].spawnCreep([MOVE,MOVE,MOVE,MOVE,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY], newName, // cost 1050E; MOVE*6,WORK*3,CARRY*9 ; 1800 health carry 450
+		    let result = Game.spawns['Spawn1'].spawnCreep(builderBody, newName, // cost 1050E; MOVE*6,WORK*3,CARRY*9 ; 1800 health carry 450
 		        {memory: {role: 'builder', homeRoom: myRoom}});
 		    console.log('spawn result builder: ' + result);
 		}
