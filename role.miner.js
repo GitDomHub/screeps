@@ -33,7 +33,7 @@ var roleMiner = {
             }
         });
         
-        if (targetSource)
+        if (!targetSource)
             return console.log(' ERROR: MINER HAS NO ASSIGNED SOURCE');
 
         // if container assigned(and source of course), first move to container
