@@ -412,6 +412,9 @@ function AddToBody(body, parts, count) {
 }
 
 function GetMaxTier(energy, bodyfunc, maxTier) {
+	console.log(energy, ' <-------- got this energy in func');
+	console.log(bodyfunc, ' <-------- got this bodyfunc in func');
+	console.log(maxTier, ' <-------- got this maxTier in func');
 	let tier = 0;
 	let maxReached = false;
 	for (let i = 0; !maxReached; i++) {
