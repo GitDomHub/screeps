@@ -15,7 +15,7 @@ var roleSpawn = {
 
 	RunSpawnFactory : function (myRoom) {
 
-		// console.log('room name in spawn factory:' + myRoom);
+		console.log('room name in spawn factory:' + myRoom);
 		/*----------  Defining max bodies for all creeps  ----------*/
 		let energy 						= Game.rooms[myRoom].energyAvailable;
 		console.log(energy, '<------------ energy available');
