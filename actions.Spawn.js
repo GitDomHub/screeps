@@ -189,7 +189,7 @@ var roleSpawn = {
 		 // spawn COURIERS 
 		if(couriers.length < minCouriers  && (miners.length >= minMiners)) {
 		    var newName = 'Courier' + Game.time + myRoom;
-		    let result = Game.spawns['Spawn1'].spawnCreep(courierBody, newName, // cost 600E;carry400
+		    let result = Game.spawns['Spawn1'].spawnCreep(courierBody, newName, 
 		        {memory: {role: 'courier', homeRoom: myRoom}});
 		    console.log('spawn result courier: ' + result);
 		}

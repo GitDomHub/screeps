@@ -403,7 +403,7 @@ function GetCostForBodyPart (bodypart) {
 }
 
 function AddToBody(body, parts, count) {
-	for (i = 0; i<count; i++) {
+	for (let i = 0; i<count; i++) {
 		for (let part of parts) {
 			body.push(part);
 		} 
