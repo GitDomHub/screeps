@@ -154,16 +154,18 @@ var roleSpawn = {
 			if(backupHarvesters.length < minBackupHarvesters) {
 			var newName = 'BackupHarvester' + Game.time + myRoom;
 			// console.log('Spawning new BackupHarvester: ' + newName);
-			Game.spawns['Spawn1'].spawnCreep(backupHarvesterBody, newName,  
+			let result = Game.spawns['Spawn1'].spawnCreep(backupHarvesterBody, newName,  
 			 	{memory: {role: 'backupHarvester', homeRoom: myRoom}});
+			console.log('spawn result backup harvester: ' + result);
 			}
 		}
 
 		// spawn DEFENDERS 
 		if(defenders.length < minDefenders ) {
 		    var newName = 'Defender' + Game.time + myRoom;
-		    Game.spawns['Spawn1'].spawnCreep(defenderBody, newName, 
+		    let result = Game.spawns['Spawn1'].spawnCreep(defenderBody, newName, 
 		        {memory: {role: 'defender', homeRoom: myRoom}});
+		    console.log('spawn result defender: ' + result);
 		}
 
 		 
@@ -179,7 +181,7 @@ var roleSpawn = {
 		var newName = 'Harvester' + Game.time + myRoom;
 		let result = Game.spawns['Spawn1'].spawnCreep(harvesterBody, newName, 
 	    	{memory: {role: 'harvester', homeRoom: myRoom}});
-		console.log('spawn result: ' + result);
+		console.log('spawn result harvester: ' + result);
 		}
 		 
 		 // spawn COURIERS 
@@ -187,7 +189,7 @@ var roleSpawn = {
 		    var newName = 'Courier' + Game.time + myRoom;
 		    let result = Game.spawns['Spawn1'].spawnCreep(courierBody, newName, // cost 600E;carry400
 		        {memory: {role: 'courier', homeRoom: myRoom}});
-		    console.log('spawn result: ' + result);
+		    console.log('spawn result courier: ' + result);
 		}
 		 
 		// spawn MINERS 
@@ -198,23 +200,23 @@ var roleSpawn = {
 			var newName = 'Miner' + Game.time + myRoom;
 			let result = Game.spawns['Spawn1'].spawnCreep(minerBody, newName, 
 			    {memory: {role: 'miner', homeRoom: myRoom}});
-			console.log('spawn result: ' + result);
+			console.log('spawn result miner: ' + result);
 		}
 		
 
 		// spawn TOWERCOURIER 
 		if(towerCouriers.length < minTowerCouriers  && miners.length >= minMiners && harvesters.length >= minHarvesters && Object.keys(Memory.rooms[myRoom].damagedStructures).length > 15) {
 		    var newName = 'TowerCourier' + Game.time + myRoom;
-		    Game.spawns['Spawn1'].spawnCreep(towerCourierBody, newName, 
+		    let result = Game.spawns['Spawn1'].spawnCreep(towerCourierBody, newName, 
 		        {memory: {role: 'towerCourier', homeRoom: myRoom}});
+		    console.log('spawn result tower courier: ' + result);
 		}
 		 
 		//spawn REPAIRERS 
 		if(repairers.length < minRepairers) {
 		    var newName = 'Repairer' + Game.time + myRoom;
 		    /*Game.spawns['Spawn1'].spawnCreep([MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,WORK,WORK,WORK,WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY], newName, //9
-		         {memory: {role: 'repairer'}});*/
-		         
+		         {memory: {role: 'repairer'}});*/		         
 		    Game.spawns['Spawn1'].spawnCreep([MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,WORK,WORK,WORK,CARRY,CARRY,CARRY], newName, 
 		        {memory: {role: 'repairer', homeRoom: myRoom}});    
 		}
@@ -228,8 +230,9 @@ var roleSpawn = {
 		    var newName = 'Upgrader' + Game.time + myRoom;
 		     /*Game.spawns['Spawn1'].spawnCreep([MOVE,MOVE,MOVE,MOVE,WORK,WORK,WORK,CARRY,CARRY,CARRY], newName, // cost 1100E; MOVE*6,WORK*5,CARRY*6; 1.700K health; carry 300
 		         {memory: {role: 'upgrader'}});*/
-		    Game.spawns['Spawn1'].spawnCreep(upgraderBody, newName, 
-		        {memory: {role: 'upgrader', homeRoom: myRoom}})      
+		    let result = Game.spawns['Spawn1'].spawnCreep(upgraderBody, newName, 
+		        {memory: {role: 'upgrader', homeRoom: myRoom}});
+	        console.log('spawn result upgrader: ' + result);      
 		 }
 		 
 		// spawn BUILDERS 
@@ -237,8 +240,9 @@ var roleSpawn = {
 		// 2Do! build another mini builder for when there is low energy		
 		if(builders.length < minBuilders && (baustellen.length > 0) && harvesters.length >= minHarvesters && miners.length >= minMiners && couriers.length >= minCouriers) {
 		    var newName = 'Builder' + Game.time + myRoom;
-		    Game.spawns['Spawn1'].spawnCreep([MOVE,MOVE,MOVE,MOVE,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY], newName, // cost 1050E; MOVE*6,WORK*3,CARRY*9 ; 1800 health carry 450
+		    let result = Game.spawns['Spawn1'].spawnCreep([MOVE,MOVE,MOVE,MOVE,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY], newName, // cost 1050E; MOVE*6,WORK*3,CARRY*9 ; 1800 health carry 450
 		        {memory: {role: 'builder', homeRoom: myRoom}});
+		    console.log('spawn result builder: ' + result);
 		}
 		 
 		
