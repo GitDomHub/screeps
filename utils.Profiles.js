@@ -23,6 +23,53 @@
 ======================================*/
 
 
+
+
+
+/**
+  *
+  * Builder 
+  *  	- cheaper than tower for far away repairs	  
+  *
+  * 							  Buidling
+  *	  	T1: MOVE*2,WORK*1,CARRY*2 ; 5/T ; 	 
+  *	  	T2: MOVE*3,WORK*2,CARRY*4 ; 10/T ;
+  *	  	T3: MOVE*7,WORK*7,CARRY*5 ; 35/T ; 
+  *	  	
+  *	
+  *
+  */
+exports.GetBody_Builder = GetBody_Builder;
+function GetBody_Builder(tier) {
+	if (tier > 3) tier = 3;
+	let body = [];
+	switch (tier) {
+		case 1: 
+			body = AddToBody(body,[MOVE], 2);
+			body = AddToBody(body,[WORK], 1);
+			body = AddToBody(body,[CARRY], 2);
+			break;
+		case 2: 
+			body = AddToBody(body,[MOVE], 3);
+			body = AddToBody(body,[WORK], 2);
+			body = AddToBody(body,[CARRY], 4);
+			break;
+		case 3: 
+			body = AddToBody(body,[MOVE], 7);
+			body = AddToBody(body,[WORK], 7);
+			body = AddToBody(body,[CARRY], 5);
+			break;
+	}
+    return body;
+}
+exports.GetMaxTier_Builder = GetMaxTier_Builder;
+function GetMaxTier_Builder(energy){
+	return GetMaxTier(energy, GetBody_Builder,3);
+}
+
+
+
+
 /**
   *
   * Repairer 
@@ -39,19 +86,35 @@
   */
 exports.GetBody_Repairer = GetBody_Repairer;
 function GetBody_Repairer(tier) {
-	if (tier > 1) tier = 1;
+	if (tier > 4) tier = 4;
 	let body = [];
 	switch (tier) {
 		case 1: 
+			body = AddToBody(body,[MOVE], 2);
+			body = AddToBody(body,[CARRY], 1);
+			body = AddToBody(body,[CARRY], 2);
+			break;
+		case 2: 
 			body = AddToBody(body,[MOVE], 3);
+			body = AddToBody(body,[CARRY], 2);
+			body = AddToBody(body,[CARRY], 4);
+			break;
+		case 3: 
+			body = AddToBody(body,[MOVE], 4);
+			body = AddToBody(body,[CARRY], 4);
+			body = AddToBody(body,[CARRY], 4);
+			break;
+		case 4: 
+			body = AddToBody(body,[MOVE], 7);
 			body = AddToBody(body,[CARRY], 6);
+			body = AddToBody(body,[CARRY], 7);
 			break;
 	}
     return body;
 }
 exports.GetMaxTier_Repairer = GetMaxTier_Repairer;
 function GetMaxTier_Repairer(energy){
-	return GetMaxTier(energy, GetBody_Repairer,1);
+	return GetMaxTier(energy, GetBody_Repairer,4);
 }
 
 

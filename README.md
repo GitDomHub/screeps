@@ -10,6 +10,7 @@ Globals
 - Creep levels https://github.com/Garethp/Screeps (see levels down below in the link)
 - Put a emergency refill variable into Memory. When set true, all creep that got carry body part go to closest storage or container and refill spawn as well extensions
 - Calcualte for each creep how much spawn time there is. then spawn a new creep accordingly
+- Write a room central energydropoff point into memory/room.prototype (one step south of 1st spawn)
 
 Modules
 - Create new module: findNotFullStructures(structures[spawn,extension,tower,storage],prio[which structure do I like to get first?])

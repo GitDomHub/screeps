@@ -60,7 +60,7 @@ module.exports = {
 		if(!structure_name || !roomName) 
 			return;
 		let allSources = Memory.rooms[roomName].energySources;
-        return _.filter(_.keys(allSources), key => allSources[key] === structure_name);        
+        return _.filter(_.keys(allSources), value => allSources[value] === structure_name);        
 	}
 
 

@@ -1,6 +1,8 @@
 /*Delivers from containers to other places*/
 
+
 /*2DO: make courier also deliver to towers when enemy is in room!*/
+var actionsGlobal                       = include('actionsGlobal');
 var actionsSelectSource                 = require('actions.selectSource');
 
 var roleCourier = {
@@ -60,7 +62,9 @@ var roleCourier = {
                             (structure.store[RESOURCE_ENERGY] >= 250) ;
                 }
             });
-            
+            var allContainerIDsFromMem = actionsGlobal.ReturnEnergySourceIDs(creep.memory.homeRoom, 'container');
+            var allDroppedEnergyIDsFromMem = actionsGlobal.ReturnEnergySourceIDs(creep.memory.homeRoom, 'dropped_energy');
+
             //console.log('starting courier routine');
                         
                         // 2Do: do this at spawn only once
@@ -89,10 +93,16 @@ var roleCourier = {
             
             
             
-            // if no containers assigned to me, then move to closest container 
+            // if no containers assigned to me, then pickup dropped energy and drop it into spawn.
             if (assignedContainer.length == 0) {
+                // check if creep has dropped energy resource written into memory
+                // check if containers exist in room
+                if(allDroppedEnergyIDsFromMem.length > 0) {
+                    // 
+                }
                 // find closest container
                 var closestContainer = creep.pos.findClosestByRange(allContainers);
+                
                 if(creep.withdraw(closestContainer, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                     creep.moveTo(closestContainer, {visualizePathStyle: {stroke: '#ffffff'}});
                 }
