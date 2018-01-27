@@ -124,10 +124,13 @@ var roleMiner = {
                     // get source object
                     let source = Game.getObjectById(creep.memory.assignedSource);
                     // look if container is close to my assigned source
-                    let isClose = source.pos.isNearTo(container);
-                    console.log(isClose, ' <-------------------------- container is close to source. assigning it now.');
-                    creep.memory.servingContainer = containerID; 
-                    console.log(creep.memory.servingContainer, ' <-------------------------- creep.memory.servingContainer');   
+                    let isClose = source.pos.isNearTo(container);                    
+                    if (isClose) {
+                        console.log(isClose, ' <-------------------------- container is close to source. assigning it now.');
+                        creep.memory.servingContainer = containerID; 
+                        console.log(creep.memory.servingContainer, ' <-------------------------- creep.memory.servingContainer');       
+                    }
+                    
                 }
             }            
         }   
