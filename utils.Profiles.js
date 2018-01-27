@@ -416,6 +416,9 @@ function GetMaxTier(energy, bodyfunc, maxTier) {
 	let maxReached = false;
 	for (let i = 0; !maxReached; i++) {
 		let cost = GetCostForBodyPart(bodyfunc(i));
+		console.log(cost, ' <----------------------- is current cost');
+		console.log(energy, ' <----------------------- is max energy');
+		console.log(i, ' <----------------------- current tier');
 		if(cost > energy || i > maxTier) {
 			maxReached = true;
 		}else{
