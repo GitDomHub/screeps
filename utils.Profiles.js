@@ -327,18 +327,20 @@ function GetBody_Miner(tier) {
 		case 1: 
 			body = AddToBody(body,[MOVE], 1);
 			body = AddToBody(body,[WORK], 2);
+			body = AddToBody(body,[CARRY], 1);
 			break;
 		case 2: 
 			body = AddToBody(body, [MOVE], 2);  
-			body = AddToBody(body, [WORK], 4);			
+			body = AddToBody(body, [WORK], 4);
+			body = AddToBody(body,[CARRY], 1);			
 			break;
 		case 3: 
 			body = AddToBody(body, [MOVE], 3);  
-			body = AddToBody(body, [WORK], 6);	
+			body = AddToBody(body, [WORK], 6);
+			body = AddToBody(body,[CARRY], 1);	
 			break;	
 	}
-	// alway have 1 carry body part
-	body = AddToBody(body,[CARRY], 1);
+	
 	
     return body;
 }
