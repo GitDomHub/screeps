@@ -18,7 +18,7 @@ var roleSpawn = {
 		// console.log('room name in spawn factory:' + myRoom);
 		/*----------  Defining max bodies for all creeps  ----------*/
 		let energy 						= Game.rooms[myRoom].energyAvailable
-		console.log(energy, '<------------ energy available')
+		console.log(energy, '<------------ energy available');
 
 		let maxTier 					= ProfileUtils.GetMaxTier_Miner(energy);
 		let minerBody					= ProfileUtils.GetBody_Miner(maxTier);
