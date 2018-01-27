@@ -71,16 +71,17 @@ var actionChooseSource = {
     },
 
     returnDrops: function (creep) {
-        return droppedEnergyRes = creep.pos.findClosestByRange(FIND_DROPPED_RESOURCES, {
+        let droppedEnergyRes = creep.pos.findClosestByRange(FIND_DROPPED_RESOURCES, {
             filter: (s) =>  s.amount > 100 &&
                             s.resourceType === RESOURCE_ENERGY
         });
         // next only look in memory of there is dropped energy
+        return droppedEnergyRes;
     },
 
 
     returnStorages: function(creep) {
-        return let storages = creep.room.find(FIND_STRUCTURES, {
+        let storages = creep.room.find(FIND_STRUCTURES, {
             filter: (s) => {
                 return ( s.structureType == STRUCTURE_STORAGE) &&
                             (s.store[RESOURCE_ENERGY] >= creep.carryCapacity) && 
@@ -88,10 +89,11 @@ var actionChooseSource = {
             }
         });
         // just look at Room.storage
+        return storages;
     },
 
     returnContainers: function(creep) {
-        return containers = creep.room.find(FIND_STRUCTURES, {
+        let containers = creep.room.find(FIND_STRUCTURES, {
                 filter: (s) => {
                     return ( s.structureType == STRUCTURE_CONTAINER) &&
                                 (s.store[RESOURCE_ENERGY] >= creep.carryCapacity) && 
@@ -99,6 +101,7 @@ var actionChooseSource = {
                 }
         }); 
         // get container ids from memory and then look for the amount of energy thats in there
+        return containers;
     },
 
     goToSource: function (destination) {
