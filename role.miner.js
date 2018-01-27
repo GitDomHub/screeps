@@ -16,7 +16,8 @@ var roleMiner = {
             roleMiner.assignSourceToHarvest(creep);
 
         if (creep.memory.servingContainer == null)
-            roleMiner.assignContainer(creep);
+            //roleMiner.assignContainer(creep);
+            roleMiner.assignContainerAdjacentToSource(creep);
         
         
         
@@ -51,15 +52,15 @@ var roleMiner = {
 
 
     assignContainer : function (creep) {
-        var containers = creep.room.find(FIND_STRUCTURES, {
+        let containers = creep.room.find(FIND_STRUCTURES, {
             filter: (structure) => {
                 return (structure.structureType == STRUCTURE_CONTAINER);
             }
         }); // 2Do: only look for containers, that have a source in range 1 to it
 
-        for (var container of containers ) {            
+        for (let container of containers ) {            
             //var allMiners = _.filter(Game.creeps, (creep) => creep.memory.role == 'miner');
-            var minerHasContainerAssigned = _.filter(Game.creeps, (creep) => 
+            let minerHasContainerAssigned = _.filter(Game.creeps, (creep) => 
                     creep.memory.servingContainer == container.id && 
                     creep.memory.role == 'miner' &&
                     creep.ticksToLive > 40);            
@@ -71,14 +72,38 @@ var roleMiner = {
             }            
         }   
     },
+
+    assignContainerAdjacentToSource : function (creep) {
+        let containers = actionsGlobal.ReturnEnergySourceIDs(creep.room.name, 'container');
+        console.log(containers, ' <-------------------------- container ids from memory');
+        for (var containerID of containers ) { 
+            let container = Game.getObjectById(containerID);      
+            console.log(container, ' <-------------------------- container object');
+            var minerHasContainerAssigned = _.filter(Game.creeps, (creep) => 
+                    creep.memory.servingContainer == containerID && 
+                    creep.memory.role == 'miner' &&
+                    creep.ticksToLive > 40);            
+           console.log(minerHasContainerAssigned, ' <-------------------------- container assigned to as many creeps');
+            if (minerHasContainerAssigned.length == 0) {
+                if (creep.memory.servingContainer == null) {
+                    // get source object
+                    let source = Game.getObjectById(creep.memory.assignedSource);
+                    // look if container is close to my assigned source
+                    let isClose = source.isNearTo(container);
+                    console.log(isClose, ' <-------------------------- container is close to source. assigning it now.');
+                    creep.memory.servingContainer = containerID; 
+                    console.log(creep.memory.servingContainer, ' <-------------------------- creep.memory.servingContainer');   
+                }
+            }            
+        }   
+    },
     
     assignSourceToHarvest : function (creep) {
-        // find all sources
+        // find all sources 
         let allSources = actionsGlobal.ReturnEnergySourceIDs(creep.room.name, 'source');
         console.log(allSources, ' <--- allSources')
         // find a source that no creep has assigned
         for (sourceID of allSources) {
-            //var allMiners = _.filter(Game.creeps, (creep) => creep.memory.role == 'miner');
             var minerHasSourceAssigned = _.filter(Game.creeps, (creep) => 
                     creep.memory.assignedSource == sourceID && 
                     creep.memory.role == 'miner' &&
