@@ -76,7 +76,8 @@ var roleMiner = {
                 if(linkObj && creep.pos.isNearTo(linkObj)) {
                     //write closest link in memory so we dont have to look for it next time
                     creep.memory.servingLink = linkID;
-                    creep.transfer(linkObj, RESOURCE_ENERGY);
+                    let result = creep.transfer(linkObj, RESOURCE_ENERGY);
+                    console.log(result, '   <---  tranfer to link result')
                 }
             }
         }
