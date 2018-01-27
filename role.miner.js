@@ -7,6 +7,9 @@ var roleMiner = {
         if (creep.memory.servingContainer == null)
             roleMiner.assignContainer(creep);
         
+        // if(creep.memory.assignedSource == null)
+        //     roleMiner.assignSourceToHarvest(creep);
+        
         //find CONTAINER that is being served by the creep
         var targetContainer = Game.getObjectById[creep.memory.servingContainer];
         var container = creep.room.find(FIND_STRUCTURES, {
@@ -57,6 +60,15 @@ var roleMiner = {
                 }
             }            
         }   
+    },
+    
+    assignSourceToHarvest : function (creep) {
+        // find position of assigned container
+        let containerId = creep.memory.servingContainer;
+        let container = Game.getObjectById(containerId);
+        // find all sources
+        
+        // set this source
     },
 
     transferEnergyToAdjacentLink : function (creep) {
