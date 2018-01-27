@@ -69,7 +69,7 @@ var actForAllCreeps = {
             // if there is structures which need energy, move!
             if(targets.length > 0) {
                 // find closest target
-                closestTarget = creep.pos.findClosestByRange(targets);
+                let closestTarget = creep.pos.findClosestByRange(targets);
                 // first cancel whatever the creep was doing before
                 creep.cancelOrder('harvest');
                 creep.cancelOrder('move');
