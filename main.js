@@ -43,7 +43,7 @@ var actionCreeps                        = require('actions.Creeps');
 
 
 module.exports.loop = function () {
-console.log('Maxtier for Miner' + ProfileUtils.GetMaxTier_Miner(Game.rooms['E83S21'].energyAvailable));
+
 
     // run memory 
     actionsGlobal.ClearMemory(); // clears dead creep memory
