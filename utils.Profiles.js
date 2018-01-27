@@ -100,7 +100,7 @@ function GetMaxTier_Refiller(energy){
   */
 exports.GetBody_Harvester = GetBody_Harvester;
 function GetBody_Harvester(tier) {
-	if (tier > 1) tier = 1;
+	if (tier > 4) tier = 4;
 	let body = [];
 	switch (tier) {
 		case 1: 
