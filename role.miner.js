@@ -22,8 +22,8 @@ var roleMiner = {
         
         
         //find CONTAINER that is being served by the creep
-        let targetContainer = Game.getObjectById[creep.memory.servingContainer];
-        let targetSource = Game.getObjectById[creep.memory.assignedSource];
+        let targetContainer = Game.getObjectById(creep.memory.servingContainer);
+        let targetSource = Game.getObjectById(creep.memory.assignedSource);
 
         var container = creep.room.find(FIND_STRUCTURES, {
             filter: (structure) => {
@@ -33,7 +33,7 @@ var roleMiner = {
             }
         });
         
-        if (!targetSource)
+        if (targetSource)
             return console.log(' ERROR: MINER HAS NO ASSIGNED SOURCE');
 
         // if container assigned(and source of course), first move to container
