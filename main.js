@@ -54,6 +54,8 @@ module.exports.loop = function () {
     var roomArray = [];
     // looooop through all rooms that I have creeps in
     for (singleRoom in Game.rooms) {
+        if (!singleRoom)
+            console.log(Game.rooms, '<----- cant loop through those');
 
         console.log('In loop for room: ' + singleRoom);
         
