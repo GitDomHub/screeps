@@ -100,7 +100,7 @@ var roleCourier = {
                     let dropObj = Game.getObjectById(creep.memory.assignedDrop);
                     if(dropObj.amount > 100 && dropObj.resourceType == RESOURCE_ENERGY){
                         if(creep.pickup(dropObj, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                            creep.moveTo(closestContainer);
+                            creep.moveTo(dropObj);
                         }    
                     }
                     
