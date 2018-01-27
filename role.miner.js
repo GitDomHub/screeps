@@ -141,7 +141,7 @@ var roleMiner = {
         let allSources = actionsGlobal.ReturnEnergySourceIDs(creep.room.name, 'source');
         console.log(allSources, ' <--- allSources')
         // find a source that no creep has assigned
-        for (sourceID of allSources) {
+        for (let sourceID of allSources) {
             var minerHasSourceAssigned = _.filter(Game.creeps, (creep) => 
                     creep.memory.assignedSource == sourceID && 
                     creep.memory.role == 'miner' &&
