@@ -12,7 +12,7 @@ var roleMiner = {
     /** @param {Creep} creep **/
     run: function(creep) {
 
-        
+        if (creep.memory.assignedSource == null)        
             roleMiner.assignSourceToHarvest(creep);
 
         if (creep.memory.servingContainer == null)
@@ -77,7 +77,20 @@ var roleMiner = {
         let allSources = actionsGlobal.ReturnEnergySourceIDs(creep.room.name, 'source');
         console.log(allSources, ' <--- allSources')
         // find a source that no creep has assigned
-        // set this source as my assigned source        
+        for (sourceID of allSources) {
+            //var allMiners = _.filter(Game.creeps, (creep) => creep.memory.role == 'miner');
+            var minerHasSourceAssigned = _.filter(Game.creeps, (creep) => 
+                    creep.memory.assignedSource == sourceID && 
+                    creep.memory.role == 'miner' &&
+                    creep.ticksToLive > 40);            
+            // set this source as my assigned source           
+            if (minerHasSourceAssigned.length == 0) {
+                if (creep.memory.assignedSource == null) {
+                    creep.memory.assignedSource = sourceID;    
+                }
+            }            
+        }         
+        
     },
 
     transferEnergyToAdjacentLink : function (creep) {
