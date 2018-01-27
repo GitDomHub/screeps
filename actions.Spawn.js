@@ -65,7 +65,7 @@ var roleSpawn = {
 		let hasStorage = Object.values(Memory.rooms[myRoom].energySources).indexOf('storage');
 		console.log(hasStorage, '<------------ has storage ??')
         // if we have storage, make harvester into refiller
-		if(hasStorage) 
+		if(hasStorage > 0) 
 			harvesterBody = refillerBody; 
 		 
 		// have always 1 or two backup harvesters so the colony doesnt die
