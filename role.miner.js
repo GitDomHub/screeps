@@ -64,7 +64,8 @@ var roleMiner = {
         if(creep.memory.servingLink) {
             let linkObj = Game.getObjectById(creep.memory.servingLink);
             if(linkObj && creep.pos.isNearTo(linkObj)) {
-                creep.transfer(linkObj, RESOURCE_ENERGY);
+                let result = creep.transfer(linkObj, RESOURCE_ENERGY);
+                console.log(result, '   <---  tranfer to link result')
             }
         }else {
             // write all links from memory into array

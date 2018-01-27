@@ -22,13 +22,6 @@ var roleCourier = {
             creep.say('deliver');
         }
         
-        
-        let Containers = Game.rooms[creep.room.name].find(FIND_STRUCTURES, { filter: (structure) => { return ((structure.structureType === STRUCTURE_CONTAINER && structure.energy >= 1000))}});
-        let Container_var = creep.pos.findClosestByPath(Containers);
-        let ContainerPath = creep.room.findPath(creep.pos, Container_var.pos)
-        console.log(Containers, "Containers");
-        console.log(Container_var, "Container");
-        console.log(CantainerPath, "ContainerPath");
 
 
         
