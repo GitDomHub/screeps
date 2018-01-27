@@ -2,7 +2,7 @@
 
 
 /*2DO: make courier also deliver to towers when enemy is in room!*/
-var actionsGlobal                       = require('actionsGlobal');
+var actionsGlobal                       = require('actions.global');
 var actionsSelectSource                 = require('actions.selectSource');
 
 var roleCourier = {
