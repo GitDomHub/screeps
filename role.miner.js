@@ -1,14 +1,24 @@
 var actionsGlobal = require('actions.global');
 var roleMiner = {
 
+    /**
+    
+        TODO:
+        - make miner get an assigned SOURCE instead of container. look for container NEAR source. if 
+    
+     */
+    
+
     /** @param {Creep} creep **/
     run: function(creep) {
+
+        if(creep.memory.assignedSource == null)
+            roleMiner.assignSourceToHarvest(creep);
 
         if (creep.memory.servingContainer == null)
             roleMiner.assignContainer(creep);
         
-        // if(creep.memory.assignedSource == null)
-        //     roleMiner.assignSourceToHarvest(creep);
+        
         
         //find CONTAINER that is being served by the creep
         var targetContainer = Game.getObjectById[creep.memory.servingContainer];
@@ -63,12 +73,11 @@ var roleMiner = {
     },
     
     assignSourceToHarvest : function (creep) {
-        // find position of assigned container
-        let containerId = creep.memory.servingContainer;
-        let container = Game.getObjectById(containerId);
         // find all sources
-        
-        // set this source
+        let allSources = actionsGlobal.ReturnEnergySourceIDs(creep.room.name, 'source');
+        console.log(allSources, ' <--- allSources')
+        // find a source that no creep has assigned
+        // set this source as my assigned source        
     },
 
     transferEnergyToAdjacentLink : function (creep) {

@@ -57,10 +57,10 @@ module.exports = {
 	 */
 	
 	ReturnEnergySourceIDs : function (roomName, structure_name) {
-		if(!structure_name) 
+		if(!structure_name || !roomName) 
 			return;
 		let allSources = Memory.rooms[roomName].energySources;
-        return allLinks = _.filter(_.keys(allSources), key => allSources[key] === structure_name);        
+        return _.filter(_.keys(allSources), key => allSources[key] === structure_name);        
 	}
 
 
