@@ -25,10 +25,43 @@
 
 /**
   *
+  * Repairer 
+  *  	- cheaper than tower for far away repairs	  
+  *
+  * 							  Repairing
+  *	  	T1: MOVE*2,WORK*1,CARRY*2 ; 100/T ; 	
+  *	  	T2: MOVE*3,WORK*2,CARRY*4 ; 200/T ; 
+  *	  	T3: MOVE*4,WORK*4,CARRY*4 ; 400/T ;
+  *	  	T4: MOVE*7,WORK*6,CARRY*7 ; 600/T ; 
+  *	  	
+  *	
+  *
+  */
+exports.GetBody_Repairer = GetBody_Repairer;
+function GetBody_Repairer(tier) {
+	if (tier > 1) tier = 1;
+	let body = [];
+	switch (tier) {
+		case 1: 
+			body = AddToBody(body,[MOVE], 3);
+			body = AddToBody(body,[CARRY], 6);
+			break;
+	}
+    return body;
+}
+exports.GetMaxTier_Repairer = GetMaxTier_Repairer;
+function GetMaxTier_Repairer(energy){
+	return GetMaxTier(energy, GetBody_Repairer,1);
+}
+
+
+
+/**
+  *
   * Refiller 
   * 	- refills spawns and extensions from storage 
   * 	- works after RCL 4 with storages
-  * 	- before : need to collect energy from different source.
+  * 	- before : need to collect energy from different source. 
   * 						 
   *	  	T1: MOVE*3,CARRY*6 ; plain=1,2   road=1,1   swamp=1,10 
   *	  	
@@ -55,7 +88,8 @@ function GetMaxTier_Refiller(energy){
 /**
   *
   * Harvester - can harvest source and deliver to everywhere
-  * 						 
+  *
+  * 						 			  Harvest
   *	  	T1: MOVE*2,WORK*1,CARRY*1 ; 250E ; 2/T
   *	  	T2: MOVE*2,WORK*1,CARRY*2 ; 300E ; 2/T
   *	  	T3: MOVE*3,WORK*2,CARRY*1 ; 400E ; 4/T
@@ -86,15 +120,16 @@ function GetBody_Harvester(tier) {
 			body = AddToBody(body,[CARRY], 1);
 			break;
 		case 4: 
-			body = AddToBody(body,[MOVE], 4);
-			body = AddToBody(body,[WORK], 4);
-			body = AddToBody(body,[CARRY], 4);
+			body = AddToBody(body,[MOVE], 3);
+			body = AddToBody(body,[WORK], 3);
+			body = AddToBody(body,[CARRY], 2);
 			break;
 		case 4: 
 			body = AddToBody(body,[MOVE], 4);
 			body = AddToBody(body,[WORK], 4);
 			body = AddToBody(body,[CARRY], 4);
 			break;
+
 	}
     return body;
 }
