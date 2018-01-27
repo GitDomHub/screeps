@@ -64,7 +64,8 @@ var roleSpawn = {
 
 		let hasStorage = Object.values(Memory.rooms[myRoom].energySources).indexOf('storage');
         // if we have storage, make harvester into refiller
-		if(hasStorage) harvesterBody = refillerBody; 
+		if(hasStorage) 
+			harvesterBody = refillerBody; 
 		 
 		// have always 1 or two backup harvesters so the colony doesnt die
 		// load all creeps in to vars so we can work with them
@@ -179,7 +180,7 @@ var roleSpawn = {
 		//if(Game.rooms[myRoom].energySources)
 		if(harvesters.length < minHarvesters) {
 		var newName = 'Harvester' + Game.time + myRoom;
-		let result = Game.spawns['Spawn1'].spawnCreep(harvesterBody, newName, 
+		let result = Game.spawns['Spawn1'].spawnCreep(harvesterBody, 'testname182736123', 
 	    	{memory: {role: 'harvester', homeRoom: myRoom}});
 		console.log('spawn result harvester: ' + result);
 		}
