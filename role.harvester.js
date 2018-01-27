@@ -59,7 +59,7 @@ var roleHarvester = {
                 var closestTarget = creep.pos.findClosestByRange(targets);
                 // 2Do: make them move to target before it gets empty
                 if(creep.transfer(closestTarget, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(closestTarget, {visualizePathStyle: {stroke: '#ffffff'}});
+                    creep.moveTo(closestTarget);
                 }
             }else {
                 // deliver to tower only if everything else has energy
@@ -75,7 +75,7 @@ var roleHarvester = {
                     var closestTower = creep.pos.findClosestByRange(towers);
                     // 2Do: make them move to target before it gets empty
                     if(creep.transfer(closestTower, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                        creep.moveTo(closestTower, {visualizePathStyle: {stroke: '#ffffff'}});
+                        creep.moveTo(closestTower);
                     }
                 }
             }
