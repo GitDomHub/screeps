@@ -30,11 +30,11 @@ var InitMemRoomOpts = (function () {
 	// check if standard values for each room exist
 	for (let room in Memory.roomOpts) {
 		if(!Memory.roomOpts[room].repairUntil)
-			Memory.roomOpts[room].repairUntil = 10000;
+			Memory.roomOpts[room].repairUntil = 5000;
 		if(!Memory.roomOpts[room].repairUntilPercentage)
 			Memory.roomOpts[room].repairUntilPercentage = 0.5;
 		if(!Memory.roomOpts[room].minEnergyInStorage)
-			Memory.roomOpts[room].minEnergyInStorage = 75000; // if more energy, then we will increase hits of structures
+			Memory.roomOpts[room].minEnergyInStorage = 1000; // if more energy, then we will increase hits of structures
 		if(!Memory.roomOpts[room].aboveMinEnergyIncreaseHitsBy)
 			Memory.roomOpts[room].aboveMinEnergyIncreaseHitsBy = 1000;
 		// 2Do: maybe put minimum of creeps in here too?
