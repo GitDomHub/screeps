@@ -22,7 +22,9 @@ var roleMiner = {
         
         
         //find CONTAINER that is being served by the creep
-        var targetContainer = Game.getObjectById[creep.memory.servingContainer];
+        let targetContainer = Game.getObjectById[creep.memory.servingContainer];
+        let targetSource = Game.getObjectById[creep.memory.assignedSource];
+
         var container = creep.room.find(FIND_STRUCTURES, {
             filter: (structure) => {
                 return (structure.structureType == STRUCTURE_CONTAINER) &&
@@ -31,22 +33,50 @@ var roleMiner = {
             }
         });
         
-        // if nothing to do...
-        if (container.length == 0) {
-            creep.say('link');
-            roleMiner.transferEnergyToAdjacentLink(creep);
-        }else {
-            // when sitting on/near container
-            if(creep.pos.getRangeTo(container[0]) == 0) {
-                // now find closest ENERGY SOURCE
-                var source = creep.pos.findClosestByRange(FIND_SOURCES); // 2Do: write source into miners memory to save cpu
-                creep.harvest(source);
-                if (_.sum(creep.carry) == creep.carryCapacity || source.energy == 0) // also drop energy if source is empty (makes courier maybe go back earlier)                    
-                    creep.drop(RESOURCE_ENERGY);                
-            } else { // when not sitting on/near container, then move there                
-                creep.moveTo(container[0], {visualizePathStyle: {stroke: '#ffffff'}});
+        if (!targetSource)
+            return console.log(' ERROR: MINER HAS NO ASSIGNED SOURCE');
+
+        // if container assigned(and source of course), first move to container
+        if (targetContainer && targetSource) {
+            if(creep.pos.getRangeTo(targetContainer) == 0) {
+                creep.harvest(targetSource); 
+                // if container full, then drop energy to floor
+                // if (_.sum(creep.carry) == creep.carryCapacity || targetSource.energy == 0) // also drop energy if source is empty (makes courier maybe go back earlier)                    
+                //     creep.drop(RESOURCE_ENERGY);                               
+            }else{
+                creep.moveTo(targetSource);
             }
-        }    
+        }else if(!targetContainer && targetSource) { // if no container, just harvest source
+            if(creep.harvest(targetSource) === ERR_NOT_IN_RANGE)
+                creep.moveTo(targetSource);
+        }        
+        
+
+
+
+        // // if nothing to do...
+        // if (container.length == 0) {
+        //     creep.say('idle(link?)');
+        //     roleMiner.transferEnergyToAdjacentLink(creep);
+        // }else {
+        //     // when sitting on/near container
+        //     if(creep.pos.getRangeTo(container[0]) == 0) {
+        //         // now find closest ENERGY SOURCE
+        //         //var source = creep.pos.findClosestByRange(FIND_SOURCES); // 2Do: write source into miners memory to save cpu
+        //         let source = targetSource;
+        //         creep.harvest(source);
+        //         if (_.sum(creep.carry) == creep.carryCapacity || source.energy == 0) // also drop energy if source is empty (makes courier maybe go back earlier)                    
+        //             creep.drop(RESOURCE_ENERGY);                
+        //     } else { // when not sitting on/near container, then move there                
+        //         creep.moveTo(container[0]);
+        //     }
+        // }   
+
+
+
+
+
+
     },
 
 
