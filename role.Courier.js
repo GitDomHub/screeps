@@ -96,16 +96,25 @@ var roleCourier = {
             // if no containers assigned to me, then pickup dropped energy and drop it into spawn.
             if (assignedContainer.length == 0) {
                 // check if creep has dropped energy resource written into memory
-                // check if containers exist in room
-                if(allDroppedEnergyIDsFromMem.length > 0) {
-                    // 
+                if(creep.memory.assignedDrop){
+                    let dropObj = Game.getObjectById(creep.memory.assignedDrop);
+                    if(dropObj.amount > 100 && dropObj.resourceType == RESOURCE_ENERGY){
+                        if(creep.pickup(dropObj, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                            creep.moveTo(closestContainer);
+                        }    
+                    }
+                    
+
+                }else{
+                    roleCourier.assignDroppedEnergyToPickup(creep);
                 }
-                // find closest container
-                var closestContainer = creep.pos.findClosestByRange(allContainers);
                 
-                if(creep.withdraw(closestContainer, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(closestContainer, {visualizePathStyle: {stroke: '#ffffff'}});
-                }
+                // // find closest container
+                // var closestContainer = creep.pos.findClosestByRange(allContainers);
+                
+                // if(creep.withdraw(closestContainer, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                //     creep.moveTo(closestContainer, {visualizePathStyle: {stroke: '#ffffff'}});
+                // }
                 
                 
                 
@@ -171,7 +180,7 @@ var roleCourier = {
                         let closestTarget = creep.pos.findClosestByRange(targets); // somehow one tower is not being served. maybe list by energy amount?
                         // or maybe check if target is storage, then check if towers are full first.
                         if(creep.transfer(closestTarget, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                            creep.moveTo(closestTarget, {visualizePathStyle: {stroke: '#ffffff'}});
+                            creep.moveTo(closestTarget);
                             console.log(closestTarget);
                         }
                     }
@@ -182,6 +191,28 @@ var roleCourier = {
         }
 
           
+    },
+
+    assignDroppedEnergyToPickup : function (creep) {
+        if(creep.memory.assignedDrop)
+            return console.log('have drop assigned already');
+        // find all sources 
+        let allDrops = actionsGlobal.ReturnEnergySourceIDs(creep.room.name, 'dropped_energy');
+        console.log(allDrops, ' <---------- allDrops')
+        // find a source that no creep has assigned
+        for (let dropID of allDrops) {
+            let courierHasDropAssigned = _.filter(Game.creeps, (creep) => 
+                    creep.memory.assignedDrop == dropID && 
+                    creep.memory.role == 'courier' &&
+                    creep.ticksToLive > 40);            
+            // set this drop as my assigned source           
+            if (courierHasDropAssigned.length == 0) {
+                if (creep.memory.assignedDrop == null) {
+                    creep.memory.assignedDrop = dropID;    
+                }
+            }            
+        }         
+        
     }
 };
 
