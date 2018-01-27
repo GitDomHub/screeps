@@ -23,6 +23,14 @@ var roleCourier = {
         }
         
         
+        let Containers = Game.rooms[creep.room.name].find(FIND_STRUCTURES, { filter: (structure) => { return ((structure.structureType === STRUCTURE_CONTAINER && structure.energy >= 1000))}});
+        let Container = creep.pos.findClosestByPath(Containers);
+        let ContainerPath = creep.room.findPath(creep.pos, Container.pos)
+        console.log(Containers, "Containers");
+        console.log(Container, "Container");
+        console.log(Cantainer, "ContainerPath");
+
+
         
         // If set to get energy, make creep move there
         if (creep.memory.harvesting) {
