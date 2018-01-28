@@ -22,7 +22,7 @@ var actionChooseSource = {
         
         if(droppedEnergyRes) { // only go for that resource if no enemy creep is close by (otherwise I'll die u know)
             if(creep.pickup(droppedEnergyRes) == ERR_NOT_IN_RANGE) {
-                creep.moveTo(droppedEnergyRes, {visualizePathStyle: {stroke: '#ffaa00'}});
+                creep.moveTo(droppedEnergyRes);
                 // write target into memory (so that not all gathering creeps go there. especially if dropped energy is near room exit. will waste time.)
                 creep.memory.targetId = droppedEnergyRes.id;
 
@@ -33,7 +33,7 @@ var actionChooseSource = {
             var storageUnit = storages[0];
             if(creep.withdraw(storageUnit, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                 // move there and get energy from there 
-                creep.moveTo(storageUnit, {visualizePathStyle: {stroke: '#ffaa00'}});                
+                creep.moveTo(storageUnit);                
             }
         } else {            
             // SECOND see if there are CONTAINERS that are not empty, PLUS have more enery than 250
@@ -54,7 +54,7 @@ var actionChooseSource = {
                 var container = creep.pos.findClosestByRange(containers);
                 if(creep.withdraw(container, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                     // move there and get energy from there 
-                    creep.moveTo(container, {visualizePathStyle: {stroke: '#ffaa00'}});                    
+                    creep.moveTo(container);                    
                 }
             } else {
                 // THIRD: go to SOURCES
@@ -62,7 +62,7 @@ var actionChooseSource = {
                 var source = creep.pos.findClosestByRange(FIND_SOURCES);
                 if(creep.harvest(source) == ERR_NOT_IN_RANGE) {
                     // make creep move and show its path
-                    creep.moveTo(source, {visualizePathStyle: {stroke: '#ffaa00'}});
+                    creep.moveTo(source);
                 }
             }
         
@@ -77,6 +77,8 @@ var actionChooseSource = {
         });
         // next only look in memory of there is dropped energy
         return droppedEnergyRes;
+
+        // 2Do: use memory to find dropped resources that are near to a source(meaning this drop comes from a miner)
     },
 
 
