@@ -49,7 +49,7 @@ var actForAllCreeps = {
 	        
         // check time to live
         var carryBodyparts = creep.getActiveBodyparts('carry');
-        console.log(creep + ' lives another ticks: ' + creep.ticksToLive + ' and has this carry load: ' + _.sum(creep.carry) + ' and so many carry bodyparts:' + carryBodyparts );
+        //console.log(creep + ' lives another ticks: ' + creep.ticksToLive + ' and has this carry load: ' + _.sum(creep.carry) + ' and so many carry bodyparts:' + carryBodyparts );
         
         
         // if creeps ticks to live under 50 (guess thats the longest route they'd take) and he has enough energy
