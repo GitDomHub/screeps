@@ -112,7 +112,7 @@ var roleSpawn = {
 
 		var amountHostiles                 	= Game.rooms[myRoom].find(FIND_HOSTILE_CREEPS).length;
 
-		let amountSourcesInRoom 			= actionsGlobal.ReturnEnergySourceIDs(MyRoom, 'source'); 
+		let amountSourcesInRoom 			= actionsGlobal.ReturnEnergySourceIDs(myRoom, 'source'); 
 		console.log(amountSourcesInRoom.length, ' <----------------- found this many sources in room');
 		 
 		//2DO define mininum of creeps in vars
