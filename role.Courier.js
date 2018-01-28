@@ -186,6 +186,12 @@ var roleCourier = {
                             creep.moveTo(closestTarget);
                             console.log(closestTarget);
                         }
+                    }else{// we dont even got any thing to fill then check if we have a DROPOFF POINT
+                        if (Memory.rooms[creep.room].energyDropoffs.length > 0) {
+                            let dropOffPos = new RoomPosition(Memory.rooms[creep.room].energyDropoffs[0].x, Memory.rooms[creep.room].energyDropoffs[0].y, creep.room);
+                            console.log (dropOffPos, ' <---- ############# dropoffPos from courier');
+                        }
+
                     }
                 }
 
