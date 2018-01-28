@@ -1,20 +1,5 @@
 /*define variables on a global scale for every function in screeps available*/
 
-
-
-// global.repairUntilHitsEqual  			= 750000; // maybe put this into memory?  
-
-
-// define vars for this room
-// global.room1                            = 'E83S21';
-// global.roomHasHostiles                  = Game.rooms[global.room1].find(FIND_HOSTILE_CREEPS).length;
-
-//struc status
-// global.damagedStrucInRoom1             	= Game.rooms[global.room1].find(FIND_STRUCTURES,
-// 		                                         {filter: (s) => s.hits < (s.hitsMax * 0.5) && 
-// 		                                             s.hits < global.repairUntilHitsEqual}); // 2Do: calculate the whole amount of missing hits until we reach our goal.
-
-
 // Initiating room options
 var InitMemRoomOpts = (function () {
 	// only do this if object doesnt exists already
@@ -30,30 +15,27 @@ var InitMemRoomOpts = (function () {
 	// check if standard values for each room exist
 	for (let room in Memory.roomOpts) {
 		if(!Memory.roomOpts[room].repairUntil)
-			Memory.roomOpts[room].repairUntil = 5000;
+			Memory.roomOpts[room].repairUntil = 1000;
 		if(!Memory.roomOpts[room].repairUntilPercentage)
 			Memory.roomOpts[room].repairUntilPercentage = 0.5;
 		if(!Memory.roomOpts[room].minEnergyInStorage)
 			Memory.roomOpts[room].minEnergyInStorage = 1000; // if more energy, then we will increase hits of structures
 		if(!Memory.roomOpts[room].aboveMinEnergyIncreaseHitsBy)
 			Memory.roomOpts[room].aboveMinEnergyIncreaseHitsBy = 1000;
-
-		// 2Do: maybe put minimum of creeps in here too?
 	}	
 }());
 
-
-//InitMemRoomOpts();
-
+/**
+ *
+ * Checks whether Source is guarded. For early game we dont harvest this one
+ *
+ */
 
 var checkIfSourceIsCloseToLair = function (source, room) {
-	console.log(source, ' <------------------------ got that source');
 	let isCloseToLair 				= false;
 	let keeperLairObj 				= Game.rooms[room].find(FIND_STRUCTURES, {
 		filter: { structureType: STRUCTURE_KEEPER_LAIR }
 	});
-	// console.log(keeperLairObj, ' <------- keeper lair objects in room');
-	
 	for (let lair of keeperLairObj) {
 		if(source.pos.inRangeTo(lair, 5)){
 			isCloseToLair = true;
@@ -116,16 +98,16 @@ for (let room in Memory.rooms) {
 	var sources 						= Game.rooms[room].find(FIND_SOURCES);
 	for (let source of sources) {		
 		// if source has a keeper close by the for now dont put it in memory
-     	var keeperLairObj 				= Game.rooms[room].find(FIND_STRUCTURES, {
-			   filter: { structureType: STRUCTURE_KEEPER_LAIR }
-			});
-     	// console.log(keeperLairObj, ' <------- keeper lair objects in room');
-     	let isCloseToLair = false;
-     	for (let lair of keeperLairObj) {
-     		if(source.pos.inRangeTo(lair, 8)){
-     			isCloseToLair = true;
-     		}     		
-     	}
+   //   	var keeperLairObj 				= Game.rooms[room].find(FIND_STRUCTURES, {
+			//    filter: { structureType: STRUCTURE_KEEPER_LAIR }
+			// });
+   //   	// console.log(keeperLairObj, ' <------- keeper lair objects in room');
+   //   	let isCloseToLair = false;
+   //   	for (let lair of keeperLairObj) {
+   //   		if(source.pos.inRangeTo(lair, 8)){
+   //   			isCloseToLair = true;
+   //   		}     		
+   //   	}
      	let sourceIsCloseToLair = checkIfSourceIsCloseToLair(source, room);
      	if (!sourceIsCloseToLair) {
  			energySources[source.id] = 'source';	
@@ -215,36 +197,6 @@ for (let room in Memory.rooms) {
 	}
 }
 
-
-
-
-
-delete Memory.damagedStructuresR1;
-delete Memory.pathToStorage;
-delete Memory.pathToController;
-delete Memory.room1;
-
-
-//
-
-
-
-//Memory.damagedStructuresR1 = [];
-// Memory.damagedStructuresR1 				= Game.rooms[global.room1].find(FIND_STRUCTURES,
-//  		                                         {filter: (s) => s.hits < (s.hitsMax * 0.5) && 
-//  		                                             s.hits < Memory.room1.repairUntil});
-
-// var damagedStruc 				= Game.rooms[global.room1].find(FIND_STRUCTURES,
-//  		                                         {filter: (s) => s.hits < (s.hitsMax * 0.5) && 
-//  		                                             s.hits < Memory.room1.repairUntil});
-
-// var damagedStructures = {};
-// for (let struc of damagedStruc) {
-// 	damagedStructures[struc.id] = struc.hits;	
-// }
-// Memory.test = damagedStructures;
-
-// _.sortBy(test, function(s) {return s.hits});
 
 
 
