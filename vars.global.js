@@ -37,6 +37,7 @@ var InitMemRoomOpts = (function () {
 			Memory.roomOpts[room].minEnergyInStorage = 1000; // if more energy, then we will increase hits of structures
 		if(!Memory.roomOpts[room].aboveMinEnergyIncreaseHitsBy)
 			Memory.roomOpts[room].aboveMinEnergyIncreaseHitsBy = 1000;
+
 		// 2Do: maybe put minimum of creeps in here too?
 	}	
 }());
@@ -141,6 +142,14 @@ for (let room in Memory.rooms) {
 	}
 	Memory.rooms[room].energySources = energySources;
 
+	//drop off points for early game
+	let dropOffPoints = {};
+	// make a dropoff for each a spawn (and a controller later)
+	let spawnObj = Game.rooms[room].find(FIND_MY_SPAWNS);
+	for(let singleSpawn of spawnObj) {
+		let dropOffPos = new RoomPosition((singleSpawn.pos.x, (singleSpawn.pos.y-1), room);
+		console.log(dropOffPos, ' <-------------------- roompos for dropoff');
+	} 
 
 
 	// testing storing paths
