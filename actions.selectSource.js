@@ -3,13 +3,15 @@ var actionChooseSource = {
     // 2Do: take parameters for which source to prioritize/ignore
     // 2Do: take parameter for target room(or maybe just get it from memory in creep)
     run: function(creep, ignoreStrucs) {
-
+        if(!ignoreStrucs) 
+            ignoreStrucs=[];
 
         //2Do: decide between storage and container, maybe decide on distance  traveled
         //const droppedEnergyRes = creep.pos.findClosestByRange(FIND_DROPPED_RESOURCES); // replace with DROPPED_RESOURCES??
         // let droppedEnergyRes = creep.pos.findClosestByRange(FIND_DROPPED_RESOURCES, {filter: (s) => s.amount > 100 && s.resourceType === RESOURCE_ENERGY});
         let roomControlLevel = creep.room.controller.level;
         console.log(roomControlLevel, ' <------------------------------------------------------------ RCL');
+        console.log(ignoreStrucs.includes('drops'), '<- will ignore drops?');
         var droppedEnergyRes = actionChooseSource.returnDrops(creep);
 
         // var droppedEnergyRes = 0;
