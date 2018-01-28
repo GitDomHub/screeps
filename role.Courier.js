@@ -189,10 +189,13 @@ var roleCourier = {
                     }else{// we dont even got any thing to fill then check if we have a DROPOFF POINT
                         console.log(Memory.rooms[creep.memory.homeRoom].energyDropoffs, ' <-------- ###### found this in memory');
                         if (Memory.rooms[creep.memory.homeRoom].energyDropoffs.length > 0) {
-                            let memObj = Memory.rooms[creep.memory.homeRoom].energyDropoffs[Object.keys(Memory.rooms[creep.memory.homeRoom].energyDropoffs)[0]];
-                            console.log(memObj, ' <------------------------- got this object from memory');
-                            let dropOffPos = new RoomPosition(Memory.rooms[creep.memory.homeRoom].energyDropoffs[0].x, Memory.rooms[creep.memory.homeRoom].energyDropoffs[0].y, creep.room.name);
-                            console.log (dropOffPos, ' <---- ############# dropoffPos from courier');
+                            for (let memObj in Memory.rooms[creep.memory.homeRoom].energyDropoffs) {
+                                console.log(memObj, ' <------------------------- got this object from memory');
+                                let dropOffPos = new RoomPosition(memObj.x, memObj.y, creep.memory.homeRoom);
+                                console.log (dropOffPos, ' <---- ############# dropoffPos from courier');
+                                break; // only look for first item
+                            }
+                            
                         }
 
                     }
