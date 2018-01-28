@@ -27,55 +27,55 @@ var roleSpawn = {
 
 		let maxTier 					= ProfileUtils.GetMaxTier_Miner(energy);
 		let minerBody					= ProfileUtils.GetBody_Miner(maxTier);
-		console.log('Maxtier for Miner ' + maxTier);
-		console.log('MaxBody for Miner ' + minerBody);
+		// console.log('Maxtier for Miner ' + maxTier);
+		// console.log('MaxBody for Miner ' + minerBody);
 
 		maxTier 						= ProfileUtils.GetMaxTier_BackupHarvester(energy);
 		let backupHarvesterBody			= ProfileUtils.GetBody_BackupHarvester(maxTier);
-		console.log('Maxtier for BackupHarvester ' + maxTier);
-		console.log('MaxBody for BackupHarvester ' + backupHarvesterBody);
+		// console.log('Maxtier for BackupHarvester ' + maxTier);
+		// console.log('MaxBody for BackupHarvester ' + backupHarvesterBody);
 
 		maxTier 						= ProfileUtils.GetMaxTier_Upgrader(energy);
 		let upgraderBody 				= ProfileUtils.GetBody_Upgrader(maxTier);
 		let upgraderSpawnTime 			= (upgraderBody.length *3);
 		upgraderSpawnTime 				+= 20;
-		console.log('Maxtier for Upgrader ' + maxTier);
-		console.log('MaxBody for Upgrader (Spawn t = ' + upgraderSpawnTime + ' ticks) ' + upgraderBody);
+		// console.log('Maxtier for Upgrader ' + maxTier);
+		// console.log('MaxBody for Upgrader (Spawn t = ' + upgraderSpawnTime + ' ticks) ' + upgraderBody);
 
 		maxTier 						= ProfileUtils.GetMaxTier_Defender(energy);
 		let defenderBody 				= ProfileUtils.GetBody_Defender(maxTier);
-		console.log('Maxtier for Defender ' + maxTier);
-		console.log('MaxBody for Defender ' + defenderBody);
+		// console.log('Maxtier for Defender ' + maxTier);
+		// console.log('MaxBody for Defender ' + defenderBody);
 
 		maxTier 						= ProfileUtils.GetMaxTier_Courier(energy);
 		let courierBody 				= ProfileUtils.GetBody_Courier(maxTier);
-		console.log('Maxtier for Courier ' + maxTier);
-		console.log('MaxBody for Courier' + courierBody);
+		// console.log('Maxtier for Courier ' + maxTier);
+		// console.log('MaxBody for Courier' + courierBody);
 
 		maxTier 						= ProfileUtils.GetMaxTier_TowerCourier(energy);
 		let towerCourierBody 			= ProfileUtils.GetBody_TowerCourier(maxTier);
-		console.log('Maxtier for TowerCourier ' + maxTier);
-		console.log('MaxBody for TowerCourier' + towerCourierBody);
+		// console.log('Maxtier for TowerCourier ' + maxTier);
+		// console.log('MaxBody for TowerCourier' + towerCourierBody);
 
 		maxTier 						= ProfileUtils.GetMaxTier_Harvester(energy);
 		let harvesterBody 				= ProfileUtils.GetBody_Harvester(maxTier);
-		console.log('Maxtier for Harvester ' + maxTier);
-		console.log('MaxBody for Harvester' + harvesterBody);
+		// console.log('Maxtier for Harvester ' + maxTier);
+		// console.log('MaxBody for Harvester' + harvesterBody);
 
 		maxTier 						= ProfileUtils.GetMaxTier_Refiller(energy);
 		let refillerBody 				= ProfileUtils.GetBody_Refiller(maxTier);
-		console.log('Maxtier for Refiller ' + maxTier);
-		console.log('MaxBody for Refiller' + refillerBody);
+		// console.log('Maxtier for Refiller ' + maxTier);
+		// console.log('MaxBody for Refiller' + refillerBody);
 
 		maxTier 						= ProfileUtils.GetMaxTier_Builder(energy);
 		let builderBody 				= ProfileUtils.GetBody_Builder(maxTier);
-		console.log('Maxtier for Builder ' + maxTier);
-		console.log('MaxBody for Builder' + builderBody);
+		// console.log('Maxtier for Builder ' + maxTier);
+		// console.log('MaxBody for Builder' + builderBody);
 
 		maxTier 						= ProfileUtils.GetMaxTier_Repairer(energy);
 		let repairerBody 				= ProfileUtils.GetBody_Repairer(maxTier);
-		console.log('Maxtier for Repairer ' + maxTier);
-		console.log('MaxBody for Repairer' + repairerBody);
+		// console.log('Maxtier for Repairer ' + maxTier);
+		// console.log('MaxBody for Repairer' + repairerBody);
 
 
 
