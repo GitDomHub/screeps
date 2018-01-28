@@ -10,12 +10,12 @@ var actionChooseSource = {
         //2Do: decide between storage and container, maybe decide on distance  traveled
         //const droppedEnergyRes = creep.pos.findClosestByRange(FIND_DROPPED_RESOURCES); // replace with DROPPED_RESOURCES??
         // let droppedEnergyRes = creep.pos.findClosestByRange(FIND_DROPPED_RESOURCES, {filter: (s) => s.amount > 100 && s.resourceType === RESOURCE_ENERGY});
-        let roomControlLevel = creep.room.controller.level;
-        console.log(roomControlLevel, ' <------------------------------------------------------------ RCL');
-        console.log(ignoreStrucs.includes('drops'), '<- will ignore drops?');
-        var droppedEnergyRes = actionChooseSource.returnDrops(creep);
+        // let roomControlLevel = creep.room.controller.level;
+        // console.log(roomControlLevel, ' <------------------------------------------------------------ RCL');
+        // console.log(ignoreStrucs.includes('drops'), '<- will ignore drops?');
+        // var droppedEnergyRes = actionChooseSource.returnDrops(creep);
 
-        // var droppedEnergyRes = 0;
+        var droppedEnergyRes = 0;
         // FIRST see if storage has enough energy
         // var storages = creep.room.find(FIND_STRUCTURES, {
         //     filter: (structure) => {
@@ -27,11 +27,11 @@ var actionChooseSource = {
         let storages = actionChooseSource.returnStorages(creep);
 
         
-        if(droppedEnergyRes && !ignoreStrucs.includes('drops')) { // only go for that resource if no enemy creep is close by (otherwise I'll die u know)
+        if(droppedEnergyRes /*&& !ignoreStrucs.includes('drops') */) { // only go for that resource if no enemy creep is close by (otherwise I'll die u know)
             if(creep.pickup(droppedEnergyRes) == ERR_NOT_IN_RANGE) {
                 creep.moveTo(droppedEnergyRes);
                 // write target into memory (so that not all gathering creeps go there. especially if dropped energy is near room exit. will waste time.)
-                creep.memory.targetId = droppedEnergyRes.id;
+                // creep.memory.targetId = droppedEnergyRes.id;
 
 
             }
@@ -83,13 +83,17 @@ var actionChooseSource = {
                             s.resourceType === RESOURCE_ENERGY
         });
         // next only look in memory of there is dropped energy
+        
         return droppedEnergyRes;
 
-        // 2Do: use memory to find dropped resources that are near to a source(meaning this drop comes from a miner)
+        
+        // return all dropped energy from memory
+        // for each look if 
     },
 
 
     returnStorages: function(creep) {
+        // no need to FIND storage. can use room.storage
         let storages = creep.room.find(FIND_STRUCTURES, {
             filter: (s) => {
                 return ( s.structureType == STRUCTURE_STORAGE) &&
