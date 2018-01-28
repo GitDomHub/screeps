@@ -27,7 +27,7 @@ var actionChooseSource = {
         let storages = actionChooseSource.returnStorages(creep);
 
         
-        if(droppedEnergyRes) { // only go for that resource if no enemy creep is close by (otherwise I'll die u know)
+        if(droppedEnergyRes && !ignoreStrucs.includes('drops')) { // only go for that resource if no enemy creep is close by (otherwise I'll die u know)
             if(creep.pickup(droppedEnergyRes) == ERR_NOT_IN_RANGE) {
                 creep.moveTo(droppedEnergyRes);
                 // write target into memory (so that not all gathering creeps go there. especially if dropped energy is near room exit. will waste time.)
