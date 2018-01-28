@@ -214,7 +214,7 @@ var roleCourier = {
                 console.log(memObj, ' <------------------------- got this object from memory');
                 console.log(memObj.x, '    x');
                 // let dropOffPos = new RoomPosition(memObj['x'], memObj['y'], creep.memory.homeRoom);
-                console.log (dropOffPos, ' <---- ############# dropoffPos from courier');
+                //console.log (dropOffPos, ' <---- ############# dropoffPos from courier');
                 break; // only look for first item
             }
             
