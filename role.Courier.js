@@ -206,6 +206,19 @@ var roleCourier = {
 
         }
 
+
+        console.log(Memory.rooms[creep.memory.homeRoom].energyDropoffs, ' <-------- ###### found this in memory');
+        if (Object.keys(Memory.rooms[creep.memory.homeRoom].energyDropoffs).length > 0) {
+            for (let memObj in Memory.rooms[creep.memory.homeRoom].energyDropoffs) {
+                console.log(' <------------------------- loggin memObj -------------------->');
+                console.log(memObj, ' <------------------------- got this object from memory');
+                let dropOffPos = new RoomPosition(memObj['x'], memObj['y'], creep.memory.homeRoom);
+                console.log (dropOffPos, ' <---- ############# dropoffPos from courier');
+                break; // only look for first item
+            }
+            
+        }
+
           
     },
 
