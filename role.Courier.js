@@ -197,9 +197,9 @@ var roleCourier = {
                             
                             let dropOffPos = new RoomPosition(x, y, creep.memory.homeRoom);
                             console.log (dropOffPos, ' <---- ############# dropoffPos from courier');
-                            if(!creep.pos === dropOffPos) {
+                            if(!creep.pos.isEqualTo(dropOffPos)) {
                                 creep.moveTo(dropOffPos);
-                            }else if (creep.pos === dropOffPos) {
+                            }else if (creep.pos.isEqualTo(dropOffPos)) {
                                 creep.drop(RESOURCE_ENERGY);
                             }
                             break; // only look for first item
