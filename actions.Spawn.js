@@ -15,6 +15,8 @@ var roleSpawn = {
 
 	RunSpawnFactory : function (myRoom) {
 
+
+
 		console.log('room name in spawn factory:' + myRoom);
 		/*----------  Defining max bodies for all creeps  ----------*/
 		let energy 						= Game.rooms[myRoom].energyAvailable;
@@ -106,6 +108,9 @@ var roleSpawn = {
 		console.log('baustellen in room: [' + myRoom + '] : ' +  baustellen.length);
 
 		var amountHostiles                 	= Game.rooms[myRoom].find(FIND_HOSTILE_CREEPS).length;
+
+		let amountSourcesInRoom 			= actionsGlobal.ReturnEnergySourceIDs(MyRoom, 'source'); 
+		console.log(amountSourcesInRoom.length, ' <----------------- found this many sources in room');
 		 
 		//2DO define mininum of creeps in vars
 		var minBackupHarvesters             = 2;
