@@ -227,8 +227,8 @@ var roleCourier = {
                             console.log(allDropOffs, ' <------------ allDropOffs');
                             for (let singleDropOff in allDropOffs) {
                                 console.log(singleDropOff, ' <------------ singleDropOff');
-                                let dropOffPos = new RoomPosition(singleDropOff.x, singleDropOff.y, creep.memory.homeRoom);   
-                                console.log(dropOffPos, ' <------------ dropOffPos');
+                                // let dropOffPos = new RoomPosition(singleDropOff.x, singleDropOff.y, creep.memory.homeRoom);   
+                                // console.log(dropOffPos, ' <------------ dropOffPos');
                                 break;
                             }
                             
