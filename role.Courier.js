@@ -232,7 +232,7 @@ var roleCourier = {
                                 break;
                             }
                             
-                            break;
+                            
                             // for (let memObj in Memory.rooms[creep.memory.homeRoom].energyDropoffs) {
                                 
                             //     console.log(' <------------------------- loggin memObj -------------------->');
