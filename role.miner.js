@@ -110,15 +110,15 @@ var roleMiner = {
 
     assignContainerAdjacentToSource : function (creep) {
         let containers = actionsGlobal.ReturnEnergySourceIDs(creep.room.name, 'container');
-        console.log(containers, ' <-------------------------- container ids from memory');
+        // console.log(containers, ' <-------------------------- container ids from memory');
         for (var containerID of containers ) { 
             let container = Game.getObjectById(containerID);      
-            console.log(container, ' <-------------------------- container object');
+            // console.log(container, ' <-------------------------- container object');
             var minerHasContainerAssigned = _.filter(Game.creeps, (creep) => 
                     creep.memory.servingContainer == containerID && 
                     creep.memory.role == 'miner' &&
                     creep.ticksToLive > 40);            
-           console.log(minerHasContainerAssigned, ' <-------------------------- container assigned to as many creeps');
+           // console.log(minerHasContainerAssigned, ' <-------------------------- container assigned to as many creeps');
             if (minerHasContainerAssigned.length == 0) {
                 if (creep.memory.servingContainer == null) {
                     // get source object
@@ -126,9 +126,9 @@ var roleMiner = {
                     // look if container is close to my assigned source
                     let isClose = source.pos.isNearTo(container);                    
                     if (isClose) {
-                        console.log(isClose, ' <-------------------------- container is close to source. assigning it now.');
+                        // console.log(isClose, ' <-------------------------- container is close to source. assigning it now.');
                         creep.memory.servingContainer = containerID; 
-                        console.log(creep.memory.servingContainer, ' <-------------------------- creep.memory.servingContainer');       
+                        // console.log(creep.memory.servingContainer, ' <-------------------------- creep.memory.servingContainer');       
                     }
                     
                 }
@@ -148,7 +148,7 @@ var roleMiner = {
                     creep.ticksToLive > 40);            
             // set this source as my assigned source           
             if (minerHasSourceAssigned.length == 0) {
-                if (creep.memory.assignedSource == null) {
+                if (creep.memory.assignedSource == null) {                    
                     creep.memory.assignedSource = sourceID;    
                 }
             }            
