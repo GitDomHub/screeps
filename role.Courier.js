@@ -126,7 +126,7 @@ var roleCourier = {
                 // when there is an assigned container
                 // go withdraw energy
                 if(creep.withdraw(assignedContainer[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(assignedContainer[0], {visualizePathStyle: {stroke: '#ffffff'}});
+                    creep.moveTo(assignedContainer[0]);
                 }
                 
                 
@@ -188,7 +188,7 @@ var roleCourier = {
                         }
                     }else{// we dont even got any thing to fill then check if we have a DROPOFF POINT
                         if (Memory.rooms[creep.room].energyDropoffs.length > 0) {
-                            let dropOffPos = new RoomPosition(Memory.rooms[creep.room].energyDropoffs[0].x, Memory.rooms[creep.room].energyDropoffs[0].y, creep.room);
+                            let dropOffPos = new RoomPosition(Memory.rooms[creep.room.name].energyDropoffs[0].x, Memory.rooms[creep.room].energyDropoffs[0].y, creep.room.name);
                             console.log (dropOffPos, ' <---- ############# dropoffPos from courier');
                         }
 
