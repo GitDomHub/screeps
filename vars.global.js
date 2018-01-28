@@ -45,10 +45,10 @@ var InitMemRoomOpts = (function () {
 //InitMemRoomOpts();
 
 
-var checkIfSourceIsCloseToLair = function (source) {
+var checkIfSourceIsCloseToLair = function (source, room) {
 	console.log(source, ' <------------------------ got that source');
 	let isCloseToLair 				= false;
-	let keeperLairObj 				= Game.rooms[source.room].find(FIND_STRUCTURES, {
+	let keeperLairObj 				= Game.rooms[room].find(FIND_STRUCTURES, {
 		filter: { structureType: STRUCTURE_KEEPER_LAIR }
 	});
 	// console.log(keeperLairObj, ' <------- keeper lair objects in room');
@@ -132,7 +132,7 @@ for (let room in Memory.rooms) {
      			isCloseToLair = true;
      		}     		
      	}
-     	let sourceIsCloseToLair = checkIfSourceIsCloseToLair(source);
+     	let sourceIsCloseToLair = checkIfSourceIsCloseToLair(source, room);
      	if (!sourceIsCloseToLair) {
  			energySources[source.id] = 'source';	
  		}
