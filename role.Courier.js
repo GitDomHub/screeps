@@ -187,67 +187,29 @@ var roleCourier = {
                             console.log(closestTarget);
                         }
                     }else{// we dont even got any thing to fill then check if we have a DROPOFF POINT
-                        // console.log(Memory.rooms[creep.memory.homeRoom].energyDropoffs, ' <-------- ###### found this in memory');
-                        // if (Object.keys(Memory.rooms[creep.memory.homeRoom].energyDropoffs).length > 0) {
-                        //     let allDropOffs = Memory.rooms[creep.memory.homeRoom].energyDropoffs;
-                        //     console.log(allDropOffs, ' <------------ allDropOffs');
-                        //     for (let singleDropOff in allDropOffs) {
-                        //         console.log(singleDropOff, ' <------------ singleDropOff');
-                        //         let dropOffPos = new RoomPosition(singleDropOff.x, singleDropOff.y, creep.memory.homeRoom);   
-                        //         console.log(dropOffPos, ' <------------ dropOffPos');
-                        //         break;
-                        //     }
+                        console.log(Memory.rooms[creep.memory.homeRoom].energyDropoffs, ' <-------- ###### found this in memory');
+                        for (let memObj in Memory.rooms[creep.memory.homeRoom].energyDropoffs) {
                             
-                        //     break;
-                        //     // for (let memObj in Memory.rooms[creep.memory.homeRoom].energyDropoffs) {
-                                
-                        //     //     console.log(' <------------------------- loggin memObj -------------------->');
-                        //     //     console.log(memObj, ' <------------------------- got this object from memory');
-                        //     //     let x = Memory.rooms[creep.memory.homeRoom].energyDropoffs[memObj].x;
-                        //     //     let y = Memory.rooms[creep.memory.homeRoom].energyDropoffs[memObj].y;
-                                
-                        //     //     let dropOffPos = new RoomPosition(x, y, creep.memory.homeRoom);
-                        //     //     console.log (dropOffPos, ' <---- ############# dropoffPos from courier');
-                        //     //     break; // only look for first item
-                        //     // }
+                            console.log(' <------------------------- loggin memObj -------------------->');
+                            console.log(memObj, ' <------------------------- got this object from memory');
+                            let x = Memory.rooms[creep.memory.homeRoom].energyDropoffs[memObj].x;
+                            let y = Memory.rooms[creep.memory.homeRoom].energyDropoffs[memObj].y;
                             
-                        // }
-
+                            let dropOffPos = new RoomPosition(x, y, creep.memory.homeRoom);
+                            console.log (dropOffPos, ' <---- ############# dropoffPos from courier');
+                            break; // only look for first item
+                        }
+                            
                     }
-                }
+
+                }                
 
             // }
 
         }
 
 
-        console.log(Memory.rooms[creep.memory.homeRoom].energyDropoffs, ' <-------- ###### found this in memory');
-                        if (Object.keys(Memory.rooms[creep.memory.homeRoom].energyDropoffs).length > 0) {
-                            let allDropOffs = Memory.rooms[creep.memory.homeRoom].energyDropoffs;
-                            console.log(allDropOffs, ' <------------ allDropOffs');
-                            for (let singleDropOff in allDropOffs) {
-                                console.log(singleDropOff, ' <------------ singleDropOff');
-                                console.log(singleDropOff['x']);
-                                console.log(singleDropOff['y']);
-                                // let dropOffPos = new RoomPosition(singleDropOff.x, singleDropOff.y, creep.memory.homeRoom);   
-                                // console.log(dropOffPos, ' <------------ dropOffPos');
-                                break;
-                            }
-                            
-                            
-                            // for (let memObj in Memory.rooms[creep.memory.homeRoom].energyDropoffs) {
-                                
-                            //     console.log(' <------------------------- loggin memObj -------------------->');
-                            //     console.log(memObj, ' <------------------------- got this object from memory');
-                            //     let x = Memory.rooms[creep.memory.homeRoom].energyDropoffs[memObj].x;
-                            //     let y = Memory.rooms[creep.memory.homeRoom].energyDropoffs[memObj].y;
-                                
-                            //     let dropOffPos = new RoomPosition(x, y, creep.memory.homeRoom);
-                            //     console.log (dropOffPos, ' <---- ############# dropoffPos from courier');
-                            //     break; // only look for first item
-                            // }
-                            
-                        }
+        
 
         
 
