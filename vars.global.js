@@ -149,7 +149,10 @@ for (let room in Memory.rooms) {
 	// for(let singleSpawn of spawnObj) {
 	let dropOffPos = new RoomPosition((spawnObj[0].pos.x), (spawnObj[0].pos.y-1), room);
 	console.log(dropOffPos, ' <-------------------- roompos for dropoff');
-	Memory.rooms[room].energyDropoffs = dropOffPos;
+	Memory.rooms[room].energyDropoffs[spawnObj.name] = {
+		x : dropOffPos.x,
+		x : dropOffPos.y,
+	};
 	// } 
 
 
