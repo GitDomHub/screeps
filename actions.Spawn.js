@@ -39,8 +39,8 @@ var roleSpawn = {
 		let upgraderBody 				= ProfileUtils.GetBody_Upgrader(maxTier);
 		let upgraderSpawnTime 			= (upgraderBody.length *3);
 		upgraderSpawnTime 				+= 20;
-		// console.log('Maxtier for Upgrader ' + maxTier);
-		// console.log('MaxBody for Upgrader (Spawn t = ' + upgraderSpawnTime + ' ticks) ' + upgraderBody);
+		console.log('Maxtier for Upgrader ' + maxTier);
+		console.log('MaxBody for Upgrader (Spawn t = ' + upgraderSpawnTime + ' ticks) ' + upgraderBody);
 
 		maxTier 						= ProfileUtils.GetMaxTier_Defender(energy);
 		let defenderBody 				= ProfileUtils.GetBody_Defender(maxTier);
@@ -49,8 +49,8 @@ var roleSpawn = {
 
 		maxTier 						= ProfileUtils.GetMaxTier_Courier(energy);
 		let courierBody 				= ProfileUtils.GetBody_Courier(maxTier);
-		// console.log('Maxtier for Courier ' + maxTier);
-		// console.log('MaxBody for Courier' + courierBody);
+		console.log('Maxtier for Courier ' + maxTier);
+		console.log('MaxBody for Courier' + courierBody);
 
 		maxTier 						= ProfileUtils.GetMaxTier_TowerCourier(energy);
 		let towerCourierBody 			= ProfileUtils.GetBody_TowerCourier(maxTier);
