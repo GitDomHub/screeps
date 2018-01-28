@@ -118,9 +118,9 @@ var roleSpawn = {
 		//2DO define mininum of creeps in vars
 		var minBackupHarvesters             = 2;
 		var minHarvesters                   = 1;    // delivering energy
-		var minCouriers                     = 2;    // 2Do: only make couriers, when miners are there or containers are half full
+		var minCouriers                     = amountSourcesInRoom.length;    // 2Do: only make couriers, when miners are there or containers are half full
 		var minTowerCouriers                = 1;    // 2Do: replace maybe with normal couriers. just tell couriers to prioritize towers under certain circs
-		var minMiners                       = 2;    // 2Do: make enough miners as containers we have
+		var minMiners                       = amountSourcesInRoom.length;    // 2Do: make enough miners as containers we have
 		var minRepairers                    = 0;    // cheaper than tower repairing things
 		var minUpgraders                    = 2;    // only spawn more/bigger Upgraders than harvesters enough; only spawn new ones if overall energy amount is over certain number
 		var minBuilders                     = 2;    // only make builders when construction sites in room. Make more builders when there are more than  
@@ -139,9 +139,9 @@ var roleSpawn = {
 		 console.log('ATTACK MODE LIVE');
 		 var minBackupHarvesters         = 2;    
 		 var minHarvesters               = 1;    // +1 for urgent delivery of energy to towers, spawn, extensions 
-		 var minCouriers                 = 2;    
+		 // var minCouriers                 = 2;    
 		 var minTowerCouriers            = 2;    // Tower couriers will block the way. Just need to prioritize towers
-		 var minMiners                   = 2;    
+		 // var minMiners                   = 2;    
 		 var minRepairers                = 0;    
 		 var minUpgraders                = 1;    // -2
 		 var minBuilders                 = 0;    
