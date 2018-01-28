@@ -7,8 +7,8 @@ var actionChooseSource = {
         //2Do: decide between storage and container, maybe decide on distance  traveled
         //const droppedEnergyRes = creep.pos.findClosestByRange(FIND_DROPPED_RESOURCES); // replace with DROPPED_RESOURCES??
         // let droppedEnergyRes = creep.pos.findClosestByRange(FIND_DROPPED_RESOURCES, {filter: (s) => s.amount > 100 && s.resourceType === RESOURCE_ENERGY});
-        // var droppedEnergyRes = returnDrops(creep);
-        var droppedEnergyRes = 0;
+        var droppedEnergyRes = returnDrops(creep);
+        // var droppedEnergyRes = 0;
         // FIRST see if storage has enough energy
         // var storages = creep.room.find(FIND_STRUCTURES, {
         //     filter: (structure) => {
@@ -72,7 +72,7 @@ var actionChooseSource = {
 
     returnDrops: function (creep) {
         let droppedEnergyRes = creep.pos.findClosestByRange(FIND_DROPPED_RESOURCES, {
-            filter: (s) =>  s.amount > 100 &&
+            filter: (s) =>  s.amount > 200 &&
                             s.resourceType === RESOURCE_ENERGY
         });
         // next only look in memory of there is dropped energy
