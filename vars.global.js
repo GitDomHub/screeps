@@ -136,12 +136,17 @@ for (let room in Memory.rooms) {
 										{filter: (s) => s.amount > 100 && 
 														s.resourceType === RESOURCE_ENERGY });
 	for (let drop of droppedEnergyRes) {	
-		// only log drops from close to sources
+		// only log drops from close to sources/containers/spawn
+		let isCloseToSource = false;
 		console.log(drop.pos, ' <---------------- drop.pos');
-		// for (let source of sources){
-
-		// }	
-		energySources[drop.id] = 'dropped_energy';
+		for (let source of sources){
+			if(source.pos.inRangeTo(drop, 2)){
+     			isCloseToSource = true;
+     		} 
+		}	
+		if(isCloseToSource) {
+			energySources[drop.id] = 'dropped_energy';
+		}	
 	}
 
 
