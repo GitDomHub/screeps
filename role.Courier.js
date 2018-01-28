@@ -199,19 +199,19 @@ var roleCourier = {
                         //     }
                             
                         //     break;
-                            // for (let memObj in Memory.rooms[creep.memory.homeRoom].energyDropoffs) {
+                        //     // for (let memObj in Memory.rooms[creep.memory.homeRoom].energyDropoffs) {
                                 
-                            //     console.log(' <------------------------- loggin memObj -------------------->');
-                            //     console.log(memObj, ' <------------------------- got this object from memory');
-                            //     let x = Memory.rooms[creep.memory.homeRoom].energyDropoffs[memObj].x;
-                            //     let y = Memory.rooms[creep.memory.homeRoom].energyDropoffs[memObj].y;
+                        //     //     console.log(' <------------------------- loggin memObj -------------------->');
+                        //     //     console.log(memObj, ' <------------------------- got this object from memory');
+                        //     //     let x = Memory.rooms[creep.memory.homeRoom].energyDropoffs[memObj].x;
+                        //     //     let y = Memory.rooms[creep.memory.homeRoom].energyDropoffs[memObj].y;
                                 
-                            //     let dropOffPos = new RoomPosition(x, y, creep.memory.homeRoom);
-                            //     console.log (dropOffPos, ' <---- ############# dropoffPos from courier');
-                            //     break; // only look for first item
-                            // }
+                        //     //     let dropOffPos = new RoomPosition(x, y, creep.memory.homeRoom);
+                        //     //     console.log (dropOffPos, ' <---- ############# dropoffPos from courier');
+                        //     //     break; // only look for first item
+                        //     // }
                             
-                        }
+                        // }
 
                     }
                 }
