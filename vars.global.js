@@ -147,7 +147,7 @@ for (let room in Memory.rooms) {
 	// make a dropoff for each a spawn (and a controller later)
 	let spawnObj = Game.rooms[room].find(FIND_MY_SPAWNS);
 	for(let singleSpawn of spawnObj) {
-		let dropOffPos = new RoomPosition((singleSpawn.pos.x, (singleSpawn.pos.y-1), room);
+		let dropOffPos = new RoomPosition((singleSpawn.pos.x), (singleSpawn.pos.y-1), room);
 		console.log(dropOffPos, ' <-------------------- roompos for dropoff');
 	} 
 
