@@ -7,7 +7,10 @@ var actionChooseSource = {
         //2Do: decide between storage and container, maybe decide on distance  traveled
         //const droppedEnergyRes = creep.pos.findClosestByRange(FIND_DROPPED_RESOURCES); // replace with DROPPED_RESOURCES??
         // let droppedEnergyRes = creep.pos.findClosestByRange(FIND_DROPPED_RESOURCES, {filter: (s) => s.amount > 100 && s.resourceType === RESOURCE_ENERGY});
+        let roomControlLevel = creep.room.controller.level;
+        console.log(roomControlLevel, ' <------------------------------------------------------------ RCL');
         var droppedEnergyRes = actionChooseSource.returnDrops(creep);
+
         // var droppedEnergyRes = 0;
         // FIRST see if storage has enough energy
         // var storages = creep.room.find(FIND_STRUCTURES, {
