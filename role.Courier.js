@@ -98,7 +98,7 @@ var roleCourier = {
                 // check if creep has dropped energy resource written into memory
                 if(creep.memory.assignedDrop){
                     let dropObj = Game.getObjectById(creep.memory.assignedDrop);
-                    if(dropObj && dropObj.amount > 200 && dropObj.resourceType == RESOURCE_ENERGY){
+                    if(dropObj && dropObj.amount > 1 && dropObj.resourceType == RESOURCE_ENERGY){
                         if(creep.pickup(dropObj, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                             creep.moveTo(dropObj);
                         }    
