@@ -46,6 +46,7 @@ var InitMemRoomOpts = (function () {
 
 
 var checkIfSourceIsCloseToLair = function (source) {
+	console.log(source, ' <------------------------ got that source');
 	let isCloseToLair 				= false;
 	let keeperLairObj 				= Game.rooms[source.room].find(FIND_STRUCTURES, {
 		filter: { structureType: STRUCTURE_KEEPER_LAIR }
