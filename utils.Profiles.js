@@ -379,7 +379,7 @@ function GetMaxTier_Upgrader(energy){
   * 
   *	  	T1: MOVE*1,WORK*2,CARRY*1 ; 300E ; plain=2,3   road=1,2   swamp=10,15  
   *		T2: MOVE*2,WORK*4,CARRY*1 ; 550E ; plain=2,3   road=1,2   swamp=10,13  
-  *		T3: MOVE*3,WORK*6,CARRY*1 ; 800E ; plain=2,3   road=1,2   swamp=10,12
+  *		T3: MOVE*5,WORK*5,CARRY*1 ; 800E ; plain=1,2   road=1,1   swamp=5,6  
   *
   */
 exports.GetBody_Miner = GetBody_Miner;
@@ -398,8 +398,8 @@ function GetBody_Miner(tier) {
 			body = AddToBody(body,[CARRY], 1);			
 			break;
 		case 3: 
-			body = AddToBody(body, [MOVE], 3);  
-			body = AddToBody(body, [WORK], 6);
+			body = AddToBody(body, [MOVE], 5);  
+			body = AddToBody(body, [WORK], 5);
 			body = AddToBody(body,[CARRY], 1);	
 			break;	
 	}
