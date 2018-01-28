@@ -4,9 +4,9 @@ DONT EDIT IN SCREEPS INGAME EDITOR
 or changes will be lost
 */
 
-console.log('/*=============================================');
-console.log('=                    Start                    =');
-console.log('=============================================*/');
+// console.log('/*=============================================');
+// console.log('=                    Start                    =');
+// console.log('=============================================*/');
 
 
 /*=============================================
@@ -67,7 +67,7 @@ module.exports.loop = function () {
             continue;
         }
 
-        console.log('In loop for room: ' + singleRoom);
+        // console.log('In loop for room: ' + singleRoom);
         
         roomArray.push(singleRoom);        
 

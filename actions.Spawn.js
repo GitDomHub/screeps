@@ -114,6 +114,7 @@ var roleSpawn = {
 
 		let amountSourcesInRoom 			= actionsGlobal.ReturnEnergySourceIDs(myRoom, 'source'); 
 		console.log(amountSourcesInRoom.length, ' <----------------- found this many sources in room');
+		// find out if 
 		 
 		//2DO define mininum of creeps in vars
 		var minBackupHarvesters             = 2;
