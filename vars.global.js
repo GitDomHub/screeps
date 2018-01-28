@@ -109,8 +109,17 @@ for (let room in Memory.rooms) {
 			   filter: { structureType: STRUCTURE_KEEPER_LAIR }
 			});;
      	console.log(keeperLairObj, ' <------- keeper lair objects in room');
-        // find all keeper lairs
-		energySources[source.id] = 'source';
+     	let isCloseToLair = false;
+     	for (let lair of keeperLairObj) {
+     		if(source.pos.inRangeTo(lair, 5)){
+     			isCloseToLair = true;
+     		}     		
+     	}
+     	if (!isCloseToLair) {
+ 			energySources[source.id] = 'source';	
+ 		}
+        
+		
 	}
 	Memory.rooms[room].energySources = energySources;
 
