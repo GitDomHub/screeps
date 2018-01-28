@@ -15,6 +15,11 @@ require('vars.global');
 var ProfileUtils = require('utils.Profiles');
 
 
+console.log('/*=============================================');
+console.log('=                    Start                    =');
+console.log('=============================================*/');
+
+
 /*----------  Creep Roles  ----------*/
 var roleHarvester                       = require('role.harvester');
 var roleTowerCourier                    = require('role.towerCourier');
