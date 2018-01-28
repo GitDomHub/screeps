@@ -20,10 +20,13 @@ var roleHarvester = {
         // When creep is set to harvesting but maybe not close to the energy source
         // make it move there
         if(creep.memory.harvesting) {
-                
+            let ignoreStrucs = [];
+            if(creep.room.controller.level > 2){
+                ignoreStrucs.push('drops');
+            }    
              //new alternative: use actions.selectSource routine to see if there are containers first
             if(actionSelectSource) {
-                actionSelectSource.run(creep);
+                actionSelectSource.run(creep, ignoreStrucs);
             } else {
                 console.log('Harvester cannot find suitable source!');
             }
