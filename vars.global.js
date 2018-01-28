@@ -92,7 +92,7 @@ for (let room in Memory.rooms) {
  		                                            s.hits < Memory.roomOpts[room].repairUntil});
 	// sort all structures from lowest to highest hits (that way ramparts that just have been built will not die immediately)
 	damagedStruc.sort(function(a,b){return a.hits - b.hits});
-	console.log(Object.values(damagedStruc));
+	// console.log(Object.values(damagedStruc));
 
 	let strucs = {};
 	for (let struc of damagedStruc) {
@@ -112,13 +112,6 @@ for (let room in Memory.rooms) {
 		energySources[struc.id] = struc.structureType;	
 		i++;
 	}
-	// DROPPED ENERGY
-	let droppedEnergyRes 				= Game.rooms[room].find(FIND_DROPPED_RESOURCES, 
-										{filter: (s) => s.amount > 100 && 
-														s.resourceType === RESOURCE_ENERGY });
-	for (let drop of droppedEnergyRes) {		
-		energySources[drop.id] = 'dropped_energy';
-	}
 	// ENERGY SOURCES
 	var sources 						= Game.rooms[room].find(FIND_SOURCES);
 	for (let source of sources) {		
@@ -126,20 +119,32 @@ for (let room in Memory.rooms) {
      	var keeperLairObj 				= Game.rooms[room].find(FIND_STRUCTURES, {
 			   filter: { structureType: STRUCTURE_KEEPER_LAIR }
 			});
-     	console.log(keeperLairObj, ' <------- keeper lair objects in room');
+     	// console.log(keeperLairObj, ' <------- keeper lair objects in room');
      	let isCloseToLair = false;
      	for (let lair of keeperLairObj) {
-     		if(source.pos.inRangeTo(lair, 5)){
+     		if(source.pos.inRangeTo(lair, 8)){
      			isCloseToLair = true;
      		}     		
      	}
      	let sourceIsCloseToLair = checkIfSourceIsCloseToLair(source, room);
      	if (!sourceIsCloseToLair) {
  			energySources[source.id] = 'source';	
- 		}
-        
-		
+ 		}		
 	}
+	// DROPPED ENERGY
+	let droppedEnergyRes 				= Game.rooms[room].find(FIND_DROPPED_RESOURCES, 
+										{filter: (s) => s.amount > 100 && 
+														s.resourceType === RESOURCE_ENERGY });
+	for (let drop of droppedEnergyRes) {	
+		// only log drops from close to sources
+		console.log(drop.pos, ' <---------------- drop.pos');
+		// for (let source of sources){
+
+		// }	
+		energySources[drop.id] = 'dropped_energy';
+	}
+
+
 	Memory.rooms[room].energySources = energySources;
 
 	//DROP OFF POINTS FOR EARLY GAME
