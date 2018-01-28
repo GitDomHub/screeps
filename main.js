@@ -4,6 +4,11 @@ DONT EDIT IN SCREEPS INGAME EDITOR
 or changes will be lost
 */
 
+console.log('/*=============================================');
+console.log('=                    Start                    =');
+console.log('=============================================*/');
+
+
 /*=============================================
 =                   Includes                    =
 =============================================*/
@@ -15,9 +20,7 @@ require('vars.global');
 var ProfileUtils = require('utils.Profiles');
 
 
-console.log('/*=============================================');
-console.log('=                    Start                    =');
-console.log('=============================================*/');
+
 
 
 /*----------  Creep Roles  ----------*/
