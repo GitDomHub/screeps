@@ -142,14 +142,16 @@ for (let room in Memory.rooms) {
 	}
 	Memory.rooms[room].energySources = energySources;
 
-	//drop off points for early game
+	//DROP OFF POINTS FOR EARLY GAME
 	let dropOffPoints = {};
 	// make a dropoff for each a spawn (and a controller later)
 	let spawnObj = Game.rooms[room].find(FIND_MY_SPAWNS);
 	// for(let singleSpawn of spawnObj) {
 	let dropOffPos = new RoomPosition((spawnObj[0].pos.x), (spawnObj[0].pos.y-1), room);
 	console.log(dropOffPos, ' <-------------------- roompos for dropoff');
-
+	Memory.rooms[room].energyDropoffs = {
+		'spawn' : dropOffPos;
+	}
 	// } 
 
 
