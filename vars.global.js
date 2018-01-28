@@ -102,10 +102,10 @@ for (let room in Memory.rooms) {
 		energySources[drop.id] = 'dropped_energy';
 	}
 	// ENERGY SOURCES
-	var sources 					= Game.rooms[room].find(FIND_SOURCES);
+	var sources 						= Game.rooms[room].find(FIND_SOURCES);
 	for (let source of sources) {		
 		// if source has a keeper close by the for now dont put it in memory
-     	var keeperLairObj 				= Game.rooms[room].find(FIND_MY_STRUCTURES, {
+     	var keeperLairObj 				= Game.rooms[room].find(FIND_STRUCTURES, {
 			   filter: { structureType: STRUCTURE_KEEPER_LAIR }
 			});;
      	console.log(keeperLairObj, ' <------- keeper lair objects in room');
