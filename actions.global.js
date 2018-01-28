@@ -61,7 +61,7 @@ module.exports = {
 			return;
 		let allSources = Memory.rooms[roomName].energySources;
         return _.filter(_.keys(allSources), value => allSources[value] === structure_name);        
-	}
+	}	
 
 
 	
