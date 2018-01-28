@@ -2,7 +2,8 @@ var actionChooseSource = {
     // @param {Creep} creep /
     // 2Do: take parameters for which source to prioritize/ignore
     // 2Do: take parameter for target room(or maybe just get it from memory in creep)
-    run: function(creep) {
+    run: function(creep, ignoreStrucs) {
+
 
         //2Do: decide between storage and container, maybe decide on distance  traveled
         //const droppedEnergyRes = creep.pos.findClosestByRange(FIND_DROPPED_RESOURCES); // replace with DROPPED_RESOURCES??
