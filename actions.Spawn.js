@@ -11,7 +11,7 @@ require('vars.global');
 /*----------  Utils  ----------*/
 var ProfileUtils = require('utils.Profiles');
 /*----------  Actions  ----------*/
-var actionGlobal = require('actions.global');
+var actionsGlobal = require('actions.global');
 
 
 var roleSpawn = {
