@@ -123,7 +123,7 @@ var roleSpawn = {
 		var minTowerCouriers                = 1;    // 2Do: replace maybe with normal couriers. just tell couriers to prioritize towers under certain circs
 		var minMiners                       = amountSourcesInRoom.length;    // 2Do: make enough miners as containers we have
 		var minRepairers                    = 0;    // cheaper than tower repairing things
-		var minUpgraders                    = 2;    // only spawn more/bigger Upgraders than harvesters enough; only spawn new ones if overall energy amount is over certain number
+		var minUpgraders                    = 3;    // only spawn more/bigger Upgraders than harvesters enough; only spawn new ones if overall energy amount is over certain number
 		var minBuilders                     = 2;    // only make builders when construction sites in room. Make more builders when there are more than  
 		var minDefenders                    = 0;    // Only spawn rest if hostile in room.
 		                                         // Just produce a new one to be ready when old one dies
