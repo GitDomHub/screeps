@@ -25,7 +25,7 @@ var roleSpawn = {
 		let energy 						= Game.rooms[myRoom].energyAvailable;
 		console.log(energy, '<------------ energy available');
 		let energyCap 					= Game.rooms[myRoom].energyCapacityAvailable;
-		console.log(energy, '<------------ energyCap');
+		console.log(energyCap, '<------------ energyCap');
 		energy 							= energyCap;
 
 		let maxTier 					= ProfileUtils.GetMaxTier_Miner(energy);
