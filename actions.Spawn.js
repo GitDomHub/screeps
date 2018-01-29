@@ -79,12 +79,12 @@ var roleSpawn = {
 
 
 
-
-		let hasStorage = Object.values(Memory.rooms[myRoom].energySources).indexOf('storage');
-		console.log(hasStorage, '<------------ has storage ??')
+		let storageInRoom					= Game.rooms[myRoom].storage;
+		// let hasStorage = Object.values(Memory.rooms[myRoom].energySources).indexOf('storage');
+		console.log(storageInRoom, '<------------ has storage ??')
         
         // if we have storage, make harvester into refiller
-		if(hasStorage > 0) 
+		if(storageInRoom) 
 			harvesterBody = refillerBody; 
 		 
 		// have always 1 or two backup harvesters so the colony doesnt die
@@ -127,7 +127,7 @@ var roleSpawn = {
 		var minBuilders                     = 2;    // only make builders when construction sites in room. Make more builders when there are more than  
 		var minDefenders                    = 0;    // Only spawn rest if hostile in room.
 		                                         // Just produce a new one to be ready when old one dies
-		let storageInRoom					= Game.rooms[myRoom].storage;
+		
 		if (storageInRoom && storageInRoom.store[RESOURCE_ENERGY] < Memory.roomOpts[myRoom].minEnergyInStorage) {
 			minUpgraders 					= 1; // reduce upgraders so we have enough energy to defend in case of emergency
 		}     
