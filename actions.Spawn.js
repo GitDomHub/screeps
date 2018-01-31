@@ -114,16 +114,24 @@ var roleSpawn = {
 
 		let amountSourcesInRoom 			= actionsGlobal.ReturnEnergySourceIDs(myRoom, 'source'); 
 		console.log(amountSourcesInRoom.length, ' <----------------- found this many sources in room');
-		// find out if 
+		
+		// 2Do: instead of making min values static, calculate them depending on room situation
+		// MINERS: (2E/T per WORK. At 10E/T energy source get minded alright. Means we need at least 5 WORK parts.
+		// 			in early game get as many creep until WORK parts >= 5) plus 1 work part to repair container? later.)
+		// COURIERS: (getting 10E/T from source, plus calc how many ticks it takes me to get from SPAWN to SOURCE)
+		// UPGRADERS: maybe set different upgrade goals. One WORK upgrades 1E/T. 
+		// BUILDERS: ?
+		// DEFENDERS: check how many attack/heal parts the hostiles have. Make creeps that are like 1.3 as big(having the towers also)
+		 
 		 
 		//2DO define mininum of creeps in vars
 		var minBackupHarvesters             = 2;
 		var minHarvesters                   = 1;    // delivering energy
 		var minCouriers                     = amountSourcesInRoom.length;    // 2Do: only make couriers, when miners are there or containers are half full
-		var minTowerCouriers                = 1;    // 2Do: replace maybe with normal couriers. just tell couriers to prioritize towers under certain circs
+		var minTowerCouriers                = 1;    
 		var minMiners                       = amountSourcesInRoom.length;    // 2Do: make enough miners as containers we have
 		var minRepairers                    = 0;    // cheaper than tower repairing things
-		var minUpgraders                    = 3;    // only spawn more/bigger Upgraders than harvesters enough; only spawn new ones if overall energy amount is over certain number
+		var minUpgraders                    = 3;    // only spawn new ones if overall energy amount is over certain number
 		var minBuilders                     = 2;    // only make builders when construction sites in room. Make more builders when there are more than  
 		var minDefenders                    = 0;    // Only spawn rest if hostile in room.
 		                                         // Just produce a new one to be ready when old one dies

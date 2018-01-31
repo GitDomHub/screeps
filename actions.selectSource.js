@@ -16,15 +16,8 @@ var actionChooseSource = {
         // var droppedEnergyRes = actionChooseSource.returnDrops(creep);
 
         var droppedEnergyRes = 0;
-        // FIRST see if storage has enough energy
-        // var storages = creep.room.find(FIND_STRUCTURES, {
-        //     filter: (structure) => {
-        //         return ( structure.structureType == STRUCTURE_STORAGE) &&
-        //                     (structure.store[RESOURCE_ENERGY] >= creep.carryCapacity) && 
-        //                     (structure.store[RESOURCE_ENERGY] > 250);
-        //     }
-        // });
-        let storages = actionChooseSource.returnStorages(creep);
+
+        let storages = actionChooseSource.returnStorage(creep);
 
         
         if(droppedEnergyRes /*&& !ignoreStrucs.includes('drops') */) { // only go for that resource if no enemy creep is close by (otherwise I'll die u know)
@@ -92,7 +85,7 @@ var actionChooseSource = {
     },
 
 
-    returnStorages: function(creep) {
+    returnStorage: function(creep) {
         // no need to FIND storage. can use room.storage
         let storages = creep.room.find(FIND_STRUCTURES, {
             filter: (s) => {
@@ -102,6 +95,7 @@ var actionChooseSource = {
             }
         });
         // just look at Room.storage
+        var storage = creep.room.storage; // could also look at storage in HOME room?!
         return storages;
     },
 

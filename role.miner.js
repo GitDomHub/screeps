@@ -4,7 +4,8 @@ var roleMiner = {
     /**
     
         TODO:
-        - make miner get an assigned SOURCE instead of container. look for container NEAR source. if 
+        - make miner get an assigned SOURCE instead of container. look for container NEAR source. 
+        - before dropping energy, if no container, first look around source and see if there is energy. then drop there
     
      */
     

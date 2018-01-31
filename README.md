@@ -58,10 +58,11 @@ Upgrader
 
 Harvesting 
 - actions.SelectSource : When closest source doesnt have energy then creeps just sit there and wait. need to implement some routine to check if closest resource has energy. if not look for another source.
+- check if pickup point (spawn.pos.y+1) has energy.
 
 new: Refiller
 - Refilling Spawns and Extensions
-- beginning form RCL 4 we can have a storage. Use new type creep to refill then.
+- beginning from RCL 4 we can have a storage. Use new type creep/body to refill then.
 - before that use dropped energy or containers???
 
 
