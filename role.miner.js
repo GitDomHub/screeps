@@ -57,6 +57,7 @@ var roleMiner = {
 
         }        
         
+        roleMiner.repairContainer(creep);
 
 
 
@@ -98,8 +99,7 @@ var roleMiner = {
             //var allMiners = _.filter(Game.creeps, (creep) => creep.memory.role == 'miner');
             let minerHasContainerAssigned = _.filter(Game.creeps, (creep) => 
                     creep.memory.servingContainer == container.id && 
-                    creep.memory.role == 'miner' &&
-                    creep.ticksToLive > 40);            
+                    creep.memory.role == 'miner');            
            
             if (minerHasContainerAssigned.length == 0) {
                 if (creep.memory.servingContainer == null) {
@@ -180,6 +180,20 @@ var roleMiner = {
             }
         }
         
+    },
+
+    repairContainer : function (creep) {
+        let containerId                     = creep.memory.servingContainer;
+        if(containerId && containerId !== '') {
+            let container                   = Game.getObjectById(containerId);
+            if (container.hits <= (container.hitsMax * 0.5)) {
+                if(creep.repair(container) === ERR_NOT_IN_RANGE){
+                    creep.moveTo(container);
+                }
+            }
+        }else{
+            console.log('Miner cant repair container because no container exists in its memory!');
+        }
     }
 
 
