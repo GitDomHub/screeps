@@ -509,6 +509,28 @@ function GetCostForFullBody(body) {
 
 
 
+/*============================================
+=            Counting Body Parts             =
+============================================*/
+
+function CountBodyParts(body, lookForPart) {
+	let count = 0;
+	console.log(body);
+	for (part of body) {
+		console.log(part);
+		if(part == lookForPart)
+			count++;
+	}
+	return count;
+}
+exports.CountBodyParts = CountBodyParts;
+
+/*=====  End of Counting Body Parts   ======*/
+
+
+
+
+
 
 
 

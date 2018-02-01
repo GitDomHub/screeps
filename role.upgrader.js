@@ -35,7 +35,7 @@ var roleUpgrader = {
         }
         else {
             // even newer method: 
-            // jsut get the source that applies from memory
+            // just get the source that applies from memory
              //new alternative: use actions.selectSource routine to see if there are containers first
             if(actionSelectSource) {
                 actionSelectSource.run(creep);

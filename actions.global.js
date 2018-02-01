@@ -1,3 +1,12 @@
+/**
+
+	TODO:
+	- Make this into a actions.Memory.js file
+	- Second todo item
+
+ */
+
+
 require('vars.global');
 
 module.exports = {
@@ -21,33 +30,6 @@ module.exports = {
 		}
 	},
 
-	WriteSourcesIntoMem : function (room) {
-
-		//see vars.global.js
-
-	},
-
-
-	WriteDamagedStrucsIntoMem : function (room) {
-
-		// see vars.global.js
-
-	},
-
-	WritePathSpawnToSources : function (room) {
-		//find all sources 
-		// let allSources = room.find(FIND_SOURCES);
-
-		// // for each source get path there
-		// let path = spawn.room.findPath(spawn, source);
-		// let path = room.findPathTo(x, y, opts)
-		// creep.moveByPath(path);
-	},
-
-	WritePathSourcesToSpawn : function () {
-
-	},
-
 	/**
 	 *
 	 * Returning structure IDs of energy sources
@@ -61,7 +43,7 @@ module.exports = {
 			return;
 		let allSources = Memory.rooms[roomName].energySources;
         return _.filter(_.keys(allSources), value => allSources[value] === structure_name);        
-	}	
+	}
 
 
 	

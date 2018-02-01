@@ -2,7 +2,7 @@ var roleDefender = {
     // @param {Creep} creep /
     run: function(creep) {
         var flag = creep.pos.findClosestByRange(FIND_FLAGS, {
-            filter: (s) => {s.color != COLOR_YELLOW} // yellow is for mining
+            filter: (s) => {!s.color === 6} // yellow is for mining
         });
         //console.log(flag);
         // if there is a close flag in this room (even with enemies)

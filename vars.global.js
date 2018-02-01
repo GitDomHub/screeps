@@ -1,4 +1,10 @@
-/*define variables on a global scale for every function in screeps available*/
+/**
+
+	TODO:
+	- Write only every so often into memory and put a timestamp there
+	
+
+ */
 
 // Initiating room options
 var InitMemRoomOpts = (function () {
@@ -45,21 +51,35 @@ var checkIfSourceIsCloseToLair = function (source, room) {
 };
 
 
-// store vars in memory, so we can change them manually over console 
-// if (!Memory.room1) 
-// 	Memory.room1 						= {};
+var ReturnEnergyDropOff = function(room) {
 
-// if (!Memory.room1.name) 	
-//     Memory.room1.name 					= 'E83S21';
+	let spawns                          = Game.rooms[room].find(FIND_MY_SPAWNS);
+    // console.log(spawns, '<<------<<<<<<-<-<-<-<-<-<-<-<-<-<- spawns');
+    if(spawns.length > 0){
+        let dropOffPos                  = new RoomPosition(spawns[0].pos.x, (spawns[0].pos.y + 1),  room);
+        // console.log(dropOffPos, '<-<-<-<-<-<-<-<-<-<-<-<-<-<-<-<-<-<- dropOffPos');
+        let foundEnergy                 = Game.rooms[room].lookForAt(LOOK_ENERGY, dropOffPos);
+        console.log(foundEnergy, '<------<-<-<--<<--< energy!');
+        // console.log(foundEnergy[0].amount, '<------<-<-<--<<--< amount!');
+        if (foundEnergy[0].amount > 0) {
+        	return foundEnergy;	
+        } else {
+        	return false;
+        }
+        
+    }
 
-// if (!Memory.room1.repairUntil) 
-// 	Memory.room1.repairUntil 			= 750000;
+    
+
+};
 
 
-// 2Do: increase current repairUntil amount by 10.000 if: 1. no structures to repair 2. energy in storage is higher than a certain amount
 
 
-// write all rooms into memory
+
+
+/*----------  ROOM NAME INTO MEM  ----------*/
+
 var roomNames = {};
 for (let room in Game.rooms) {
 	roomNames[room] = {};
@@ -68,7 +88,10 @@ Memory.rooms = roomNames;
 
 
 for (let room in Memory.rooms) {
-	// find all STRUCTURES that need REPAIR and put them into the rooms memory
+
+
+	/*----------  DAMAGED STRUCTURES NEEDING REPAIR  ----------*/
+
 	let damagedStruc 				= Game.rooms[room].find(FIND_STRUCTURES,
  		                            {filter: (s) => s.hits < (s.hitsMax * Memory.roomOpts[room].repairUntilPercentage) && 
  		                                            s.hits < Memory.roomOpts[room].repairUntil});
@@ -83,7 +106,9 @@ for (let room in Memory.rooms) {
 	Memory.rooms[room].damagedStructures = {}; // empty to see if memory gets renewed quicker
 	Memory.rooms[room].damagedStructures = strucs;
 
-	// CONTAINERS & STORAGES & links
+
+	/*----------  CONTAINERS & STORAGES & links  ----------*/
+	
 	let cont_stor_link 					= Game.rooms[room].find(FIND_STRUCTURES, 
 										{filter: (s) => s.structureType == STRUCTURE_CONTAINER ||
 														s.structureType == STRUCTURE_STORAGE ||
@@ -94,7 +119,10 @@ for (let room in Memory.rooms) {
 		energySources[struc.id] = struc.structureType;	
 		i++;
 	}
-	// ENERGY SOURCES
+
+
+	/*----------  ENERGY SOURCES  ----------*/
+
 	var sources 						= Game.rooms[room].find(FIND_SOURCES);
 	for (let source of sources) {		
 		// if source has a keeper close by the for now dont put it in memory
@@ -113,14 +141,17 @@ for (let room in Memory.rooms) {
  			energySources[source.id] = 'source';	
  		}		
 	}
-	// DROPPED ENERGY
+
+
+	/*----------  DROPPED ENERGY NEAR TO SOURCE  ----------*/
+
 	let droppedEnergyRes 				= Game.rooms[room].find(FIND_DROPPED_RESOURCES, 
 										{filter: (s) => s.amount > 100 && 
 														s.resourceType === RESOURCE_ENERGY });
 	for (let drop of droppedEnergyRes) {	
 		// only log drops from close to sources/containers/spawn
 		let isCloseToSource = false;
-		console.log(drop.pos, ' <---------------- drop.pos');
+		// console.log(drop.pos, ' <---------------- drop.pos');
 		for (let source of sources){
 			if(source.pos.inRangeTo(drop, 2)){
      			isCloseToSource = true;
@@ -131,16 +162,27 @@ for (let room in Memory.rooms) {
 		}	
 	}
 
+	/*----------  DROP OFF POINT  ----------*/
+	var dropOffObj 						= ReturnEnergyDropOff(room);
+	console.log('helloooooooooooooo');
+	console.log(dropOffObj[0].amount);
+	if (dropOffObj[0])
+		energySources[dropOffObj[0].id] = 'dropOff';
+
 
 	Memory.rooms[room].energySources = energySources;
 
+
+
+	/*----------  DROP OFF POSITION only  ----------*/
+	
 	//DROP OFF POINTS FOR EARLY GAME
 	let dropOffPoints = {};
 	// make a dropoff for each a spawn (and a controller later)
 	let spawnObj = Game.rooms[room].find(FIND_MY_SPAWNS);
 	// for(let singleSpawn of spawnObj) {
 	let dropOffPos = new RoomPosition((spawnObj[0].pos.x), (spawnObj[0].pos.y+1), room);
-	console.log(dropOffPos, ' <-------------------- roompos for dropoff');
+	// console.log(dropOffPos, ' <-------------------- roompos for dropoff');
 	Memory.rooms[room].energyDropoffs = {};
 	Memory.rooms[room].energyDropoffs[spawnObj[0].name] = {
 		x : dropOffPos.x,

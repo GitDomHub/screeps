@@ -2,7 +2,10 @@
 
 	TODO:
 	- Calcualte for each creep how much spawn time there is. then spawn a new creep accordingly
-	- also calc way to target ticks
+	- also calc way to target ticks(how long does it take to reach target?)
+	- only get orders from different managers: mining, courier, upgrading, building etc
+	- if invader is coming, stop all unimportant spawning and spawn defender!
+	- make tickbuffer depend on time to travel to target
 
  */
 
@@ -22,66 +25,79 @@ var roleSpawn = {
 
 		console.log('room name in spawn factory:' + myRoom);
 		/*----------  Defining max bodies for all creeps  ----------*/
-		let energy 						= Game.rooms[myRoom].energyAvailable;
-		console.log(energy, '<------------ energy available');
+		let energy 						= Game.rooms[myRoom].energyCapacityAvailable;
+		console.log(energy, '<------------ energy CAP available');
+
+		let tickBuffer					= 8; // time to add to spawning
 
 		let maxTier 					= ProfileUtils.GetMaxTier_Miner(energy);
 		let minerBody					= ProfileUtils.GetBody_Miner(maxTier);
 		// console.log('Maxtier for Miner ' + maxTier);
 		// console.log('MaxBody for Miner ' + minerBody);
+		// console.log(minerBody.length, ' body length');
+		let minerSpawnTime 				= ((minerBody.length *3) + tickBuffer);
 
 		maxTier 						= ProfileUtils.GetMaxTier_BackupHarvester(energy);
 		let backupHarvesterBody			= ProfileUtils.GetBody_BackupHarvester(maxTier);
 		// console.log('Maxtier for BackupHarvester ' + maxTier);
 		// console.log('MaxBody for BackupHarvester ' + backupHarvesterBody);
+		let backupHarvesterSpawnTime 	= ((backupHarvesterBody.length *3) + tickBuffer);
+		
 
 		maxTier 						= ProfileUtils.GetMaxTier_Upgrader(energy);
 		let upgraderBody 				= ProfileUtils.GetBody_Upgrader(maxTier);
-		let upgraderSpawnTime 			= (upgraderBody.length *3);
-		upgraderSpawnTime 				+= 20;
+		let upgraderSpawnTime 			= ((upgraderBody.length *3)+ tickBuffer);
 		console.log('Maxtier for Upgrader ' + maxTier);
 		console.log('MaxBody for Upgrader (Spawn t = ' + upgraderSpawnTime + ' ticks) ' + upgraderBody);
 
 		maxTier 						= ProfileUtils.GetMaxTier_Defender(energy);
 		let defenderBody 				= ProfileUtils.GetBody_Defender(maxTier);
-		// console.log('Maxtier for Defender ' + maxTier);
-		// console.log('MaxBody for Defender ' + defenderBody);
+		console.log('Maxtier for Defender ' + maxTier);
+		console.log('MaxBody for Defender ' + defenderBody);
+		let defenderSpawnTime 			= ((defenderBody.length *3) + tickBuffer);
 
 		maxTier 						= ProfileUtils.GetMaxTier_Courier(energy);
 		let courierBody 				= ProfileUtils.GetBody_Courier(maxTier);
 		console.log('Maxtier for Courier ' + maxTier);
 		console.log('MaxBody for Courier' + courierBody);
+		let courierSpawnTime 			= ((courierBody.length *3) + tickBuffer);
 
 		maxTier 						= ProfileUtils.GetMaxTier_TowerCourier(energy);
 		let towerCourierBody 			= ProfileUtils.GetBody_TowerCourier(maxTier);
 		// console.log('Maxtier for TowerCourier ' + maxTier);
 		// console.log('MaxBody for TowerCourier' + towerCourierBody);
+		let towerCourierSpawnTime 		= ((towerCourierBody.length *3) + tickBuffer);
 
 		maxTier 						= ProfileUtils.GetMaxTier_Harvester(energy);
 		let harvesterBody 				= ProfileUtils.GetBody_Harvester(maxTier);
 		// console.log('Maxtier for Harvester ' + maxTier);
 		// console.log('MaxBody for Harvester' + harvesterBody);
+		let harvesterSpawnTime 			= ((harvesterBody.length *3) + tickBuffer);
 
 		maxTier 						= ProfileUtils.GetMaxTier_Refiller(energy);
 		let refillerBody 				= ProfileUtils.GetBody_Refiller(maxTier);
 		// console.log('Maxtier for Refiller ' + maxTier);
 		// console.log('MaxBody for Refiller' + refillerBody);
+		let refillerSpawnTime 			= ((refillerBody.length *3) + tickBuffer);
 
 		maxTier 						= ProfileUtils.GetMaxTier_Builder(energy);
 		let builderBody 				= ProfileUtils.GetBody_Builder(maxTier);
 		// console.log('Maxtier for Builder ' + maxTier);
 		// console.log('MaxBody for Builder' + builderBody);
+		let builderSpawnTime 			= ((builderBody.length *3) + tickBuffer);
 
 		maxTier 						= ProfileUtils.GetMaxTier_Repairer(energy);
 		let repairerBody 				= ProfileUtils.GetBody_Repairer(maxTier);
 		// console.log('Maxtier for Repairer ' + maxTier);
 		// console.log('MaxBody for Repairer' + repairerBody);
+		let repairerSpawnTime 			= ((repairerBody.length *3) + tickBuffer);
+		
 
+		
 
-
-		let storageInRoom					= Game.rooms[myRoom].storage;
+		let storageInRoom				= Game.rooms[myRoom].storage;
 		// let hasStorage = Object.values(Memory.rooms[myRoom].energySources).indexOf('storage');
-		console.log(storageInRoom, '<------------ has storage ??')
+		// console.log(storageInRoom, '<------------ has storage ??')
         
         // if we have storage, make harvester into refiller
 		if(storageInRoom) 
@@ -89,15 +105,15 @@ var roleSpawn = {
 		 
 		// have always 1 or two backup harvesters so the colony doesnt die
 		// load all creeps in to vars so we can work with them
-		var backupHarvesters                = _.filter(Game.creeps, (creep) => creep.memory.homeRoom == myRoom && creep.ticksToLive > 60 && creep.memory.role == 'backupHarvester' );
-		var harvesters                      = _.filter(Game.creeps, (creep) => creep.memory.homeRoom == myRoom && creep.ticksToLive > 60 && creep.memory.role == 'harvester' );
-		var couriers                        = _.filter(Game.creeps, (creep) => creep.memory.homeRoom == myRoom && creep.ticksToLive > 60 && creep.memory.role == 'courier' );
-		var towerCouriers                   = _.filter(Game.creeps, (creep) => creep.memory.homeRoom == myRoom && creep.ticksToLive > 60 && creep.memory.role == 'towerCourier' );
-		var miners                          = _.filter(Game.creeps, (creep) => creep.memory.homeRoom == myRoom && creep.ticksToLive > 60 && creep.memory.role == 'miner' );
-		var repairers                       = _.filter(Game.creeps, (creep) => creep.memory.homeRoom == myRoom && creep.ticksToLive > 60 && creep.memory.role == 'repairer' );
+		var backupHarvesters                = _.filter(Game.creeps, (creep) => creep.memory.homeRoom == myRoom && creep.ticksToLive > backupHarvesterSpawnTime && creep.memory.role == 'backupHarvester' );
+		var harvesters                      = _.filter(Game.creeps, (creep) => creep.memory.homeRoom == myRoom && creep.ticksToLive > harvesterSpawnTime && creep.memory.role == 'harvester' );
+		var couriers                        = _.filter(Game.creeps, (creep) => creep.memory.homeRoom == myRoom && creep.ticksToLive > courierSpawnTime && creep.memory.role == 'courier' );
+		var towerCouriers                   = _.filter(Game.creeps, (creep) => creep.memory.homeRoom == myRoom && creep.ticksToLive > towerCourierSpawnTime && creep.memory.role == 'towerCourier' );
+		var miners                          = _.filter(Game.creeps, (creep) => creep.memory.homeRoom == myRoom && creep.ticksToLive > minerSpawnTime && creep.memory.role == 'miner' );
+		var repairers                       = _.filter(Game.creeps, (creep) => creep.memory.homeRoom == myRoom && creep.ticksToLive > repairerSpawnTime && creep.memory.role == 'repairer' );
 		var upgraders                       = _.filter(Game.creeps, (creep) => creep.memory.homeRoom == myRoom && creep.ticksToLive > upgraderSpawnTime && creep.memory.role == 'upgrader' );
-		var builders                        = _.filter(Game.creeps, (creep) => creep.memory.homeRoom == myRoom && creep.ticksToLive > 60 && creep.memory.role == 'builder' );
-		var defenders                       = _.filter(Game.creeps, (creep) => creep.memory.homeRoom == myRoom && creep.ticksToLive > 60 && creep.memory.role == 'defender' );
+		var builders                        = _.filter(Game.creeps, (creep) => creep.memory.homeRoom == myRoom && creep.ticksToLive > builderSpawnTime && creep.memory.role == 'builder' );
+		var defenders                       = _.filter(Game.creeps, (creep) => creep.memory.homeRoom == myRoom && creep.ticksToLive > defenderSpawnTime && creep.memory.role == 'defender' );
 		var allCreepsInRoom                 = Game.rooms[myRoom].find(FIND_CREEPS);
 		// console.log('allcreepsinroom: ' + allCreepsInRoom);
 		
@@ -140,11 +156,17 @@ var roleSpawn = {
 			minUpgraders 					= 1; // reduce upgraders so we have enough energy to defend in case of emergency
 		}     
 
+		let roomLevel 						= Game.rooms[myRoom].controller.level;
+		console.log(roomLevel, '<------- room level right now')
+		let minHostilesToSpawnDefender		= 2;
+		if(roomLevel < 4)
+			minHostilesToSpawnDefender 		= 1;
+
 
 
 		/*----------  React to when there is an attack  ----------*/
 		
-		if (amountHostiles > 1) { // 2Do: make this only for this current room!
+		if (amountHostiles >= minHostilesToSpawnDefender) { // 2Do: make this only for this current room!
 		 console.log('ATTACK MODE LIVE');
 		 var minBackupHarvesters         = 2;    
 		 var minHarvesters               = 1;    // +1 for urgent delivery of energy to towers, spawn, extensions 
@@ -154,7 +176,7 @@ var roleSpawn = {
 		 var minRepairers                = 0;    
 		 var minUpgraders                = 1;    // -2
 		 var minBuilders                 = 0;    
-		 var minDefenders                = 1;   // +8  // 2DO: always spawn defenders first before anything else
+		 var minDefenders                = 2;   // +8  // always spawn as many attack body parts as needed for conquering
 		}
 
 		/*----------  Console logging  ----------*/
@@ -194,7 +216,8 @@ var roleSpawn = {
 		}
 
 		// spawn DEFENDERS 
-		if(defenders.length < minDefenders ) {
+		// tower couriers help heal me so tehy are important
+		if(defenders.length < minDefenders && towerCouriers.length < minTowerCouriers) {
 		    var newName = 'Defender' + Game.time + myRoom;
 		    let result = Game.spawns['Spawn1'].spawnCreep(defenderBody, newName, 
 		        {memory: {role: 'defender', homeRoom: myRoom}});
@@ -203,13 +226,6 @@ var roleSpawn = {
 
 		 
 		// spawn normal HARVESTERS 
-		// if(harvesters.length < minHarvesters) {
-		//     var newName = 'Harvester' + Game.time;
-		//     Game.spawns['Spawn1'].spawnCreep([MOVE,MOVE,MOVE,WORK,WORK,CARRY,CARRY,CARRY,CARRY], newName, // cost 550E; MOVE*3,WORK*2,CARRY*4; 900K health; carry 200(4 extensions)
-		//         {memory: {role: 'harvester'}});
-		// }
-		// spawn normal HARVESTERS 
-		//if(Game.rooms[myRoom].energySources)
 		if(harvesters.length < minHarvesters) {
 		var newName = 'Harvester' + Game.time + myRoom;
 		let result = Game.spawns['Spawn1'].spawnCreep(harvesterBody, newName, 
@@ -227,8 +243,6 @@ var roleSpawn = {
 		 
 		// spawn MINERS 
 		// only if harvesters are there already - otherwise we don't have anyone delivering energy to spawn & extensions
-		// 2Do, create mini and MAX miner
-		// 2DO: only create as many miners as containers are near to source
 		if(miners.length < minMiners && (harvesters.length >= minHarvesters)) {
 			var newName = 'Miner' + Game.time + myRoom;
 			let result = Game.spawns['Spawn1'].spawnCreep(minerBody, newName, 
@@ -301,6 +315,7 @@ var roleSpawn = {
 		        {align: 'left', opacity: 0.9});
 		}
 	}
+
 	
 };
 

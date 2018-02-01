@@ -4,9 +4,11 @@ DONT EDIT IN SCREEPS INGAME EDITOR
 or changes will be lost
 */
 
-// console.log('/*=============================================');
-// console.log('=                    Start                    =');
-// console.log('=============================================*/');
+/**
+ *
+ * CURRENT BRANCH: 180131-remote-mining
+ *
+ */
 
 
 /*=============================================
@@ -71,7 +73,6 @@ module.exports.loop = function () {
         
         roomArray.push(singleRoom);        
 
-        actionsGlobal.WriteSourcesIntoMem(singleRoom); // put all energy sources into memory
         actionsSpawn.RunSpawnFactory(singleRoom);
         roleTower.RunAllTowers(singleRoom);
         
@@ -110,4 +111,6 @@ module.exports.loop = function () {
 
     
 };
+
+
 

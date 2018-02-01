@@ -226,7 +226,7 @@ var roleCourier = {
             return console.log('have drop assigned already');
         // find all sources 
         let allDrops = actionsGlobal.ReturnEnergySourceIDs(creep.room.name, 'dropped_energy');
-        console.log(allDrops, ' <---------- allDrops');
+        // console.log(allDrops, ' <---------- allDrops');
         // find a source that no creep has assigned
         for (let dropID of allDrops) {
             let courierHasDropAssigned = _.filter(Game.creeps, (creep) => 
