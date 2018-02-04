@@ -483,7 +483,7 @@ function AddToBody(body, parts, count) {
 }
 
 function GetMaxTier(energy, bodyfunc, maxTier) {
-	console.log('/*----------  GetMaxTier()  ----------*/');
+	// console.log('/*----------  GetMaxTier()  ----------*/');
 	// console.log(energy, ' <-------- got this energy in func');
 	// console.log(bodyfunc, ' <-------- got this bodyfunc in func');
 	// console.log(maxTier, ' <-------- got this maxTier in func');
@@ -548,13 +548,13 @@ exports.CountBodyParts = CountBodyParts;
 // returns tier that has at least as much body parts as I need
 
 function GetBodyByPartCount(energyCap, bodyfunc, part, targetCount, maxTier) {
-	console.log('/*----------  GetBodyByPartCount()  ----------*/');
+	// console.log('/*----------  GetBodyByPartCount()  ----------*/');
 	let tier 				= 0;
 	let maxReached 			= false;
-	console.log(energyCap, ' < energyCap');
-	console.log(part, ' < part');
+	// console.log(energyCap, ' < energyCap');
+	// console.log(part, ' < part');
 	// let maxTier 			= GetMaxTier(energyCap, bodyfunc, 15);
-	console.log(maxTier, ' < !!! maxTier ');
+	// console.log(maxTier, ' < !!! maxTier ');
 	
 	for (let i = 0; !maxReached; i++) {
 		// console.log(i, ' < starting at TIER');
@@ -568,34 +568,34 @@ function GetBodyByPartCount(energyCap, bodyfunc, part, targetCount, maxTier) {
 		
 		let currentCount 	= CountBodyParts(body, part);
 		
-		console.log(cost, ' <----------------------- is current cost');
-		console.log(energyCap, ' <----------------------- is max energyCap');
-		console.log(currentCount, ' <----------------------- currentCount');
-		console.log(targetCount, ' <----------------------- targetCount');
+		// console.log(cost, ' <----------------------- is current cost');
+		// console.log(energyCap, ' <----------------------- is max energyCap');
+		// console.log(currentCount, ' <----------------------- currentCount');
+		// console.log(targetCount, ' <----------------------- targetCount');
 		// console.log(i, ' <----------------------- current tier');		
 		// if(cost <= energyCap || currentCount <= targetCount ){
 		// 	tier = i;
 		// }
 
 		if(cost > energyCap || currentCount > targetCount || i > maxTier) {
-			console.log('reached max');
-			console.log(tier, ' < tier');
+			// console.log('reached max');
+			// console.log(tier, ' < tier');
 			maxReached 		= true;
 		}else{
 			tier = i;
-			console.log(tier, ' < current tier after adding');
+			// console.log(tier, ' < current tier after adding');
 		}
 		
-		console.log(currentCount, ' < currentCount by func');
+		// console.log(currentCount, ' < currentCount by func');
 		// if (i==6)return;
 	}
-	console.log(tier, ' < highest tier');
+	// console.log(tier, ' < highest tier');
 	
 	if(tier == 0) {
 		return undefined;
 	} else{
 		let perfectBody 	= bodyfunc(tier);	
-		console.log(perfectBody, ' <<< perfectBody');
+		// console.log(perfectBody, ' <<< perfectBody');
 		return perfectBody;
 	}
 	// return tier;

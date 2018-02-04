@@ -88,13 +88,13 @@ var MiningManager = {
 			let energyCap 					= source.room.energyCapacityAvailable;
 			// console.log(energyCap, ' energyCap');			
 			let missingWorkPartCount 		= MiningManager.minWorkPartsPerSource - partsCount;
-			console.log(missingWorkPartCount, ' missingWorkPartCount');
+			// console.log(missingWorkPartCount, ' missingWorkPartCount');
 			let minerMaxTier 				= ProfileUtils.GetMaxTier_Miner(energyCap);
-			console.log(minerMaxTier, ' minerMaxTier oooooooooooooooooooo');
+			// console.log(minerMaxTier, ' minerMaxTier oooooooooooooooooooo');
 			// return;
 			// HERE IS ERROR!!!
 			let perfectBody 				= ProfileUtils.GetBodyByPartCount(energyCap, ProfileUtils.GetBody_Miner, 'work', missingWorkPartCount, minerMaxTier);
-			console.log(perfectBody, ' <- perfectBody in OrderNewMiner()');
+			// console.log(perfectBody, ' <- perfectBody in OrderNewMiner()');
 			
 			if(perfectBody === undefined){ 
 				return false;
@@ -103,13 +103,13 @@ var MiningManager = {
 				// set up order system to receive new orders
 				// first see how many WORK body parts are ordered already
 				let ordered = SpawnQueManager.GetTotalBodyPartsOrdered(room, 'miner', sourceId, 'work');
-				console.log(ordered, ' <- ordered in OrderNewMiner()');
-				console.log(missingWorkPartCount, ' <- missingWorkPartCount in OrderNewMiner()');
+				// console.log(ordered, ' <- ordered in OrderNewMiner()');
+				// console.log(missingWorkPartCount, ' <- missingWorkPartCount in OrderNewMiner()');
 				if(ordered < missingWorkPartCount) {
-					console.log('ordering new miner');
+					// console.log('ordering new miner');
 					//2Do: determine priority in external
 					let result = SpawnQueManager.NewOrder(room, perfectBody, 'miner', sourceId, 'harvest', 1)
-					console.log(result, ' <- result in OrderNewMiner()');
+					// console.log(result, ' <- result in OrderNewMiner()');
 					return 'ordered new miner';
 				}else{
 					return 'order already in que';

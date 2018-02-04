@@ -78,8 +78,7 @@ module.exports.loop = function () {
         // run all managers
         SpawnQueManager.run(singleRoom);
 
-        MiningManager.run(singleRoom);
-        return;
+        MiningManager.run(singleRoom);        
         
         // run all creeps
         actionCreeps.DoWhatYouGottaDo(singleRoom);

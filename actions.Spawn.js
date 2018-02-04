@@ -21,7 +21,7 @@ var roleSpawn = {
 
 	RunSpawnFactory : function (myRoom) {
 
-		console.log('<------------ starting spawn loop for ------------------->');
+		console.log('<------------ RunSpawnFactory() ------------------->');
 
 		console.log('room name in spawn factory:' + myRoom);
 		/*----------  Defining max bodies for all creeps  ----------*/
@@ -305,7 +305,7 @@ var roleSpawn = {
 
 
 		roleSpawn.showWhatsSpawning();
-		 
+		
 		 
 	},
 
