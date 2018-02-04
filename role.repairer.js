@@ -1,4 +1,4 @@
-require('vars.global');
+require('managers.Memory');
 var actionSelectSource = require('actions.selectSource');
 var roleRepairer = {
     run: function(creep) {

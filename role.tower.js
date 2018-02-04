@@ -14,20 +14,19 @@
     - when attackers to big to kill, instead repair the structures that they attack. get structures that are within in range 5 of attackers and then repair those
 
  */
-require('vars.global');
+require('managers.Memory');
 //module.exports = {
 var roleTower = {
 
     RunAllTowers: function(myRoomName) {
         // make tower do stuff
-        var allTowers = Game.rooms[myRoomName].find(FIND_MY_STRUCTURES, { filter: { structureType: STRUCTURE_TOWER } });
-        
+        var allTowers = Game.rooms[myRoomName].find(FIND_MY_STRUCTURES, { filter: { structureType: STRUCTURE_TOWER } });        
         
         
         if(allTowers.length > 0) {
             for (var singleTower of allTowers) {
-                // STEP 1: ATTACK
-                // 
+                /*----------  STEP 1 ATTACK  ----------*/
+    
                 var hostileHealer = singleTower.pos.findClosestByRange(FIND_HOSTILE_CREEPS, { filter: (s) => (s.getActiveBodyparts(HEAL) > 0 && s.getActiveBodyparts(HEAL) < 15) });
                 var hostileHealerBig = singleTower.pos.findClosestByRange(FIND_HOSTILE_CREEPS, { filter: (s) => (s.getActiveBodyparts(HEAL) > 15) });
                 var hostileAttacker = singleTower.pos.findClosestByRange(FIND_HOSTILE_CREEPS, { filter: (s) => ( s.getActiveBodyparts(ATTACK) > 0  || s.getActiveBodyparts(RANGED_ATTACK) > 0) });
@@ -64,16 +63,18 @@ var roleTower = {
                         singleTower.attack(closestHostile);
                     //};
                 
-                } else { // STEP 2: HEAL CREEPS
+                } else { 
+                    /*----------  STEP 2 HEALING  ----------*/
                     
 
                     roleTower.healCreeps(singleTower);
                     
-                    // STEP 3: REPAIR
+                    /*----------  STEP 3 REPAIRING  ----------*/
+                    
                     // - only repair if tower has enough energy left
                     // console.log(singleTower.energy);
-                    if (singleTower.energy >= (singleTower.energyCapacity * 0.75) && Game.spawns.Spawn1.room.energyAvailable > 1000) {
-                    
+                    if (singleTower.energy >= (singleTower.energyCapacity * 0.75) && Game.spawns.Spawn1.room.energyAvailable > (Game.spawns.Spawn1.room.energyCapacityAvailable * 0.75)) {
+                        
                         roleTower.repairStuff(myRoomName, singleTower);
                     }
                     
@@ -83,6 +84,7 @@ var roleTower = {
     },
 
     healCreeps : function (tower) {
+        console.log('HEALIIIIIIIIIIING');
         var weakCreeps          = _.filter(Game.creeps, (creep) => (creep.hits < creep.hitsMax));
         // question : can tower actuall heal more than one creep???
         // 2Do: focus on creep with lowest hit points?
@@ -94,7 +96,7 @@ var roleTower = {
     },
 
     repairStuff : function (room, tower) {
-
+        console.log('REPAIRIIIIIING');
         // maybe repair only on every 2nd tick?
         // 2DO: differenciate between structures
         // - ramparts 300.000 begin from lowest hitpoints

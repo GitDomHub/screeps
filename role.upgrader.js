@@ -20,13 +20,13 @@ var roleUpgrader = {
                 if (creep.memory.pathToController) {
                     let deser = Room.deserializePath(creep.memory.pathToController)
                     if (!creep.moveByPath(deser) == OK) {
-                        creep.moveTo(creep.room.controller, {visualizePathStyle: {stroke: '#ffffff'}});    allDamagedStructures    
+                        creep.moveTo(creep.room.controller);    
                     }else{
                         creep.say('path ok');
                     }
                     
                 }else {
-                    creep.moveTo(creep.room.controller, {visualizePathStyle: {stroke: '#ffffff'}});    
+                    creep.moveTo(creep.room.controller);    
                 }                
                 // creep.moveByPath(pathToController);
                 // creep.memory.pathToStorage = pathControllerToStorage;

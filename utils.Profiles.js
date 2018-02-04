@@ -380,11 +380,12 @@ function GetMaxTier_Upgrader(energy){
   *	  	T1: MOVE*1,WORK*2,CARRY*1 ; 4/T ; 300E ; plain=2,3   road=1,2   swamp=10,15  
   *		T2: MOVE*2,WORK*4,CARRY*1 ; 8/T ; 550E ; plain=2,3   road=1,2   swamp=10,13  
   *		T3: MOVE*3,WORK*5,CARRY*1 ; 10/T ; 700E ; plain=2,2   road=1,1   swamp=9,10
+  *		T4: MOVE*3,WORK*6,CARRY*1 ; 12/T ; 800E ; plain=2,3   road=1,2   swamp=10,12 
   *
   */
 exports.GetBody_Miner = GetBody_Miner;
 function GetBody_Miner(tier) {
-	if (tier > 3) tier = 3;
+	if (tier > 4) tier = 4;
 	let body = [];
 	switch (tier) {
 		case 1: 
@@ -402,6 +403,11 @@ function GetBody_Miner(tier) {
 			body = AddToBody(body, [WORK], 5);
 			body = AddToBody(body,[CARRY], 1);	
 			break;	
+		case 4: 
+			body = AddToBody(body, [MOVE], 3);  
+			body = AddToBody(body, [WORK], 6);
+			body = AddToBody(body,[CARRY], 1);	
+			break;	
 	}
 	
 	
@@ -409,7 +415,7 @@ function GetBody_Miner(tier) {
 }
 exports.GetMaxTier_Miner = GetMaxTier_Miner;
 function GetMaxTier_Miner(energy){
-	return GetMaxTier(energy, GetBody_Miner, 3);
+	return GetMaxTier(energy, GetBody_Miner, 4);
 }
 
 
@@ -477,6 +483,7 @@ function AddToBody(body, parts, count) {
 }
 
 function GetMaxTier(energy, bodyfunc, maxTier) {
+	console.log('/*----------  GetMaxTier()  ----------*/');
 	// console.log(energy, ' <-------- got this energy in func');
 	// console.log(bodyfunc, ' <-------- got this bodyfunc in func');
 	// console.log(maxTier, ' <-------- got this maxTier in func');
@@ -487,7 +494,7 @@ function GetMaxTier(energy, bodyfunc, maxTier) {
 		// console.log(cost, ' <----------------------- is current cost');
 		// console.log(energy, ' <----------------------- is max energy');
 		// console.log(i, ' <----------------------- current tier');
-		if(cost > energy || i > maxTier) {
+		if(cost > energy || i > maxTier || i > 15) { // giving a maxtier value to prevent endless loop
 			maxReached = true;
 		}else{
 			tier = i;
@@ -514,19 +521,88 @@ function GetCostForFullBody(body) {
 ============================================*/
 
 function CountBodyParts(body, lookForPart) {
+	// console.log('/*----------  CountBodyParts()  ----------*/');
+	if(body == undefined) return false;
+	// console.log(body, ' <- body');
+	// console.log(lookForPart, ' <- lookForPart');
 	let count = 0;
-	console.log(body);
+	// console.log(body);
 	for (part of body) {
-		console.log(part);
+		// console.log(part.type, ' < current part.type');
+		// console.log(part, ' < current part');
 		if(part == lookForPart)
 			count++;
+			// console.log(count, 'increasing count');
 	}
+	// console.log(count, ' < returning count');
 	return count;
 }
 exports.CountBodyParts = CountBodyParts;
 
 /*=====  End of Counting Body Parts   ======*/
 
+
+/*=======================================================
+=            GET TIER WITH NEEDED BODY PARTS            =
+=======================================================*/
+// returns tier that has at least as much body parts as I need
+
+function GetBodyByPartCount(energyCap, bodyfunc, part, targetCount, maxTier) {
+	console.log('/*----------  GetBodyByPartCount()  ----------*/');
+	let tier 				= 0;
+	let maxReached 			= false;
+	console.log(energyCap, ' < energyCap');
+	console.log(part, ' < part');
+	// let maxTier 			= GetMaxTier(energyCap, bodyfunc, 15);
+	console.log(maxTier, ' < !!! maxTier ');
+	
+	for (let i = 0; !maxReached; i++) {
+		// console.log(i, ' < starting at TIER');
+
+		// console.log(bodyfunc, 'bodyfunc');
+		let body 			= bodyfunc(i);	
+		// console.log(body, ' body by func');
+		
+		let cost 			= GetCostForFullBody(body);
+		// console.log(cost, ' < cost');
+		
+		let currentCount 	= CountBodyParts(body, part);
+		
+		console.log(cost, ' <----------------------- is current cost');
+		console.log(energyCap, ' <----------------------- is max energyCap');
+		console.log(currentCount, ' <----------------------- currentCount');
+		console.log(targetCount, ' <----------------------- targetCount');
+		// console.log(i, ' <----------------------- current tier');		
+		// if(cost <= energyCap || currentCount <= targetCount ){
+		// 	tier = i;
+		// }
+
+		if(cost > energyCap || currentCount > targetCount || i > maxTier) {
+			console.log('reached max');
+			console.log(tier, ' < tier');
+			maxReached 		= true;
+		}else{
+			tier = i;
+			console.log(tier, ' < current tier after adding');
+		}
+		
+		console.log(currentCount, ' < currentCount by func');
+		// if (i==6)return;
+	}
+	console.log(tier, ' < highest tier');
+	
+	if(tier == 0) {
+		return undefined;
+	} else{
+		let perfectBody 	= bodyfunc(tier);	
+		console.log(perfectBody, ' <<< perfectBody');
+		return perfectBody;
+	}
+	// return tier;
+}
+exports.GetBodyByPartCount = GetBodyByPartCount;
+
+/*=====  End of GET TIER WITH NEEDED BODY PARTS  ======*/
 
 
 

@@ -10,7 +10,7 @@
  */
 
 /*----------  Globals  ----------*/
-require('vars.global');
+require('managers.Memory');
 /*----------  Utils  ----------*/
 var ProfileUtils = require('utils.Profiles');
 /*----------  Actions  ----------*/
@@ -36,61 +36,70 @@ var roleSpawn = {
 		// console.log('MaxBody for Miner ' + minerBody);
 		// console.log(minerBody.length, ' body length');
 		let minerSpawnTime 				= ((minerBody.length *3) + tickBuffer);
+		// console.log(minerSpawnTime, ' : minerSpawnTime');
 
 		maxTier 						= ProfileUtils.GetMaxTier_BackupHarvester(energy);
 		let backupHarvesterBody			= ProfileUtils.GetBody_BackupHarvester(maxTier);
 		// console.log('Maxtier for BackupHarvester ' + maxTier);
 		// console.log('MaxBody for BackupHarvester ' + backupHarvesterBody);
 		let backupHarvesterSpawnTime 	= ((backupHarvesterBody.length *3) + tickBuffer);
+		// console.log(backupHarvesterSpawnTime, ' : backupHarvesterSpawnTime');
 		
 
 		maxTier 						= ProfileUtils.GetMaxTier_Upgrader(energy);
 		let upgraderBody 				= ProfileUtils.GetBody_Upgrader(maxTier);
 		let upgraderSpawnTime 			= ((upgraderBody.length *3)+ tickBuffer);
-		console.log('Maxtier for Upgrader ' + maxTier);
-		console.log('MaxBody for Upgrader (Spawn t = ' + upgraderSpawnTime + ' ticks) ' + upgraderBody);
+		// console.log('Maxtier for Upgrader ' + maxTier);
+		// console.log('MaxBody for Upgrader (Spawn t = ' + upgraderSpawnTime + ' ticks) ' + upgraderBody);
 
 		maxTier 						= ProfileUtils.GetMaxTier_Defender(energy);
 		let defenderBody 				= ProfileUtils.GetBody_Defender(maxTier);
-		console.log('Maxtier for Defender ' + maxTier);
-		console.log('MaxBody for Defender ' + defenderBody);
+		// console.log('Maxtier for Defender ' + maxTier);
+		// console.log('MaxBody for Defender ' + defenderBody);
 		let defenderSpawnTime 			= ((defenderBody.length *3) + tickBuffer);
+		// console.log(defenderSpawnTime, ' : defenderSpawnTime');
 
 		maxTier 						= ProfileUtils.GetMaxTier_Courier(energy);
 		let courierBody 				= ProfileUtils.GetBody_Courier(maxTier);
-		console.log('Maxtier for Courier ' + maxTier);
-		console.log('MaxBody for Courier' + courierBody);
+		// console.log('Maxtier for Courier ' + maxTier);
+		// console.log('MaxBody for Courier' + courierBody);
 		let courierSpawnTime 			= ((courierBody.length *3) + tickBuffer);
+		// console.log(courierSpawnTime, ' : courierSpawnTime');
 
 		maxTier 						= ProfileUtils.GetMaxTier_TowerCourier(energy);
 		let towerCourierBody 			= ProfileUtils.GetBody_TowerCourier(maxTier);
 		// console.log('Maxtier for TowerCourier ' + maxTier);
 		// console.log('MaxBody for TowerCourier' + towerCourierBody);
 		let towerCourierSpawnTime 		= ((towerCourierBody.length *3) + tickBuffer);
+		// console.log(towerCourierSpawnTime, ' : towerCourierSpawnTime');
 
 		maxTier 						= ProfileUtils.GetMaxTier_Harvester(energy);
 		let harvesterBody 				= ProfileUtils.GetBody_Harvester(maxTier);
 		// console.log('Maxtier for Harvester ' + maxTier);
 		// console.log('MaxBody for Harvester' + harvesterBody);
 		let harvesterSpawnTime 			= ((harvesterBody.length *3) + tickBuffer);
+		// console.log(harvesterSpawnTime, ' : harvesterSpawnTime');
 
 		maxTier 						= ProfileUtils.GetMaxTier_Refiller(energy);
 		let refillerBody 				= ProfileUtils.GetBody_Refiller(maxTier);
 		// console.log('Maxtier for Refiller ' + maxTier);
 		// console.log('MaxBody for Refiller' + refillerBody);
 		let refillerSpawnTime 			= ((refillerBody.length *3) + tickBuffer);
+		// console.log(refillerSpawnTime, ' : refillerSpawnTime');
 
 		maxTier 						= ProfileUtils.GetMaxTier_Builder(energy);
 		let builderBody 				= ProfileUtils.GetBody_Builder(maxTier);
 		// console.log('Maxtier for Builder ' + maxTier);
 		// console.log('MaxBody for Builder' + builderBody);
 		let builderSpawnTime 			= ((builderBody.length *3) + tickBuffer);
+		// console.log(builderSpawnTime, ' : builderSpawnTime');
 
 		maxTier 						= ProfileUtils.GetMaxTier_Repairer(energy);
 		let repairerBody 				= ProfileUtils.GetBody_Repairer(maxTier);
 		// console.log('Maxtier for Repairer ' + maxTier);
 		// console.log('MaxBody for Repairer' + repairerBody);
 		let repairerSpawnTime 			= ((repairerBody.length *3) + tickBuffer);
+		// console.log(repairerSpawnTime, ' : repairerSpawnTime');
 		
 
 		
@@ -114,7 +123,7 @@ var roleSpawn = {
 		var upgraders                       = _.filter(Game.creeps, (creep) => creep.memory.homeRoom == myRoom && creep.ticksToLive > upgraderSpawnTime && creep.memory.role == 'upgrader' );
 		var builders                        = _.filter(Game.creeps, (creep) => creep.memory.homeRoom == myRoom && creep.ticksToLive > builderSpawnTime && creep.memory.role == 'builder' );
 		var defenders                       = _.filter(Game.creeps, (creep) => creep.memory.homeRoom == myRoom && creep.ticksToLive > defenderSpawnTime && creep.memory.role == 'defender' );
-		var allCreepsInRoom                 = Game.rooms[myRoom].find(FIND_CREEPS);
+		var allCreepsInRoom                 = _.filter(Game.creeps, (creep) => creep.memory.homeRoom == myRoom);
 		// console.log('allcreepsinroom: ' + allCreepsInRoom);
 		
 		// check for things in room
@@ -157,7 +166,6 @@ var roleSpawn = {
 		}     
 
 		let roomLevel 						= Game.rooms[myRoom].controller.level;
-		console.log(roomLevel, '<------- room level right now')
 		let minHostilesToSpawnDefender		= 2;
 		if(roomLevel < 4)
 			minHostilesToSpawnDefender 		= 1;
@@ -264,7 +272,7 @@ var roleSpawn = {
 		    var newName = 'Repairer' + Game.time + myRoom;
 		    /*Game.spawns['Spawn1'].spawnCreep([MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,WORK,WORK,WORK,WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY], newName, //9
 		         {memory: {role: 'repairer'}});*/		         
-		    Game.spawns['Spawn1'].spawnCreep([MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,WORK,WORK,WORK,CARRY,CARRY,CARRY], newName, 
+		    Game.spawns['Spawn1'].spawnCreep(repairerBody, newName, 
 		        {memory: {role: 'repairer', homeRoom: myRoom}});    
 		}
 		 

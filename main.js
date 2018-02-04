@@ -14,12 +14,13 @@ or changes will be lost
 /*=============================================
 =                   Includes                    =
 =============================================*/
-/*----------  Globals  ----------*/
 
-require('vars.global');
-
-/*----------  Utils  ----------*/
+var MemoryManager = require('managers.Memory');
+var MiningManager = require('managers.Mining');
+var SpawnQueManager = require('managers.SpawnQue');
 var ProfileUtils = require('utils.Profiles');
+
+/*----------  Managers  ----------*/
 
 
 
@@ -56,12 +57,11 @@ module.exports.loop = function () {
 
 
     // run memory 
-    actionsGlobal.ClearMemory(); // clears dead creep memory
+    // actionsGlobal.ClearMemory(); // clears dead creep memory
+    MemoryManager.ClearDeadCreeps();
+
+    MemoryManager.write();
     
-    actionsGlobal.InitRoomMemory(); // creates a new empty array for all rooms in memory if non existent
-
-
-    var roomArray = [];
     // looooop through all rooms that I have creeps in
     for (let singleRoom in Game.rooms) {
         if (!singleRoom) {
@@ -70,18 +70,21 @@ module.exports.loop = function () {
         }
 
         // console.log('In loop for room: ' + singleRoom);
-        
-        roomArray.push(singleRoom);        
+               
 
         actionsSpawn.RunSpawnFactory(singleRoom);
         roleTower.RunAllTowers(singleRoom);
+
+        // run all managers
+        SpawnQueManager.run(singleRoom);
+
+        MiningManager.run(singleRoom);
+        return;
         
         // run all creeps
         actionCreeps.DoWhatYouGottaDo(singleRoom);
 
     }
-
-    // console.log('Room Array: ' + roomArray);
     
     
     
@@ -100,10 +103,10 @@ module.exports.loop = function () {
     
     
     //Console 
-    var extensions = Game.spawns.Spawn1.room.find(FIND_MY_STRUCTURES, {
-      filter: { structureType: STRUCTURE_EXTENSION }
-    });
-    console.log('Extensions: ' + extensions.length);
+    // var extensions = Game.spawns.Spawn1.room.find(FIND_MY_STRUCTURES, {
+    //   filter: { structureType: STRUCTURE_EXTENSION }
+    // });
+    // console.log('Extensions: ' + extensions.length);
     console.log("Energy: "+Game.spawns.Spawn1.room.energyAvailable);
     console.log("Energy Cap: "+Game.spawns.Spawn1.room.energyCapacityAvailable);
     //console.log('room.energyAvailable: ' + Game.creeps[1].Room.energyAvailable + ' | room.energyCapacityAvailable: ' + Game.creeps[1].Room.energyCapacityAvailable );

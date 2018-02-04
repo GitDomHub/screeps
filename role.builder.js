@@ -1,4 +1,10 @@
-/*2Do: when nothing to build, assign upgrader role*/
+/**
+
+    TODO:
+    - when nothing to build, assign upgrader role
+    - dont just build cloest by range site. build most important one. differ by HOSTILES IN ROOM? 
+
+ */
 
 var actionSelectSource = require('actions.selectSource');
 var roleBuilder = {
