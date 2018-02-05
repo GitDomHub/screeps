@@ -17,7 +17,8 @@ or changes will be lost
 
 var MemoryManager = require('managers.Memory');
 var MiningManager = require('managers.Mining');
-var SpawnQueManager = require('managers.SpawnQue');
+var SpawnQueueManager = require('managers.SpawnQueue');
+var SpawnManager = require('managers.Spawn');
 var ProfileUtils = require('utils.Profiles');
 
 /*----------  Managers  ----------*/
@@ -54,7 +55,8 @@ var actionCreeps                        = require('actions.Creeps');
 
 
 module.exports.loop = function () {
-
+    console.log('/*----------  STARTING NEW TICK  ----------*/');
+    
 
     // run memory 
     // actionsGlobal.ClearMemory(); // clears dead creep memory
@@ -74,11 +76,20 @@ module.exports.loop = function () {
 
         actionsSpawn.RunSpawnFactory(singleRoom);
         roleTower.RunAllTowers(singleRoom);
-
+        SpawnQueueManager.run(singleRoom);
         // run all managers
-        SpawnQueManager.run(singleRoom);
+        // harvester Manager
+        MiningManager.run(singleRoom);
+        // courier manager
+        // upgrader manager
+        // builder mnager
+        // defender manager
+        
 
-        MiningManager.run(singleRoom);        
+        
+        SpawnManager.run(singleRoom);
+
+        
         
         // run all creeps
         actionCreeps.DoWhatYouGottaDo(singleRoom);

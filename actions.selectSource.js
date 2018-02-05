@@ -19,7 +19,7 @@ var actionChooseSource = {
         // let dropOffPos                          = actionChooseSource.returnDropOffPoint(creep);
         let dropOff                             = actionChooseSource.returnEnergyDropOff(creep);
         
-        console.log(dropOff, ' got this dropOff object');
+        // console.log(dropOff, ' got this dropOff object');
 
 
 
@@ -40,7 +40,7 @@ var actionChooseSource = {
 
 
         if(dropOff){
-            console.log('going for dropOffsite');
+            // console.log('going for dropOffsite');
             if(creep.pickup(dropOff) == ERR_NOT_IN_RANGE) {
                 creep.moveTo(dropOff);
                 creep.memory.targetId = dropOff.id;
@@ -149,7 +149,7 @@ var actionChooseSource = {
 
     returnEnergyDropOff : function (creep) {
         let dropOffId                          = actionsGlobal.ReturnEnergySourceIDs(creep.room.name, 'dropOff');
-        console.log(dropOffId, '   ............. dropOffId');
+        // console.log(dropOffId, '   ............. dropOffId');
         let dropOffObj                          = Game.getObjectById(dropOffId);
         return dropOffObj;
     }

@@ -1,10 +1,8 @@
 /**
 
 	TODO:
-	- find all sources in room
-	- see how many screeps are serving each source
-	- calculate amount of WORK body parts per assigned source
-	- if less than 5 work parts for mining plus one for repairing container, create new creep with as many work parts to reach 6
+	- if more work parts than I need, then assign other creep to upgradig or make him role=idle
+	- include exact spawntime and walk to source to dont waste time
 
  */
 
@@ -12,7 +10,7 @@
 require('managers.Memory');
 var ProfileUtils = require('utils.Profiles'); 
 var actionsGlobal = require('actions.global');
-var SpawnQueManager = require('managers.SpawnQue');
+var SpawnQueueManager = require('managers.SpawnQueue');
 
 
 var MiningManager = {
@@ -22,25 +20,25 @@ var MiningManager = {
 
 	run : function (room) {
 		try {
-			console.log('/*----------  MiningManager.run()  ----------*/');
+			// console.log('/*----------  MiningManager.run()  ----------*/');
 			// do this every loop
 			// get all sources from memory
 			let sourceIds = actionsGlobal.ReturnEnergySourceIDs(room, 'source');
-			console.log(sourceIds, ' <--- sourceIds');
+			// console.log(sourceIds, ' <--- sourceIds');
 			for (sourceId of sourceIds){
-				console.log(sourceId, ' <--- sourceId loop');
+				// console.log(sourceId, ' <--- sourceId loop');
 				let workSpots = MiningManager.GetWorkSpotsAroundSource(sourceId);
-				console.log(workSpots, ' < workSpots');
+				// console.log(workSpots, ' < workSpots');
 				
 				// check how many workparts i got currently per source
 				let workPartsCount 				= MiningManager.GetSourceWorkParts(sourceId); // maybe need to change 
-				console.log(workPartsCount, ' <----- workPartsCount');
+				// console.log(workPartsCount, ' <----- workPartsCount');
 				// 2Do: 
 				
 				if (workPartsCount < MiningManager.minWorkPartsPerSource) {
-					console.log(room, ' room');
-					console.log(workPartsCount, ' workPartsCount');
-					console.log(sourceId, ' sourceId');
+					// console.log(room, ' room');
+					// console.log(workPartsCount, ' workPartsCount');
+					// console.log(sourceId, ' sourceId');
 					
 					let result = MiningManager.OrderNewMiner(room, workPartsCount, sourceId);
 					console.log(result, 'MiningManager.OrderNewMiner result');
@@ -54,12 +52,12 @@ var MiningManager = {
 	},
 	
 	GetSourceWorkParts : function (sourceId) {
-        try {
+        try {        	
         	let creepsServingSource = _.filter(Game.creeps, (creep) => 
 	                creep.memory.assignedSource == sourceId && 
 	                creep.memory.role == 'miner' &&
 	                creep.ticksToLive > 40);  
-	        console.log(creepsServingSource, ' <<-- creeps serving source');
+	        // console.log(creepsServingSource, ' <<-- creeps serving source');
 	        let parts 							= 0;          
 	        for (creep of creepsServingSource) {
 	        	// need to put all creep.body.type into new array
@@ -68,7 +66,7 @@ var MiningManager = {
 	        		body.push(part.type);
 
 	        	}
-	        	console.log(body, ' <<<<<<<<<<<<<<<<<<<<< body');
+	        	// console.log(body, ' <<<<<<<<<<<<<<<<<<<<< body');
 	        	// console.log(ProfileUtils.CountBodyParts(creep.body, 'work'), ' <---- CountBodyParts');
 	        	parts += ProfileUtils.CountBodyParts(body, 'work'); // http://docs.screeps.com/api/#Creep.body
 	        }  
@@ -81,7 +79,7 @@ var MiningManager = {
 	},
 
 	OrderNewMiner : function (room, partsCount, sourceId) {
-		console.log('/*----------  OrderNewMiner()  ----------*/');
+		// console.log('/*----------  OrderNewMiner()  ----------*/');
 		try {
 			let source 						= Game.getObjectById(sourceId);
 			// console.log(sourceId, ' <<<---- source ID');
@@ -102,14 +100,14 @@ var MiningManager = {
 				// order new miner with perfectBody
 				// set up order system to receive new orders
 				// first see how many WORK body parts are ordered already
-				let ordered = SpawnQueManager.GetTotalBodyPartsOrdered(room, 'miner', sourceId, 'work');
+				let ordered = SpawnQueueManager.GetTotalBodyPartsOrdered(room, 'miner', sourceId, 'work');
 				// console.log(ordered, ' <- ordered in OrderNewMiner()');
 				// console.log(missingWorkPartCount, ' <- missingWorkPartCount in OrderNewMiner()');
 				if(ordered < missingWorkPartCount) {
 					// console.log('ordering new miner');
 					//2Do: determine priority in external
-					let result = SpawnQueManager.NewOrder(room, perfectBody, 'miner', sourceId, 'harvest', 1)
-					// console.log(result, ' <- result in OrderNewMiner()');
+					let result = SpawnQueueManager.NewOrder(room, perfectBody, 'miner', sourceId, 'harvest', 1)
+					console.log(result, ' <- result in OrderNewMiner()');
 					return 'ordered new miner';
 				}else{
 					return 'order already in que';
@@ -131,7 +129,7 @@ var MiningManager = {
 		let left 					= x - 1;
 		let right 					= x + 1;
 
-		console.log(top + ' - ' + bottom + ' - ' + left + ' - ' + right );
+		// console.log(top + ' - ' + bottom + ' - ' + left + ' - ' + right );
 
 		let terrain = sourceObj.room.lookForAtArea(LOOK_TERRAIN,top,left,bottom,right,true);
 		// console.log(terrain, ' <- terrain');

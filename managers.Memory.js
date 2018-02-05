@@ -242,13 +242,13 @@ var MemoryManager = {
 				//
 				//
 				//
-				console.log('anzahl an damages struc in room ' + room + ' : ' + Object.keys(Memory.rooms[room].damagedStructures).length);
+				// console.log('anzahl an damages struc in room ' + room + ' : ' + Object.keys(Memory.rooms[room].damagedStructures).length);
 
 				// increase max hits for everything when we have enough energy
 				if(storage && Object.keys(Memory.rooms[room].damagedStructures).length == 0) {
-					console.log('store energy is: ' + storage.store[RESOURCE_ENERGY] + ' and min energy is: ' + Memory.roomOpts[room].minEnergyInStorage);
+					// console.log('store energy is: ' + storage.store[RESOURCE_ENERGY] + ' and min energy is: ' + Memory.roomOpts[room].minEnergyInStorage);
 					if (storage.store[RESOURCE_ENERGY] > Memory.roomOpts[room].minEnergyInStorage) {
-						console.log('should increase hits now!');
+						// console.log('should increase hits now!');
 						Memory.roomOpts[room].repairUntil += Memory.roomOpts[room].aboveMinEnergyIncreaseHitsBy;
 					}
 				}
@@ -314,7 +314,7 @@ var GetEnergyDropOff = function(room) {
         let dropOffPos                  = new RoomPosition(spawns[0].pos.x, (spawns[0].pos.y + 1),  room);
         // console.log(dropOffPos, '<-<-<-<-<-<-<-<-<-<-<-<-<-<-<-<-<-<- dropOffPos');
         let foundEnergyObj                 = Game.rooms[room].lookForAt(LOOK_ENERGY, dropOffPos);
-        console.log(foundEnergyObj, '<------<-<-<--<<--< energy!');
+        // console.log(foundEnergyObj, '<------<-<-<--<<--< energy!');
         // console.log(foundEnergyObj[0].amount, '<------<-<-<--<<--< amount!');
         if (foundEnergyObj) {
         	return foundEnergyObj;	

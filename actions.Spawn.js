@@ -21,12 +21,12 @@ var roleSpawn = {
 
 	RunSpawnFactory : function (myRoom) {
 
-		console.log('<------------ RunSpawnFactory() ------------------->');
+		// console.log('<------------ RunSpawnFactory() ------------------->');
 
-		console.log('room name in spawn factory:' + myRoom);
+		// console.log('room name in spawn factory:' + myRoom);
 		/*----------  Defining max bodies for all creeps  ----------*/
 		let energy 						= Game.rooms[myRoom].energyCapacityAvailable;
-		console.log(energy, '<------------ energy CAP available');
+		// console.log(energy, '<------------ energy CAP available');
 
 		let tickBuffer					= 8; // time to add to spawning
 
@@ -133,12 +133,12 @@ var roleSpawn = {
 		}
 		// console.log('all damaged struc in room[' + myRoom + '] : ' + amountDamgedStruc);
 		var baustellen 						= Game.rooms[myRoom].find(FIND_CONSTRUCTION_SITES); 
-		console.log('baustellen in room: [' + myRoom + '] : ' +  baustellen.length);
+		// console.log('baustellen in room: [' + myRoom + '] : ' +  baustellen.length);
 
 		var amountHostiles                 	= Game.rooms[myRoom].find(FIND_HOSTILE_CREEPS).length;
 
 		let amountSourcesInRoom 			= actionsGlobal.ReturnEnergySourceIDs(myRoom, 'source'); 
-		console.log(amountSourcesInRoom.length, ' <----------------- found this many sources in room');
+		// console.log(amountSourcesInRoom.length, ' <----------------- found this many sources in room');
 		
 		// 2Do: instead of making min values static, calculate them depending on room situation
 		// MINERS: (2E/T per WORK. At 10E/T energy source get minded alright. Means we need at least 5 WORK parts.
@@ -251,12 +251,12 @@ var roleSpawn = {
 		 
 		// spawn MINERS 
 		// only if harvesters are there already - otherwise we don't have anyone delivering energy to spawn & extensions
-		if(miners.length < minMiners && (harvesters.length >= minHarvesters)) {
-			var newName = 'Miner' + Game.time + myRoom;
-			let result = Game.spawns['Spawn1'].spawnCreep(minerBody, newName, 
-			    {memory: {role: 'miner', homeRoom: myRoom}});
-			console.log('spawn result miner: ' + result);
-		}
+		// if(miners.length < minMiners && (harvesters.length >= minHarvesters)) {
+		// 	var newName = 'Miner' + Game.time + myRoom;
+		// 	let result = Game.spawns['Spawn1'].spawnCreep(minerBody, newName, 
+		// 	    {memory: {role: 'miner', homeRoom: myRoom}});
+		// 	console.log('spawn result miner: ' + result);
+		// }
 		
 
 		// spawn TOWERCOURIER 

@@ -84,7 +84,7 @@ var roleTower = {
     },
 
     healCreeps : function (tower) {
-        console.log('HEALIIIIIIIIIIING');
+        // console.log('HEALIIIIIIIIIIING');
         var weakCreeps          = _.filter(Game.creeps, (creep) => (creep.hits < creep.hitsMax));
         // question : can tower actuall heal more than one creep???
         // 2Do: focus on creep with lowest hit points?
@@ -96,7 +96,7 @@ var roleTower = {
     },
 
     repairStuff : function (room, tower) {
-        console.log('REPAIRIIIIIING');
+        // console.log('REPAIRIIIIIING');
         // maybe repair only on every 2nd tick?
         // 2DO: differenciate between structures
         // - ramparts 300.000 begin from lowest hitpoints
@@ -113,25 +113,25 @@ var roleTower = {
 
         // allDamagedStructures = Memory.damagedStructuresR1; // use stuff from memory!
         allDamagedStructures = Memory.rooms[room].damagedStructures; // use stuff from memory!
-        console.log('all damaged strucs' + allDamagedStructures);
+        // console.log('all damaged strucs' + allDamagedStructures);
 
         // turn all damaged structures into an array so we can easily find the one with lowest hits
         let damagedArr = Object.keys(allDamagedStructures).map(function(key) {
           return [String(key), allDamagedStructures[key]];
         });
 
-        console.log('damagedArr:' + damagedArr[0]);
+        // console.log('damagedArr:' + damagedArr[0]);
 
         for (let s of damagedArr) {
             // console.log(s[0]);
     // var lowestHitsStructure = _.min(damagedArr);
             let strucObj = Game.getObjectById(s[0]) ;
-            console.log(strucObj.hits);
+            // console.log(strucObj.hits);
 
             if (strucObj.hits < Memory.roomOpts[room].repairUntil &&
                 strucObj.hits < (strucObj.hitsMax * Memory.roomOpts[room].repairUntilPercentage)) {
                 let result = tower.repair(strucObj);
-                console.log('tower repair result: ' + result);
+                // console.log('tower repair result: ' + result);
                 break; // finish for loop
             } else {
                 continue; // go to next repair site if this one has enough hits already (memory is too slow)
