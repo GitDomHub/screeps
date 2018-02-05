@@ -195,6 +195,13 @@ var roleCourier = {
                             let y = Memory.rooms[creep.memory.homeRoom].energyDropoffs[memObj].y;
                             
                             let dropOffPos = new RoomPosition(x, y, creep.memory.homeRoom);
+                            console.log(dropOffPos, ' dropoffPos old');
+                            let possibleConstructionSite    = Game.rooms[creep.memory.homeRoom].lookForAt(LOOK_CONSTRUCTION_SITES, dropOffPos);
+                            console.log(possibleConstructionSite, ' construction site?');
+                            if (possibleConstructionSite){
+                                dropoffPos = new RoomPosition(x, (y + 1),  creep.memory.homeRoom);
+                                console.log(dropoffPos, ' dropoffPos new');
+                            }
                             // console.log (dropOffPos, ' <---- ############# dropoffPos from courier');
                             if(!creep.pos.isEqualTo(dropOffPos)) {
                                 creep.moveTo(dropOffPos);

@@ -197,6 +197,14 @@ var MemoryManager = {
 				let spawnObj = Game.rooms[room].find(FIND_MY_SPAWNS);
 				// for(let singleSpawn of spawnObj) {
 				let dropOffPos = new RoomPosition((spawnObj[0].pos.x), (spawnObj[0].pos.y+1), room);
+
+				let possibleConstructionSite    = Game.rooms[room].lookForAt(LOOK_CONSTRUCTION_SITES, dropOffPos);
+                console.log(possibleConstructionSite, ' construction site?');
+                if (possibleConstructionSite){
+                    dropOffPos = new RoomPosition((spawnObj[0].pos.x), (spawnObj[0].pos.y+2), room);
+                    console.log(dropOffPos, ' dropoffPos new');
+                }
+
 				// console.log(dropOffPos, ' <-------------------- roompos for dropoff');
 				Memory.rooms[room].energyDropoffs = {};
 				Memory.rooms[room].energyDropoffs[spawnObj[0].name] = {
@@ -312,6 +320,10 @@ var GetEnergyDropOff = function(room) {
     // console.log(spawns, '<<------<<<<<<-<-<-<-<-<-<-<-<-<-<- spawns');
     if(spawns.length > 0){
         let dropOffPos                  = new RoomPosition(spawns[0].pos.x, (spawns[0].pos.y + 1),  room);
+        let possibleConstructionSite 	= Game.rooms[room].lookForAt(LOOK_CONSTRUCTION_SITES, dropOffPos);
+        if (possibleConstructionSite){
+        	dropoffPos = new RoomPosition(spawns[0].pos.x, (spawns[0].pos.y + 2),  room);
+        }
         // console.log(dropOffPos, '<-<-<-<-<-<-<-<-<-<-<-<-<-<-<-<-<-<- dropOffPos');
         let foundEnergyObj                 = Game.rooms[room].lookForAt(LOOK_ENERGY, dropOffPos);
         // console.log(foundEnergyObj, '<------<-<-<--<<--< energy!');
