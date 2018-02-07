@@ -41,11 +41,9 @@ var CouriersManager = {
 	 *
 	 */	
 	run : function (roomName) {
-		let droppedEnergyIds 			= MemoryManager.ReturnEnergySourceIDs(roomName, 'dropped_energy'); 
-		let containerIds 				= MemoryManager.ReturnEnergySourceIDs(roomName, 'container');		
 		let sourceIds 					= MemoryManager.ReturnEnergySourceIDs(roomName, 'source');		
 
-
+		/*----------  First make sure each source has as many carry parts as needed to empty it  ----------*/		
 		for (let sourceId of sourceIds){
 			let carryPartsNeeded 		= CouriersManager.GetMinCarryPartsForObject(roomName, sourceId);
 			let currentCarryPartsCount 	= CouriersManager.GetCurrentCarryPartsForObject(sourceId, 'source');
@@ -55,44 +53,50 @@ var CouriersManager = {
 			// that way creep will stay close to one source
 			// not wasting way time
 			if (missingCarryPartsCount > 0) {
-				
+				let result = CouriersManager.OrderNewCourier(roomName, missingCarryPartsCount, sourceId, 'source');
+				console.log(result, ' <<<<<<<<<<<<<<<<<<<<<< order result in CouriersManager');	
 			}
 		}
 
-		for (let dropId of droppedEnergyIds) {
-			console.log(dropId, 'found a drop and have to assign this one now');
-			let carryPartsNeeded 		= CouriersManager.GetMinCarryPartsForObject(roomName, dropId);
-			let currentCarryPartsCount 	= CouriersManager.GetCurrentCarryPartsForObject(dropId, 'container');
-			let missingCarryPartsCount 	= carryPartsNeeded - currentCarryPartsCount;
-			if (missingCarryPartsCount > 0) {
-				// first see if there are idle couriers
-				let idleCouriers = _.filter(Game.creeps, (creep) =>
-                            (creep.memory.targetId == '' ||
-                            !creep.memory.targetId) &&
-                            creep.memory.role == 'courier');
-				if(idleCouriers){
-					// idleCouriers[]
-				}else{
-					// if no idle couriers, then only order a new one
-					let result = CouriersManager.OrderNewCourier(roomName, missingCarryPartsCount, dropId, 'container');
-					console.log(result, ' <<<<<<<<<<<<<<<<<<<<<< order result in CouriersManager');	
-				}
-				
-			}
-		}
+		CouriersManager.AssignDropsAndContainers(roomName);
+
 		
-		for (let containerId of containerIds){
-			let carryPartsNeeded 		= CouriersManager.GetMinCarryPartsForObject(roomName, containerId);
-			console.log(carryPartsNeeded, ' <<<< carryPartsNeeded');
-			let currentCarryPartsCount = CouriersManager.GetCurrentCarryPartsForObject(containerId, 'container');
-			let missingCarryPartsCount = carryPartsNeeded - currentCarryPartsCount;
-			if (missingCarryPartsCount > 0) {
-				// first see if there are idle couriers
-				// if not, then only order a new one
-				let result = CouriersManager.OrderNewCourier(roomName, missingCarryPartsCount, containerId, 'container');
-				console.log(result, ' <<<<<<<<<<<<<<<<<<<<<< order result in CouriersManager');
-			}
-		}
+		
+
+		// for (let dropId of droppedEnergyIds) {
+		// 	console.log(dropId, 'found a drop and have to assign this one now');
+		// 	let carryPartsNeeded 		= CouriersManager.GetMinCarryPartsForObject(roomName, dropId);
+		// 	let currentCarryPartsCount 	= CouriersManager.GetCurrentCarryPartsForObject(dropId, 'container');
+		// 	let missingCarryPartsCount 	= carryPartsNeeded - currentCarryPartsCount;
+		// 	if (missingCarryPartsCount > 0) {
+		// 		// first see if there are idle couriers
+		// 		let idleCouriers = _.filter(Game.creeps, (creep) =>
+  //                           (creep.memory.targetId == '' ||
+  //                           !creep.memory.targetId) &&
+  //                           creep.memory.role == 'courier');
+		// 		if(idleCouriers){
+		// 			// idleCouriers[]
+		// 		}else{
+		// 			// if no idle couriers, then only order a new one
+		// 			let result = CouriersManager.OrderNewCourier(roomName, missingCarryPartsCount, dropId, 'container');
+		// 			console.log(result, ' <<<<<<<<<<<<<<<<<<<<<< order result in CouriersManager');	
+		// 		}
+				
+		// 	}
+		// }
+		
+		// for (let containerId of containerIds){
+		// 	let carryPartsNeeded 		= CouriersManager.GetMinCarryPartsForObject(roomName, containerId);
+		// 	console.log(carryPartsNeeded, ' <<<< carryPartsNeeded');
+		// 	let currentCarryPartsCount = CouriersManager.GetCurrentCarryPartsForObject(containerId, 'container');
+		// 	let missingCarryPartsCount = carryPartsNeeded - currentCarryPartsCount;
+		// 	if (missingCarryPartsCount > 0) {
+		// 		// first see if there are idle couriers
+		// 		// if not, then only order a new one
+		// 		let result = CouriersManager.OrderNewCourier(roomName, missingCarryPartsCount, containerId, 'container');
+		// 		console.log(result, ' <<<<<<<<<<<<<<<<<<<<<< order result in CouriersManager');
+		// 	}
+		// }
 	},
 
 
@@ -172,17 +176,10 @@ var CouriersManager = {
 	 *  - (param) objectTypeName : string 'container' or 'dropped_energy' 
 	 *
 	 */	
-	OrderNewCourier : function (roomName, neededPartsCount, someObjectId, objectTypeName) {
+	OrderNewCourier : function (roomName, neededPartsCount, someObjectId) {
 		// console.log('/*----------  OrderNewCourier()  ----------*/');
 		try {
-			var targetAction 				= '';
-			if(objectTypeName == 'container'){
-				targetAction 				= 'withdraw';	
-			}else if(objectTypeName == 'dropped_energy'){
-				targetAction 				= 'pickup';	
-			}else{
-				throw new Error('OrderNewCourier() missing correct parameter: <objectTypeName>');
-			}
+			let targetAction 				= '';
 			let container 					= Game.getObjectById(someObjectId);
 			// console.log(someObjectId, ' <<<---- someObjectId');
 			let energyCap 					= Game.rooms[roomName].energyCapacityAvailable;
@@ -215,5 +212,66 @@ var CouriersManager = {
 		}
 		
 	},
+
+	/**
+	 *
+	 * Assign any drop or container that is close to a source
+	 * 
+	 */
+	
+	AssignDropsAndContainers : function(roomName){
+		var courierCreeps 						= _.filter(Game.creeps, (creep) => 
+									                creep.memory.role == 'courier' &&
+									                creep.memory.homeRoom == roomName &&
+									                creep.ticksToLive > 40);
+
+		for(let creep of courierCreeps){
+			console.log(creep, ' <<<< single creep');
+			//delete objects from memory, if destroyed or non existant
+			if(creep.memory.assignedDropId) {
+				let drop 						= Game.getObjectById(creep.memory.assignedDropId);
+				if(!drop) delete creep.memory.assignedDropId;
+			}
+			if(creep.memory.assignedContainerId) {
+				let container 					= Game.getObjectById(creep.memory.assignedContainerId);
+				if(!container) delete creep.memory.assignedContainerId;
+			}
+
+
+			let motherSource 					= Game.getObjectById(creep.memory.targetId);
+			
+			/*----------  Drops  ----------*/			
+			if(!creep.memory.assignedDropId) {
+				let droppedEnergyIds 			= MemoryManager.ReturnEnergySourceIDs(roomName, 'dropped_energy'); 
+				for (let dropId of droppedEnergyIds){
+					if(creep.memory.assignedDropId == dropId) break; // stop here if creep is already working for a drop!
+					// see if drop is close to my assigned source
+					let dropObj 				= Game.getObjectById(dropId);
+					if(!dropObj) continue; // maybe drop disappeared already
+					let isNearCreepsSource 		= motherSource.pos.isNearTo(dropObj);
+					if(isNearCreepsSource){
+						creep.memory.assignedDropId = dropId;
+						break; // stop here because we already assigned the drop
+					}
+				}
+			}	
+			/*----------  Containers  ----------*/			
+			if(!creep.memory.assignedContainer) {
+				let containerIds 				= MemoryManager.ReturnEnergySourceIDs(roomName, 'container');			
+				for (let containerId of containerIds){
+					if(creep.memory.assignedContainerId == containerId) break; // stop here if creep is already working for a drop!
+					// see if drop is close to my assigned source
+					let containerObj 			= Game.getObjectById(containerId);
+					if(!containerObj) continue; // maybe container got destroyed by enemies
+					let isNearCreepsSource 		= motherSource.pos.isNearTo(containerObj);
+					if(isNearCreepsSource){
+						creep.memory.assignedContainerId = containerId;
+						break; // stop here because we already assigned the drop
+					}
+				}
+			}
+		}
+
+	}
 }
 module.exports = CouriersManager;

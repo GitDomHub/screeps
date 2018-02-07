@@ -29,23 +29,110 @@ var roleCourier = {
         
         // If set to get energy, make creep move there
         if (creep.memory.harvesting) {
-            // if drop assigned, go pickup
-            if(creep.memory.assignedDropId){
-                let dropObj                     = Game.getObjectById(creep.memory.assignedDropId);
-                if(dropObj && dropObj.amount > 1 && dropObj.resourceType == RESOURCE_ENERGY){
-                    if(creep.pickup(dropObj, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                        creep.moveTo(dropObj);
-                    }                    
-                }
-            }
-            // if no drop , then look for container, withdraw
-            if(creep.memory.assignedContainerId){
-                let containerObj                     = Game.getObjectById(creep.memory.assignedContainerId);
-                if(creep.withdraw(containerObj, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(containerObj);
-                }
-            }
 
+            // backup for when there is no energy available. then let couriers do the job quicker
+            // future: if storage has no energy, then just go back to containers
+                    // let currEnergyAvailable = Game.spawns.Spawn1.room.energyAvailable;
+                    // let currEnergyCapAvailable = Game.spawns.Spawn1.room.energyCapacityAvailable;
+
+                    // if(currEnergyAvailable <= (currEnergyCapAvailable * 0.75) ) {
+                    //    // go take energy from storage if energy in extensions and spawns is critical
+                    //    var storages = actionsSelectSource.returnStorages(creep);
+                    //    // only go to storage, if there is enough energy
+                    //    if (storages.length > 0 && storages[0].store[RESOURCE_ENERGY] > creep.carryCapacity){
+                    //         if(creep.withdraw(storages[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                    //             creep.moveTo(storages[0], {visualizePathStyle: {stroke: '#ffffff'}});
+                    //         }
+                    //         return; // just go to source, nowhere else
+                    //    }
+                    // }
+
+            
+            // When available energy less than 1000, then check for storages for energy and help distribute. dont go to containers. too slow!
+            
+
+            // when not already close to a container if(!creep.pos.isNearTo(target)) {
+            // find CONTAINERS in the room that:
+            // - have at least 30% as much energy as creep can carry (makes it go early enough)
+            // - have at least 250 energy 
+            var allContainers = creep.room.find(FIND_STRUCTURES, {
+                filter: (structure) => {
+                    return (structure.structureType == STRUCTURE_CONTAINER) && 
+                            (structure.store[RESOURCE_ENERGY] >= (creep.carryCapacity * 0.3) ) && 
+                            (structure.store[RESOURCE_ENERGY] >= 250) ;
+                }
+            });
+            var allContainerIDsFromMem = actionsGlobal.ReturnEnergySourceIDs(creep.memory.homeRoom, 'container');
+            var allDroppedEnergyIDsFromMem = actionsGlobal.ReturnEnergySourceIDs(creep.memory.homeRoom, 'dropped_energy');
+
+            //console.log('starting courier routine');
+                        
+                        // 2Do: do this at spawn only once
+                        // for each container...
+                        for (var container of allContainers ) {
+                            var containerId = container.id;
+                            var allCouriers = _.filter(Game.creeps, (creep) => creep.memory.role == 'courier');
+                            var couriersHavingContainerAssigned = _.filter(Game.creeps, (creep) =>
+                                        creep.memory.servingContainer == containerId &&
+                                        creep.memory.role == 'courier');
+                            if (couriersHavingContainerAssigned.length == 0) {
+                                if (creep.memory.servingContainer == null || creep.memory.servingContainer == '') {
+                                    // creep.memory.servingContainer = containerId;    
+                                }
+                            } 
+                        }
+                        
+                        //find CONTAINER that is being served by the creep
+                        var targetContainer = Game.getObjectById[creep.memory.servingContainer];// maybe useless?
+                        // could just use Game.getObjectById!!!
+                        var assignedContainer = creep.room.find(FIND_STRUCTURES, {
+                            filter: (structure) => {
+                                return (structure.structureType == STRUCTURE_CONTAINER) && (structure.id == creep.memory.servingContainer);
+                            }
+                        });
+            
+            
+            
+            
+            // if no containers assigned to me, then pickup dropped energy and drop it into spawn.
+            if (assignedContainer.length == 0) {
+                // check if creep has dropped energy resource written into memory
+                if(creep.memory.assignedDrop){
+                    let dropObj = Game.getObjectById(creep.memory.assignedDrop);
+                    if(dropObj && dropObj.amount > 1 && dropObj.resourceType == RESOURCE_ENERGY){
+                        if(creep.pickup(dropObj, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                            creep.moveTo(dropObj);
+                        }    
+                    }else if(!dropObj || dropObj.amount < 10){
+                        delete creep.memory.assignedDrop;
+                        creep.say('deleted drop');
+                    }
+                    
+
+                }else{
+                    // just dont do anything, let CouriersManager assign me a drop/container
+                    //roleCourier.assignDroppedEnergyToPickup(creep);
+                }
+                
+                // // find closest container
+                // var closestContainer = creep.pos.findClosestByRange(allContainers);
+                
+                // if(creep.withdraw(closestContainer, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                //     creep.moveTo(closestContainer, {visualizePathStyle: {stroke: '#ffffff'}});
+                // }
+                
+                
+                
+                        
+            } else {
+                // when there is an assigned container
+                // go withdraw energy
+                if(creep.withdraw(assignedContainer[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                    creep.moveTo(assignedContainer[0]);
+                }
+                
+                
+            }  
         } else { // if creep has energy and should deliver...
             // find all structures that need energy, list only those structures 
             // of which energy is less than max
