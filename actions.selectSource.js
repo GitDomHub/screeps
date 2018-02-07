@@ -6,6 +6,7 @@ var actionChooseSource = {
         - take parameters for which source to prioritize/ignore
         - take parameter for target room(or maybe just get it from memory in creep)
         - only give back target ID, let creep move there. dont make creep move here!
+        - make dropoff one suqare further down when there is a storage being build already
     
      */
     

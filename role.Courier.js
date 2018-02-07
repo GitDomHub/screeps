@@ -77,13 +77,14 @@ var roleCourier = {
                                         creep.memory.role == 'courier');
                             if (couriersHavingContainerAssigned.length == 0) {
                                 if (creep.memory.servingContainer == null || creep.memory.servingContainer == '') {
-                                    creep.memory.servingContainer = containerId;    
+                                    // creep.memory.servingContainer = containerId;    
                                 }
                             } 
                         }
                         
                         //find CONTAINER that is being served by the creep
                         var targetContainer = Game.getObjectById[creep.memory.servingContainer];// maybe useless?
+                        // could just use Game.getObjectById!!!
                         var assignedContainer = creep.room.find(FIND_STRUCTURES, {
                             filter: (structure) => {
                                 return (structure.structureType == STRUCTURE_CONTAINER) && (structure.id == creep.memory.servingContainer);
@@ -102,14 +103,15 @@ var roleCourier = {
                         if(creep.pickup(dropObj, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                             creep.moveTo(dropObj);
                         }    
-                    }else if(!dropObj || dropObj.amount < 50){
+                    }else if(!dropObj || dropObj.amount < 10){
                         delete creep.memory.assignedDrop;
                         creep.say('deleted drop');
                     }
                     
 
                 }else{
-                    roleCourier.assignDroppedEnergyToPickup(creep);
+                    // just dont do anything, let CouriersManager assign me a drop/container
+                    //roleCourier.assignDroppedEnergyToPickup(creep);
                 }
                 
                 // // find closest container
@@ -160,7 +162,6 @@ var roleCourier = {
                 filter: (s) => {
                     return ( (s.structureType == STRUCTURE_STORAGE && s.store[RESOURCE_ENERGY] < s.storeCapacity)                                 
                             );}
-
                 });
 
                 if (storages.length > 0) {
@@ -194,14 +195,14 @@ var roleCourier = {
                             let x = Memory.rooms[creep.memory.homeRoom].energyDropoffs[memObj].x;
                             let y = Memory.rooms[creep.memory.homeRoom].energyDropoffs[memObj].y;
                             
-                            let dropOffPos = new RoomPosition(x, y, creep.memory.homeRoom);
-                            console.log(dropOffPos, ' dropoffPos old');
-                            let possibleConstructionSite    = Game.rooms[creep.memory.homeRoom].lookForAt(LOOK_CONSTRUCTION_SITES, dropOffPos);
-                            console.log(possibleConstructionSite, ' construction site?');
-                            if (possibleConstructionSite){
-                                dropoffPos = new RoomPosition(x, (y + 1),  creep.memory.homeRoom);
-                                console.log(dropoffPos, ' dropoffPos new');
-                            }
+                            // let dropOffPos = new RoomPosition(x, y, creep.memory.homeRoom);
+                            // console.log(dropOffPos, ' dropoffPos old');
+                            // let possibleConstructionSite    = Game.rooms[creep.memory.homeRoom].lookForAt(LOOK_CONSTRUCTION_SITES, dropOffPos);
+                            // console.log(possibleConstructionSite, ' construction site?');
+                            // if (possibleConstructionSite){
+                            //     dropOffPos = new RoomPosition(x, (y + 1),  creep.memory.homeRoom);
+                            //     console.log(dropOffPos, ' dropoffPos new');
+                            // }
                             // console.log (dropOffPos, ' <---- ############# dropoffPos from courier');
                             if(!creep.pos.isEqualTo(dropOffPos)) {
                                 creep.moveTo(dropOffPos);
@@ -226,29 +227,29 @@ var roleCourier = {
         
 
           
-    },
-
-    assignDroppedEnergyToPickup : function (creep) {
-        if(creep.memory.assignedDrop)
-            return console.log('have drop assigned already');
-        // find all sources 
-        let allDrops = actionsGlobal.ReturnEnergySourceIDs(creep.room.name, 'dropped_energy');
-        // console.log(allDrops, ' <---------- allDrops');
-        // find a source that no creep has assigned
-        for (let dropID of allDrops) {
-            let courierHasDropAssigned = _.filter(Game.creeps, (creep) => 
-                    creep.memory.assignedDrop == dropID && 
-                    creep.memory.role == 'courier' &&
-                    creep.ticksToLive > 40);            
-            // set this drop as my assigned source           
-            if (courierHasDropAssigned.length == 0) {
-                if (creep.memory.assignedDrop == null) {
-                    creep.memory.assignedDrop = dropID;    
-                }
-            }            
-        }         
-        
     }
+
+    // assignDroppedEnergyToPickup : function (creep) {
+    //     if(creep.memory.assignedDrop)
+    //         return console.log('have drop assigned already');
+    //     // find all sources 
+    //     let allDrops = actionsGlobal.ReturnEnergySourceIDs(creep.room.name, 'dropped_energy');
+    //     // console.log(allDrops, ' <---------- allDrops');
+    //     // find a source that no creep has assigned
+    //     for (let dropID of allDrops) {
+    //         let courierHasDropAssigned = _.filter(Game.creeps, (creep) => 
+    //                 creep.memory.assignedDrop == dropID && 
+    //                 creep.memory.role == 'courier' &&
+    //                 creep.ticksToLive > 40);            
+    //         // set this drop as my assigned source           
+    //         if (courierHasDropAssigned.length == 0) {
+    //             if (creep.memory.assignedDrop == null) {
+    //                 creep.memory.assignedDrop = dropID;    
+    //             }
+    //         }            
+    //     }         
+        
+    // }
 };
 
 module.exports = roleCourier;

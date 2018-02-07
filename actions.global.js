@@ -7,7 +7,6 @@
  */
 
 
-require('managers.Memory');
 
 module.exports = {
 

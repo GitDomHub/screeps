@@ -19,6 +19,7 @@ var MemoryManager = require('managers.Memory');
 var MiningManager = require('managers.Mining');
 var SpawnQueueManager = require('managers.SpawnQueue');
 var SpawnManager = require('managers.Spawn');
+var CouriersManager = require('managers.Couriers');
 var ProfileUtils = require('utils.Profiles');
 
 /*----------  Managers  ----------*/
@@ -81,6 +82,7 @@ module.exports.loop = function () {
         // harvester Manager
         MiningManager.run(singleRoom);
         // courier manager
+        CouriersManager.run(singleRoom);
         // upgrader manager
         // builder mnager
         // defender manager
@@ -104,9 +106,9 @@ module.exports.loop = function () {
     
     
     // manually overwrite creeps
-    if (Game.creeps['Builder23382954'] != undefined) {
-        Game.creeps['Builder23382954'].memory.role = 'courier';
-        console.log('Builder23382954 hat die Rolle: ' + Game.creeps['Builder23382954'].memory.role);    
+    if (Game.creeps['Upgrader58072W8N'] != undefined) {
+        Game.creeps['Upgrader58072W8N3'].memory.role = 'builder';
+        console.log('Upgrader58072W8N3 hat die Rolle: ' + Game.creeps['Upgrader58072W8N3'].memory.role);    
     } 
     
 
@@ -117,8 +119,8 @@ module.exports.loop = function () {
     //   filter: { structureType: STRUCTURE_EXTENSION }
     // });
     // console.log('Extensions: ' + extensions.length);
-    console.log("Energy: "+Game.spawns.Spawn1.room.energyAvailable);
-    console.log("Energy Cap: "+Game.spawns.Spawn1.room.energyCapacityAvailable);
+    // console.log("Energy: "+Game.spawns.Spawn1.room.energyAvailable);
+    // console.log("Energy Cap: "+Game.spawns.Spawn1.room.energyCapacityAvailable);
     //console.log('room.energyAvailable: ' + Game.creeps[1].Room.energyAvailable + ' | room.energyCapacityAvailable: ' + Game.creeps[1].Room.energyCapacityAvailable );
     
 

@@ -7,10 +7,10 @@
  */
 
 
-require('managers.Memory');
 var ProfileUtils = require('utils.Profiles'); 
 var actionsGlobal = require('actions.global');
 var SpawnQueueManager = require('managers.SpawnQueue');
+var SpawnManager = require('managers.Spawn');
 
 
 var MiningManager = {
@@ -106,7 +106,9 @@ var MiningManager = {
 				if(ordered < missingWorkPartCount) {
 					// console.log('ordering new miner');
 					//2Do: determine priority in external
-					let result = SpawnQueueManager.NewOrder(room, perfectBody, 'miner', sourceId, 'harvest', 1)
+					let prio = SpawnManager.priorities.miner;
+					// console.log(prio, ' <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< miner prio');
+					let result = SpawnQueueManager.NewOrder(room, perfectBody, 'miner', sourceId, 'harvest', prio)
 					console.log(result, ' <- result in OrderNewMiner()');
 					return 'ordered new miner';
 				}else{

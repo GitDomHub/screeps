@@ -10,6 +10,7 @@
 
  */
 
+// var CourierManager = require('managers.Couriers');
 
 
 // Initiating room options

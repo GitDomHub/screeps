@@ -530,9 +530,10 @@ function CountBodyParts(body, lookForPart) {
 	for (part of body) {
 		// console.log(part.type, ' < current part.type');
 		// console.log(part, ' < current part');
-		if(part == lookForPart)
+		if(part == lookForPart) {
 			count++;
 			// console.log(count, 'increasing count');
+		}
 	}
 	// console.log(count, ' < returning count');
 	return count;

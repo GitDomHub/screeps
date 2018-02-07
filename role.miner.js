@@ -183,17 +183,24 @@ var roleMiner = {
     },
 
     repairContainer : function (creep) {
-        let containerId                     = creep.memory.servingContainer;
-        if(containerId && containerId !== '') {
-            let container                   = Game.getObjectById(containerId);
-            if (container.hits <= (container.hitsMax * 0.5)) {
-                if(creep.repair(container) === ERR_NOT_IN_RANGE){
-                    creep.moveTo(container);
+        try{
+            let containerId                     = creep.memory.servingContainer;
+
+            if(containerId && containerId !== '') {
+                let container                   = Game.getObjectById(containerId);
+                if(!container) delete creep.memory.servingContainer;                                      
+                if (container.hits <= (container.hitsMax * 0.5)) {
+                    if(creep.repair(container) === ERR_NOT_IN_RANGE){
+                        creep.moveTo(container);
+                    }
                 }
+            }else{
+                console.log('Miner cant repair container because no container exists in its memory!');
             }
-        }else{
-            console.log('Miner cant repair container because no container exists in its memory!');
+        }catch(err){
+            console.log(err);
         }
+        
     }
 
 

@@ -156,7 +156,7 @@ var roleSpawn = {
 		var minTowerCouriers                = 1;    
 		var minMiners                       = amountSourcesInRoom.length;    // 2Do: make enough miners as containers we have
 		var minRepairers                    = 0;    // cheaper than tower repairing things
-		var minUpgraders                    = 3;    // only spawn new ones if overall energy amount is over certain number
+		var minUpgraders                    = 1;    // only spawn new ones if overall energy amount is over certain number
 		var minBuilders                     = 2;    // only make builders when construction sites in room. Make more builders when there are more than  
 		var minDefenders                    = 0;    // Only spawn rest if hostile in room.
 		                                         // Just produce a new one to be ready when old one dies
@@ -241,13 +241,13 @@ var roleSpawn = {
 		console.log('spawn result harvester: ' + result);
 		}
 		 
-		 // spawn COURIERS 
-		if(couriers.length < minCouriers  && (miners.length >= minMiners)) {
-		    var newName = 'Courier' + Game.time + myRoom;
-		    let result = Game.spawns['Spawn1'].spawnCreep(courierBody, newName, 
-		        {memory: {role: 'courier', homeRoom: myRoom}});
-		    console.log('spawn result courier: ' + result);
-		}
+		//  // spawn COURIERS 
+		// if(couriers.length < minCouriers  && (miners.length >= minMiners)) {
+		//     var newName = 'Courier' + Game.time + myRoom;
+		//     let result = Game.spawns['Spawn1'].spawnCreep(courierBody, newName, 
+		//         {memory: {role: 'courier', homeRoom: myRoom}});
+		//     console.log('spawn result courier: ' + result);
+		// }
 		 
 		// spawn MINERS 
 		// only if harvesters are there already - otherwise we don't have anyone delivering energy to spawn & extensions
